@@ -3,289 +3,173 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coursiv - Integrated Ecosystem Prototype</title>
+    <title>Coursiv</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@350;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #ffffff; }
         :root {
             --surface-primary: #ffffff;
             --surface-secondary: #F4F4F7;
-            --surface-action-secondary: #F5F5F7;
             --border-primary: #E5E5EA;
             --text-action-info: #5653FE;
             --text-primary: #1C1C1E;
             --text-secondary: #8E8E93;
+            --surface-action: #5653FE;
+            --text-on-action: #ffffff;
         }
         .bg-surface-primary { background-color: var(--surface-primary); }
         .bg-surface-secondary { background-color: var(--surface-secondary); }
-        .bg-surface-action-secondary { background-color: var(--surface-action-secondary); }
         .border-border-primary { border-color: var(--border-primary); }
-        .text-text-action-info { color: var(--text-action-info); }
         .text-text-primary { color: var(--text-primary); }
         .text-text-secondary { color: var(--text-secondary); }
-        .fill-icon-primary { fill: #48484A; }
-        .fill-text-action-info { fill: var(--text-action-info); }
-        
-        .ui-primary-button {
-            background-color: #5653FE;
-            color: #ffffff;
-            font-weight: 600;
-            font-size: 14px;
-            padding: 10px 16px;
-            border-radius: 12px;
-            transition: all 0.2s;
-            cursor: pointer;
-        }
-        .ui-primary-button:hover { background-color: #4340E6; }
-        .ui-secondary-btn {
-            background-color: #F4F4F7;
-            color: #1C1C1E;
-            border: 1px solid #E5E5EA;
-        }
-        .ui-secondary-btn:hover { background-color: #E5E5EA; }
-        .card-effect {
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .card-effect:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.03);
-        }
+        .text-text-action-info { color: var(--text-action-info); }
+        .bg-surface-action { background-color: var(--surface-action); }
+        .fill-surface-action { fill: var(--surface-action); }
     </style>
 </head>
-<body class="stjr-review-checkout-widget__body--active">
+<body class="stjr-review-checkout-widget__body--active select-none">
     <div id="root">
         <div class="app">
             <div class="app_view" id="app_view">
-                <div class="min-vh-full bg-surface-primary flex flex-col min-h-screen">
+                <div class="flex min-h-screen flex-col bg-surface-primary">
                     
-                    <header class="sticky top-0 z-50 w-full border-b border-border-primary bg-surface-primary">
-                        <div class="max-w-6xl mx-auto flex h-16 items-center justify-between px-6">
-                            <div class="flex items-center gap-6">
-                                <button onclick="switchTab('home')" class="shrink-0 cursor-pointer">
-                                    <span class="text-xl font-black text-slate-900 tracking-tight">Coursiv</span>
-                                </button>
-                                
-                                <div class="flex items-center gap-x-3 desktop:gap-x-4">
-                                    <button onclick="switchTab('home')" id="nav-home" class="h-16 py-2 transition-colors duration-200 fill-text-action-info text-text-action-info cursor-pointer">
-                                        <div class="flex h-full items-center gap-2 rounded-[16px] px-2 hover:bg-slate-50">
-                                            <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" fill="currentColor"><path d="M11.336 2.753a1 1 0 0 1 1.328 0l9 8a1 1 0 0 1-1.328 1.494L20 11.95V19.5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7.55l-.336.297a1 1 0 0 1-1.328-1.494l9-8ZM6 10.17V19.5h3v-5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v5h3v-9.329l-6-5.333-6 5.333Zm7 9.329v-4h-2v4h2Z"></path></svg></span>
-                                            <span class="text-base font-medium">Home</span>
-                                        </div>
-                                    </button>
-                                    
-                                    <button class="h-16 py-2 transition-colors duration-200 text-text-secondary opacity-60 cursor-not-allowed">
-                                        <div class="flex h-full items-center gap-2 rounded-[16px] px-2">
-                                            <span><svg width="24" height="25" viewBox="0 0 24 25" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6.5C3 5.39543 3.89543 4.5 5 4.5H19C20.1046 4.5 21 5.39543 21 6.5V14.5C21 15.6046 20.1046 16.5 19 16.5H5C3.89543 16.5 3 15.6046 3 14.5V6.5Z"></path></svg></span>
-                                            <span class="text-base font-medium">Courses</span>
-                                        </div>
-                                    </button>
-                                    
-                                    <button onclick="switchTab('tools')" id="nav-tools" class="h-16 py-2 transition-colors duration-200 text-text-secondary hover:text-text-action-info fill-icon-primary hover:fill-text-action-info cursor-pointer">
-                                        <div class="flex h-full items-center gap-2 rounded-[16px] px-2 hover:bg-slate-50">
-                                            <span><svg width="17" height="21" viewBox="0 0 17 21" fill="none" class="current-fill"><path fill="currentColor" d="M9.74316 20.9409C9.61328 20.9409 9.50505 20.9007 9.41846 20.8203C9.33187 20.7399 9.2793 20.6348 9.26074 20.5049C9.12467 19.5524 8.97624 18.7484 8.81543 18.0928C8.66081 17.4434 8.45671 16.9115 8.20312 16.4971C7.94954 16.0827 7.61556 15.7518 7.20117 15.5044C6.78678 15.2508 6.25798 15.0467 5.61475 14.8921C4.97152 14.7375 4.17985 14.5983 3.23975 14.4746C3.10368 14.4622 2.99235 14.4128 2.90576 14.3262C2.82536 14.2334 2.78516 14.1221 2.78516 13.9922C2.78516 13.8623 2.82536 13.7541 2.90576 13.6675C2.99235 13.5747 3.10368 13.5221 3.23975 13.5098C4.18604 13.4046 4.98079 13.2809 5.62402 13.1387C6.26725 12.9964 6.79606 12.7985 7.21045 12.5449C7.63102 12.2852 7.9681 11.945 8.22168 11.5244C8.48145 11.0977 8.68864 10.5565 8.84326 9.90088C8.99788 9.24528 9.13704 8.43815 9.26074 7.47949C9.2793 7.35579 9.33187 7.25374 9.41846 7.17334C9.50505 7.08675 9.61328 7.04346 9.74316 7.04346C9.86068 7.04346 9.96273 7.08675 10.0493 7.17334C10.1359 7.25374 10.1885 7.35579 10.207 7.47949C10.3431 8.43815 10.4884 9.24528 10.6431 9.90088C10.7977 10.5565 11.0018 11.0977 11.2554 11.5244C11.509 11.945 11.8429 12.2821 12.2573 12.5356C12.6717 12.7892 13.2005 12.9902 13.8438 13.1387C14.4932 13.2809 15.2879 13.4046 16.228 13.5098C16.3641 13.5283 16.4723 13.5809 16.5527 13.6675C16.6393 13.7541 16.6826 13.8623 16.6826 13.9922C16.6826 14.1221 16.6393 14.2334 16.5527 14.3262C16.4723 14.4128 16.3641 14.4622 16.228 14.4746C15.2879 14.5798 14.4932 14.7065 13.8438 14.855C13.2005 14.9972 12.6686 15.1951 12.248 15.4487C11.8337 15.7023 11.4997 16.0425 11.2461 16.4692C10.9925 16.8898 10.7884 17.4279 10.6338 18.0835C10.4854 18.7453 10.3431 19.5524 10.207 20.5049C10.1885 20.6348 10.1359 20.7399 10.0493 20.8203C9.96273 20.9007 9.86068 20.9409 9.74316 20.9409Z"></path></svg></span>
-                                            <span class="text-base font-medium">AI Tools</span>
-                                        </div>
-                                    </button>
-                                    
-                                    <button onclick="switchTab('builder')" id="nav-builder" class="h-16 py-2 transition-colors duration-200 text-text-secondary hover:text-text-action-info cursor-pointer">
-                                        <div class="flex h-full items-center gap-2 rounded-[16px] px-2 hover:bg-slate-50">
-                                            <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><path fill="currentColor" d="M2.398 16.793q-.492 0-.881-.223a1.8 1.8 0 0 1-.622-.612 1.7 1.7 0 0 1-.223-.872V9.223q0-.483.223-.872.232-.39.622-.613a1.7 1.7 0 0 1 .88-.232h1.188V8.87h-1.14a.39.39 0 0 0-.298.12.44.44 0 0 0-.102.298v5.733q0 .186.102.297a.42.42 0 0 0 .297.102h1.141v1.373zm2.95 1.995q-1.104 0-1.716-.65T3.02 16.32V7.998q0-1.16.593-1.818.594-.66 1.652-.659h.714q1.123 0 1.753.659.64.658.64 1.818v8.322q0 1.17-.64 1.818-.64.65-1.772.65zm.028-1.457h.566q.446 0 .705-.269.27-.28.269-.76V8.025q0-.492-.26-.77t-.696-.278h-.677a.7.7 0 0 0-.594.278q-.213.278-.213.77V16.3q0 .483.232.761.24.27.668.27m2.653-5.863V10.01h7.942v1.457zm0 2.82v-1.457h7.942v1.457zm10.01 4.5q-1.132 0-1.771-.65-.631-.65-.631-1.818V7.998q0-1.16.63-1.818.632-.66 1.754-.659h.724q1.047 0 1.642.659.593.658.593 1.818v8.322q0 1.17-.612 1.818-.612.65-1.716.65zm.028-1.457h.566q.418 0 .65-.269.24-.28.24-.76V8.025q0-.492-.212-.77a.7.7 0 0 0-.594-.278h-.677q-.436 0-.696.278-.25.278-.25.77V16.3q0 .483.259.761.26.27.714.27m2.357-.538V15.42h1.14a.4.4 0 0 0 .288-.102.39.39 0 0 0 .121-.297V9.288a.4.4 0 0 0-.12-.297.37.37 0 0 0-.288-.12h-1.141V7.505h1.197q.482 0 .862.232.39.223.613.613.232.39.232.872v5.863q0 .482-.232.872a1.675 1.675 0 0 1-1.475.835z"></path></svg></span>
-                                            <span class="text-base font-medium">Prompt Builder</span>
-                                        </div>
-                                    </button>
-                                </div>
+                    <header class="border-b border-border-primary bg-surface-primary sticky top-0 z-50">
+                        <div class="max-w-[540px] mx-auto flex h-[66px] flex-row items-center justify-between px-4">
+                            <div class="flex items-center space-x-4">
+                                <button onclick="switchPage('streak')" id="nav-streak" class="text-text-action-info font-bold text-sm cursor-pointer">🔥 Streak Details</button>
+                                <button onclick="switchPage('tools')" id="nav-tools" class="text-text-secondary hover:text-text-action-info font-medium text-sm cursor-pointer">✨ AI Tools</button>
                             </div>
-
-                            <div class="flex items-center gap-x-2">
-                                <div onclick="switchTab('home')" class="flex select-none items-center justify-center border border-border-primary bg-surface-secondary rounded-[30px] gap-x-1 py-1 pl-[10px] pr-[15px] cursor-pointer">
-                                    <span class="text-sm">🔥</span>
-                                    <p class="shrink-0 font-semibold text-base"><span id="headerStreakCount">1</span></p>
-                                </div>
-                                <div class="w-7 h-7 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-xs font-semibold text-slate-500">A</div>
+                            <div class="flex items-center space-x-1 border border-border-primary bg-surface-secondary rounded-[30px] py-1 pl-[10px] pr-[15px]">
+                                <span class="text-xs">🔥</span>
+                                <span id="globalHeaderStreak" class="font-bold text-sm">1</span>
                             </div>
                         </div>
                     </header>
 
-                    <main id="view-home" class="flex-1 max-w-5xl w-full mx-auto p-6 space-y-8">
-                        
-                        <div class="flex min-w-0 cursor-pointer justify-between rounded-2xl bg-surface-action-secondary p-4 flex-row border border-border-primary">
-                            <div class="flex flex-col justify-center">
-                                <h3 class="text-base font-bold tablet:text-xl">AI Mastery Certificate Program</h3>
-                                <p class="text-xs text-text-secondary tablet:text-base mb-0">Complete 5 courses to earn your professional certificate</p>
-                            </div>
-                            <div class="flex w-full min-w-0 gap-x-1 rounded-md bg-white p-1 max-w-[455px] border border-slate-100">
-                                <button class="flex flex-1 flex-col items-center py-2"><img src="https://d2h7i1o4snhir4.cloudfront.net/images/guides-icons/chatgpt_logo.webp" class="h-6 w-6 rounded" /> <span class="text-[10px] mt-1 text-emerald-600">✓</span></button>
-                                <button class="flex flex-1 flex-col items-center py-2 bg-slate-50 border border-slate-200 rounded"><img src="https://d2h7i1o4snhir4.cloudfront.net/images/guides-icons/claude_logo.webp" class="h-6 w-6 rounded" /> <span id="homeCertClaudeProgress" class="text-[10px] mt-1 text-indigo-600">4%</span></button>
-                                <button class="flex flex-1 flex-col items-center py-2"><img src="https://d2h7i1o4snhir4.cloudfront.net/images/guides-icons/midjourney_logo.webp" class="h-6 w-6 rounded" /> <span class="text-[10px] mt-1 text-slate-400">5%</span></button>
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <div id="page-streak" class="mx-auto flex w-full max-w-[540px] flex-grow flex-col rounded-lg px-4 pt-6 pb-12">
+                        <div class="flex flex-col gap-y-6">
                             
-                            <div class="lg:col-span-7 border border-border-primary rounded-2xl p-6 bg-surface-primary flex flex-col justify-between">
-                                <div class="flex items-center gap-x-4">
-                                    <img class="w-24 h-16 rounded object-cover" src="https://d2h7i1o4snhir4.cloudfront.net/images/guides/b58cf86e-236d-4a96-baca-35194d698ab5.webp">
-                                    <div>
-                                        <h2 class="text-xl font-bold text-text-primary">DeepSeek</h2>
-                                        <p class="text-sm text-text-secondary">Idea Brainstorming & Problem-Solving</p>
-                                    </div>
+                            <div class="relative flex justify-between overflow-hidden rounded-lg border border-border-primary px-6 py-4" dir="ltr" style="background-color: rgba(255, 116, 13, 0.07);">
+                                <div class="mt-1 w-1/2">
+                                    <svg class="select-none" height="72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <defs>
+                                            <linearGradient id="streakGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                <stop offset="0%" stop-color="#FFAC5E"></stop>
+                                                <stop offset="100%" stop-color="#FF7008"></stop>
+                                            </linearGradient>
+                                        </defs>
+                                        <text x="2%" y="50%" text-anchor="start" dominant-baseline="middle" fill="url(#streakGradient)" stroke="url(#streakGradient)" stroke-width="14" stroke-linejoin="round" class="text-6xl font-bold" letter-spacing="9">1</text>
+                                        <text x="2%" y="50%" text-anchor="start" dominant-baseline="middle" fill="white" stroke="none" class="text-6xl font-bold" letter-spacing="9">1</text>
+                                    </svg>
+                                    <p id="streakDaysText" class="text-lg font-semibold text-text-primary">day streak!</p>
                                 </div>
-                                <div class="mt-6">
-                                    <div class="relative mb-2 h-2 w-full bg-slate-100 rounded-md overflow-hidden">
-                                        <div class="absolute top-0 left-0 h-full bg-indigo-500" style="width: 60%;"></div>
-                                    </div>
-                                    <div class="flex justify-between text-xs font-medium text-text-secondary">
-                                        <span>9/15 lessons completed</span>
-                                        <span class="text-indigo-600">60%</span>
-                                    </div>
-                                </div>
-                                <div class="mt-6 flex gap-3">
-                                    <button class="ui-primary-button ui-secondary-btn flex-1">Other courses</button>
-                                    <button onclick="switchTab('tools')" class="ui-primary-button flex-1">Continue learning</button>
+                                <div class="z-10 flex items-center justify-end">
+                                    <span id="streakFireIcon animate-pulse" class="text-4xl filter drop-shadow-sm">🔥</span>
                                 </div>
                             </div>
 
-                            <div onclick="switchTab('tools')" id="homeStreakCard" class="lg:col-span-5 card-effect flex cursor-pointer rounded-2xl border p-6 border-border-primary bg-surface-primary flex-col group">
-                                <p class="mb-1 text-xs font-semibold uppercase tracking-wider text-indigo-600">Weekly streaks</p>
-                                <h3 class="text-lg font-bold text-text-primary mb-4 flex items-center justify-between">
-                                    <span>Help you build learning habit</span>
-                                    <span id="streakStatusBadge" class="text-xs font-semibold bg-amber-50 text-amber-600 border border-amber-200 px-2 py-0.5 rounded animate-pulse">1 Task Pending</span>
-                                </h3>
-                                
-                                <div class="flex w-full justify-between mb-4">
-                                    <div class="text-center">
-                                        <div class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs font-bold">✓</div>
-                                        <p class="mt-1 text-xs text-text-secondary">Thu</p>
-                                    </div>
-                                    <div class="text-center">
-                                        <div id="streakCircleFri" class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary flex items-center justify-center text-xs font-semibold text-slate-400">4</div>
-                                        <p class="mt-1 text-xs text-text-primary">Fri</p>
-                                    </div>
-                                    <div class="text-center"><div class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary"></div><p class="mt-1 text-xs text-text-secondary">Sat</p></div>
-                                    <div class="text-center"><div class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary"></div><p class="mt-1 text-xs text-text-secondary">Sun</p></div>
-                                    <div class="text-center"><div class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary"></div><p class="mt-1 text-xs text-text-secondary">Mon</p></div>
-                                    <div class="text-center"><div class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary"></div><p class="mt-1 text-xs text-text-secondary">Tue</p></div>
-                                    <div class="text-center"><div class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary"></div><p class="mt-1 text-xs text-text-secondary">Wed</p></div>
+                            <div class="flex flex-col gap-y-[22px] rounded-lg border border-border-primary bg-surface-primary p-4">
+                                <div class="flex w-full justify-between">
+                                    <h2 class="text-lg font-semibold">Streak Challenge</h2>
+                                    <p id="challengeDayLabel" class="text-sm text-text-secondary">Day 1 of 3 (Theory Complete)</p>
                                 </div>
-                                <div class="mt-auto bg-amber-50/40 border border-amber-100 p-3 rounded-xl group-hover:border-indigo-200 group-hover:bg-indigo-50/20 transition">
-                                    <p id="streakDisclaimerText" class="text-xs text-amber-700 font-medium flex items-center gap-1">
-                                        ⚠️ Lesson complete! Run 1 generation in AI Tools to secure today's streak.
-                                    </p>
+                                <div class="relative h-[10px] w-full rounded-full bg-border-primary">
+                                    <div id="streakChallengeProgressBar" class="absolute left-0 top-0 h-full rounded-full bg-surface-action transition-all duration-500" style="width: 11%;"></div>
                                 </div>
                             </div>
 
-                        </div>
-
-                        <div class="w-full rounded-2xl border border-border-primary bg-surface-primary p-4 relative overflow-hidden">
-                            <div class="relative flex w-full items-center justify-between">
-                                <div>
-                                    <p class="text-base font-bold text-text-primary tablet:text-xl">Prompts Library</p>
-                                    <p class="text-xs text-text-secondary">The Complete AI Bundle is now live in your workspace environment.</p>
-                                </div>
-                                <button onclick="switchTab('builder')" class="ui-primary-button ui-secondary-btn text-xs">Open Builder Library</button>
-                            </div>
-                        </div>
-
-                        <div class="space-y-4">
-                            <h2 class="text-base font-bold">Explore AI tools</h2>
-                            <div class="grid grid-cols-2 sm:grid-cols-5 gap-4">
-                                <div onclick="switchTab('tools')" class="border border-border-primary rounded-xl p-3 bg-white text-center cursor-pointer hover:border-indigo-400 transition">
-                                    <img src="https://d2h7i1o4snhir4.cloudfront.net/images/guide-images/e38e1f3be6b64867afd9ca16e0c8a4dc.webp" class="rounded w-full aspect-video object-cover" />
-                                    <p class="text-sm font-bold mt-2">Gemini</p>
-                                </div>
-                                <div onclick="switchTab('tools')" class="border border-border-primary rounded-xl p-3 bg-white text-center cursor-pointer hover:border-indigo-400 transition">
-                                    <img src="https://d2h7i1o4snhir4.cloudfront.net/images/guides/8c64f15f-4346-4b4b-a513-d5472aab237f.webp" class="rounded w-full aspect-video object-cover" />
-                                    <p class="text-sm font-bold mt-2">MidJourney</p>
-                                </div>
-                                <div onclick="switchTab('tools')" class="border border-border-primary rounded-xl p-3 bg-white text-center cursor-pointer hover:border-indigo-400 transition">
-                                    <img src="https://d2h7i1o4snhir4.cloudfront.net/images/guides/959c8c76-1c6e-4797-9849-1ccba78fe1f8.webp" class="rounded w-full aspect-video object-cover" />
-                                    <p class="text-sm font-bold mt-2">Claude</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </main>
-
-                    <main id="view-tools" class="hidden flex-1 max-w-2xl w-full mx-auto px-4 pt-20 flex flex-col items-center">
-                        <h1 class="text-2xl font-medium text-slate-900 tracking-tight text-center mb-6">What can I help with?</h1>
-
-                        <div class="w-full bg-white border border-slate-200 rounded-[24px] p-4 main-input-box">
-                            <textarea id="toolsInputTextArea" oninput="validateToolsInputState()" placeholder="Ask anything or use prompt from Builder below..." rows="3" class="w-full resize-none bg-transparent text-[15px] text-slate-800 placeholder-slate-300 focus:outline-none leading-relaxed h-16"></textarea>
-                            
-                            <div class="flex items-center justify-between border-t border-slate-50 pt-2.5 mt-2">
-                                <button onclick="switchTab('builder')" class="text-xs text-indigo-600 font-semibold hover:text-indigo-700 flex items-center space-x-1 cursor-pointer bg-indigo-50 px-2 py-1 rounded-md">
-                                    <span>⚙️</span> <span>Open Prompt Builder Framework</span>
-                                </button>
-                                
-                                <div class="flex items-center space-x-3">
-                                    <div class="relative flex items-center">
-                                        <select id="toolsModelSelector" class="appearance-none bg-transparent rounded-xl pl-2 pr-5 py-0.5 text-[14px] text-slate-600 font-medium focus:outline-none cursor-pointer">
-                                            <option value="claude">Claude</option>
-                                            <option value="gpt5">ChatGPT 5.4</option>
-                                            <option value="sd35">SD 3.5 Turbo</option>
-                                        </select>
-                                        <span class="absolute right-1 text-[9px] text-slate-400 pointer-events-none">▼</span>
+                            <div id="streakEcosystemTaskBox" class="w-full rounded-lg border border-amber-200 bg-amber-50/20 p-4 transition-all duration-300">
+                                <div class="flex flex-col gap-y-3">
+                                    <div class="flex items-center justify-between">
+                                        <p class="text-sm font-bold text-slate-800">📋 План сохранения стрика на сегодня:</p>
+                                        <span id="taskStatusBadge" class="text-[10px] font-semibold bg-amber-100 text-amber-700 px-2 py-0.5 rounded animate-pulse">1 ПРАКТИКА ОСТАЛАСЬ</span>
                                     </div>
-                                    <button class="text-slate-300">🎤</button>
-                                    <button id="toolsActionSubmitBtn" onclick="runToolsPipelineSimulation()" class="w-7 h-7 rounded-full bg-slate-100 text-slate-300 flex items-center justify-center font-bold text-xs transition cursor-pointer">
-                                        ↑
+                                    <div class="text-xs text-slate-600 space-y-1.5 font-medium">
+                                        <p class="flex items-center space-x-2 text-emerald-600"><span>✓</span> <span>Теоретический урок на вкладке Home — Выполнен</span></p>
+                                        <p id="toolsTaskStatusRow" class="flex items-center space-x-2 text-amber-600"><span>●</span> <span>Закрепление в AI Tools — Ожидание генерации</span></p>
+                                    </div>
+                                    <button id="goToToolsActionBtn" onclick="switchPage('tools')" class="w-full bg-[#5653FE] hover:bg-[#4340E6] text-white text-xs font-semibold py-2.5 px-4 rounded-xl transition shadow-sm cursor-pointer">
+                                        Закрепить теорию в AI Tools ➔
                                     </button>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="w-full mt-6 flex flex-wrap justify-center gap-2">
-                            <button id="ecosystemSyncedPill" onclick="injectPromptFromBuilderStorage()" class="hidden px-3 py-1.5 bg-indigo-600 text-white border border-indigo-700 rounded-full text-[13px] font-medium flex items-center space-x-1.5 transition cursor-pointer shadow-sm animate-bounce hover:animate-none">
-                                <span>📁 Built Prompt:</span> <span id="syncedPillTitle">Template</span>
-                            </button>
-                            
-                            <button onclick="injectStaticText('Create a highly detailed cinematic illustration')" class="px-3 py-1.5 bg-white border border-slate-200 rounded-full text-[13px] text-slate-600 flex items-center space-x-1.5"><span class="text-slate-400">🖼️</span><span>Create an image</span></button>
-                            <button onclick="injectStaticText('Give me professional business strategy advice')" class="px-3 py-1.5 bg-white border border-slate-200 rounded-full text-[13px] text-slate-600 flex items-center space-x-1.5"><span class="text-slate-400">💬</span><span>Give advice</span></button>
-                        </div>
-
-                        <div id="toolsConsoleContainer" class="w-full mt-6 hidden border border-slate-200 rounded-xl bg-slate-50/50 overflow-hidden shadow-sm">
-                            <div class="bg-white border-b border-slate-100 px-4 py-2 flex items-center justify-between text-[11px] text-slate-400 font-mono">
-                                <span>Inference Node</span> <span id="toolsLatencyField">Processing</span>
-                            </div>
-                            <div class="p-5 bg-white text-sm text-slate-700 text-left leading-relaxed">
-                                <div id="toolsLoader" class="flex items-center space-x-2 text-slate-400">
-                                    <div class="w-4 h-4 border-2 border-slate-200 border-t-indigo-600 rounded-full animate-spin"></div>
-                                    <span class="font-mono text-xs">Streaming content arguments...</span>
-                                </div>
-                                <div id="toolsSuccessResponse" class="hidden space-y-2">
-                                    <p class="font-bold text-emerald-600 flex items-center space-x-1"><span>✓</span> <span>Inference Pipeline Stabilized</span></p>
-                                    <p class="text-xs text-slate-500">Промпт обработан. Ваша активность в инструментах засчитана! Ежедневный стрик зафиксирован на вкладке Home.</p>
+                            <div class="w-full">
+                                <h2 class="text-[18px] font-bold">Streak details</h2>
+                                <div class="mt-4 grid w-full grid-cols-2 gap-x-2">
+                                    <div class="flex flex-col gap-y-[5px]">
+                                        <p class="text-sm text-text-secondary">Current streak</p>
+                                        <div class="flex items-center gap-x-1 fill-[#5653FE] stroke-[#5653FE]">
+                                            <svg width="24" height="24" viewBox="0 0 21 20" stroke="#5653FE" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.5016 10.2536C14.4769 8.35816 13.4819 6.60783 11.8659 5.61704C11.5999 5.45236 11.2616 5.4612 11.0046 5.63955C10.7476 5.81789 10.6209 6.13174 10.6821 6.43852C10.6579 7.23528 10.6891 8.06922 10.2174 8.73495C9.86165 8.4145 9.58937 8.01222 9.42406 7.5629C9.3731 7.39542 9.2473 7.26108 9.08352 7.19924C8.91974 7.13741 8.73654 7.15509 8.58761 7.24711C7.45561 8.02153 6.85334 9.36522 7.0285 10.7255C7.31319 12.6586 9.03212 14.0508 10.9822 13.9277C12.9323 13.8045 14.4624 12.2072 14.5016 10.2536Z"></path><path d="M16.0554 4.69443C18.2013 6.84031 18.8433 10.0675 17.6819 12.8713C16.5206 15.675 13.7847 17.5031 10.7499 17.5031C7.71519 17.5031 4.97928 15.675 3.81794 12.8713C2.6566 10.0675 3.29854 6.84031 5.44442 4.69443C8.37458 1.76429 13.1253 1.76429 16.0554 4.69443"></path></svg>
+                                            <p id="streakStatsCounterValue" class="text-lg font-bold">1</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col gap-y-[5px]">
+                                        <p class="text-sm text-text-secondary">Longest streak</p>
+                                        <p class="text-lg font-bold">2</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </main>
 
-                    <main id="view-builder" class="hidden flex-1 max-w-xl w-full mx-auto px-4 pt-16 flex flex-col">
-                        <div class="flex items-center space-x-1 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
-                            <span>AI Practice</span> <span>➔</span> <span class="text-indigo-600">Prompt Builder</span>
+                            <div class="mt-6 flex w-full flex-col gap-4">
+                                <span class="text-sm font-semibold">Jun 2026</span>
+                                <div class="grid grid-cols-7 gap-1 text-center text-text-secondary text-xs">
+                                    <div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div><div>Sun</div>
+                                </div>
+                                <div class="grid grid-cols-7 gap-x-2.5 gap-y-2 text-xs font-medium md:text-sm">
+                                    <div class="flex aspect-square items-center justify-center rounded-full bg-surface-secondary text-text-secondary">1</div>
+                                    <div class="flex aspect-square items-center justify-center rounded-full bg-surface-secondary text-text-secondary">2</div>
+                                    <div class="flex aspect-square items-center justify-center rounded-full bg-surface-secondary text-text-secondary">3</div>
+                                    <div id="calendarDayStarburst4" class="flex aspect-square items-center justify-center relative bg-surface-information text-text-secondary rounded-full p-[1px]">
+                                        <svg id="starburstSvgIcon" width="40" height="40" viewBox="0 0 40 40" fill="#5653FE" xmlns="http://www.w3.org/2000/svg" class="absolute left-0 top-0 h-full w-full fill-surface-action"><path d="M18.5597 1.49496C19.3463 0.678479 20.6537 0.678479 21.4403 1.49496L23.3569 3.48429C23.8712 4.01807 24.6385 4.22367 25.3507 4.01853L28.0052 3.25402C29.0947 2.94024 30.2269 3.59391 30.4999 4.69432L31.165 7.37542C31.3435 8.09482 31.9052 8.65652 32.6246 8.835L35.3057 9.50014C36.4061 9.77314 37.0598 10.9053 36.746 11.9948L35.9815 14.6493C35.7763 15.3615 35.9819 16.1288 36.5157 16.6431L38.505 18.5597C39.3215 19.3463 39.3215 20.6537 38.505 21.4403L36.5157 23.3569C35.9819 23.8712 35.7763 24.6385 35.9815 25.3507L36.746 28.0052C37.0598 29.0947 36.4061 30.2269 35.3057 30.4999L32.6246 31.165C31.9052 31.3435 31.3435 31.9052 31.165 32.6246L30.4999 35.3057C30.2269 36.4061 29.0947 37.0598 28.0052 36.746L25.3507 35.9815C24.6385 35.7763 23.8712 35.9819 23.3569 36.5157L21.4403 38.505C20.6537 39.3215 19.3463 39.3215 18.5597 38.505L16.6431 36.5157C16.1288 35.9819 15.3616 35.7763 14.6493 35.9815L11.9948 36.746C10.9053 37.0598 9.77314 36.4061 9.50014 35.3057L8.835 32.6246C8.65652 31.9052 8.09482 31.3435 7.37542 31.165L4.69432 30.4999C3.59391 30.2269 2.94024 29.0947 3.25402 28.0052L4.01853 25.3507C4.22367 24.6385 4.01807 23.8712 3.48429 23.3569L1.49496 21.4403C0.678479 20.6537 0.678479 19.3463 1.49496 18.5597L3.48429 16.6431C4.01807 16.1288 4.22367 15.3616 4.01853 14.6493L3.25402 11.9948C2.94024 10.9053 3.59391 9.77314 4.69432 9.50014L7.37542 8.835C8.09482 8.65652 8.65652 8.09482 8.835 7.37542L9.50014 4.69432C9.77314 3.59391 10.9053 2.94024 11.9948 3.25402L14.6493 4.01853C15.3616 4.22367 16.1288 4.01807 16.6431 3.48429L18.5597 1.49496Z"></path></svg>
+                                        <p id="calendarDayNumberText" class="z-10 text-slate-800 font-bold">4</p>
+                                    </div>
+                                    <div class="flex aspect-square items-center justify-center rounded-full bg-surface-secondary text-text-secondary">5</div>
+                                    <div class="flex aspect-square items-center justify-center rounded-full bg-surface-secondary text-text-secondary">6</div>
+                                    <div class="flex aspect-square items-center justify-center rounded-full bg-surface-secondary text-text-secondary">7</div>
+                                </div>
+                            </div>
                         </div>
-                        <h2 class="text-xl font-bold text-slate-900 mb-1">Advanced Prompt Constructor</h2>
-                        <p class="text-sm text-slate-500 mb-6">Соберите структурированный промпт для повторного использования на вкладке инструментов.</p>
+                    </div>
 
-                        <div class="border border-slate-200 rounded-2xl p-5 space-y-4 shadow-sm bg-white">
-                            <div class="space-y-1.5">
-                                <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wide">Название шаблона (для вкладки Tools)</label>
-                                <input type="text" id="bpInputTitle" value="E-commerce Analytics Expert" class="w-full border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-800 focus:outline-none focus:border-indigo-500">
-                            </div>
-                            <div class="space-y-1.5">
-                                <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wide">Инженерные инструкции для ИИ</label>
-                                <textarea id="bpInputBody" rows="4" class="w-full border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-800 focus:outline-none focus:border-indigo-500 resize-none">Act as enterprise senior data analyst. Extract metric bottlenecks from raw dataset structure. Focus heavily on conversion loops from 5% to 20% activation triggers.</textarea>
-                            </div>
+                    <div id="page-tools" class="hidden flex-1 max-w-[540px] w-full mx-auto px-4 pt-16 flex flex-col items-center">
+                        <h1 class="text-2xl font-medium text-slate-900 tracking-tight text-center mb-6">What can I help with?</h1>
+                        <div class="w-full bg-white border border-slate-200 rounded-[24px] p-4 main-input-box">
+                            <textarea id="toolsTextarea" oninput="toggleToolsBtn()" placeholder="Ask anything..." rows="3" class="w-full resize-none bg-transparent text-[15px] text-slate-800 placeholder-slate-300 focus:outline-none leading-relaxed h-16"></textarea>
                             
-                            <button onclick="saveAndTransferToToolsPipeline()" class="ui-primary-button w-full py-3 flex items-center justify-center space-x-2">
-                                <span>💾 Save & Sync back to AI Tools</span>
+                            <div class="flex items-center justify-between border-t border-slate-50 pt-2.5 mt-2">
+                                <button onclick="switchPage('builder')" class="text-xs text-indigo-600 font-semibold hover:text-indigo-700 transition cursor-pointer">
+                                    Need to create a structured prompt? Open Prompt Builder ➔
+                                </button>
+                                <div class="flex items-center space-x-3">
+                                    <select id="modelSelectorNode" class="appearance-none bg-transparent text-[14px] text-slate-600 font-medium focus:outline-none cursor-pointer">
+                                        <option value="claude">Claude</option>
+                                        <option value="gpt5">ChatGPT 5.4</option>
+                                    </select>
+                                    <button id="toolsSubmitArrow" onclick="runToolsGeneration()" class="w-7 h-7 rounded-full bg-slate-100 text-slate-300 flex items-center justify-center font-bold text-xs transition cursor-pointer">↑</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="toolsSuccessLogs" class="w-full mt-4 p-4 border border-emerald-100 rounded-xl bg-emerald-50/20 hidden text-xs text-slate-600">
+                            <p class="font-bold text-emerald-600 mb-1">✓ Генерация завершена!</p>
+                            <p>Ваше практическое задание выполнено. Стрик зафиксирован и защищен от сгорания.</p>
+                        </div>
+                    </div>
+
+                    <div id="page-builder" class="hidden flex-1 max-w-[540px] w-full mx-auto px-4 pt-12 flex flex-col">
+                        <h2 class="text-lg font-bold text-slate-900 mb-1">Prompt Builder Framework</h2>
+                        <p class="text-xs text-slate-400 mb-4">Соберите структурированный запрос для закрепления темы урока.</p>
+                        <div class="border border-slate-200 rounded-xl p-4 bg-white space-y-3 shadow-sm">
+                            <input type="text" id="bpSubjectInput" value="Write copy structure based on DeepSeek brainstorming methods" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-indigo-500">
+                            <button onclick="applyPromptToToolsPipeline()" class="w-full bg-[#5653FE] hover:bg-[#4340E6] text-white font-semibold py-2 rounded-lg text-xs transition cursor-pointer">
+                                Sync & Apply to AI Tools
                             </button>
                         </div>
-                    </main>
+                    </div>
 
                 </div>
             </div>
@@ -293,109 +177,79 @@
     </div>
 
     <script>
-        let globalPromptTitle = "";
-        let globalPromptBody = "";
-        let isEcosystemStreakComplete = false;
+        let isStreakDone = false;
 
-        function switchTab(tabId) {
-            // Маршрутизатор видимости окон
-            document.getElementById('view-home').classList.add('hidden');
-            document.getElementById('view-tools').classList.add('hidden');
-            document.getElementById('view-builder').classList.add('hidden');
-            document.getElementById('view-' + tabId).classList.remove('hidden');
+        function switchPage(pageId) {
+            document.getElementById('page-streak').classList.add('hidden');
+            document.getElementById('page-tools').classList.add('hidden');
+            document.getElementById('page-builder').classList.add('hidden');
+            document.getElementById('page-' + pageId).classList.remove('hidden');
 
-            // Сброс и активация классов навигации хедера под вашу дизайн-систему
-            const tabs = ['home', 'tools', 'builder'];
-            tabs.forEach(t => {
-                const node = document.getElementById('nav-' + t);
-                if (t === tabId) {
-                    node.className = "h-16 py-2 transition-colors duration-200 fill-text-action-info text-text-action-info cursor-pointer";
-                } else {
-                    node.className = "h-16 py-2 transition-colors duration-200 fill-icon-primary text-text-disabled hover:text-text-action-info cursor-pointer";
-                }
-            });
+            const navStreak = document.getElementById('nav-streak');
+            const navTools = document.getElementById('nav-tools');
+
+            if (pageId === 'streak') {
+                navStreak.className = "text-text-action-info font-bold text-sm cursor-pointer";
+                navTools.className = "text-text-secondary hover:text-text-action-info font-medium text-sm cursor-pointer";
+            } else if (pageId === 'tools') {
+                navStreak.className = "text-text-secondary hover:text-text-action-info font-medium text-sm cursor-pointer";
+                navTools.className = "text-text-action-info font-bold text-sm cursor-pointer";
+            }
         }
 
-        function validateToolsInputState() {
-            const val = document.getElementById('toolsInputTextArea').value.trim();
-            const btn = document.getElementById('toolsActionSubmitBtn');
+        function toggleToolsBtn() {
+            const val = document.getElementById('toolsTextarea').value.trim();
+            const btn = document.getElementById('toolsSubmitArrow');
             if (val !== "") {
-                btn.className = "w-7 h-7 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs transition cursor-pointer shadow-sm shadow-indigo-600/20";
+                btn.className = "w-7 h-7 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs transition cursor-pointer shadow-sm";
             } else {
                 btn.className = "w-7 h-7 rounded-full bg-slate-100 text-slate-300 flex items-center justify-center font-bold text-xs transition cursor-pointer";
             }
         }
 
-        function injectStaticText(text) {
-            document.getElementById('toolsInputTextArea').value = text;
-            validateToolsInputState();
+        function applyPromptToToolsPipeline() {
+            const val = document.getElementById('bpSubjectInput').value;
+            document.getElementById('toolsTextarea').value = `System framework instruction: ${val}`;
+            switchPage('tools');
+            toggleToolsBtn();
         }
 
-        function saveAndTransferToToolsPipeline() {
-            globalPromptTitle = document.getElementById('bpInputTitle').value.trim();
-            globalPromptBody = document.getElementById('bpInputBody').value.trim();
-
-            if (globalPromptTitle === "" || globalPromptBody === "") return alert("Заполните поля конструктора промптов.");
-
-            // Активируем кнопку-пилюлю в AI Tools
-            document.getElementById('syncedPillTitle').textContent = globalPromptTitle;
-            document.getElementById('ecosystemSyncedPill').classList.remove('hidden');
-
-            // Перенаправляем пользователя обратно в инструменты
-            switchTab('tools');
-            injectPromptFromBuilderStorage();
-        }
-
-        function injectPromptFromBuilderStorage() {
-            document.getElementById('toolsInputTextArea').value = globalPromptBody;
-            document.getElementById('toolsModelSelector').value = 'gpt5'; // Автовыбор мощной модели под Билдер
-            validateToolsInputState();
-        }
-
-        function runToolsPipelineSimulation() {
-            const btn = document.getElementById('toolsActionSubmitBtn');
+        function runToolsGeneration() {
+            const btn = document.getElementById('toolsSubmitArrow');
             if (btn.classList.contains('text-slate-300')) return;
 
-            document.getElementById('toolsConsoleContainer').classList.remove('hidden');
-            document.getElementById('toolsLoader').classList.remove('hidden');
-            document.getElementById('toolsSuccessResponse').classList.add('hidden');
-            document.getElementById('toolsLatencyField').textContent = "Computing pipeline...";
-
-            setTimeout(() => {
-                document.getElementById('toolsLoader').classList.add('hidden');
-                document.getElementById('toolsSuccessResponse').classList.remove('hidden');
-                document.getElementById('toolsLatencyField').textContent = "Latency: 0.64s | Complete";
-
-                // ВЫПОЛНЕНИЕ КРОСС-ФУНКЦИОНАЛЬНОГО СТРЕЙКА
-                isEcosystemStreakComplete = true;
-                applyEcosystemStreakToHomeDOM();
-
-            }, 1000);
+            document.getElementById('toolsSuccessLogs').classList.remove('hidden');
+            
+            // Запуск логики фиксации стрейка
+            isStreakDone = true;
+            applyStreakSuccessToDOM();
         }
 
-        function applyEcosystemStreakToHomeDOM() {
-            if (!isEcosystemStreakComplete) return;
+        function applyStreakSuccessToDOM() {
+            if (!isStreakDone) return;
 
-            // 1. Обновляем счетчики в шапке (Стрик вырос с 1 до 2!)
-            document.getElementById('headerStreakCount').textContent = "2";
+            // 1. Обновляем счетчик дней в шапке (с 1 до 2)
+            document.getElementById('globalHeaderStreak').textContent = "2";
+            document.getElementById('streakStatsCounterValue').textContent = "2";
+
+            // 2. Обновляем текстовые плашки на странице стриков
+            document.getElementById('challengeDayLabel').textContent = "Day 1 of 3 (Ecosystem Tasks Complete! 🎉)";
+            document.getElementById('taskStatusBadge').textContent = "СТРИК ЗАЩИЩЕН ✓";
+            document.getElementById('taskStatusBadge').className = "text-[10px] font-semibold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded animate-none";
             
-            // 2. Меняем статус-бейдж в карточке стриков на главной
-            document.getElementById('streakStatusBadge').textContent = "Tasks Complete 🎉";
-            document.getElementById('streakStatusBadge').className = "text-xs font-semibold bg-emerald-50 text-emerald-600 border border-emerald-200 px-2 py-0.5 rounded animate-none";
-
-            // 3. Перекрашиваем кружок пятницы (4 июня) в календаре под ваш оригинальный градиент
-            const friCircle = document.getElementById('streakCircleFri');
-            friCircle.className = "w-8 h-8 rounded-full text-white flex items-center justify-center text-xs font-bold shadow-md shadow-orange-500/20";
-            friCircle.style.background = "linear-gradient(0deg, #FF7008 0%, #FFAC5E 100%)";
-            friCircle.textContent = "✓";
-
-            // 4. Обновляем текстовое описание дисклеймера карточки
-            document.getElementById('streakDisclaimerText').innerHTML = "✨ <strong>Ecosystem Goal Unlocked!</strong> Вы выполнили урок и генерацию в Tools. Привычка прокачивается успешно.";
-            document.getElementById('streakDisclaimerText').className = "text-xs text-emerald-700 font-medium flex items-center gap-1";
+            document.getElementById('toolsTaskStatusRow').className = "flex items-center space-x-2 text-emerald-600 line-through opacity-50";
+            document.getElementById('toolsTaskStatusRow').innerHTML = "<span>✓</span> <span>Закрепление в AI Tools — Выполнено</span>";
             
-            // 5. Меняем прогресс программы сертификата (Claude вырос с 4% до 12% за счет использования инструментов)
-            document.getElementById('homeCertClaudeProgress').textContent = "12%";
-            document.getElementById('homeCertClaudeProgress').className = "text-[10px] mt-1 text-emerald-600 font-bold";
+            document.getElementById('streakDisclaimerText');
+            document.getElementById('goToToolsActionBtn').className = "w-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold py-2.5 px-4 rounded-xl transition cursor-not-allowed";
+            document.getElementById('goToToolsActionBtn').textContent = "Задание на сегодня полностью выполнено!";
+            document.getElementById('goToToolsActionBtn').disabled = true;
+
+            // 3. Перекрашиваем ячейку 4 июня в календаре в ваш оригинальный оранжевый градиент из кода
+            const dayBox = document.getElementById('calendarDayStarburst4');
+            dayBox.className = "flex aspect-square items-center justify-center relative text-white rounded-full font-bold";
+            dayBox.style.background = "linear-gradient(0deg, #FF7008 0%, #FFAC5E 100%)";
+            dayBox.innerHTML = "✓";
         }
     </script>
 </body>
