@@ -1,316 +1,401 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coursiv AI Tools</title>
-    <!-- Tailwind CSS -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coursiv - Integrated Ecosystem Prototype</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Google Fonts (Inter для интерфейса, Playwrite/Caveat для точной копии логотипа) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playwrite+DK+Uloop:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@350;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #ffffff; }
-        .coursiv-brand { font-family: 'Playwrite DK Uloop', cursive; font-weight: 400; color: #6366f1; }
-        .main-input-box { box-shadow: 0 8px 30px rgba(0, 0, 0, 0.02); }
+        :root {
+            --surface-primary: #ffffff;
+            --surface-secondary: #F4F4F7;
+            --surface-action-secondary: #F5F5F7;
+            --border-primary: #E5E5EA;
+            --text-action-info: #5653FE;
+            --text-primary: #1C1C1E;
+            --text-secondary: #8E8E93;
+        }
+        .bg-surface-primary { background-color: var(--surface-primary); }
+        .bg-surface-secondary { background-color: var(--surface-secondary); }
+        .bg-surface-action-secondary { background-color: var(--surface-action-secondary); }
+        .border-border-primary { border-color: var(--border-primary); }
+        .text-text-action-info { color: var(--text-action-info); }
+        .text-text-primary { color: var(--text-primary); }
+        .text-text-secondary { color: var(--text-secondary); }
+        .fill-icon-primary { fill: #48484A; }
+        .fill-text-action-info { fill: var(--text-action-info); }
+        
+        .ui-primary-button {
+            background-color: #5653FE;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 10px 16px;
+            border-radius: 12px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .ui-primary-button:hover { background-color: #4340E6; }
+        .ui-secondary-btn {
+            background-color: #F4F4F7;
+            color: #1C1C1E;
+            border: 1px solid #E5E5EA;
+        }
+        .ui-secondary-btn:hover { background-color: #E5E5EA; }
+        .card-effect {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-effect:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.03);
+        }
     </style>
 </head>
-<body class="text-slate-800 min-h-screen flex flex-col antialiased bg-white select-none">
+<body class="stjr-review-checkout-widget__body--active">
+    <div id="root">
+        <div class="app">
+            <div class="app_view" id="app_view">
+                <div class="min-vh-full bg-surface-primary flex flex-col min-h-screen">
+                    
+                    <header class="sticky top-0 z-50 w-full border-b border-border-primary bg-surface-primary">
+                        <div class="max-w-6xl mx-auto flex h-16 items-center justify-between px-6">
+                            <div class="flex items-center gap-6">
+                                <button onclick="switchTab('home')" class="shrink-0 cursor-pointer">
+                                    <span class="text-xl font-black text-slate-900 tracking-tight">Coursiv</span>
+                                </button>
+                                
+                                <div class="flex items-center gap-x-3 desktop:gap-x-4">
+                                    <button onclick="switchTab('home')" id="nav-home" class="h-16 py-2 transition-colors duration-200 fill-text-action-info text-text-action-info cursor-pointer">
+                                        <div class="flex h-full items-center gap-2 rounded-[16px] px-2 hover:bg-slate-50">
+                                            <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" fill="currentColor"><path d="M11.336 2.753a1 1 0 0 1 1.328 0l9 8a1 1 0 0 1-1.328 1.494L20 11.95V19.5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7.55l-.336.297a1 1 0 0 1-1.328-1.494l9-8ZM6 10.17V19.5h3v-5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v5h3v-9.329l-6-5.333-6 5.333Zm7 9.329v-4h-2v4h2Z"></path></svg></span>
+                                            <span class="text-base font-medium">Home</span>
+                                        </div>
+                                    </button>
+                                    
+                                    <button class="h-16 py-2 transition-colors duration-200 text-text-secondary opacity-60 cursor-not-allowed">
+                                        <div class="flex h-full items-center gap-2 rounded-[16px] px-2">
+                                            <span><svg width="24" height="25" viewBox="0 0 24 25" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6.5C3 5.39543 3.89543 4.5 5 4.5H19C20.1046 4.5 21 5.39543 21 6.5V14.5C21 15.6046 20.1046 16.5 19 16.5H5C3.89543 16.5 3 15.6046 3 14.5V6.5Z"></path></svg></span>
+                                            <span class="text-base font-medium">Courses</span>
+                                        </div>
+                                    </button>
+                                    
+                                    <button onclick="switchTab('tools')" id="nav-tools" class="h-16 py-2 transition-colors duration-200 text-text-secondary hover:text-text-action-info fill-icon-primary hover:fill-text-action-info cursor-pointer">
+                                        <div class="flex h-full items-center gap-2 rounded-[16px] px-2 hover:bg-slate-50">
+                                            <span><svg width="17" height="21" viewBox="0 0 17 21" fill="none" class="current-fill"><path fill="currentColor" d="M9.74316 20.9409C9.61328 20.9409 9.50505 20.9007 9.41846 20.8203C9.33187 20.7399 9.2793 20.6348 9.26074 20.5049C9.12467 19.5524 8.97624 18.7484 8.81543 18.0928C8.66081 17.4434 8.45671 16.9115 8.20312 16.4971C7.94954 16.0827 7.61556 15.7518 7.20117 15.5044C6.78678 15.2508 6.25798 15.0467 5.61475 14.8921C4.97152 14.7375 4.17985 14.5983 3.23975 14.4746C3.10368 14.4622 2.99235 14.4128 2.90576 14.3262C2.82536 14.2334 2.78516 14.1221 2.78516 13.9922C2.78516 13.8623 2.82536 13.7541 2.90576 13.6675C2.99235 13.5747 3.10368 13.5221 3.23975 13.5098C4.18604 13.4046 4.98079 13.2809 5.62402 13.1387C6.26725 12.9964 6.79606 12.7985 7.21045 12.5449C7.63102 12.2852 7.9681 11.945 8.22168 11.5244C8.48145 11.0977 8.68864 10.5565 8.84326 9.90088C8.99788 9.24528 9.13704 8.43815 9.26074 7.47949C9.2793 7.35579 9.33187 7.25374 9.41846 7.17334C9.50505 7.08675 9.61328 7.04346 9.74316 7.04346C9.86068 7.04346 9.96273 7.08675 10.0493 7.17334C10.1359 7.25374 10.1885 7.35579 10.207 7.47949C10.3431 8.43815 10.4884 9.24528 10.6431 9.90088C10.7977 10.5565 11.0018 11.0977 11.2554 11.5244C11.509 11.945 11.8429 12.2821 12.2573 12.5356C12.6717 12.7892 13.2005 12.9902 13.8438 13.1387C14.4932 13.2809 15.2879 13.4046 16.228 13.5098C16.3641 13.5283 16.4723 13.5809 16.5527 13.6675C16.6393 13.7541 16.6826 13.8623 16.6826 13.9922C16.6826 14.1221 16.6393 14.2334 16.5527 14.3262C16.4723 14.4128 16.3641 14.4622 16.228 14.4746C15.2879 14.5798 14.4932 14.7065 13.8438 14.855C13.2005 14.9972 12.6686 15.1951 12.248 15.4487C11.8337 15.7023 11.4997 16.0425 11.2461 16.4692C10.9925 16.8898 10.7884 17.4279 10.6338 18.0835C10.4854 18.7453 10.3431 19.5524 10.207 20.5049C10.1885 20.6348 10.1359 20.7399 10.0493 20.8203C9.96273 20.9007 9.86068 20.9409 9.74316 20.9409Z"></path></svg></span>
+                                            <span class="text-base font-medium">AI Tools</span>
+                                        </div>
+                                    </button>
+                                    
+                                    <button onclick="switchTab('builder')" id="nav-builder" class="h-16 py-2 transition-colors duration-200 text-text-secondary hover:text-text-action-info cursor-pointer">
+                                        <div class="flex h-full items-center gap-2 rounded-[16px] px-2 hover:bg-slate-50">
+                                            <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><path fill="currentColor" d="M2.398 16.793q-.492 0-.881-.223a1.8 1.8 0 0 1-.622-.612 1.7 1.7 0 0 1-.223-.872V9.223q0-.483.223-.872.232-.39.622-.613a1.7 1.7 0 0 1 .88-.232h1.188V8.87h-1.14a.39.39 0 0 0-.298.12.44.44 0 0 0-.102.298v5.733q0 .186.102.297a.42.42 0 0 0 .297.102h1.141v1.373zm2.95 1.995q-1.104 0-1.716-.65T3.02 16.32V7.998q0-1.16.593-1.818.594-.66 1.652-.659h.714q1.123 0 1.753.659.64.658.64 1.818v8.322q0 1.17-.64 1.818-.64.65-1.772.65zm.028-1.457h.566q.446 0 .705-.269.27-.28.269-.76V8.025q0-.492-.26-.77t-.696-.278h-.677a.7.7 0 0 0-.594.278q-.213.278-.213.77V16.3q0 .483.232.761.24.27.668.27m2.653-5.863V10.01h7.942v1.457zm0 2.82v-1.457h7.942v1.457zm10.01 4.5q-1.132 0-1.771-.65-.631-.65-.631-1.818V7.998q0-1.16.63-1.818.632-.66 1.754-.659h.724q1.047 0 1.642.659.593.658.593 1.818v8.322q0 1.17-.612 1.818-.612.65-1.716.65zm.028-1.457h.566q.418 0 .65-.269.24-.28.24-.76V8.025q0-.492-.212-.77a.7.7 0 0 0-.594-.278h-.677q-.436 0-.696.278-.25.278-.25.77V16.3q0 .483.259.761.26.27.714.27m2.357-.538V15.42h1.14a.4.4 0 0 0 .288-.102.39.39 0 0 0 .121-.297V9.288a.4.4 0 0 0-.12-.297.37.37 0 0 0-.288-.12h-1.141V7.505h1.197q.482 0 .862.232.39.223.613.613.232.39.232.872v5.863q0 .482-.232.872a1.675 1.675 0 0 1-1.475.835z"></path></svg></span>
+                                            <span class="text-base font-medium">Prompt Builder</span>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
 
-    <!-- ХЕДЕР ОДИН В ОДИН ПО СКРИНШОТУ -->
-    <header class="border-b border-slate-100 bg-white sticky top-0 z-50 px-10 py-3.5 flex items-center justify-between">
-        <!-- Левая часть: Фирменный логотип -->
-        <div class="flex items-center">
-            <span class="text-2xl font-bold coursiv-brand tracking-tight -rotate-3">Coursiv</span>
-        </div>
-        
-        <!-- Центр: Навигация с оригинальными иконками -->
-        <nav class="hidden md:flex items-center space-x-7 text-[14px] font-medium text-slate-500">
-            <a href="#" class="flex items-center space-x-2 text-slate-400 hover:text-slate-800 transition">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                <span>Home</span>
-            </a>
-            <a href="#" class="flex items-center space-x-2 text-slate-400 hover:text-slate-800 transition">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-                <span>Courses</span>
-            </a>
-            <a href="#" class="flex items-center space-x-2 text-indigo-600 font-semibold transition">
-                <svg class="w-4 h-4 text-indigo-500" fill="currentColor" viewBox="0 0 24 24"><path d="M11.5 21l-2.28-4.72L4.5 14l4.72-2.28L11.5 7l2.28 4.72L18.5 14l-4.72 2.28L11.5 21zm7-12.5l-.94-1.94L15.62 5.6l1.94-.94L18.5 2.75l.94 1.91 1.94.94-1.94.94-.94 1.96z"/></svg>
-                <span>AI Tools</span>
-            </a>
-            <a href="#" class="flex items-center space-x-2 text-slate-400 hover:text-slate-800 transition">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2z"/></svg>
-                <span>AI Practice</span>
-            </a>
-        </nav>
+                            <div class="flex items-center gap-x-2">
+                                <div onclick="switchTab('home')" class="flex select-none items-center justify-center border border-border-primary bg-surface-secondary rounded-[30px] gap-x-1 py-1 pl-[10px] pr-[15px] cursor-pointer">
+                                    <span class="text-sm">🔥</span>
+                                    <p class="shrink-0 font-semibold text-base"><span id="headerStreakCount">1</span></p>
+                                </div>
+                                <div class="w-7 h-7 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-xs font-semibold text-slate-500">A</div>
+                            </div>
+                        </div>
+                    </header>
 
-        <!-- Правая часть хедера -->
-        <div class="flex items-center space-x-4">
-            <!-- Бесконечный премиум с градиентом внутри капсулы -->
-            <div class="border border-slate-200 rounded-full pl-2.5 pr-3 py-1 flex items-center space-x-1 text-xs text-slate-700 font-medium bg-white">
-                <span class="text-emerald-400 font-bold text-sm">✦</span>
-                <span class="text-slate-900 font-semibold text-sm">∞</span>
-            </div>
-            <!-- История (Часики) -->
-            <button class="text-slate-400 hover:text-slate-600 transition cursor-pointer">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            </button>
-            <!-- Профиль -->
-            <div class="flex items-center space-x-1.5 cursor-pointer text-slate-400 hover:text-slate-600 transition">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-                <span class="text-xs font-medium text-slate-500">Profile</span>
-            </div>
-        </div>
-    </header>
+                    <main id="view-home" class="flex-1 max-w-5xl w-full mx-auto p-6 space-y-8">
+                        
+                        <div class="flex min-w-0 cursor-pointer justify-between rounded-2xl bg-surface-action-secondary p-4 flex-row border border-border-primary">
+                            <div class="flex flex-col justify-center">
+                                <h3 class="text-base font-bold tablet:text-xl">AI Mastery Certificate Program</h3>
+                                <p class="text-xs text-text-secondary tablet:text-base mb-0">Complete 5 courses to earn your professional certificate</p>
+                            </div>
+                            <div class="flex w-full min-w-0 gap-x-1 rounded-md bg-white p-1 max-w-[455px] border border-slate-100">
+                                <button class="flex flex-1 flex-col items-center py-2"><img src="https://d2h7i1o4snhir4.cloudfront.net/images/guides-icons/chatgpt_logo.webp" class="h-6 w-6 rounded" /> <span class="text-[10px] mt-1 text-emerald-600">✓</span></button>
+                                <button class="flex flex-1 flex-col items-center py-2 bg-slate-50 border border-slate-200 rounded"><img src="https://d2h7i1o4snhir4.cloudfront.net/images/guides-icons/claude_logo.webp" class="h-6 w-6 rounded" /> <span id="homeCertClaudeProgress" class="text-[10px] mt-1 text-indigo-600">4%</span></button>
+                                <button class="flex flex-1 flex-col items-center py-2"><img src="https://d2h7i1o4snhir4.cloudfront.net/images/guides-icons/midjourney_logo.webp" class="h-6 w-6 rounded" /> <span class="text-[10px] mt-1 text-slate-400">5%</span></button>
+                            </div>
+                        </div>
 
-    <!-- ОСНОВНОЙ КАНВАС -->
-    <main class="flex-1 max-w-4xl w-full mx-auto px-4 pt-24 flex flex-col items-center">
-        
-        <!-- Заголовок -->
-        <h1 class="text-[25px] font-medium text-slate-900 tracking-tight text-center mb-7">
-            What can I help with?
-        </h1>
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                            
+                            <div class="lg:col-span-7 border border-border-primary rounded-2xl p-6 bg-surface-primary flex flex-col justify-between">
+                                <div class="flex items-center gap-x-4">
+                                    <img class="w-24 h-16 rounded object-cover" src="https://d2h7i1o4snhir4.cloudfront.net/images/guides/b58cf86e-236d-4a96-baca-35194d698ab5.webp">
+                                    <div>
+                                        <h2 class="text-xl font-bold text-text-primary">DeepSeek</h2>
+                                        <p class="text-sm text-text-secondary">Idea Brainstorming & Problem-Solving</p>
+                                    </div>
+                                </div>
+                                <div class="mt-6">
+                                    <div class="relative mb-2 h-2 w-full bg-slate-100 rounded-md overflow-hidden">
+                                        <div class="absolute top-0 left-0 h-full bg-indigo-500" style="width: 60%;"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs font-medium text-text-secondary">
+                                        <span>9/15 lessons completed</span>
+                                        <span class="text-indigo-600">60%</span>
+                                    </div>
+                                </div>
+                                <div class="mt-6 flex gap-3">
+                                    <button class="ui-primary-button ui-secondary-btn flex-1">Other courses</button>
+                                    <button onclick="switchTab('tools')" class="ui-primary-button flex-1">Continue learning</button>
+                                </div>
+                            </div>
 
-        <!-- ЦЕНТРАЛЬНОЕ ОКНО ВВОДА (Форма х Иконки) -->
-        <div class="w-full max-w-[640px] bg-white border border-slate-200 rounded-[24px] p-4 main-input-box transition-all duration-200">
-            
-            <!-- СОСТОЯНИЕ 1: Стандартная пустая строка -->
-            <div id="standardInputBlock" class="w-full">
-                <textarea id="mainTextArea" oninput="toggleSubmitBtnState()" placeholder="Ask anything" rows="3" class="w-full resize-none bg-transparent text-[15px] text-slate-800 placeholder-slate-300 focus:outline-none leading-relaxed"></textarea>
-            </div>
+                            <div onclick="switchTab('tools')" id="homeStreakCard" class="lg:col-span-5 card-effect flex cursor-pointer rounded-2xl border p-6 border-border-primary bg-surface-primary flex-col group">
+                                <p class="mb-1 text-xs font-semibold uppercase tracking-wider text-indigo-600">Weekly streaks</p>
+                                <h3 class="text-lg font-bold text-text-primary mb-4 flex items-center justify-between">
+                                    <span>Help you build learning habit</span>
+                                    <span id="streakStatusBadge" class="text-xs font-semibold bg-amber-50 text-amber-600 border border-amber-200 px-2 py-0.5 rounded animate-pulse">1 Task Pending</span>
+                                </h3>
+                                
+                                <div class="flex w-full justify-between mb-4">
+                                    <div class="text-center">
+                                        <div class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs font-bold">✓</div>
+                                        <p class="mt-1 text-xs text-text-secondary">Thu</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <div id="streakCircleFri" class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary flex items-center justify-center text-xs font-semibold text-slate-400">4</div>
+                                        <p class="mt-1 text-xs text-text-primary">Fri</p>
+                                    </div>
+                                    <div class="text-center"><div class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary"></div><p class="mt-1 text-xs text-text-secondary">Sat</p></div>
+                                    <div class="text-center"><div class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary"></div><p class="mt-1 text-xs text-text-secondary">Sun</p></div>
+                                    <div class="text-center"><div class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary"></div><p class="mt-1 text-xs text-text-secondary">Mon</p></div>
+                                    <div class="text-center"><div class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary"></div><p class="mt-1 text-xs text-text-secondary">Tue</p></div>
+                                    <div class="text-center"><div class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary"></div><p class="mt-1 text-xs text-text-secondary">Wed</p></div>
+                                </div>
+                                <div class="mt-auto bg-amber-50/40 border border-amber-100 p-3 rounded-xl group-hover:border-indigo-200 group-hover:bg-indigo-50/20 transition">
+                                    <p id="streakDisclaimerText" class="text-xs text-amber-700 font-medium flex items-center gap-1">
+                                        ⚠️ Lesson complete! Run 1 generation in AI Tools to secure today's streak.
+                                    </p>
+                                </div>
+                            </div>
 
-            <!-- СОСТОЯНИЕ 2: Умная компактная форма (появляется при выборе пилюли) -->
-            <div id="smartFormBlock" class="w-full hidden space-y-3 pb-3 pt-1">
-                <div class="flex items-center justify-between border-b border-slate-100 pb-2 mb-2">
-                    <span id="formBadgeText" class="text-xs font-semibold text-indigo-600 bg-indigo-50/70 px-2 py-0.5 rounded-md">
-                        Smart Template Active
-                    </span>
-                    <button onclick="resetToStandard()" class="text-xs text-slate-400 hover:text-slate-600 font-medium flex items-center space-x-1 cursor-pointer">
-                        <span>✕</span> <span>Clear form</span>
-                    </button>
+                        </div>
+
+                        <div class="w-full rounded-2xl border border-border-primary bg-surface-primary p-4 relative overflow-hidden">
+                            <div class="relative flex w-full items-center justify-between">
+                                <div>
+                                    <p class="text-base font-bold text-text-primary tablet:text-xl">Prompts Library</p>
+                                    <p class="text-xs text-text-secondary">The Complete AI Bundle is now live in your workspace environment.</p>
+                                </div>
+                                <button onclick="switchTab('builder')" class="ui-primary-button ui-secondary-btn text-xs">Open Builder Library</button>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h2 class="text-base font-bold">Explore AI tools</h2>
+                            <div class="grid grid-cols-2 sm:grid-cols-5 gap-4">
+                                <div onclick="switchTab('tools')" class="border border-border-primary rounded-xl p-3 bg-white text-center cursor-pointer hover:border-indigo-400 transition">
+                                    <img src="https://d2h7i1o4snhir4.cloudfront.net/images/guide-images/e38e1f3be6b64867afd9ca16e0c8a4dc.webp" class="rounded w-full aspect-video object-cover" />
+                                    <p class="text-sm font-bold mt-2">Gemini</p>
+                                </div>
+                                <div onclick="switchTab('tools')" class="border border-border-primary rounded-xl p-3 bg-white text-center cursor-pointer hover:border-indigo-400 transition">
+                                    <img src="https://d2h7i1o4snhir4.cloudfront.net/images/guides/8c64f15f-4346-4b4b-a513-d5472aab237f.webp" class="rounded w-full aspect-video object-cover" />
+                                    <p class="text-sm font-bold mt-2">MidJourney</p>
+                                </div>
+                                <div onclick="switchTab('tools')" class="border border-border-primary rounded-xl p-3 bg-white text-center cursor-pointer hover:border-indigo-400 transition">
+                                    <img src="https://d2h7i1o4snhir4.cloudfront.net/images/guides/959c8c76-1c6e-4797-9849-1ccba78fe1f8.webp" class="rounded w-full aspect-video object-cover" />
+                                    <p class="text-sm font-bold mt-2">Claude</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </main>
+
+                    <main id="view-tools" class="hidden flex-1 max-w-2xl w-full mx-auto px-4 pt-20 flex flex-col items-center">
+                        <h1 class="text-2xl font-medium text-slate-900 tracking-tight text-center mb-6">What can I help with?</h1>
+
+                        <div class="w-full bg-white border border-slate-200 rounded-[24px] p-4 main-input-box">
+                            <textarea id="toolsInputTextArea" oninput="validateToolsInputState()" placeholder="Ask anything or use prompt from Builder below..." rows="3" class="w-full resize-none bg-transparent text-[15px] text-slate-800 placeholder-slate-300 focus:outline-none leading-relaxed h-16"></textarea>
+                            
+                            <div class="flex items-center justify-between border-t border-slate-50 pt-2.5 mt-2">
+                                <button onclick="switchTab('builder')" class="text-xs text-indigo-600 font-semibold hover:text-indigo-700 flex items-center space-x-1 cursor-pointer bg-indigo-50 px-2 py-1 rounded-md">
+                                    <span>⚙️</span> <span>Open Prompt Builder Framework</span>
+                                </button>
+                                
+                                <div class="flex items-center space-x-3">
+                                    <div class="relative flex items-center">
+                                        <select id="toolsModelSelector" class="appearance-none bg-transparent rounded-xl pl-2 pr-5 py-0.5 text-[14px] text-slate-600 font-medium focus:outline-none cursor-pointer">
+                                            <option value="claude">Claude</option>
+                                            <option value="gpt5">ChatGPT 5.4</option>
+                                            <option value="sd35">SD 3.5 Turbo</option>
+                                        </select>
+                                        <span class="absolute right-1 text-[9px] text-slate-400 pointer-events-none">▼</span>
+                                    </div>
+                                    <button class="text-slate-300">🎤</button>
+                                    <button id="toolsActionSubmitBtn" onclick="runToolsPipelineSimulation()" class="w-7 h-7 rounded-full bg-slate-100 text-slate-300 flex items-center justify-center font-bold text-xs transition cursor-pointer">
+                                        ↑
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-full mt-6 flex flex-wrap justify-center gap-2">
+                            <button id="ecosystemSyncedPill" onclick="injectPromptFromBuilderStorage()" class="hidden px-3 py-1.5 bg-indigo-600 text-white border border-indigo-700 rounded-full text-[13px] font-medium flex items-center space-x-1.5 transition cursor-pointer shadow-sm animate-bounce hover:animate-none">
+                                <span>📁 Built Prompt:</span> <span id="syncedPillTitle">Template</span>
+                            </button>
+                            
+                            <button onclick="injectStaticText('Create a highly detailed cinematic illustration')" class="px-3 py-1.5 bg-white border border-slate-200 rounded-full text-[13px] text-slate-600 flex items-center space-x-1.5"><span class="text-slate-400">🖼️</span><span>Create an image</span></button>
+                            <button onclick="injectStaticText('Give me professional business strategy advice')" class="px-3 py-1.5 bg-white border border-slate-200 rounded-full text-[13px] text-slate-600 flex items-center space-x-1.5"><span class="text-slate-400">💬</span><span>Give advice</span></button>
+                        </div>
+
+                        <div id="toolsConsoleContainer" class="w-full mt-6 hidden border border-slate-200 rounded-xl bg-slate-50/50 overflow-hidden shadow-sm">
+                            <div class="bg-white border-b border-slate-100 px-4 py-2 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                                <span>Inference Node</span> <span id="toolsLatencyField">Processing</span>
+                            </div>
+                            <div class="p-5 bg-white text-sm text-slate-700 text-left leading-relaxed">
+                                <div id="toolsLoader" class="flex items-center space-x-2 text-slate-400">
+                                    <div class="w-4 h-4 border-2 border-slate-200 border-t-indigo-600 rounded-full animate-spin"></div>
+                                    <span class="font-mono text-xs">Streaming content arguments...</span>
+                                </div>
+                                <div id="toolsSuccessResponse" class="hidden space-y-2">
+                                    <p class="font-bold text-emerald-600 flex items-center space-x-1"><span>✓</span> <span>Inference Pipeline Stabilized</span></p>
+                                    <p class="text-xs text-slate-500">Промпт обработан. Ваша активность в инструментах засчитана! Ежедневный стрик зафиксирован на вкладке Home.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+
+                    <main id="view-builder" class="hidden flex-1 max-w-xl w-full mx-auto px-4 pt-16 flex flex-col">
+                        <div class="flex items-center space-x-1 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                            <span>AI Practice</span> <span>➔</span> <span class="text-indigo-600">Prompt Builder</span>
+                        </div>
+                        <h2 class="text-xl font-bold text-slate-900 mb-1">Advanced Prompt Constructor</h2>
+                        <p class="text-sm text-slate-500 mb-6">Соберите структурированный промпт для повторного использования на вкладке инструментов.</p>
+
+                        <div class="border border-slate-200 rounded-2xl p-5 space-y-4 shadow-sm bg-white">
+                            <div class="space-y-1.5">
+                                <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wide">Название шаблона (для вкладки Tools)</label>
+                                <input type="text" id="bpInputTitle" value="E-commerce Analytics Expert" class="w-full border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-800 focus:outline-none focus:border-indigo-500">
+                            </div>
+                            <div class="space-y-1.5">
+                                <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wide">Инженерные инструкции для ИИ</label>
+                                <textarea id="bpInputBody" rows="4" class="w-full border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-800 focus:outline-none focus:border-indigo-500 resize-none">Act as enterprise senior data analyst. Extract metric bottlenecks from raw dataset structure. Focus heavily on conversion loops from 5% to 20% activation triggers.</textarea>
+                            </div>
+                            
+                            <button onclick="saveAndTransferToToolsPipeline()" class="ui-primary-button w-full py-3 flex items-center justify-center space-x-2">
+                                <span>💾 Save & Sync back to AI Tools</span>
+                            </button>
+                        </div>
+                    </main>
+
                 </div>
-
-                <!-- Внутренние аккуратные инпуты под Текст -->
-                <div id="textInputsWrapper" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                    <input type="text" id="valProduct" value="Coursiv AI Platform" oninput="compileLivePrompt()" placeholder="Product/Topic Name" class="w-full bg-slate-50/50 border border-slate-200/80 rounded-xl px-3 py-2 text-sm text-slate-800 focus:outline-none focus:border-indigo-500/60 placeholder-slate-400">
-                    <input type="text" id="valAudience" value="Digital Marketers" oninput="compileLivePrompt()" placeholder="Target Audience" class="w-full bg-slate-50/50 border border-slate-200/80 rounded-xl px-3 py-2 text-sm text-slate-800 focus:outline-none focus:border-indigo-500/60 placeholder-slate-400">
-                    <input type="text" id="valGoal" value="Increase feature activation from 5% to 20%" oninput="compileLivePrompt()" placeholder="Core Objective or Benefit" class="w-full sm:col-span-2 bg-slate-50/50 border border-slate-200/80 rounded-xl px-3 py-2 text-sm text-slate-800 focus:outline-none focus:border-indigo-500/60 placeholder-slate-400">
-                </div>
-
-                <!-- Внутренние аккуратные инпуты под Картинки -->
-                <div id="imageInputsWrapper" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                    <input type="text" id="valSubject" value="Futuristic modern workspace with warm lightning" oninput="compileLivePrompt()" placeholder="Visual Subject" class="w-full sm:col-span-2 bg-slate-50/50 border border-slate-200/80 rounded-xl px-3 py-2 text-sm text-slate-800 focus:outline-none focus:border-indigo-500/60 placeholder-slate-400">
-                    <select id="valStyle" onchange="compileLivePrompt()" class="w-full bg-slate-50/50 border border-slate-200/80 rounded-xl px-3 py-2 text-sm text-slate-700 focus:outline-none focus:border-indigo-500/60 cursor-pointer">
-                        <option value="Cinematic photography, volumetric lighting, 8k resolution">Cinematic Photo</option>
-                        <option value="3D clay isometric concept art, clean soft lighting">Minimalist 3D Clay</option>
-                    </select>
-                    <select id="valRatio" onchange="compileLivePrompt()" class="w-full bg-slate-50/50 border border-slate-200/80 rounded-xl px-3 py-2 text-sm text-slate-700 focus:outline-none focus:border-indigo-500/60 cursor-pointer">
-                        <option value="16:9 widescreen format">16:9 (Landscape)</option>
-                        <option value="9:16 portrait smartphone screen format">9:16 (Portrait)</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- СТРОКА УПРАВЛЕНИЯ (Иконки внизу инпута - как на скрине) -->
-            <div class="flex items-center justify-between border-t border-slate-50 pt-2.5 mt-1">
-                <!-- Плюс слева -->
-                <button class="text-slate-700 hover:text-slate-900 font-light text-2xl pl-1 cursor-pointer transition select-none">+</button>
-                
-                <!-- Блок элементов справа -->
-                <div class="flex items-center space-x-3.5">
-                    <!-- Селектор Модели (Оригинальный вид Claude с шевроном) -->
-                    <div class="relative flex items-center">
-                        <select id="modelSelect" onchange="handleModelDropdownChange()" class="appearance-none bg-transparent hover:bg-slate-50 rounded-xl pl-2 pr-5 py-1 text-[14px] text-slate-600 font-medium focus:outline-none cursor-pointer transition">
-                            <option value="claude">Claude</option>
-                            <option value="gpt5">ChatGPT 5.4</option>
-                            <option value="sd35">SD 3.5 Turbo</option>
-                        </select>
-                        <span class="absolute right-1 text-[9px] text-slate-400 pointer-events-none">▼</span>
-                    </div>
-
-                    <!-- Микрофон -->
-                    <button class="text-slate-400 hover:text-slate-600 transition cursor-pointer">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"/></svg>
-                    </button>
-
-                    <!-- Круглая кнопка отправки ↑ -->
-                    <button id="arrowSubmitBtn" onclick="fireAIRequestPipeline()" class="w-7 h-7 rounded-full bg-slate-100 text-slate-300 flex items-center justify-center font-bold text-xs transition cursor-pointer">
-                        ↑
-                    </button>
-                </div>
             </div>
         </div>
+    </div>
 
-        <!-- ОБРАЗОВАТЕЛЬНЫЙ СЛОЙ: Отрендеренный промпт в реальном времени -->
-        <div id="compilerDashboard" class="w-full max-w-[640px] mt-3.5 hidden bg-slate-50 border border-slate-100 rounded-xl p-3 transition-all duration-300">
-            <div class="flex items-center justify-between mb-1">
-                <span class="text-[10px] font-bold text-indigo-500 uppercase tracking-wider flex items-center space-x-1">
-                    <span class="w-1 h-1 rounded-full bg-indigo-400 animate-pulse"></span>
-                    <span>Live Prompt Engineer Compiler</span>
-                </span>
-                <span class="text-[9px] text-slate-400">Coursiv Learning Engine</span>
-            </div>
-            <div id="compilerTextDisplay" class="text-[11px] font-mono text-slate-400 leading-normal bg-white border border-slate-100 p-2 rounded-lg max-h-16 overflow-y-auto"></div>
-        </div>
-
-        <!-- КЛАСТЕР ПИЛЮЛЬ ИЗ СКРИНШОТА (6 ШТУК ОДИН В ОДИН) -->
-        <div id="pillsContainer" class="w-full max-w-xl mt-7 flex flex-wrap justify-center gap-2">
-            <button onclick="triggerSmartFormSetup('image')" class="px-3 py-1.5 bg-white border border-slate-200 rounded-full text-[13px] text-slate-600 hover:border-indigo-500 hover:text-indigo-600 flex items-center space-x-2 transition cursor-pointer shadow-sm">
-                <svg class="w-3.5 h-3.5 text-indigo-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 002-2H4a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                <span>Create an image</span>
-            </button>
-            <button onclick="triggerSmartFormSetup('text', 'Give advice')" class="px-3 py-1.5 bg-white border border-slate-200 rounded-full text-[13px] text-slate-600 hover:border-indigo-500 hover:text-indigo-600 flex items-center space-x-2 transition cursor-pointer shadow-sm">
-                <svg class="w-3.5 h-3.5 text-indigo-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-                <span>Give advice</span>
-            </button>
-            <button onclick="triggerSmartFormSetup('text', 'Generate ideas')" class="px-3 py-1.5 bg-white border border-slate-200 rounded-full text-[13px] text-slate-600 hover:border-indigo-500 hover:text-indigo-600 flex items-center space-x-2 transition cursor-pointer shadow-sm">
-                <svg class="w-3.5 h-3.5 text-indigo-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                <span>Generate ideas</span>
-            </button>
-            <button onclick="triggerSmartFormSetup('text', 'Summarize text')" class="px-3 py-1.5 bg-white border border-slate-200 rounded-full text-[13px] text-slate-600 hover:border-indigo-500 hover:text-indigo-600 flex items-center space-x-2 transition cursor-pointer shadow-sm">
-                <svg class="w-3.5 h-3.5 text-indigo-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                <span>Summarize text</span>
-            </button>
-            <button onclick="triggerSmartFormSetup('text', 'Analyze data')" class="px-3 py-1.5 bg-white border border-slate-200 rounded-full text-[13px] text-slate-600 hover:border-indigo-500 hover:text-indigo-600 flex items-center space-x-2 transition cursor-pointer shadow-sm">
-                <svg class="w-3.5 h-3.5 text-indigo-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                <span>Analyze this data</span>
-            </button>
-            <button onclick="triggerSmartFormSetup('text', 'Translate text')" class="px-3 py-1.5 bg-white border border-slate-200 rounded-full text-[13px] text-slate-600 hover:border-indigo-500 hover:text-indigo-600 flex items-center space-x-2 transition cursor-pointer shadow-sm">
-                <svg class="w-3.5 h-3.5 text-indigo-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 0c-.83 2.766-2.544 5.234-4.5 7.343M11 16a8.954 8.954 0 003-2l3 3m2-3a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1h6z"/></svg>
-                <span>Translate this</span>
-            </button>
-        </div>
-
-        <!-- КОНСОЛЬ ОТВЕТА (Минималистичный аутпут) -->
-        <div id="resultsConsole" class="w-full max-w-[640px] mt-6 hidden border border-slate-200 rounded-xl bg-slate-50/30 overflow-hidden shadow-sm transition-all duration-300 mb-20">
-            <div class="bg-white border-b border-slate-100 px-4 py-2 flex items-center justify-between text-[11px] text-slate-400 font-mono">
-                <span class="flex items-center space-x-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                    <span class="text-slate-500">Inference Response</span>
-                </span>
-                <span id="speedTimer">Pipeline processing</span>
-            </div>
-            <div class="p-5 bg-white min-h-[100px] flex items-center justify-center text-sm text-slate-600 text-left leading-relaxed">
-                <div id="loaderState" class="flex items-center space-x-2 text-slate-400">
-                    <div class="w-4 h-4 border-2 border-slate-200 border-t-indigo-600 rounded-full animate-spin"></div>
-                    <span class="font-mono text-xs">Streaming from API...</span>
-                </div>
-                <div id="textResultState" class="hidden w-full space-y-2"></div>
-                <div id="imageResultState" class="hidden w-full flex justify-center">
-                    <img id="imgNode" src="" alt="AI Output" class="max-w-xs w-full h-auto rounded-lg border border-slate-100 shadow-sm">
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- СЦЕНАРИИ И ЛОГИКА -->
     <script>
-        const formulas = {
-            text: () => `System directive: act as senior AI expert. Topic core: "${document.getElementById('valProduct').value}". Focus segment: "${document.getElementById('valAudience').value}". Goal matrix parameters: "${document.getElementById('valGoal').value}". Generate balanced structural node responses.`,
-            image: () => `High-fidelity commercial asset generation. Object context: "${document.getElementById('valSubject').value}". Stylistic aesthetic: ${document.getElementById('valStyle').value}. Constraints: optimized for ${document.getElementById('valRatio').value} display outputs.`
-        };
+        let globalPromptTitle = "";
+        let globalPromptBody = "";
+        let isEcosystemStreakComplete = false;
 
-        let isFormActive = false;
-        let formType = 'text';
+        function switchTab(tabId) {
+            // Маршрутизатор видимости окон
+            document.getElementById('view-home').classList.add('hidden');
+            document.getElementById('view-tools').classList.add('hidden');
+            document.getElementById('view-builder').classList.add('hidden');
+            document.getElementById('view-' + tabId).classList.remove('hidden');
 
-        function toggleSubmitBtnState() {
-            if (isFormActive) return;
-            const text = document.getElementById('mainTextArea').value.trim();
-            const btn = document.getElementById('arrowSubmitBtn');
-            if (text !== "") {
-                btn.className = "w-7 h-7 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs transition cursor-pointer shadow-sm";
+            // Сброс и активация классов навигации хедера под вашу дизайн-систему
+            const tabs = ['home', 'tools', 'builder'];
+            tabs.forEach(t => {
+                const node = document.getElementById('nav-' + t);
+                if (t === tabId) {
+                    node.className = "h-16 py-2 transition-colors duration-200 fill-text-action-info text-text-action-info cursor-pointer";
+                } else {
+                    node.className = "h-16 py-2 transition-colors duration-200 fill-icon-primary text-text-disabled hover:text-text-action-info cursor-pointer";
+                }
+            });
+        }
+
+        function validateToolsInputState() {
+            const val = document.getElementById('toolsInputTextArea').value.trim();
+            const btn = document.getElementById('toolsActionSubmitBtn');
+            if (val !== "") {
+                btn.className = "w-7 h-7 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs transition cursor-pointer shadow-sm shadow-indigo-600/20";
             } else {
                 btn.className = "w-7 h-7 rounded-full bg-slate-100 text-slate-300 flex items-center justify-center font-bold text-xs transition cursor-pointer";
             }
         }
 
-        function compileLivePrompt() {
-            if (!isFormActive) return;
-            const prompt = formulas[formType]();
-            document.getElementById('compilerTextDisplay').textContent = prompt;
-            
-            // Активируем кнопку отправки в режиме формы
-            document.getElementById('arrowSubmitBtn').className = "w-7 h-7 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs transition cursor-pointer shadow-sm";
+        function injectStaticText(text) {
+            document.getElementById('toolsInputTextArea').value = text;
+            validateToolsInputState();
         }
 
-        function triggerSmartFormSetup(type, label = 'Smart Form Template') {
-            isFormActive = true;
-            formType = type;
+        function saveAndTransferToToolsPipeline() {
+            globalPromptTitle = document.getElementById('bpInputTitle').value.trim();
+            globalPromptBody = document.getElementById('bpInputBody').value.trim();
 
-            document.getElementById('standardInputBlock').classList.add('hidden');
-            document.getElementById('smartFormBlock').classList.remove('hidden');
-            document.getElementById('compilerDashboard').classList.remove('hidden');
-            document.getElementById('resultsConsole').classList.add('hidden');
-            
-            document.getElementById('formBadgeText').textContent = label;
+            if (globalPromptTitle === "" || globalPromptBody === "") return alert("Заполните поля конструктора промптов.");
 
-            if (type === 'text') {
-                document.getElementById('textInputsWrapper').classList.remove('hidden');
-                document.getElementById('imageInputsWrapper').classList.add('hidden');
-                document.getElementById('modelSelect').value = 'gpt5';
-            } else {
-                document.getElementById('textInputsWrapper').classList.add('hidden');
-                document.getElementById('imageInputsWrapper').classList.remove('hidden');
-                document.getElementById('modelSelect').value = 'sd35';
-            }
+            // Активируем кнопку-пилюлю в AI Tools
+            document.getElementById('syncedPillTitle').textContent = globalPromptTitle;
+            document.getElementById('ecosystemSyncedPill').classList.remove('hidden');
 
-            compileLivePrompt();
+            // Перенаправляем пользователя обратно в инструменты
+            switchTab('tools');
+            injectPromptFromBuilderStorage();
         }
 
-        function handleModelDropdownChange() {
-            const m = document.getElementById('modelSelect').value;
-            if (m === 'sd35') {
-                triggerSmartFormSetup('image', 'Image Generation Framework');
-            } else if (m === 'gpt5' || m === 'claude') {
-                triggerSmartFormSetup('text', m === 'gpt5' ? 'ChatGPT 5.4 Form Engine' : 'Claude Prompt Variables');
-            }
+        function injectPromptFromBuilderStorage() {
+            document.getElementById('toolsInputTextArea').value = globalPromptBody;
+            document.getElementById('toolsModelSelector').value = 'gpt5'; // Автовыбор мощной модели под Билдер
+            validateToolsInputState();
         }
 
-        function resetToStandard() {
-            isFormActive = false;
-            document.getElementById('standardInputBlock').classList.remove('hidden');
-            document.getElementById('smartFormBlock').classList.add('hidden');
-            document.getElementById('compilerDashboard').classList.add('hidden');
-            document.getElementById('resultsConsole').classList.add('hidden');
-            document.getElementById('mainTextArea').value = "";
-            document.getElementById('modelSelect').value = 'claude';
-            toggleSubmitBtnState();
-        }
+        function runToolsPipelineSimulation() {
+            const btn = document.getElementById('toolsActionSubmitBtn');
+            if (btn.classList.contains('text-slate-300')) return;
 
-        function fireAIRequestPipeline() {
-            const btn = document.getElementById('arrowSubmitBtn');
-            if (btn.classList.contains('text-slate-300')) return; // Блокировка пустого клика
-
-            const consoleBox = document.getElementById('resultsConsole');
-            const loader = document.getElementById('loaderState');
-            const txtOut = document.getElementById('textResultState');
-            const imgOut = document.getElementById('imageResultState');
-            const timer = document.getElementById('speedTimer');
-
-            consoleBox.classList.remove('hidden');
-            loader.classList.remove('hidden');
-            txtOut.classList.add('hidden');
-            imgOut.classList.add('hidden');
-            timer.textContent = "Calculating vectors...";
+            document.getElementById('toolsConsoleContainer').classList.remove('hidden');
+            document.getElementById('toolsLoader').classList.remove('hidden');
+            document.getElementById('toolsSuccessResponse').classList.add('hidden');
+            document.getElementById('toolsLatencyField').textContent = "Computing pipeline...";
 
             setTimeout(() => {
-                loader.classList.add('hidden');
-                if (!isFormActive) {
-                    txtOut.classList.remove('hidden');
-                    txtOut.innerHTML = `<p class="font-medium text-slate-900">Standard Model Generation</p><p class="text-xs text-slate-500 mt-1">Processed raw input string. To test variables engine, select any filter capsule below the search bar.</p>`;
-                    timer.textContent = "Latency: 0.48s | Raw Text Model";
-                } else if (formType === 'image') {
-                    imgOut.classList.remove('hidden');
-                    document.getElementById('imgNode').src = "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=600&q=80";
-                    timer.textContent = "Latency: 1.25s | Core: SD 3.5 Turbo";
-                } else {
-                    txtOut.classList.remove('hidden');
-                    txtOut.innerHTML = `<p class="font-medium text-slate-900">Variables Processed for ${document.getElementById('valProduct').value}</p><p class="text-xs text-slate-600 mt-1">Successfully synthesized response schema optimized directly for <strong>${document.getElementById('valAudience').value}</strong> cohort rules. Target metric constraint vector set to "${document.getElementById('valGoal').value}".</p>`;
-                    timer.textContent = "Latency: 0.71s | Engine: ChatGPT 5.4";
-                }
+                document.getElementById('toolsLoader').classList.add('hidden');
+                document.getElementById('toolsSuccessResponse').classList.remove('hidden');
+                document.getElementById('toolsLatencyField').textContent = "Latency: 0.64s | Complete";
+
+                // ВЫПОЛНЕНИЕ КРОСС-ФУНКЦИОНАЛЬНОГО СТРЕЙКА
+                isEcosystemStreakComplete = true;
+                applyEcosystemStreakToHomeDOM();
+
             }, 1000);
+        }
+
+        function applyEcosystemStreakToHomeDOM() {
+            if (!isEcosystemStreakComplete) return;
+
+            // 1. Обновляем счетчики в шапке (Стрик вырос с 1 до 2!)
+            document.getElementById('headerStreakCount').textContent = "2";
+            
+            // 2. Меняем статус-бейдж в карточке стриков на главной
+            document.getElementById('streakStatusBadge').textContent = "Tasks Complete 🎉";
+            document.getElementById('streakStatusBadge').className = "text-xs font-semibold bg-emerald-50 text-emerald-600 border border-emerald-200 px-2 py-0.5 rounded animate-none";
+
+            // 3. Перекрашиваем кружок пятницы (4 июня) в календаре под ваш оригинальный градиент
+            const friCircle = document.getElementById('streakCircleFri');
+            friCircle.className = "w-8 h-8 rounded-full text-white flex items-center justify-center text-xs font-bold shadow-md shadow-orange-500/20";
+            friCircle.style.background = "linear-gradient(0deg, #FF7008 0%, #FFAC5E 100%)";
+            friCircle.textContent = "✓";
+
+            // 4. Обновляем текстовое описание дисклеймера карточки
+            document.getElementById('streakDisclaimerText').innerHTML = "✨ <strong>Ecosystem Goal Unlocked!</strong> Вы выполнили урок и генерацию в Tools. Привычка прокачивается успешно.";
+            document.getElementById('streakDisclaimerText').className = "text-xs text-emerald-700 font-medium flex items-center gap-1";
+            
+            // 5. Меняем прогресс программы сертификата (Claude вырос с 4% до 12% за счет использования инструментов)
+            document.getElementById('homeCertClaudeProgress').textContent = "12%";
+            document.getElementById('homeCertClaudeProgress').className = "text-[10px] mt-1 text-emerald-600 font-bold";
         }
     </script>
 </body>
