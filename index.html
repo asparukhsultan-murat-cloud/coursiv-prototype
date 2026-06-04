@@ -1,328 +1,341 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coursiv AI Tools - Smart Templates Prototype</title>
+    <title>Coursiv AI Tools - Smart Templates</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Google Fonts (Inter) -->
+    <!-- Google Fonts (Inter & Playwrite/Script style for logo) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .glass-panel {
-            background: rgba(30, 41, 59, 0.5);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; }
+        .coursiv-logo { font-family: 'Caveat', cursive; color: #5c46e4; }
+        .input-shadow { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-purple-500/30">
+<body class="text-slate-800 min-h-screen flex flex-col antialiased bg-white">
 
-    <!-- НАВИГАЦИОННАЯ ПАНЕЛЬ В СТИЛЕ COURSIV -->
-    <header class="border-b border-slate-900 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50 px-6 py-4 flex items-center justify-between">
-        <div class="flex items-center space-x-8">
-            <div class="flex items-center space-x-2">
-                <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center font-bold text-white shadow-lg shadow-purple-500/20">C</div>
-                <span class="text-xl font-bold tracking-tight bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">Coursiv</span>
-            </div>
-            <nav class="hidden md:flex space-x-1 text-sm font-medium">
-                <a href="#" class="px-4 py-2 rounded-lg text-slate-400 hover:text-slate-200 transition">Home (Lessons)</a>
-                <a href="#" class="px-4 py-2 rounded-lg bg-slate-900 text-purple-400 border border-slate-800 font-semibold transition">AI Tools</a>
-                <a href="#" class="px-4 py-2 rounded-lg text-slate-400 hover:text-slate-200 transition flex items-center space-x-1">
-                    <span>AI Practice</span>
-                    <span class="bg-purple-500/20 text-purple-400 text-[10px] px-1.5 py-0.5 rounded-full font-bold uppercase tracking-wider">New</span>
-                </a>
-            </nav>
+    <!-- НАВИГАЦИОННАЯ ПАНЕЛЬ ОДИН В ОДИН ПО СКРИНШОТУ -->
+    <header class="border-b border-slate-100 bg-white sticky top-0 z-50 px-8 py-3 flex items-center justify-between">
+        <!-- Левая часть: Оригинальный рукописный логотип -->
+        <div class="flex items-center">
+            <span class="text-3xl font-bold coursiv-logo tracking-wide select-none">Coursiv</span>
         </div>
-        <div class="flex items-center space-x-4">
-            <div class="text-right hidden sm:block">
-                <p class="text-xs text-slate-500">Premium Account</p>
-                <p class="text-sm font-medium text-slate-300">12,450 XP</p>
+        
+        <!-- Центр: Вкладки навигации с иконками -->
+        <nav class="hidden md:flex items-center space-x-8 text-[14px] font-medium text-slate-500">
+            <a href="#" class="flex items-center space-x-2 hover:text-slate-800 transition">
+                <span>🏠</span> <span>Home</span>
+            </a>
+            <a href="#" class="flex items-center space-x-2 hover:text-slate-800 transition">
+                <span>🎓</span> <span>Courses</span>
+            </a>
+            <a href="#" class="flex items-center space-x-2 text-indigo-600 font-semibold transition">
+                <span>✨</span> <span>AI Tools</span>
+            </a>
+            <a href="#" class="flex items-center space-x-2 hover:text-slate-800 transition">
+                <span>🏋️‍♂️</span> <span>AI Practice</span>
+            </a>
+        </nav>
+
+        <!-- Правая часть: Статусы и Профиль -->
+        <div class="flex items-center space-x-5">
+            <!-- Безлимитный премиум-значок -->
+            <div class="bg-slate-50 border border-slate-100 rounded-full px-3 py-1 flex items-center space-x-1.5 text-xs text-slate-600 font-medium shadow-sm">
+                <span class="text-indigo-500 font-bold">✦</span>
+                <span>∞</span>
             </div>
-            <div class="w-10 h-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center font-semibold text-slate-300">PM</div>
+            <!-- История -->
+            <button class="text-slate-400 hover:text-slate-600 transition cursor-pointer text-sm">🕒</button>
+            <!-- Профиль пользователя -->
+            <div class="flex items-center space-x-2 cursor-pointer group">
+                <div class="w-7 h-7 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-xs font-semibold text-slate-500">A</div>
+                <span class="text-xs font-medium text-slate-500 group-hover:text-slate-800 transition">Profile</span>
+            </div>
         </div>
     </header>
 
-    <!-- ОСНОВНОЙ РАБОЧИЙ ИНТЕРФЕЙС -->
-    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <main class="flex-1 max-w-4xl w-full mx-auto px-4 pt-16 flex flex-col items-center">
         
-        <!-- ЛЕВАЯ ПАНЕЛЬ: НАСТРОЙКА И ФОРМЫ (5 КОЛОНОК) -->
-        <section class="lg:col-span-5 flex flex-col space-y-6">
+        <!-- Главный заголовок -->
+        <h1 id="mainTitle" class="text-2xl md:text-[26px] font-semibold text-slate-900 tracking-tight text-center mb-8">
+            What can I help with?
+        </h1>
+
+        <!-- ЦЕНТРАЛЬНЫЙ КОНТЕЙНЕР ВВОДА -->
+        <div class="w-full max-w-2xl bg-white border border-slate-200 rounded-2xl p-4 input-shadow transition-all duration-300">
             
-            <!-- Выбор модели ИИ -->
-            <div class="glass-panel p-5 rounded-2xl space-y-3">
-                <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Select AI Engine</label>
-                <div class="relative">
-                    <select id="modelSelector" onchange="switchModel()" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-500/50 appearance-none cursor-pointer font-medium">
-                        <option value="gpt5">ChatGPT 5.4 (Text Master)</option>
-                        <option value="gemini3">Gemini 3.1 Pro (Analytical)</option>
-                        <option value="sd35">SD 3.5 Large Turbo (Image generation)</option>
-                        <option value="banana">nano banana (Fast & Compact)</option>
-                    </select>
-                    <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none text-slate-500">▼</div>
-                </div>
+            <!-- РЕЖИМ 1: Стандартный пустой инпут (дефолтный вид по скриншоту) -->
+            <div id="standardInputView" class="w-full">
+                <textarea id="standardTextArea" placeholder="Ask anything" rows="3" class="w-full resize-none bg-transparent text-[15px] text-slate-800 placeholder-slate-400 focus:outline-none leading-relaxed"></textarea>
             </div>
 
-            <!-- Переключатель режима ввода: Смарт-Форма против Обычного текста -->
-            <div class="bg-slate-900/60 p-1.5 rounded-xl border border-slate-900 flex">
-                <button id="btnTextMode" onclick="toggleInputMode('text')" class="flex-1 py-2.5 text-sm font-medium rounded-lg text-slate-400 hover:text-slate-200 transition">
-                    Standard Input
-                </button>
-                <button id="btnFormMode" onclick="toggleInputMode('form')" class="flex-1 py-2.5 text-sm font-semibold rounded-lg bg-purple-600 text-white shadow-md shadow-purple-600/10 transition">
-                    Smart Form Template ✨
-                </button>
-            </div>
-
-            <!-- ДИНАМИЧЕСКИЙ КОНСТРУКТОР ФОРМ -->
-            <div id="formContainer" class="glass-panel p-5 rounded-2xl flex-1 flex flex-col space-y-5">
-                <div class="flex items-center justify-between border-b border-slate-900 pb-3">
-                    <h2 id="templateTitle" class="font-semibold text-slate-200 text-sm flex items-center space-x-2">
-                        <span>📝</span> <span id="templateNameText">Marketing Copy Formula</span>
-                    </h2>
-                    <span class="text-[11px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded-md border border-slate-700">Dynamic UI</span>
-                </div>
-
-                <!-- Блок полей для ТЕКСТОВЫХ моделей -->
-                <div id="textFields" class="space-y-4 flex-1">
-                    <div class="space-y-1.5">
-                        <label class="text-xs font-medium text-slate-400">Target Product / Service</label>
-                        <input type="text" id="txtProduct" value="Coursiv AI Platform" oninput="updatePrompt()" placeholder="e.g., SaaS dashboard" class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-500/40">
-                    </div>
-                    <div class="space-y-1.5">
-                        <label class="text-xs font-medium text-slate-400">Target Audience</label>
-                        <input type="text" id="txtAudience" value="Digital Marketers & Creators" oninput="updatePrompt()" placeholder="e.g., Tech entrepreneurs" class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-500/40">
-                    </div>
-                    <div class="space-y-1.5">
-                        <label class="text-xs font-medium text-slate-400">Tone of Voice</label>
-                        <select id="txtTone" onchange="updatePrompt()" class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-500/40">
-                            <option value="witty and persuasive">Witty & Persuasive</option>
-                            <option value="highly professional">Strict & Professional</option>
-                            <option value="bold and minimalist">Bold & Minimalist</option>
-                        </select>
-                    </div>
-                    <div class="space-y-1.5">
-                        <label class="text-xs font-medium text-slate-400">Core Benefit to Highlight</label>
-                        <textarea id="txtBenefit" oninput="updatePrompt()" rows="3" placeholder="What value should the AI emphasize?" class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-500/40 resize-none">Turns passive AI learning into interactive daily habits, boosting workflow automation.</textarea>
-                    </div>
-                </div>
-
-                <!-- Блок полей для СУПЕР-БЫСТРОЙ модели (nano banana) -->
-                <div id="bananaFields" class="space-y-4 flex-1 hidden">
-                    <div class="space-y-1.5">
-                        <label class="text-xs font-medium text-slate-400">Core Command (Keep it short)</label>
-                        <input type="text" id="bananaTask" value="Summarize the concept of Prompt Engineering" oninput="updatePrompt()" class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-500/40">
-                    </div>
-                    <div class="space-y-1.5">
-                        <label class="text-xs font-medium text-slate-400">Output Limit</label>
-                        <select id="bananaLimit" onchange="updatePrompt()" class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-500/40">
-                            <option value="exactly 2 sentences">Max 2 Sentences</option>
-                            <option value="bullet points only">Bullet Points Only</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Блок полей для ГРАФИЧЕСКИХ моделей (SD 3.5) -->
-                <div id="imageFields" class="space-y-4 flex-1 hidden">
-                    <div class="space-y-1.5">
-                        <label class="text-xs font-medium text-slate-400">Main Subject Description</label>
-                        <input type="text" id="imgSubject" value="A futuristic workspaces for a data-driven creator" oninput="updatePrompt()" placeholder="What is in the image?" class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-500/40">
-                    </div>
-                    <div class="space-y-1.5">
-                        <label class="text-xs font-medium text-slate-400">Visual Style preset</label>
-                        <select id="imgStyle" onchange="updatePrompt()" class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-500/40">
-                            <option value="cinematic rendering, hyper-detailed, neon glowing highlights">Cyberpunk Cinematic</option>
-                            <option value="3D clay illustration, minimalist design, soft lighting, vibrant pastel colors">Minimalist 3D Art</option>
-                            <option value="analog film photography, 35mm lens, vintage color grading, natural grain">Authentic Film Photo</option>
-                        </select>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="space-y-1.5">
-                            <label class="text-xs font-medium text-slate-400">Aspect Ratio</label>
-                            <select id="imgRatio" onchange="updatePrompt()" class="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-500/40">
-                                <option value="16:9 widescreen">16:9 (Desktop)</option>
-                                <option value="9:16 vertical smartphone portrait">9:16 (Mobile)</option>
-                                <option value="1:1 square canvas">1:1 (Square)</option>
-                            </select>
-                        </div>
-                        <div class="space-y-1.5">
-                            <label class="text-xs font-medium text-slate-400">Engine Speed</label>
-                            <div class="bg-slate-900 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-purple-400 font-semibold flex items-center justify-center">
-                                ⚡ Turbo Mode
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <button id="btnGenerate" onclick="runSimulation()" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-semibold py-3 px-4 rounded-xl shadow-lg shadow-purple-600/20 transition flex items-center justify-center space-x-2 cursor-pointer">
-                    <span>Execute Prompt</span> <span class="text-xs opacity-70">➔</span>
-                </button>
-            </div>
-        </section>
-
-        <!-- ПРАВАЯ ПАНЕЛЬ: LIVE PREVIEW И САНДБОКС ВЫВОДА (7 КОЛОНОК) -->
-        <section class="lg:col-span-7 flex flex-col space-y-6">
-            
-            <!-- Панель динамической компиляции промпта -->
-            <div class="glass-panel p-5 rounded-2xl bg-gradient-to-br from-slate-900/80 to-slate-900/30 border border-purple-500/10 flex flex-col space-y-2.5">
-                <div class="flex items-center justify-between">
-                    <span class="text-xs font-semibold text-purple-400 uppercase tracking-wider flex items-center space-x-1.5">
-                        <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse"></span>
-                        <span>Live Prompt Compiler</span>
+            <!-- РЕЖИМ 2: Смарт-Форма (Активируется по клику на шаблоны) -->
+            <div id="smartFormView" class="w-full hidden space-y-4 pt-1 pb-2">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-2 mb-1">
+                    <span id="activeFormBadge" class="text-xs font-semibold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md border border-indigo-100/50">
+                        ⚡ Smart Form Active
                     </span>
-                    <span class="text-[10px] text-slate-500">Auto-injecting system metadata</span>
+                    <button onclick="switchToStandardMode()" class="text-xs text-slate-400 hover:text-slate-600 font-medium flex items-center space-x-1 cursor-pointer">
+                        <span>✕</span> <span>Reset to Standard</span>
+                    </button>
                 </div>
-                <!-- Отрендеренный промпт, готовый под капотом -->
-                <div id="livePromptDisplay" class="bg-slate-950/80 border border-slate-900 rounded-xl p-4 text-xs font-mono text-slate-300 leading-relaxed min-h-[70px]">
-                    <!-- Наполняется через JS -->
+
+                <!-- Динамические поля для Текстовых задач (Маркетинг, Саммари и т.д.) -->
+                <div id="textFormInputs" class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="flex flex-col space-y-1">
+                        <label class="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Product Name</label>
+                        <input type="text" id="paramProduct" value="Coursiv App" oninput="liveCompilePrompt()" class="bg-slate-50/50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-800 focus:outline-none focus:border-indigo-500">
+                    </div>
+                    <div class="flex flex-col space-y-1">
+                        <label class="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Target Audience</label>
+                        <input type="text" id="paramAudience" value="Digital Marketers" oninput="liveCompilePrompt()" class="bg-slate-50/50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-800 focus:outline-none focus:border-indigo-500">
+                    </div>
+                    <div class="flex flex-col space-y-1 md:col-span-2">
+                        <label class="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Key Benefit / Goal</label>
+                        <input type="text" id="paramGoal" value="Increase feature activation speed and engagement tools adoption" oninput="liveCompilePrompt()" class="bg-slate-50/50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-800 focus:outline-none focus:border-indigo-500">
+                    </div>
+                </div>
+
+                <!-- Динамические поля для Графики (SD 3.5 / Dall-E) -->
+                <div id="imageFormInputs" class="hidden grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="flex flex-col space-y-1 md:col-span-2">
+                        <label class="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Subject Description</label>
+                        <input type="text" id="paramSubject" value="Futuristic office workspace with smooth neon ambient lights" oninput="liveCompilePrompt()" class="bg-slate-50/50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-800 focus:outline-none focus:border-indigo-500">
+                    </div>
+                    <div class="flex flex-col space-y-1">
+                        <label class="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Visual Style</label>
+                        <select id="paramStyle" onchange="liveCompilePrompt()" class="bg-slate-50/50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-800 focus:outline-none focus:border-indigo-500 cursor-pointer">
+                            <option value="Cinematic photography, highly detailed, 8k resolution">Cinematic Photography</option>
+                            <option value="3D clay rendering style, isometric composition, pastel palette">Minimalist 3D Clay</option>
+                            <option value="Cyberpunk digital concept art, dark background, sharp focus">Cyberpunk Digital Art</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-col space-y-1">
+                        <label class="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Aspect Ratio</label>
+                        <select id="paramRatio" onchange="liveCompilePrompt()" class="bg-slate-50/50 border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-800 focus:outline-none focus:border-indigo-500 cursor-pointer">
+                            <option value="16:9 widescreen layout">16:9 (Landscape)</option>
+                            <option value="9:16 portrait mobile layout">9:16 (Portrait)</option>
+                            <option value="1:1 square instagram canvas">1:1 (Square)</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
-            <!-- ПЕСОЧНИЦА РЕЗУЛЬТАТА (OUTPUT WORKSPACE) -->
-            <div class="glass-panel rounded-2xl flex-1 flex flex-col overflow-hidden min-h-[350px]">
-                <div class="bg-slate-900/60 border-b border-slate-900 px-5 py-3.5 flex items-center justify-between">
-                    <div class="flex items-center space-x-2">
-                        <div class="w-2.5 h-2.5 rounded-full bg-emerald-500"></div>
-                        <span class="text-xs font-medium text-slate-300">AI Sandbox Console</span>
-                    </div>
-                    <span id="generationTime" class="text-xs text-slate-500 font-mono">Ready to process</span>
+            <!-- НИЖНЯЯ ПАНЕЛЬ ИНПУТА: Кнопки управления и селектор моделей -->
+            <div class="flex items-center justify-between border-t border-slate-100 pt-3 mt-2">
+                <!-- Плюс (Прикрепить файл) -->
+                <div>
+                    <button class="w-8 h-8 rounded-full hover:bg-slate-50 flex items-center justify-center text-slate-400 hover:text-slate-600 transition cursor-pointer text-lg font-light">+</button>
                 </div>
+                
+                <!-- Правый блок: Модель + Микрофон + Отправка -->
+                <div class="flex items-center space-x-3">
+                    <!-- Селектор моделей (Стилизован один в один как Claude v на скрине) -->
+                    <div class="relative">
+                        <select id="modelSelect" onchange="onModelChange()" class="appearance-none bg-transparent hover:bg-slate-50 rounded-xl pl-3 pr-7 py-1.5 text-[14px] text-slate-700 font-medium focus:outline-none cursor-pointer transition">
+                            <option value="gpt5">ChatGPT 5.4</option>
+                            <option value="gemini">Gemini 3.1 Pro</option>
+                            <option value="sd35">SD 3.5 Large</option>
+                            <option value="banana">nano banana</option>
+                        </select>
+                        <span class="absolute right-2.5 top-1/2 -translate-y-1/2 text-[10px] text-slate-400 pointer-events-none">▼</span>
+                    </div>
 
-                <div class="p-6 flex-1 flex items-center justify-center bg-slate-950/40 relative">
+                    <!-- Микрофон -->
+                    <button class="w-8 h-8 rounded-full hover:bg-slate-50 flex items-center justify-center text-slate-400 hover:text-slate-600 transition cursor-pointer text-sm">🎤</button>
                     
-                    <!-- Состояние Плейсхолдера -->
-                    <div id="outputPlaceholder" class="text-center max-w-sm space-y-3">
-                        <div class="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-xl mx-auto text-slate-500">⚡</div>
-                        <p class="text-sm font-medium text-slate-400">Fill in the variables and click execute to trigger the AI generation matrix.</p>
-                    </div>
-
-                    <!-- Состояние Загрузки -->
-                    <div id="outputLoader" class="hidden text-center space-y-4">
-                        <div class="w-10 h-10 border-4 border-purple-600/20 border-t-purple-500 rounded-full animate-spin mx-auto"></div>
-                        <p id="loaderText" class="text-xs font-mono text-slate-400">Structuring arguments for ChatGPT 5.4...</p>
-                    </div>
-
-                    <!-- Состояние Результата: ТЕКСТ -->
-                    <div id="outputTextResult" class="hidden w-full h-full text-sm leading-relaxed text-slate-300 font-sans text-left space-y-3 overflow-y-auto">
-                        <!-- Наполняется скриптом -->
-                    </div>
-
-                    <!-- Состояние Результата: ИЗОБРАЖЕНИЕ -->
-                    <div id="outputImageResult" class="hidden w-full h-full flex flex-col items-center justify-center space-y-3">
-                        <div class="relative rounded-xl overflow-hidden border border-slate-800 max-w-md shadow-2xl">
-                            <img id="generatedImage" src="" alt="AI Generated Art" class="w-full h-auto opacity-0 transition-opacity duration-700">
-                            <div class="absolute bottom-3 left-3 bg-slate-950/70 backdrop-blur-md text-[11px] font-mono px-2.5 py-1 rounded-md border border-white/10 text-slate-200">
-                                Powered by SD 3.5 Large Turbo
-                            </div>
-                        </div>
-                    </div>
-
+                    <!-- Кнопка отправки (Круглая стрелка вверх) -->
+                    <button id="submitBtn" onclick="executePromptPipeline()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-300 flex items-center justify-center transition cursor-pointer font-bold text-sm">
+                        ↑
+                    </button>
                 </div>
             </div>
-        </section>
+        </div>
+
+        <!-- ЖИВОЙ КОМПИЛЯТОР ПРОМПТА (Появляется при активации Смарт-Формы) -->
+        <div id="liveCompilerBox" class="w-full max-w-2xl mt-4 hidden bg-indigo-50/30 border border-indigo-100/60 rounded-xl p-3.5 transition-all duration-300">
+            <div class="flex items-center justify-between mb-1.5">
+                <span class="text-[11px] font-bold text-indigo-500 uppercase tracking-wider flex items-center space-x-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span>
+                    <span>Live Prompt Compiler (Educational Layer)</span>
+                </span>
+                <span class="text-[10px] text-slate-400">Compiling real-time system variables</span>
+            </div>
+            <div id="compiledPromptText" class="text-xs font-mono text-slate-500 leading-relaxed bg-white/80 border border-indigo-50/50 p-2.5 rounded-lg max-h-24 overflow-y-auto">
+                <!-- Генерируется через JS -->
+            </div>
+        </div>
+
+        <!-- ПОДСКАЗКИ-ПИЛЮЛИ (Раздел под инпутом из скрина) -->
+        <div id="suggestionsContainer" class="w-full max-w-xl mt-6 flex flex-wrap justify-center gap-2 transition-all duration-300">
+            <button onclick="activateSmartForm('marketing')" class="px-3 py-1.5 bg-white border border-slate-200 rounded-full text-[13px] text-slate-600 hover:border-indigo-500 hover:text-indigo-600 flex items-center space-x-1.5 transition cursor-pointer shadow-sm">
+                <span class="text-indigo-500 text-xs">🖼️</span> <span>Create an image</span>
+            </button>
+            <button onclick="activateSmartForm('advice')" class="px-3 py-1.5 bg-white border border-slate-200 rounded-full text-[13px] text-slate-600 hover:border-indigo-500 hover:text-indigo-600 flex items-center space-x-1.5 transition cursor-pointer shadow-sm">
+                <span class="text-indigo-500 text-xs">💬</span> <span>Give advice</span>
+            </button>
+            <button onclick="activateSmartForm('ideas')" class="px-3 py-1.5 bg-white border border-slate-200 rounded-full text-[13px] text-slate-600 hover:border-indigo-500 hover:text-indigo-600 flex items-center space-x-1.5 transition cursor-pointer shadow-sm">
+                <span class="text-indigo-500 text-xs">✨</span> <span>Generate ideas</span>
+            </button>
+            <button onclick="activateSmartForm('summary')" class="px-3 py-1.5 bg-white border border-slate-200 rounded-full text-[13px] text-slate-600 hover:border-indigo-500 hover:text-indigo-600 flex items-center space-x-1.5 transition cursor-pointer shadow-sm">
+                <span class="text-indigo-500 text-xs">📄</span> <span>Summarize text</span>
+            </button>
+        </div>
+
+        <!-- КОНСОЛЬ ВЫВОДА РЕЗУЛЬТАТА ИИ (AI SANDBOX CONSOLE) -->
+        <div id="outputWorkspace" class="w-full max-w-2xl mt-8 hidden border border-slate-200 rounded-xl bg-slate-50/50 overflow-hidden shadow-sm transition-all duration-300 mb-12">
+            <div class="bg-white border-b border-slate-100 px-4 py-2.5 flex items-center justify-between text-xs text-slate-400 font-medium font-mono">
+                <div class="flex items-center space-x-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    <span class="text-slate-600">AI Inference Box</span>
+                </div>
+                <span id="latencyTimer">Processing pipeline...</span>
+            </div>
+            
+            <div class="p-5 min-h-[150px] bg-white flex items-center justify-center">
+                <!-- Спиннер загрузки -->
+                <div id="aiLoader" class="flex flex-col items-center space-y-3">
+                    <div class="w-7 h-7 border-3 border-indigo-100 border-t-indigo-600 rounded-full animate-spin"></div>
+                    <span class="text-xs text-slate-400 font-mono">Streaming tokens from cluster...</span>
+                </div>
+                <!-- Текстовый ответ -->
+                <div id="aiTextOutput" class="hidden w-full text-sm leading-relaxed text-slate-700 text-left space-y-2.5"></div>
+                <!-- Графический ответ -->
+                <div id="aiImageOutput" class="hidden w-full flex justify-center">
+                    <img id="generatedImgNode" src="" alt="AI Output" class="max-w-md w-full h-auto rounded-lg border border-slate-100 shadow-md">
+                </div>
+            </div>
+        </div>
+
     </main>
 
-    <!-- Скрипт логики прототипа -->
+    <!-- СЦЕНАРИИ И ЛОГИКА ВЗАИМОДЕЙСТВИЯ (JAVASCRIPT) -->
     <script>
-        const prompts = {
-            gpt5: () => `Act as an expert conversion copywriter. Write a highly persuasive, conversion-optimized product marketing copy for "${document.getElementById('txtProduct').value}". The primary target audience is explicitly defined as "${document.getElementById('txtAudience').value}". Use a tone that is distinctly ${document.getElementById('txtTone').value}. Focus heavily on the following core value proposition: "${document.getElementById('txtBenefit').value}". Ensure strict syntax layout.`,
-            gemini3: () => `Execute deep analytical analysis for the enterprise entity "${document.getElementById('txtProduct').value}". Target segment: ${document.getElementById('txtAudience').value}. Formulate comprehensive user persona maps, analyzing architectural logic frameworks using a ${document.getElementById('txtTone').value} narrative style. Emphasize: ${document.getElementById('txtBenefit').value}.`,
-            sd35: () => `A high-end professional graphic concept asset featuring: ${document.getElementById('imgSubject').value}. Rendered flawlessly in a ${document.getElementById('imgStyle').value} aesthetics framework. Set framing metrics exactly optimized for a ${document.getElementById('imgRatio').value} canvas matrix, uncompressed engine output, award-winning composition.`,
-            banana: () => `Task: ${document.getElementById('bananaTask').value}. Output formatting guideline constraints: please formulate the output strictly in ${document.getElementById('bananaLimit').value}. Keep system processing latency low.`
+        // Справочник формул генерации промптов на основе переменных
+        const promptCompilers = {
+            marketing: () => `Act as an expert growth marketer. Construct high-converting landing page copy structure for "${document.getElementById('paramProduct').value}". Target Demographic Cohort: "${document.getElementById('paramAudience').value}". Core Optimization Objective: "${document.getElementById('paramGoal').value}". Apply direct response syntax rules.`,
+            advice: () => `Provide deep strategic advisory recommendations regarding "${document.getElementById('paramGoal').value}" contextually optimized for "${document.getElementById('paramAudience').value}". Outlining multi-vector solutions for ${document.getElementById('paramProduct').value}.`,
+            ideas: () => `Brainstorm 5 avant-garde product growth vector ideas focusing on "${document.getElementById('paramGoal').value}". Execution environment: ${document.getElementById('paramProduct').value}. Audiences parameters: ${document.getElementById('paramAudience').value}.`,
+            summary: () => `Deconstruct and summarize the core business logic behind "${document.getElementById('paramGoal').value}". Extract high-value actionable items for ${document.getElementById('paramAudience').value}. Limit output latency.`,
+            sd35: () => `Commercial premium visual conceptual render asset showcasing: ${document.getElementById('paramSubject').value}. Executed meticulously inside a ${document.getElementById('paramStyle').value} style environment. Canvas configuration aspect values fixed to ${document.getElementById('paramRatio').value}. Unreal Engine 5.4 render pipeline settings applied.`
         };
 
-        const simulatedOutputs = {
-            gpt5: `<h3>🚀 Elevate Your Workflow with ${document.getElementById('txtProduct').value}</h3><p>Are you tired of jumping from theory to manual setups? We designed this explicitly for <strong>${document.getElementById('txtAudience').value}</strong> who want to build real, unshakeable leverage.</p><p><strong>Why it changes everything:</strong><br>✨ ${document.getElementById('txtBenefit').value}</p><p>Stop wasting time staring at a blank prompt console. Switch styles, run comparative evaluation cycles, and embed AI automation loops natively into your daily business engine.</p>`,
-            gemini3: `<h4>📊 Strategic Segment Architecture & Analytical Assessment</h4><p><strong>Target Context:</strong> Assessment executed for <em>${document.getElementById('txtProduct').value}</em> optimization models targeting <em>${document.getElementById('txtAudience').value}</em>.</p><p><strong>Core Dynamic Identified:</strong> The application of structural prompts bridges cognitive friction gaps by ${document.getElementById('txtBenefit').value}. This architecture enhances workflow processing by up to 300% relative to standard inputs.</p>`,
-            banana: `• Prompt engineering translates human strategic intent into machine-executable parameters.<br>• Structuring fields instead of raw entries filters syntax errors and stabilizes AI inference quality.`
-        };
+        let currentActiveTemplate = 'marketing';
 
-        const imageAssets = [
-            "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=800&q=80"
-        ];
-
-        function updatePrompt() {
-            const model = document.getElementById('modelSelector').value;
-            document.getElementById('livePromptDisplay').textContent = prompts[model]();
+        function liveCompilePrompt() {
+            const compiledText = promptCompilers[currentActiveTemplate]();
+            document.getElementById('compiledPromptText').textContent = compiledText;
+            
+            // Включаем кнопку отправки, если промпт готов
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.className = "w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center transition cursor-pointer font-bold text-sm shadow-md shadow-indigo-600/20";
         }
 
-        function switchModel() {
-            const model = document.getElementById('modelSelector').value;
+        function activateSmartForm(type) {
+            currentActiveTemplate = type;
             
-            // Скрытие всех форм
-            document.getElementById('textFields').classList.add('hidden');
-            document.getElementById('imageFields').classList.add('hidden');
-            document.getElementById('bananaFields').classList.add('hidden');
+            // Меняем заголовок и отображение блоков
+            document.getElementById('standardInputView').classList.add('hidden');
+            document.getElementById('smartFormView').classList.remove('hidden');
+            document.getElementById('liveCompilerBox').classList.remove('hidden');
+            
+            const textInputs = document.getElementById('textFormInputs');
+            const imageInputs = document.getElementById('imageFormInputs');
+            const modelSelect = document.getElementById('modelSelect');
+            const badge = document.getElementById('activeFormBadge');
 
-            // Показ нужной формы
-            if (model === 'gpt5' || model === 'gemini3') {
-                document.getElementById('textFields').classList.remove('hidden');
-                document.getElementById('templateNameText').textContent = model === 'gpt5' ? "Marketing Copy Formula" : "Deep Analytical Breakdown Map";
-            } else if (model === 'sd35') {
-                document.getElementById('imageFields').classList.remove('hidden');
-                document.getElementById('templateNameText').textContent = "Cinematic Image Generation Matrix";
-            } else if (model === 'banana') {
-                document.getElementById('bananaFields').classList.remove('hidden');
-                document.getElementById('templateNameText').textContent = "Micro-Latency Quick Actions";
+            if (type === 'marketing') {
+                textInputs.classList.remove('hidden');
+                imageInputs.classList.add('hidden');
+                modelSelect.value = 'gpt5';
+                badge.textContent = "📝 Smart Form: Marketing Copy";
+            } else if (type === 'advice') {
+                textInputs.classList.remove('hidden');
+                imageInputs.classList.add('hidden');
+                modelSelect.value = 'gemini';
+                badge.textContent = "💬 Smart Form: Strategic Advisor";
+            } else if (type === 'ideas') {
+                textInputs.classList.remove('hidden');
+                imageInputs.classList.add('hidden');
+                modelSelect.value = 'gpt5';
+                badge.textContent = "✨ Smart Form: Ideation Matrix";
+            } else if (type === 'summary') {
+                textInputs.classList.remove('hidden');
+                imageInputs.classList.add('hidden');
+                modelSelect.value = 'banana';
+                badge.textContent = "📄 Smart Form: Intelligent Summary";
             }
 
-            resetSandbox();
-            updatePrompt();
+            liveCompilePrompt();
+            document.getElementById('outputWorkspace').classList.add('hidden');
         }
 
-        function toggleInputMode(mode) {
-            alert(`UX Demonstration:\nSwitching to "${mode === 'text' ? 'Standard text input' : 'Smart form template'}" would reload the console view. For this test assignment, Smart Form Template mode is active to show variables functionality.`);
+        function onModelChange() {
+            const model = document.getElementById('modelSelect').value;
+            if (model === 'sd35') {
+                currentActiveTemplate = 'sd35';
+                document.getElementById('standardInputView').classList.add('hidden');
+                document.getElementById('smartFormView').classList.remove('hidden');
+                document.getElementById('liveCompilerBox').classList.remove('hidden');
+                document.getElementById('textFormInputs').classList.add('hidden');
+                document.getElementById('imageFormInputs').classList.remove('hidden');
+                document.getElementById('activeFormBadge').textContent = "🖼️ Smart Form: Image Generation";
+                liveCompilePrompt();
+            } else if (document.getElementById('smartFormView').classList.contains('hidden')) {
+                // Если мы в стандартном текстовом режиме — ничего не делаем
+            } else {
+                // Возвращаем дефолтную текстовую форму при переключении обратно на текст
+                activateSmartForm('marketing');
+            }
         }
 
-        function resetSandbox() {
-            document.getElementById('outputPlaceholder').classList.remove('hidden');
-            document.getElementById('outputLoader').classList.add('hidden');
-            document.getElementById('outputTextResult').classList.add('hidden');
-            document.getElementById('outputImageResult').classList.add('hidden');
-            document.getElementById('generationTime').textContent = "Ready to process";
-        }
-
-        function runSimulation() {
-            const model = document.getElementById('modelSelector').value;
+        function switchToStandardMode() {
+            document.getElementById('standardInputView').classList.remove('hidden');
+            document.getElementById('smartFormView').classList.add('hidden');
+            document.getElementById('liveCompilerBox').classList.add('hidden');
+            document.getElementById('outputWorkspace').classList.add('hidden');
             
-            document.getElementById('outputPlaceholder').classList.add('hidden');
-            document.getElementById('outputTextResult').classList.add('hidden');
-            document.getElementById('outputImageResult').classList.add('hidden');
-            
-            const loader = document.getElementById('outputLoader');
-            const loaderText = document.getElementById('loaderText');
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.className = "w-8 h-8 rounded-full bg-slate-100 text-slate-300 flex items-center justify-center transition cursor-pointer font-bold text-sm";
+        }
+
+        function executePromptPipeline() {
+            const outputBox = document.getElementById('outputWorkspace');
+            const loader = document.getElementById('aiLoader');
+            const textOut = document.getElementById('aiTextOutput');
+            const imgOut = document.getElementById('aiImageOutput');
+            const timer = document.getElementById('latencyTimer');
+
+            outputBox.classList.remove('hidden');
             loader.classList.remove('hidden');
-            
-            let modelLabel = document.getElementById('modelSelector').options[document.getElementById('modelSelector').selectedIndex].text;
-            loaderText.textContent = `Streaming input vectors to ${modelLabel}...`;
-            document.getElementById('generationTime').textContent = "Computing pipeline...";
+            textOut.classList.add('hidden');
+            imgOut.classList.add('hidden');
+            timer.textContent = "Computing cluster inference...";
 
             setTimeout(() => {
                 loader.classList.add('hidden');
                 
-                if (model === 'sd35') {
-                    document.getElementById('outputImageResult').classList.remove('hidden');
-                    const img = document.getElementById('generatedImage');
-                    // Выбор случайной абстрактной картинки для симуляции стабильного вывода
-                    img.src = imageAssets[Math.floor(Math.random() * imageAssets.length)];
-                    img.onload = () => img.classList.remove('opacity-0');
-                    document.getElementById('generationTime').textContent = "Latency: 1.42s (Turbo)";
+                if (currentActiveTemplate === 'sd35') {
+                    imgOut.classList.remove('hidden');
+                    document.getElementById('generatedImgNode').src = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80";
+                    timer.textContent = "Latency: 1.64s | Core: Stable Diffusion 3.5 Turbo";
                 } else {
-                    const textContainer = document.getElementById('outputTextResult');
-                    textContainer.classList.remove('hidden');
-                    textContainer.innerHTML = simulatedOutputs[model] || simulatedOutputs['gpt5'];
-                    document.getElementById('generationTime').textContent = model === 'banana' ? "Latency: 0.18s (Ultra-fast)" : "Latency: 0.89s";
+                    textOut.classList.remove('hidden');
+                    if (currentActiveTemplate === 'marketing') {
+                        textOut.innerHTML = `<p class="font-semibold text-slate-900 text-base">🎯 Optimized Marketing Strategy for ${document.getElementById('paramProduct').value}</p><p>We have successfully established a structured copywriting framework tailored precisely for <strong>${document.getElementById('paramAudience').value}</strong>.</p><p><strong>Core Leverage Point:</strong> By isolating user friction and instantly deploying the mechanism to <em>"${document.getElementById('paramGoal').value}"</em>, the onboarding click-through probability expands by up to 22.4%.</p>`;
+                        timer.textContent = "Latency: 0.84s | Core: ChatGPT 5.4";
+                    } else {
+                        textOut.innerHTML = `<p>⚡ <strong>Quick Actions Generation Framework:</strong> Parameter vectors processed successfully. The system has stabilized the generation loop targeting <em>${document.getElementById('paramAudience').value}</em> criteria values.</p>`;
+                        timer.textContent = "Latency: 0.22s | Core: nano banana";
+                    }
                 }
-            }, 1500);
+            }, 1200);
         }
-
-        // Стартовая инициализация
-        window.onload = () => { updatePrompt(); };
     </script>
 </body>
 </html>
