@@ -46,7 +46,7 @@
             <div class="app_view" id="app_view">
                 <div class="flex min-h-screen flex-col bg-surface-primary">
                     
-                    <!-- MASTER NAVBAR HEADER (WITH TOKENS) -->
+                    <!-- MASTER NAVBAR HEADER (CLEANED) -->
                     <header id="app-main-header" class="sticky top-0 z-50 w-full border-b border-border-primary bg-surface-primary">
                         <div class="max-w-5xl mx-auto flex h-16 items-center justify-between px-6">
                             <div class="flex items-center justify-between gap-6">
@@ -80,12 +80,6 @@
                             </div>
                             
                             <div class="flex items-center gap-x-0 max-desktop:gap-x-4 desktop:gap-x-2">
-                                <!-- TOKENS COUNTER BADGE -->
-                                <div class="flex select-none items-center justify-center border-2 border-border-primary bg-indigo-50 text-indigo-700 gap-x-1 px-2 py-1 tablet:rounded-[40px] tablet:pl-3 tablet:pr-4 h-[25px] tablet:h-[30px]" title="AI Tokens">
-                                    <span class="text-xs">⚡️</span>
-                                    <p class="shrink-0 font-bold text-sm"><span id="header-token-counter">15</span></p>
-                                </div>
-                                <!-- STREAK BADGE -->
                                 <div onclick="switchView('streak')" class="flex select-none items-center justify-center border-2 border-border-primary bg-surface-secondary gap-x-[5px] px-2 py-1 tablet:rounded-[40px] tablet:pl-3 tablet:pr-4 h-[25px] tablet:h-[30px] cursor-pointer">
                                     <span class="text-xs">🔥</span>
                                     <p class="shrink-0 font-semibold text-base"><span id="header-global-streak-counter-node">1</span></p>
@@ -144,7 +138,7 @@
                                     <div class="text-center"><div class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary"></div><p class="mt-1 text-xs text-text-secondary">Sun</p></div>
                                 </div>
                                 <div class="mt-4 border-t border-slate-100 pt-3 flex items-center justify-between text-xs font-medium text-amber-600">
-                                    <span id="homeDashboardDisclaimerStatusTextLabel" class="animate-pulse">⚠️ Theory complete. Try building a prompt today!</span>
+                                    <span id="homeDashboardDisclaimerStatusTextLabel" class="animate-pulse">⚠️ Theory complete. Practice with AI to secure your streak!</span>
                                     <button onclick="switchView('streak')" class="text-text-action-info font-bold cursor-pointer hover:underline">Open Calendar ➔</button>
                                 </div>
                             </div>
@@ -179,20 +173,24 @@
                             <div class="flex flex-col gap-y-[22px] rounded-lg border border-border-primary p-4">
                                 <div class="flex w-full justify-between">
                                     <h2 class="text-lg font-semibold">Streak Challenge</h2>
-                                    <p id="streakCalendarPageChallengeTimelineStatusText" class="text-sm text-indigo-600 font-bold">Day 1 of 3 (Unlock +5 Tokens! 🎁)</p>
+                                    <p id="streakCalendarPageChallengeTimelineStatusText" class="text-sm text-text-secondary">Day 1 of 3 (Theory Complete)</p>
                                 </div>
                                 <div class="relative h-[10px] w-full rounded-full bg-border-primary"><div id="streakCalendarPageProgressBarFillWidthField" class="absolute left-0 top-0 h-full rounded-full bg-surface-action transition-all duration-500" style="width: 33%;"></div></div>
                             </div>
 
+                            <!-- UPDATED STREAK CARD (FREEDOM OF CHOICE) -->
                             <div class="w-full rounded-xl border border-amber-200 bg-amber-50/20 p-4">
                                 <div class="flex flex-col gap-y-3">
-                                    <p class="text-sm font-bold text-slate-800">📋 Today's Habit Verification Strategy:</p>
+                                    <p class="text-sm font-bold text-slate-800">📋 Today's Habit Target:</p>
                                     <div class="text-xs text-slate-600 space-y-1.5 font-medium">
-                                        <p class="text-emerald-600 font-semibold">✓ Step 1: Learn daily AI theory (Free)</p>
-                                        <p id="streak-page-tools-task-row" class="text-amber-600 font-semibold">● Step 2: Create a prompt in Builder (Free) — Pending</p>
-                                        <p id="streak-page-bonus-task-row" class="text-slate-400 font-medium">○ Step 3: Run your prompt in AI Tools (-1 Token)</p>
+                                        <p class="text-emerald-600 font-semibold">✓ Step 1: Read daily AI theory — Completed</p>
+                                        <p id="streak-page-tools-task-row" class="text-amber-600 font-semibold">● Step 2: Practice with AI — Pending</p>
+                                        <p class="text-slate-500 mt-1 pl-4 text-[11px] leading-relaxed">Choose your path: Run a prompt directly in AI Tools OR use the Prompt Builder to create a new template.</p>
                                     </div>
-                                    <button id="streakCalendarPageRedirectCallActionBtn" onclick="switchView('builder-page')" class="w-full bg-[#5653FE] text-white text-xs font-semibold py-2.5 rounded-xl transition cursor-pointer text-center shadow-sm hover:bg-[#4340E6]">Build a Prompt for Free ➔</button>
+                                    <div class="flex flex-col gap-2 mt-2">
+                                        <button id="streakCalendarPageRedirectCallActionBtn" onclick="switchView('tools')" class="w-full bg-[#5653FE] text-white text-xs font-semibold py-2.5 rounded-xl transition cursor-pointer text-center shadow-sm hover:bg-[#4340E6]">Open AI Tools ➔</button>
+                                        <button onclick="switchView('builder-page')" class="w-full bg-slate-50 text-slate-600 border border-slate-200 text-xs font-semibold py-2.5 rounded-xl transition cursor-pointer text-center hover:bg-slate-100">Use Prompt Builder instead</button>
+                                    </div>
                                 </div>
                             </div>
 
@@ -208,7 +206,7 @@
                                         <span id="calendar-day-4-text" class="z-10 text-slate-800 font-bold">4</span>
                                     </div>
                                     <div class="flex aspect-square items-center justify-center rounded-full bg-surface-secondary text-text-secondary">5</div>
-                                    <div class="flex aspect-square items-center justify-center rounded-full bg-amber-50 border border-amber-200 text-amber-500 text-lg shadow-sm" title="Reward Day!">🎁</div>
+                                    <div class="flex aspect-square items-center justify-center rounded-full bg-surface-secondary text-text-secondary">6</div>
                                     <div class="flex aspect-square items-center justify-center rounded-full bg-surface-secondary text-text-secondary">7</div>
                                 </div>
                             </div>
@@ -252,7 +250,9 @@
                                 <button onclick="toggleLibraryTray()" class="flex items-center gap-x-1.5 bg-indigo-50 border border-indigo-200 text-indigo-600 px-3.5 py-1.5 text-xs font-semibold rounded-full transition shadow-sm cursor-pointer hover:bg-indigo-100/50">
                                     <span>📁</span> <span>Saved prompts</span>
                                 </button>
-                                <button onclick="switchView('builder-page')" class="text-[11px] text-slate-400 font-medium hover:text-slate-600 transition ml-3 cursor-pointer">Need advanced prompt?</button>
+                                <button onclick="switchView('builder-page')" class="text-[11px] text-slate-400 font-medium hover:text-slate-600 transition ml-3 flex items-center gap-1 cursor-pointer">
+                                    💡 <span>Not sure what to ask? Try the Prompt Builder</span>
+                                </button>
                             </div>
 
                             <div id="toolsSavedLibraryTrayContainerBoxPanel" class="w-full px-6 mb-4 hidden">
@@ -269,15 +269,13 @@
                                             <p class="font-bold text-emerald-700 mb-0.5">✓ Inference Complete</p>
                                             <p class="mb-0 text-emerald-600">Your AI response was successfully generated.</p>
                                         </div>
-                                        <span class="bg-white border border-emerald-200 text-emerald-700 font-bold px-2 py-1 rounded text-[10px]">-1 ⚡️ Token</span>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- PRESET CHIP PILLS -->
                             <div class="mx-auto mt-4 flex max-w-[600px] flex-wrap justify-center gap-2">
                                 <button onclick="injectSuggestionStringIntoInput('Create a visually premium cinematic vector illustration grid blueprint asset')" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M11.3333 2H4.66667C3.2 2 2 3.2 2 4.66667V11.3333C2 11.8 2.13333 12.2 2.33333 12.6C3.06667 11.2667 3.8 9.8 4.46667 8.6C4.86667 7.8 6.06667 7.93333 6.33333 8.8L7.2 12C7.86667 11.0667 8.93333 10.6 10 10.6C10.7333 10.6 11.4667 10.8 12.1333 11.2667L13.7333 12.4667C13.9333 12.1333 14 11.7333 14 11.2667V4.66667C14 3.2 12.8 2 11.3333 2ZM10 7.33333C9.26667 7.33333 8.66667 6.73333 8.66667 6C8.66667 5.26667 9.26667 4.66667 10 4.66667C10.7333 4.66667 11.3333 5.26667 11.3333 6C11.3333 6.73333 10.7333 7.33333 10 7.33333ZM13.7333 12.5333C13.3333 13.4 12.4 14 11.3333 14H4.66667C3.66667 14 2.8 13.4667 2.33333 12.6C3.06667 11.2667 3.8 9.8 4.46667 8.6C4.86667 7.8 6.06667 7.93333 6.33333 8.8L7.2 12C7.86667 11.0667 8.93333 10.6 10 10.6C10.7333 10.6 11.4667 10.8 12.1333 11.2667L13.7333 12.5333ZM11.3333 6C11.3333 6.73333 10.7333 7.33333 10 7.33333C9.26667 7.33333 8.66667 6.73333 8.66667 6C8.66667 5.26667 9.26667 4.66667 10 4.66667C10.7333 4.66667 11.3333 5.26667 11.3333 6Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Create an image</button>
-                                <button onclick="injectSuggestionStringIntoInput('Give strategic growth advisory modeling to optimize platform activation and retention loops metrics')" id="bubble-for-onboarding" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.26667 11.6667C2.46667 10.6667 2 9.4 2 8C2 4.66667 4.66667 2 8 2C11.3333 2 14 4.66667 14 8C14 11.3333 11.3333 14 8 14C7.4 14 6.8 13.9333 6.26667 13.7333C5.93333 13.6667 5.6 13.5333 5.33333 13.3333" stroke="#5653FE" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M2 13.9999C2.16327 13.9999 2.32653 13.9999 2.4898 13.9999C3.30612 13.9999 4.01361 13.7999 4.66667 13.3333" stroke="#5653FE" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3.33333 12C3.26316 12.8 2.70175 13.4857 2 14" stroke="#5653FE" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 7H6M8 9.66667H6" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Give advice</button>
+                                <button onclick="injectSuggestionStringIntoInput('Give strategic growth advisory modeling to optimize platform activation and retention loops metrics')" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.26667 11.6667C2.46667 10.6667 2 9.4 2 8C2 4.66667 4.66667 2 8 2C11.3333 2 14 4.66667 14 8C14 11.3333 11.3333 14 8 14C7.4 14 6.8 13.9333 6.26667 13.7333C5.93333 13.6667 5.6 13.5333 5.33333 13.3333" stroke="#5653FE" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M2 13.9999C2.16327 13.9999 2.32653 13.9999 2.4898 13.9999C3.30612 13.9999 4.01361 13.7999 4.66667 13.3333" stroke="#5653FE" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3.33333 12C3.26316 12.8 2.70175 13.4857 2 14" stroke="#5653FE" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 7H6M8 9.66667H6" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Give advice</button>
                                 <button onclick="injectSuggestionStringIntoInput('Brainstorm five unique product retention features targeting high-income software skill adoption loops')" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M5.28299 5.37622L2.2845 6.46128C1.84968 6.61862 1.84968 7.23356 2.28449 7.39091L5.28299 8.47597C5.55899 8.57584 5.77634 8.7932 5.87622 9.0692L6.96128 12.0677C7.11862 12.5025 7.73356 12.5025 7.89091 12.0677L8.97597 9.0692C9.07584 8.7932 9.2932 5.27634L8.97597 4.78299L7.89091 1.7845C7.73356 1.34968 7.11862 1.34968 6.96128 1.78449L5.87622 4.78299C5.77634 5.05899 5.55899 5.27634 5.28299 5.37622Z" stroke="#5653FE" stroke-width="1.5"></path><path d="M12.6386 13.9965L12.7918 14.6788C12.834 14.8668 13.0009 15.0003 13.1935 15.0003C13.3862 15.0003 13.5531 14.8668 13.5952 14.6788L13.7484 13.9965C13.8322 13.6235 14.1235 13.3322 14.4965 13.2484L15.1788 13.0952C15.3667 13.0531 15.5003 12.8862 15.5003 12.6935C15.5003 12.5009 15.3667 12.334 15.1788 12.2918L14.4965 12.1386C14.1235 12.0549 13.8322 11.7636 13.7484 11.3906L13.5952 10.7083C13.5531 10.5203 13.3862 10.3867 13.1935 10.3867C13.0009 10.3867 12.834 10.5203 12.7918 10.7083L12.6386 11.3906L12.5549 11.7636 12.2636 12.0549 11.8906 12.1386L11.2083 12.2918C11.0203 12.334 10.8867 12.5009 10.8867 12.6935C10.8867 12.8862 11.0203 13.0531 11.2083 13.0953L11.8906 13.2484C12.2636 13.3322 12.5549 13.6235 12.6386 13.9965Z" fill="#5653FE"></path></svg>Generate ideas</button>
                                 <button onclick="injectSuggestionStringIntoInput('Deconstruct the primary structural context properties inside long analytical documentation payload configurations data summaries')" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 4.66667L14 11.3333C14 12.8 12.8 14 11.3333 14L4.66667 14C3.2 14 2 12.8 2 11.3333L2 4.66667C2 3.2 3.2 2 4.66667 2L11.3333 2C12.8 2 14 3.2 14 4.66667Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7.33317 5L4.6665 5" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8.6665 11L4.6665 11" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M11.3332 8L4.6665 8" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summarize text</button>
                                 <button onclick="injectSuggestionStringIntoInput('Analyze this raw multi-variant user cohort metric sheet logs to optimize active workspace churn barriers')" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 14L10 10M11.3333 6.66667C11.3333 9.26667 9.26667 11.3333 6.66667 11.3333C4.06667 11.3333 2 9.26667 2 6.66667C2 4.06667 4.06667 2 6.66667 2C9.26667 2 11.3333 4.06667 11.3333 6.66667Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Analyze this data</button>
@@ -447,7 +445,6 @@
     <!-- JAVASCRIPT CONTROLLER -->
     <script>
         let isEcosystemActiveStreakSecure = false;
-        let tokenCount = 15;
         
         let selectedFormat = 'Email';
         let selectedTone = 'Professional';
@@ -568,38 +565,15 @@
                 globalSavedPromptsLibraryMap.unshift({ title: structuralPresetRecordKey, body: outputPayload });
             }
 
-            // FREE ACTION: Secure the streak!
+            const fractionNode = document.getElementById('practice-fraction-id-node');
+            if (fractionNode) fractionNode.textContent = "2/3";
+            const barNode = document.getElementById('practice-status-fill-bar-element');
+            if (barNode) barNode.style.width = "66.6666%";
+            const discNode = document.getElementById('practice-disclaimer-id-node');
+            if (discNode) discNode.textContent = "Complete 1 more practice to reach Curious Builder";
+            
             isEcosystemActiveStreakSecure = true;
-            
-            // Sync all visual UI changes
-            document.getElementById('practice-fraction-id-node').textContent = "2/3";
-            document.getElementById('practice-status-fill-bar-element').style.width = "66.6666%";
-            document.getElementById('practice-disclaimer-id-node').textContent = "Complete 1 more practice to reach Curious Builder";
-            
-            document.getElementById('header-global-streak-counter-node').textContent = "2";
-            document.getElementById('homePageClaudePctValueCounter').textContent = "12%";
-            document.getElementById('streakCalendarPageChallengeTimelineStatusText').innerHTML = "Day 2 of 3 <span class='text-emerald-600 font-bold'>(Streak Secured! 🎉)</span>";
-            document.getElementById('streakCalendarPageProgressBarFillWidthField').style.width = "66%";
-            
-            const taskRowTextNode = document.getElementById('streak-page-tools-task-row');
-            taskRowTextNode.className = "text-emerald-600 font-semibold";
-            taskRowTextNode.innerHTML = "✓ Step 2: Create a prompt in Builder (Free) — Completed";
-
-            document.getElementById('streak-page-fire-icon').className = "text-4xl opacity-100 scale-110 duration-500 filter drop-shadow-md select-none";
-            document.getElementById('streak-days-label').innerHTML = "2 day streak! <span class='text-orange-500 font-bold ml-1'>🔥</span>";
-
-            const targetPageStreakCounters = document.getElementsByClassName('streak-page-numeric-counter');
-            for(let i = 0; i < targetPageStreakCounters.length; i++) {
-                targetPageStreakCounters[i].textContent = "2";
-            }
-
-            document.getElementById('homeDashboardDisclaimerStatusTextLabel').textContent = "✓ Builder complete. Streak secured!";
-            document.getElementById('homeDashboardDisclaimerStatusTextLabel').className = "text-emerald-600 font-semibold animate-none";
-
-            const homeMiniCircleCellElement = document.getElementById('homeDashboardMiniDayIndicatorSlot4');
-            homeMiniCircleCellElement.className = "w-8 h-8 rounded-full text-white flex items-center justify-center text-xs font-bold shadow-sm shadow-orange-500/10";
-            homeMiniCircleCellElement.style.background = "linear-gradient(0deg, #FF7008 0%, #FFAC5E 100%)";
-            homeMiniCircleCellElement.innerHTML = "✓";
+            propagateEcosystemStreakState();
 
             setTimeout(() => {
                 const outputBox = document.getElementById('builderPageSandboxOutputRowGrid');
@@ -611,41 +585,73 @@
             const arrow = document.getElementById('toolsInferenceSubmitArrowActionButton');
             if (arrow.hasAttribute('disabled')) return;
             
-            if (tokenCount > 0) {
-                tokenCount--;
-                document.getElementById('header-token-counter').textContent = tokenCount;
-                
-                // Show completion alert in Tools page
-                document.getElementById('toolsInferenceSuccessBoxAlert').classList.remove('hidden');
-                
-                // Strike through the bonus task in the calendar view
-                const bonusRow = document.getElementById('streak-page-bonus-task-row');
-                bonusRow.className = "text-emerald-600 font-semibold line-through opacity-70";
-                bonusRow.innerHTML = "✓ Step 3: Run your prompt in AI Tools (-1 Token)";
-                
-            } else {
-                alert("Out of tokens! Upgrade to PRO for unlimited access.");
+            document.getElementById('toolsInferenceSuccessBoxAlert').classList.remove('hidden');
+            
+            isEcosystemActiveStreakSecure = true;
+            propagateEcosystemStreakState();
+        }
+
+        function propagateEcosystemStreakState() {
+            if (!isEcosystemActiveStreakSecure) return;
+
+            document.getElementById('header-global-streak-counter-node').textContent = "2";
+            document.getElementById('homePageClaudePctValueCounter').textContent = "12%";
+            document.getElementById('streakCalendarPageChallengeTimelineStatusText').textContent = "Day 1 of 3 (Ecosystem Tasks Complete! 🎉)";
+            document.getElementById('streakCalendarPageProgressBarFillWidthField').style.width = "100%";
+            
+            const taskRowTextNode = document.getElementById('streak-page-tools-task-row');
+            taskRowTextNode.className = "flex items-center space-x-2 text-emerald-600 font-semibold";
+            taskRowTextNode.innerHTML = "<span>✓</span> <span>Step 2: Practice with AI — Completed</span>";
+
+            const redirectCtaButtonElementNode = document.getElementById('streakCalendarPageRedirectCallActionBtn');
+            if(redirectCtaButtonElementNode) {
+                redirectCtaButtonElementNode.className = "w-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold py-2.5 rounded-xl transition cursor-not-allowed text-center shadow-none";
+                redirectCtaButtonElementNode.textContent = "All daily targets accomplished successfully!";
+                redirectCtaButtonElementNode.disabled = true;
             }
+
+            document.getElementById('streak-page-fire-icon').className = "text-4xl opacity-100 scale-110 duration-500 filter drop-shadow-md select-none";
+            document.getElementById('streak-days-label').innerHTML = "day streak! <span class='text-orange-500 font-bold ml-1'>🔥 Secure</span>";
+
+            const targetPageStreakCounters = document.getElementsByClassName('streak-page-numeric-counter');
+            for(let i = 0; i < targetPageStreakCounters.length; i++) {
+                targetPageStreakCounters[i].textContent = "2";
+            }
+
+            const dayBoxNodeCell = document.getElementById('calendarEcosystemDaySlotBox4');
+            dayBoxNodeCell.className = "flex aspect-square items-center justify-center relative text-white rounded-full font-bold shadow-md shadow-orange-500/15";
+            dayBoxNodeCell.style.background = "linear-gradient(0deg, #FF7008 0%, #FFAC5E 100%)";
+            dayBoxNodeCell.innerHTML = "✓";
+            document.getElementById('starburstActiveNodeSvgIconElement').classList.add('hidden');
+
+            document.getElementById('homeDashboardDisclaimerStatusTextLabel').textContent = "✓ Workout complete. Streak secured!";
+            document.getElementById('homeDashboardDisclaimerStatusTextLabel').className = "text-emerald-600 font-semibold animate-none";
+
+            const homeMiniCircleCellElement = document.getElementById('homeDashboardMiniDayIndicatorSlot4');
+            homeMiniCircleCellElement.className = "w-8 h-8 rounded-full text-white flex items-center justify-center text-xs font-bold shadow-sm shadow-orange-500/10";
+            homeMiniCircleCellElement.style.background = "linear-gradient(0deg, #FF7008 0%, #FFAC5E 100%)";
+            homeMiniCircleCellElement.innerHTML = "✓";
         }
 
         function resetEcosystemState() {
             isEcosystemActiveStreakSecure = false;
-            tokenCount = 15;
 
-            document.getElementById('header-token-counter').textContent = tokenCount;
             document.getElementById('header-global-streak-counter-node').textContent = "1";
             document.getElementById('homePageClaudePctValueCounter').textContent = "4%";
 
-            document.getElementById('streakCalendarPageChallengeTimelineStatusText').innerHTML = "Day 1 of 3 <span class='text-indigo-600 font-bold'>(Unlock +5 Tokens! 🎁)</span>";
+            document.getElementById('streakCalendarPageChallengeTimelineStatusText').innerHTML = "Day 1 of 3 (Theory Complete)";
             document.getElementById('streakCalendarPageProgressBarFillWidthField').style.width = "33%";
             
             const taskRowTextNode = document.getElementById('streak-page-tools-task-row');
             taskRowTextNode.className = "text-amber-600 font-semibold";
-            taskRowTextNode.innerHTML = "● Step 2: Create a prompt in Builder (Free) — Pending";
-            
-            const bonusRow = document.getElementById('streak-page-bonus-task-row');
-            bonusRow.className = "text-slate-400 font-medium";
-            bonusRow.innerHTML = "○ Step 3: Run your prompt in AI Tools (-1 Token)";
+            taskRowTextNode.innerHTML = "● Step 2: Practice with AI — Pending";
+
+            const redirectCtaButtonElementNode = document.getElementById('streakCalendarPageRedirectCallActionBtn');
+            if(redirectCtaButtonElementNode) {
+                redirectCtaButtonElementNode.className = "w-full bg-[#5653FE] text-white text-xs font-semibold py-2.5 rounded-xl transition cursor-pointer text-center shadow-sm hover:bg-[#4340E6]";
+                redirectCtaButtonElementNode.textContent = "Open AI Tools ➔";
+                redirectCtaButtonElementNode.disabled = false;
+            }
 
             document.getElementById('streak-page-fire-icon').className = "text-4xl opacity-40 filter drop-shadow-sm select-none";
             document.getElementById('streak-days-label').innerHTML = "day streak!";
@@ -655,7 +661,7 @@
                 targetPageStreakCounters[i].textContent = "1";
             }
 
-            document.getElementById('homeDashboardDisclaimerStatusTextLabel').textContent = "⚠️ Theory complete. Try building a prompt today!";
+            document.getElementById('homeDashboardDisclaimerStatusTextLabel').textContent = "⚠️ Theory complete. Practice with AI to secure your streak!";
             document.getElementById('homeDashboardDisclaimerStatusTextLabel').className = "text-amber-600 animate-pulse";
 
             const homeMiniCircleCellElement = document.getElementById('homeDashboardMiniDayIndicatorSlot4');
