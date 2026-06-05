@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coursiv - Integrated Workspace</title>
+    <title>Coursiv - Integrated Workspace Matrix</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- Google Fonts -->
@@ -36,7 +36,6 @@
         .text-text-action-info { color: var(--text-action-info); }
         .bg-surface-action { background-color: var(--surface-action); }
         .fill-icon-primary { fill: #48484A; }
-        .main-input-box { box-shadow: 0 8px 30px rgba(0, 0, 0, 0.02); }
         .card-effect { transition: all 0.2s ease-in-out; cursor: pointer; }
         .card-effect:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.01); }
     </style>
@@ -123,27 +122,35 @@
                                 </div>
                             </div>
 
-                            <div onclick="switchView('streak')" class="card-effect flex rounded-2xl border p-6 border-border-primary bg-surface-primary min-w-[380px] flex-col" role="button">
+                            <div class="card-effect flex rounded-2xl border p-6 border-border-primary bg-surface-primary min-w-[380px] flex-col">
                                 <p class="mb-1 text-sm font-semibold uppercase text-text-action-info">Weekly streaks</p>
                                 <p class="text-xl font-bold text-text-primary mb-3">Help you build learning habit</p>
-                                <div class="flex w-full justify-between my-auto">
+                                <div onclick="switchView('streak')" role="button" class="flex w-full justify-between my-auto">
                                     <div class="text-center">
                                         <div class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs font-bold">✓</div>
                                         <p class="mt-1 text-xs text-text-secondary">Thu</p>
                                     </div>
                                     <div class="text-center">
-                                        <div id="homeDashboardMiniDay4FieldElement" class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary flex items-center justify-center text-xs font-semibold text-slate-400">4</div>
+                                        <div id="homeDashboardMiniDayIndicatorSlot4" class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary flex items-center justify-center text-xs font-semibold text-slate-400">4</div>
                                         <p class="mt-1 text-xs text-text-primary">Fri</p>
                                     </div>
                                     <div class="text-center"><div class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary"></div><p class="mt-1 text-xs text-text-secondary">Sat</p></div>
                                     <div class="text-center"><div class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary"></div><p class="mt-1 text-xs text-text-secondary">Sun</p></div>
                                 </div>
                                 <div class="mt-4 border-t border-slate-100 pt-3 flex items-center justify-between text-xs font-medium text-amber-600">
-                                    <span id="homeDashboardStreakDisclaimerBadgeTextNode" class="animate-pulse">⚠️ Theory complete. Tool generation pending today!</span>
-                                    <span class="text-text-action-info font-bold">Open Calendar ➔</span>
+                                    <span id="homeDashboardDisclaimerStatusTextLabel" class="animate-pulse">⚠️ Theory complete. Tool generation pending today!</span>
+                                    <button onclick="switchView('streak')" class="text-text-action-info font-bold cursor-pointer hover:underline">Open Calendar ➔</button>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- 🔄 Reset Prototype Button -->
+                        <div class="w-full flex justify-end mt-4">
+                            <button onclick="resetEcosystemState()" class="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-600 px-4 py-2 rounded-xl text-xs font-bold transition shadow-sm cursor-pointer">
+                                <span>🔄</span> Reset Prototype State
+                            </button>
+                        </div>
+
                     </main>
 
                     <!-- VIEW 2: STREAK CALENDAR DETAILS PAGE -->
@@ -158,9 +165,9 @@
                             <div class="relative flex justify-between overflow-hidden rounded-lg border border-border-primary px-6 py-4" style="background-color: rgba(255, 116, 13, 0.07);">
                                 <div class="mt-1 w-1/2">
                                     <svg class="select-none" height="72" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="streakPageGradMatrix" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#FFAC5E"></stop><stop offset="100%" stop-color="#FF7008"></stop></linearGradient></defs><text x="2%" y="50%" text-anchor="start" dominant-baseline="middle" fill="url(#streakPageGradMatrix)" stroke="url(#streakPageGradMatrix)" stroke-width="14" stroke-linejoin="round" class="streak-page-numeric-counter text-6xl font-bold" letter-spacing="9">1</text><text x="2%" y="50%" text-anchor="start" dominant-baseline="middle" fill="white" stroke="none" class="streak-page-numeric-counter text-6xl font-bold" letter-spacing="9">1</text></svg>
-                                    <p id="streakPageMainDaysCountFieldLabel" class="text-lg font-semibold text-text-primary">day streak!</p>
+                                    <p id="streak-days-label" class="text-lg font-semibold text-text-primary">day streak!</p>
                                 </div>
-                                <div class="z-10 flex items-center justify-end"><span id="streakCalendarPageFireVectorAnimationIcon" class="text-4xl opacity-40 filter drop-shadow-sm select-none">🔥</span></div>
+                                <div class="z-10 flex items-center justify-end"><span id="streak-page-fire-icon" class="text-4xl opacity-40 filter drop-shadow-sm select-none">🔥</span></div>
                             </div>
 
                             <div class="flex flex-col gap-y-[22px] rounded-lg border border-border-primary p-4">
@@ -191,7 +198,7 @@
                                     <div class="flex aspect-square items-center justify-center rounded-full bg-surface-secondary text-text-secondary">3</div>
                                     <div id="calendarEcosystemDaySlotBox4" class="flex aspect-square items-center justify-center relative bg-surface-information text-text-secondary rounded-full p-[1px]">
                                         <svg id="starburstActiveNodeSvgIconElement" width="40" height="40" viewBox="0 0 40 40" fill="#5653FE" class="absolute left-0 top-0 h-full w-full fill-surface-action opacity-20"><path d="M18.5597 1.49496C19.3463 0.678479 20.6537 0.678479 21.4403 1.49496L23.3569 3.48429C23.8712 4.01807 24.6385 4.22367 25.3507 4.01853L28.0052 3.25402C29.0947 2.94024 30.2269 3.59391 30.4999 4.69432L31.165 7.37542C31.3435 8.09482 31.9052 8.65652 32.6246 8.835L35.3057 9.50014C36.4061 9.77314 37.0598 10.9053 36.746 11.9948L35.9815 14.6493C35.7763 15.3615 35.9819 16.1288 36.5157 16.6431L38.505 18.5597C39.3215 19.3463 39.3215 20.6537 38.505 21.4403L36.5157 23.3569C35.9819 23.8712 35.7763 24.6385 35.9815 25.3507L36.746 28.0052C37.0598 29.0947 36.4061 30.2269 35.3057 30.4999L32.6246 31.165C31.9052 31.3435 31.3435 31.9052 31.165 32.6246L30.4999 35.3057C30.2269 36.4061 29.0947 37.0598 28.0052 36.746L25.3507 35.9815C24.6385 35.7763 23.8712 35.9819 23.3569 36.5157L21.4403 38.505C20.6537 39.3215 19.3463 39.3215 18.5597 38.505L16.6431 36.5157C16.1288 35.9819 15.3616 35.7763 14.6493 35.9815L11.9948 36.746C10.9053 37.0598 9.77314 36.4061 9.50014 35.3057L8.835 32.6246C8.65652 31.9052 8.09482 31.3435 7.37542 31.165L4.69432 30.4999C3.59391 30.2269 2.94024 29.0947 3.25402 28.0052L4.01853 25.3507C4.22367 24.6385 4.01807 23.8712 3.48429 23.3569L1.49496 21.4403C0.678479 20.6537 0.678479 19.3463 1.49496 18.5597L3.48429 16.6431C4.01807 16.1288 4.22367 15.3616 4.01853 14.6493L3.25402 11.9948C2.94024 10.9053 3.59391 9.77314 4.69432 9.50014L7.37542 8.835C8.09482 8.65652 8.65652 8.09482 8.835 7.37542L9.50014 4.69443C9.77314 3.59391 10.9053 2.94024 11.9948 3.25402L14.6493 4.01853C15.3616 4.22367 16.1288 4.01807 16.6431 3.48429L18.5597 1.49496Z"></path></svg>
-                                        <span class="z-10 text-slate-800 font-bold">4</span>
+                                        <span id="calendar-day-4-text" class="z-10 text-slate-800 font-bold">4</span>
                                     </div>
                                     <div class="flex aspect-square items-center justify-center rounded-full bg-surface-secondary text-text-secondary">5</div>
                                     <div class="flex aspect-square items-center justify-center rounded-full bg-surface-secondary text-text-secondary">6</div>
@@ -201,21 +208,21 @@
                         </div>
                     </div>
 
-                    <!-- VIEW 3: AI TOOLS APP INTERFACE WITH SYNC LIBRARY INTRUSION MECHANIC -->
-                    <section id="view-tools" class="hidden mx-auto w-full flex-1 pt-[100px]">
+                    <!-- VIEW 3: AI TOOLS APP INTERFACE -->
+                    <section id="view-tools" class="hidden mx-auto w-full flex-1 pt-8 max-w-[700px]">
                         <div class="flex h-full flex-col items-center bg-surface-primary max-tablet:mb-16">
                             
                             <h2 class="mx-auto mb-4 h-auto select-none text-center text-lg font-semibold tablet:mb-10 tablet:text-xl">
                                 <span>What can I help with?</span>
                             </h2>
                             
-                            <form class="relative mx-auto w-full max-w-[700px] max-tablet:px-6 cursor-text mb-4" onsubmit="event.preventDefault();">
+                            <form class="relative mx-auto w-full max-tablet:px-6 cursor-text mb-4" id="ai-tools-chat-form" onsubmit="event.preventDefault();">
                                 <div class="relative w-full">
                                     <div class="w-full overflow-hidden border focus-within:border-border-action border-border-primary bg-surface-primary px-2.5 py-[14px] rounded-[16px] transition-colors">
                                         <textarea id="toolsMainInputTextareaContainerBlock" oninput="handleToolsInputValidation()" placeholder="Ask anything" class="w-full resize-none bg-surface-primary px-1.5 outline-none disabled:bg-surface-primary" style="height: 96px !important;"></textarea>
                                         <section class="flex items-center justify-between gap-1">
                                             <div class="flex min-w-0 flex-1 items-center gap-1">
-                                                <button type="button" class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all duration-200 active:scale-95 hover:text-icon-action text-icon-primary">
+                                                <button type="button" class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all duration-200 active:scale-95 hover:text-icon-action text-icon-primary disabled:opacity-50" id="radix-2">
                                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                                                 </button>
                                             </div>
@@ -234,21 +241,21 @@
                                 </div>
                             </form>
 
-                            <div class="w-full max-w-[700px] px-6 mb-3 flex justify-start">
+                            <div class="w-full px-6 mb-3 flex justify-start">
                                 <button onclick="toggleLibraryTray()" class="flex items-center gap-x-1.5 bg-indigo-50 border border-indigo-200 text-indigo-600 px-3.5 py-1.5 text-xs font-semibold rounded-full transition shadow-sm cursor-pointer hover:bg-indigo-100/50">
                                     <span>📁</span> <span>Saved prompts</span>
                                 </button>
                                 <button onclick="switchView('builder-page')" class="text-[11px] text-slate-400 font-medium hover:text-slate-600 transition ml-3 cursor-pointer">Need advanced prompt?</button>
                             </div>
 
-                            <div id="toolsSavedLibraryTrayContainerBoxPanel" class="w-full max-w-[700px] px-6 mb-4 hidden">
+                            <div id="toolsSavedLibraryTrayContainerBoxPanel" class="w-full px-6 mb-4 hidden">
                                 <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-3.5 space-y-2 max-h-40 overflow-y-auto w-full shadow-inner">
                                     <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Select saved prompt template parameter item:</p>
                                     <div id="toolsSavedLibraryGridContainerRowsNode" class="grid grid-cols-1 gap-1.5"></div>
                                 </div>
                             </div>
 
-                            <div id="toolsInferenceSuccessBoxAlert" class="w-full max-w-[700px] px-6 mb-4 hidden">
+                            <div id="toolsInferenceSuccessBoxAlert" class="w-full px-6 mb-4 hidden">
                                 <div class="w-full p-4 border border-emerald-100 rounded-xl bg-emerald-50/30 text-xs text-slate-600">
                                     <p class="font-bold text-emerald-600 mb-0.5">✓ Practical Verification Inference Stable</p>
                                     <p class="mb-0">Prompt metrics verified on model engine layers. Today's daily custom target is cleared and synced across your home streak counters!</p>
@@ -260,6 +267,8 @@
                                 <button onclick="injectSuggestionStringIntoInput('Create a visually premium cinematic vector illustration grid blueprint asset')" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M11.3333 2H4.66667C3.2 2 2 3.2 2 4.66667V11.3333C2 11.8 2.13333 12.2 2.33333 12.6C3.06667 11.2667 3.8 9.8 4.46667 8.6C4.86667 7.8 6.06667 7.93333 6.33333 8.8L7.2 12C7.86667 11.0667 8.93333 10.6 10 10.6C10.7333 10.6 11.4667 10.8 12.1333 11.2667L13.7333 12.4667C13.9333 12.1333 14 11.7333 14 11.2667V4.66667C14 3.2 12.8 2 11.3333 2ZM10 7.33333C9.26667 7.33333 8.66667 6.73333 8.66667 6C8.66667 5.26667 9.26667 4.66667 10 4.66667C10.7333 4.66667 11.3333 5.26667 11.3333 6C11.3333 6.73333 10.7333 7.33333 10 7.33333ZM13.7333 12.5333C13.3333 13.4 12.4 14 11.3333 14H4.66667C3.66667 14 2.8 13.4667 2.33333 12.6C3.06667 11.2667 3.8 9.8 4.46667 8.6C4.86667 7.8 6.06667 7.93333 6.33333 8.8L7.2 12C7.86667 11.0667 8.93333 10.6 10 10.6C10.7333 10.6 11.4667 10.8 12.1333 11.2667L13.7333 12.5333ZM11.3333 6C11.3333 6.73333 10.7333 7.33333 10 7.33333C9.26667 7.33333 8.66667 6.73333 8.66667 6C8.66667 5.26667 9.26667 4.66667 10 4.66667C10.7333 4.66667 11.3333 5.26667 11.3333 6Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Create an image</button>
                                 <button onclick="injectSuggestionStringIntoInput('Give strategic growth advisory modeling to optimize platform activation and retention loops metrics')" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.26667 11.6667C2.46667 10.6667 2 9.4 2 8C2 4.66667 4.66667 2 8 2C11.3333 2 14 4.66667 14 8C14 11.3333 11.3333 14 8 14C7.4 14 6.8 13.9333 6.26667 13.7333C5.93333 13.6667 5.6 13.5333 5.33333 13.3333" stroke="#5653FE" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M2 13.9999C2.16327 13.9999 2.32653 13.9999 2.4898 13.9999C3.30612 13.9999 4.01361 13.7999 4.66667 13.3333" stroke="#5653FE" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3.33333 12C3.26316 12.8 2.70175 13.4857 2 14" stroke="#5653FE" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 7H6M8 9.66667H6" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Give advice</button>
                                 <button onclick="injectSuggestionStringIntoInput('Brainstorm five unique product retention features targeting high-income software skill adoption loops')" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M5.28299 5.37622L2.2845 6.46128C1.84968 6.61862 1.84968 7.23356 2.28449 7.39091L5.28299 8.47597C5.55899 8.57584 5.77634 8.7932 5.87622 9.0692L6.96128 12.0677C7.11862 12.5025 7.73356 12.5025 7.89091 12.0677L8.97597 9.0692C9.07584 8.7932 9.2932 5.27634L8.97597 4.78299L7.89091 1.7845C7.73356 1.34968 7.11862 1.34968 6.96128 1.78449L5.87622 4.78299C5.77634 5.05899 5.55899 5.27634 5.28299 5.37622Z" stroke="#5653FE" stroke-width="1.5"></path><path d="M12.6386 13.9965L12.7918 14.6788C12.834 14.8668 13.0009 15.0003 13.1935 15.0003C13.3862 15.0003 13.5531 14.8668 13.5952 14.6788L13.7484 13.9965C13.8322 13.6235 14.1235 13.3322 14.4965 13.2484L15.1788 13.0952C15.3667 13.0531 15.5003 12.8862 15.5003 12.6935C15.5003 12.5009 15.3667 12.334 15.1788 12.2918L14.4965 12.1386C14.1235 12.0549 13.8322 11.7636 13.7484 11.3906L13.5952 10.7083C13.5531 10.5203 13.3862 10.3867 13.1935 10.3867C13.0009 10.3867 12.834 10.5203 12.7918 10.7083L12.6386 11.3906L12.5549 11.7636 12.2636 12.0549 11.8906 12.1386L11.2083 12.2918C11.0203 12.334 10.8867 12.5009 10.8867 12.6935C10.8867 12.8862 11.0203 13.0531 11.2083 13.0953L11.8906 13.2484C12.2636 13.3322 12.5549 13.6235 12.6386 13.9965Z" fill="#5653FE"></path></svg>Generate ideas</button>
+                                <button onclick="injectSuggestionStringIntoInput('Deconstruct the primary structural context properties inside long analytical documentation payload configurations data summaries')" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 4.66667L14 11.3333C14 12.8 12.8 14 11.3333 14L4.66667 14C3.2 14 2 12.8 2 11.3333L2 4.66667C2 3.2 3.2 2 4.66667 2L11.3333 2C12.8 2 14 3.2 14 4.66667Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7.33317 5L4.6665 5" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8.6665 11L4.6665 11" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M11.3332 8L4.6665 8" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summarize text</button>
+                                <button onclick="injectSuggestionStringIntoInput('Analyze this raw multi-variant user cohort metric sheet logs to optimize active workspace churn barriers')" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 14L10 10M11.3333 6.66667C11.3333 9.26667 9.26667 11.3333 6.66667 11.3333C4.06667 11.3333 2 9.26667 2 6.66667C2 4.06667 4.06667 2 6.66667 2C9.26667 2 11.3333 4.06667 11.3333 6.66667Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Analyze this data</button>
                             </div>
                         </div>
                     </section>
@@ -306,14 +315,13 @@
                                     </button>
 
                                     <div class="grid grid-cols-2 gap-3">
-                                        <!-- REAL TRIGGER: Opens the dedicated Prompt Builder screen -->
                                         <button onclick="switchView('builder-page')" type="button" class="flex w-full rounded-2xl border border-border-primary bg-surface-primary p-4 text-left flex-col gap-3 transition shadow-sm hover:border-indigo-400 hover:bg-indigo-50/20 cursor-pointer">
                                             <div class="flex size-12 shrink-0 items-center justify-center rounded-[14px] bg-surface-action-secondary">
                                                 <svg width="100%" height="100%" overflow="visible" viewBox="0 0 24 24" fill="none" class="size-6" style="display: block;"><path d="M5.74 11.26L2.8 8.32C2.39998 7.91943 2.39998 7.27057 2.8 6.87L5.87 3.8C6.27057 3.39998 6.91943 3.39998 7.32 3.8L9.26 5.74" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M18.26 14.74L20.2 16.68C20.6 17.0806 20.6 17.7294 20.2 18.13L17.13 21.2C16.7294 21.6 16.0806 21.6 15.68 21.2L12.74 18.26" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M11.7664 9.10207L4.14858 16.7199C3.5881 17.2791 3.36881 18.0949 3.57343 18.8598C3.77805 19.6246 4.37544 20.222 5.14027 20.4266C5.9051 20.4266 6.72098 20.4119 7.28017 19.8515L14.898 12.2337" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M11.7664 9.10207C11.3334 7.8336 11.4302 6.44412 12.035 5.24797C12.6397 4.05182 13.7013 3.15009 14.9795 2.74678C15.6206 2.53365 16.2994 2.45771 16.9717 2.52388C17.3494 2.57431 17.6653 2.83542 17.7861 3.19682C17.9068 3.55821 17.8111 3.9568 17.5396 4.22408L15.7354 6.02822C15.6416 6.12197 15.5889 6.24915 15.5889 6.38177C15.5889 6.51438 15.6416 6.64156 15.7354 6.73531L17.2647 8.26467C17.46 8.26467 17.7765 8.26467 17.9718 8.26467L19.7759 6.46053C20.0432 6.18897 20.4417 6.09332 20.8031 6.21401C21.1645 6.33471 21.4256 6.65068 21.4761 7.02834C21.5423 7.70069 21.4664 8.37945 21.2532 9.02053C20.8499 10.2988 19.9482 11.3603 18.7521 11.9651C17.5559 12.5698 16.1665 12.6667 14.898 12.2337" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                                             </div>
                                             <div class="flex flex-col gap-1">
                                                 <p class="font-bold text-indigo-600 text-sm leading-5 tracking-[-0.15px]">Prompt Builder</p>
-                                                <p class="font-normal text-text-secondary text-xs leading-[19.5px]">Describe task in plain words</p>
+                                                <p class="font-normal text-text-secondary text-xs leading-[19.5px]">Configure inputs & create custom prompts</p>
                                             </div>
                                         </button>
                                         
@@ -328,7 +336,7 @@
 
                                     <div class="grid grid-cols-2 gap-3">
                                         <button type="button" class="flex w-full rounded-2xl border border-border-primary bg-surface-primary p-4 text-left flex-col gap-3 opacity-50 cursor-not-allowed">
-                                            <div class="flex size-12 shrink-0 items-center justify-center rounded-[14px] bg-surface-action-secondary"><svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" viewBox="0 0 21.5018 20.5721" fill="none" class="size-6" style="display: block;"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.2768 1.04489C10.3206 0.956355 10.3883 0.881826 10.4723 0.829719C10.5562 0.777612 10.653 0.75 10.7518 0.75C10.8506 0.75 10.9474 0.777612 11.0313 0.829719C11.1153 0.881826 11.183 0.956355 11.2268 1.04489L13.5368 5.72389C13.689 6.03186 13.9136 6.2983 14.1914 6.50035C14.4692 6.70239 14.7919 6.83401 15.1318 6.88389L20.2978 7.63989C20.3957 7.65408 20.4876 7.69537 20.5633 7.75909C20.6389 7.82282 20.6952 7.90644 20.7258 8.0005C20.7564 8.09456 20.7601 8.1953 20.7364 8.29133C20.7127 8.38736 20.6626 8.47485 20.5918 8.54389L16.8558 12.1819C16.6094 12.422 16.4251 12.7184 16.3186 13.0455C16.21 13.3727 16.1869 13.7208 16.2448 14.0599L17.1268 19.1999C17.1441 19.2977 17.1335 19.3985 17.0963 19.4906C17.0591 19.5827 16.9967 19.6625 16.9163 19.7209C16.836 19.7793 16.7408 19.8139 16.6417 19.8208C16.5426 19.8277 16.4435 19.8066 16.3558 19.7599L11.7378 17.3319C11.4335 17.1721 11.095 17.0886 10.7513 17.0886C10.4076 17.0886 10.0691 17.1721 9.7648 17.3319L5.1478 19.7599C5.06013 19.8063 4.9612 19.8272 4.86225 19.8201C4.7633 19.8131 4.66832 19.7785 4.58809 19.7201C4.50787 19.6618 4.44563 19.5821 4.40846 19.4901C4.37128 19.3982 4.36066 19.2976 4.3778 19.1999L5.2588 14.0609C5.317 13.7216 5.29178 13.3733 5.18534 13.0459C5.07889 12.7186 4.89441 12.422 4.6478 12.1819L0.9118 8.54489C0.840394 8.47593 0.789793 8.38829 0.765762 8.29197C0.741731 8.19565 0.745237 8.09451 0.775879 8.00008C0.80652 7.90566 0.863067 7.82174 0.939077 7.75788C1.01509 7.69402 1.1075 7.65279 1.2058 7.63889L6.3708 6.88389C6.71106 6.83439 7.03419 6.70295 7.31238 6.50088C7.59058 6.29881 7.8155 6.03216 7.9678 5.72389L10.2768 1.04489Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+                                            <div class="flex size-12 shrink-0 items-center justify-center rounded-[14px] bg-surface-action-secondary"><svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" viewBox="0 0 21.5018 20.5721" fill="none" class="size-6" style="display: block;"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.2768 1.04489C10.3206 0.956355 10.3883 0.881826 10.4723 0.829719C10.5562 0.777612 10.653 0.75 10.7518 0.75C10.8506 0.75 10.9474 0.777612 11.0313 0.829719C11.1153 0.881826 11.183 0.956355 11.2268 1.04489L13.5368 5.72389C13.689 6.03186 13.9136 6.2983 14.1914 6.50035C14.4692 6.70239 14.7919 6.83401 15.1318 6.88389L20.2978 7.63989C20.3957 7.65408 20.4876 7.69537 20.5633 7.75909C20.6389 7.82282 20.6952 7.90644 20.7258 8.0005C20.7564 8.09456 20.7601 8.1953 20.7364 8.29133C20.7127 8.38736 20.6626 8.47485 20.5918 8.54389L16.8558 12.1819C16.6094 12.422 16.4251 12.7184 16.3186 13.0455C16.21 13.3727 16.1869 13.7208 16.2448 14.0599L17.1268 19.1999C17.1441 19.2977 17.1335 19.3985 17.0963 19.4906C17.0591 19.5827 16.9967 19.6625 16.9163 19.7209C16.836 19.7793 16.7408 19.8139 16.6417 19.8208C16.5426 19.8277 16.4435 19.8066 16.3558 19.7599L11.7378 17.3319C11.4335 17.1721 11.095 17.0886 10.7513 17.0886C10.4076 17.0886 10.0691 17.1721 9.7648 17.3319L5.1478 19.7599C5.06013 19.8063 4.9612 19.8272 4.86225 19.8201C4.7633 19.8131 4.66832 19.7785 4.58809 19.7201C4.50787 19.6618 4.44563 19.5821 4.40846 19.4901C4.37128 19.3982 4.36066 19.2976 4.3778 19.1999L5.2588 14.0609C5.48452 10.7398 1.61784 10.7796 1.69585 10.7398Z" stroke="var(--stroke-0, #5653FE)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
                                             <div class="flex flex-col gap-1">
                                                 <p class="font-bold text-text-primary text-sm leading-5 tracking-[-0.15px]">Prompt Master</p>
                                                 <p class="font-normal text-text-secondary text-xs leading-[19.5px]">Rate prompts and learn what works</p>
@@ -348,7 +356,7 @@
                         </div>
                     </section>
 
-                    <!-- VIEW 5: DEDICATED PROMPT BUILDER SANDBOX PAGE (Clean minimal UI) -->
+                    <!-- VIEW 5: DEDICATED SMART PROMPT BUILDER PAGE -->
                     <div id="view-builder-page" class="hidden flex-1 flex flex-col bg-surface-secondary">
                         <header class="sticky top-0 z-50 h-14 w-full shrink-0 border-b border-b-border-primary bg-surface-primary tablet:h-16">
                             <div class="desktop-width grid h-full w-full grid-cols-[1fr_3fr_1fr] items-center mx-auto max-w-5xl">
@@ -360,37 +368,53 @@
                             </div>
                         </header>
 
-                        <!-- Clean Constructor Sandbox Form Area -->
+                        <!-- Clean Constructor Form Area -->
                         <div class="w-full flex-1 overflow-y-auto py-10 px-4">
                             <div class="max-w-2xl mx-auto flex flex-col gap-6">
                                 <div class="text-center mb-2">
                                     <h2 class="text-2xl font-bold text-slate-900">Create a Custom Prompt</h2>
-                                    <p class="text-slate-500 mt-2 text-sm">Fill in the details below and we'll generate a highly effective prompt for you to use.</p>
+                                    <p class="text-slate-500 mt-2 text-sm">Tell us what you need, and we'll generate a highly effective prompt for you.</p>
                                 </div>
                                 
                                 <div class="bg-white rounded-3xl p-6 tablet:p-8 shadow-sm border border-slate-200 flex flex-col gap-6">
+                                    
+                                    <!-- One Simple Input -->
                                     <div>
-                                        <label class="block text-sm font-semibold text-slate-700 mb-2">1. What is the topic or product?</label>
-                                        <input type="text" id="builderInputParamProductNameValue" placeholder="e.g., A new mobile fitness app" class="w-full border border-slate-200 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 transition-all text-slate-800">
+                                        <label class="block text-sm font-semibold text-slate-700 mb-2">What do you want to achieve?</label>
+                                        <textarea id="builderMainObjectiveInput" placeholder="e.g., Politely ask my supplier for a discount..." rows="3" class="w-full border border-slate-200 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 transition-all text-slate-800 resize-none"></textarea>
                                     </div>
+
+                                    <!-- Quick Tags (Format) -->
                                     <div>
-                                        <label class="block text-sm font-semibold text-slate-700 mb-2">2. Who is this for? (Target Audience)</label>
-                                        <input type="text" id="builderInputParamTargetAudienceValue" placeholder="e.g., Office workers who sit all day" class="w-full border border-slate-200 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 transition-all text-slate-800">
+                                        <label class="block text-xs font-bold text-slate-400 uppercase tracking-wide mb-2">Format</label>
+                                        <div class="flex flex-wrap gap-2" id="format-chips-container">
+                                            <button type="button" onclick="selectChip('format', 'Email', this)" class="chip-format px-4 py-2 rounded-xl border text-sm font-medium transition-colors cursor-pointer bg-indigo-50 border-indigo-200 text-indigo-700">✉️ Email</button>
+                                            <button type="button" onclick="selectChip('format', 'Post', this)" class="chip-format px-4 py-2 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer">📝 Post</button>
+                                            <button type="button" onclick="selectChip('format', 'Report', this)" class="chip-format px-4 py-2 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer">📊 Report</button>
+                                            <button type="button" onclick="selectChip('format', 'Message', this)" class="chip-format px-4 py-2 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer">💬 Message</button>
+                                        </div>
                                     </div>
+
+                                    <!-- Quick Tags (Tone) -->
                                     <div>
-                                        <label class="block text-sm font-semibold text-slate-700 mb-2">3. What is the main goal?</label>
-                                        <textarea id="builderInputParamCoreObjectiveValue" placeholder="e.g., Convince them to start a 10-minute daily stretching routine" rows="3" class="w-full border border-slate-200 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 transition-all text-slate-800 resize-none"></textarea>
+                                        <label class="block text-xs font-bold text-slate-400 uppercase tracking-wide mb-2">Tone</label>
+                                        <div class="flex flex-wrap gap-2" id="tone-chips-container">
+                                            <button type="button" onclick="selectChip('tone', 'Professional', this)" class="chip-tone px-4 py-2 rounded-xl border text-sm font-medium transition-colors cursor-pointer bg-indigo-50 border-indigo-200 text-indigo-700">👔 Professional</button>
+                                            <button type="button" onclick="selectChip('tone', 'Friendly', this)" class="chip-tone px-4 py-2 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer">🤝 Friendly</button>
+                                            <button type="button" onclick="selectChip('tone', 'Direct', this)" class="chip-tone px-4 py-2 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer">🔥 Direct</button>
+                                        </div>
                                     </div>
-                                    <button onclick="executeBuilderPromptMatrixCompilation()" class="w-full bg-[#5653FE] text-white font-bold py-4 rounded-xl text-sm hover:bg-[#4340E6] transition shadow-md hover:shadow-lg mt-2 cursor-pointer">Generate Prompt</button>
+                                    
+                                    <button onclick="executeSmartPromptCompilation()" class="w-full bg-[#5653FE] text-white font-bold py-4 rounded-xl text-sm hover:bg-[#4340E6] transition shadow-md hover:shadow-lg mt-2 cursor-pointer">Enhance Prompt</button>
                                 </div>
 
-                                <!-- Output Sandbox Box -->
+                                <!-- Output Box -->
                                 <div id="builderPageSandboxOutputRowGrid" class="hidden bg-indigo-50/50 rounded-3xl p-6 tablet:p-8 border border-indigo-100 shadow-sm flex-col gap-5 transition-all duration-500">
                                     <div class="flex justify-between items-center">
                                         <h3 class="font-bold text-indigo-900 text-base">Ready Prompt</h3>
                                         <span class="bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-md text-[11px] font-bold tracking-wide uppercase">Saved</span>
                                     </div>
-                                    <div id="builderCompiledPromptTextStringResultField" class="bg-white border border-indigo-100 rounded-xl p-5 text-sm text-slate-700 leading-relaxed min-h-[140px] shadow-sm"></div>
+                                    <div id="builderCompiledPromptTextStringResultField" class="bg-white border border-indigo-100 rounded-xl p-5 text-sm text-slate-700 leading-relaxed min-h-[160px] shadow-sm whitespace-pre-wrap"></div>
                                     <button onclick="switchView('tools')" class="w-full bg-indigo-600 text-white font-bold py-4 rounded-xl text-sm hover:bg-indigo-700 transition shadow-md flex items-center justify-center gap-2 cursor-pointer">
                                         Use in AI Tools <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
                                     </button>
@@ -404,9 +428,13 @@
         </div>
     </div>
 
-    <!-- ECOSYSTEM APPLICATION ENGINE CORE JAVASCRIPT CONTROLLER SCRIPT -->
+    <!-- JAVASCRIPT CONTROLLER -->
     <script>
         let isEcosystemActiveStreakSecure = false;
+        
+        // Chip State
+        let selectedFormat = 'Email';
+        let selectedTone = 'Professional';
 
         let globalSavedPromptsLibraryMap = [
             {
@@ -445,6 +473,22 @@
                     tPractice.className = "h-16 py-2 transition-colors duration-200 fill-text-action-info text-text-action-info cursor-pointer";
                 }
             }
+        }
+
+        function selectChip(category, value, element) {
+            if (category === 'format') {
+                selectedFormat = value;
+                document.querySelectorAll('.chip-format').forEach(el => {
+                    el.className = "chip-format px-4 py-2 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer";
+                });
+            } else {
+                selectedTone = value;
+                document.querySelectorAll('.chip-tone').forEach(el => {
+                    el.className = "chip-tone px-4 py-2 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer";
+                });
+            }
+            // Add active state to clicked chip
+            element.className = `chip-${category} px-4 py-2 rounded-xl border text-sm font-medium transition-colors cursor-pointer bg-indigo-50 border-indigo-200 text-indigo-700`;
         }
 
         function handleToolsInputValidation() {
@@ -492,21 +536,19 @@
             });
         }
 
-        function executeBuilderPromptMatrixCompilation() {
-            const product = document.getElementById('builderInputParamProductNameValue').value.trim();
-            const audience = document.getElementById('builderInputParamTargetAudienceValue').value.trim();
-            const goal = document.getElementById('builderInputParamCoreObjectiveValue').value.trim();
+        function executeSmartPromptCompilation() {
+            const objective = document.getElementById('builderMainObjectiveInput').value.trim();
 
-            if (!product || !audience || !goal) return alert("Please fill in all 3 fields to generate a prompt.");
+            if (!objective) return alert("Please tell us what you want to achieve!");
 
-            const outputPayload = `Act as an expert copywriter and strategist. I need you to focus on the following topic/product: "${product}". Your target audience is exactly: "${audience}". The primary goal of this communication is to: "${goal}". Please provide a highly engaging, clear, and action-oriented response tailored to this audience.`;
+            const outputPayload = `Act as an expert copywriter. I need you to write a ${selectedFormat}. The tone should be ${selectedTone}.\n\nHere is what I want to achieve:\n"${objective}"\n\nPlease provide a highly engaging, clear, and well-structured response.`;
 
             document.getElementById('builderCompiledPromptTextStringResultField').textContent = outputPayload;
             document.getElementById('builderPageSandboxOutputRowGrid').classList.remove('hidden');
             document.getElementById('builderPageSandboxOutputRowGrid').classList.add('flex');
 
-            const structuralPresetRecordKey = `⚙️ Custom: ${product.substring(0, 20)}...`;
-            const applicationCheckDuplicateLoop = globalSavedPromptsLibraryMap.find(p => p.title === structuralPresetRecordKey);
+            const structuralPresetRecordKey = `⚙️ ${selectedFormat} (${selectedTone})`;
+            const applicationCheckDuplicateLoop = globalSavedPromptsLibraryMap.find(p => p.title === structuralPresetRecordKey && p.body === outputPayload);
             if (!applicationCheckDuplicateLoop) {
                 globalSavedPromptsLibraryMap.unshift({ title: structuralPresetRecordKey, body: outputPayload });
             }
@@ -573,6 +615,50 @@
             homeMiniCircleCellElement.className = "w-8 h-8 rounded-full text-white flex items-center justify-center text-xs font-bold shadow-sm shadow-orange-500/10";
             homeMiniCircleCellElement.style.background = "linear-gradient(0deg, #FF7008 0%, #FFAC5E 100%)";
             homeMiniCircleCellElement.innerHTML = "✓";
+        }
+
+        function resetEcosystemState() {
+            isEcosystemActiveStreakSecure = false;
+
+            document.getElementById('header-global-streak-counter-node').textContent = "1";
+            document.getElementById('homePageClaudePctValueCounter').textContent = "4%";
+
+            document.getElementById('streakCalendarPageChallengeTimelineStatusText').textContent = "Day 1 of 3 (Theory Complete)";
+            document.getElementById('streakCalendarPageProgressBarFillWidthField').style.width = "11%";
+            
+            const taskRowTextNode = document.getElementById('streak-page-tools-task-row');
+            taskRowTextNode.className = "text-amber-600 font-semibold";
+            taskRowTextNode.innerHTML = "● Step 2: Practical activation in AI Tools — Pending validation";
+
+            const redirectCtaButtonElementNode = document.getElementById('streakCalendarPageRedirectCallActionBtn');
+            if(redirectCtaButtonElementNode) {
+                redirectCtaButtonElementNode.className = "w-full bg-[#5653FE] text-white text-xs font-semibold py-2.5 rounded-xl transition cursor-pointer text-center shadow-sm";
+                redirectCtaButtonElementNode.textContent = "Secure Habit Target inside AI Tools ➔";
+                redirectCtaButtonElementNode.disabled = false;
+            }
+
+            document.getElementById('streak-page-fire-icon').className = "text-4xl opacity-40 filter drop-shadow-sm select-none";
+            document.getElementById('streak-days-label').innerHTML = "day streak!";
+
+            const targetPageStreakCounters = document.getElementsByClassName('streak-page-numeric-counter');
+            for(let i = 0; i < targetPageStreakCounters.length; i++) {
+                targetPageStreakCounters[i].textContent = "1";
+            }
+
+            const dayBoxNodeCell = document.getElementById('calendarEcosystemDaySlotBox4');
+            dayBoxNodeCell.className = "flex aspect-square items-center justify-center relative bg-surface-information text-text-secondary rounded-full p-[1px]";
+            dayBoxNodeCell.style.background = "";
+            dayBoxNodeCell.innerHTML = `<svg id="starburstActiveNodeSvgIconElement" width="40" height="40" viewBox="0 0 40 40" fill="#5653FE" class="absolute left-0 top-0 h-full w-full fill-surface-action opacity-20"><path d="M18.5597 1.49496C19.3463 0.678479 20.6537 0.678479 21.4403 1.49496L23.3569 3.48429C23.8712 4.01807 24.6385 4.22367 25.3507 4.01853L28.0052 3.25402C29.0947 2.94024 30.2269 3.59391 30.4999 4.69432L31.165 7.37542C31.3435 8.09482 31.9052 8.65652 32.6246 8.835L35.3057 9.50014C36.4061 9.77314 37.0598 10.9053 36.746 11.9948L35.9815 14.6493C35.7763 15.3615 35.9819 16.1288 36.5157 16.6431L38.505 18.5597C39.3215 19.3463 39.3215 20.6537 38.505 21.4403L36.5157 23.3569C35.9819 23.8712 35.7763 24.6385 35.9815 25.3507L36.746 28.0052C37.0598 29.0947 36.4061 30.2269 35.3057 30.4999L32.6246 31.165C31.9052 31.3435 31.3435 31.9052 31.165 32.6246L30.4999 35.3057C30.2269 36.4061 29.0947 37.0598 28.0052 36.746L25.3507 35.9815C24.6385 35.7763 23.8712 35.9819 23.3569 36.5157L21.4403 38.505C20.6537 39.3215 19.3463 39.3215 18.5597 38.505L16.6431 36.5157C16.1288 35.9819 15.3616 35.7763 14.6493 35.9815L11.9948 36.746C10.9053 37.0598 9.77314 36.4061 9.50014 35.3057L8.835 32.6246C8.65652 31.9052 8.09482 31.3435 7.37542 31.165L4.69432 30.4999C3.59391 30.2269 2.94024 29.0947 3.25402 28.0052L4.01853 25.3507C4.22367 24.6385 4.01807 23.8712 3.48429 23.3569L1.49496 21.4403C0.678479 20.6537 0.678479 19.3463 1.49496 18.5597L3.48429 16.6431C4.01807 16.1288 4.22367 15.3616 4.01853 14.6493L3.25402 11.9948C2.94024 10.9053 3.59391 9.77314 4.69432 9.50014L7.37542 8.835C8.09482 8.65652 8.65652 8.09482 8.835 7.37542L9.50014 4.69443C9.77314 3.59391 10.9053 2.94024 11.9948 3.25402L14.6493 4.01853C15.3616 4.22367 16.1288 4.01807 16.6431 3.48429L18.5597 1.49496Z"></path></svg><span id="calendar-day-4-text" class="z-10 text-slate-800 font-bold">4</span>`;
+
+            document.getElementById('homeDashboardDisclaimerStatusTextLabel').textContent = "⚠️ Theory complete. Tool generation pending today!";
+            document.getElementById('homeDashboardDisclaimerStatusTextLabel').className = "text-amber-600 animate-pulse";
+
+            const homeMiniCircleCellElement = document.getElementById('homeDashboardMiniDayIndicatorSlot4');
+            homeMiniCircleCellElement.className = "w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary flex items-center justify-center text-xs font-semibold text-slate-400";
+            homeMiniCircleCellElement.style.background = "";
+            homeMiniCircleCellElement.innerHTML = "4";
+            
+            document.getElementById('toolsInferenceSuccessBoxAlert').classList.add('hidden');
         }
     </script>
 </body>
