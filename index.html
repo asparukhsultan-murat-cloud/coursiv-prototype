@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coursiv - Integrated Workspace Matrix</title>
+    <title>Coursiv - Integrated Workspace</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,7 +22,6 @@
             --text-secondary: #8E8E93;
             --text-disabled: #AEAEB2;
             --surface-action: #5653FE;
-            --text-on-action: #ffffff;
         }
         .bg-surface-primary { background-color: var(--surface-primary); }
         .bg-surface-secondary { background-color: var(--surface-secondary); }
@@ -34,9 +33,7 @@
         .text-text-disabled { color: var(--text-disabled); }
         .text-text-action-info { color: var(--text-action-info); }
         .bg-surface-action { background-color: var(--surface-action); }
-        .fill-surface-action { fill: var(--surface-action); }
         .fill-icon-primary { fill: #48484A; }
-        .main-input-box { box-shadow: 0 8px 30px rgba(0, 0, 0, 0.02); }
         .card-effect { transition: all 0.2s ease-in-out; cursor: pointer; }
         .card-effect:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.01); }
     </style>
@@ -47,28 +44,34 @@
             <div class="app_view" id="app_view">
                 <div class="flex min-h-screen flex-col bg-surface-primary">
                     
-                    <header id="app-main-header-region" class="sticky top-0 z-50 w-full border-b border-border-primary bg-surface-primary" data-sentry-component="DesktopHeader">
-                        <div class="desktop-width flex items-center justify-between rounded-2xl mx-auto max-w-5xl h-16 px-6">
+                    <!-- MASTER MAIN HEADER -->
+                    <header id="app-main-header" class="sticky top-0 z-50 w-full border-b border-border-primary bg-surface-primary">
+                        <div class="max-w-5xl mx-auto flex h-16 items-center justify-between px-6">
                             <div class="flex items-center justify-between gap-6">
-                                <button onclick="switchView('home')" class="shrink-0 font-black text-xl tracking-tight text-text-primary cursor-pointer laptop:text-2xl desktop:me-8">Coursiv</button>
-                                
+                                <button onclick="switchView('home')" class="shrink-0 font-black text-xl tracking-tight text-slate-900 cursor-pointer laptop:text-2xl desktop:me-8">Coursiv</button>
                                 <div class="flex items-center gap-x-3 desktop:gap-x-4">
                                     <button onclick="switchView('home')" id="header-nav-home" class="h-16 py-2 transition-colors duration-200 fill-text-action-info text-text-action-info cursor-pointer">
-                                        <div class="flex h-full items-center gap-2 rounded-[16px] px-2 transition-all duration-100 hover:bg-slate-50">
+                                        <div class="flex h-full items-center gap-2 rounded-[16px] px-2 hover:bg-slate-50">
                                             <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" fill="currentColor"><path d="M11.336 2.753a1 1 0 0 1 1.328 0l9 8a1 1 0 0 1-1.328 1.494L20 11.95V19.5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7.55l-.336.297a1 1 0 0 1-1.328-1.494l9-8ZM6 10.17V19.5h3v-5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v5h3v-9.329l-6-5.333-6 5.333Zm7 9.329v-4h-2v4h2Z"></path></svg></span>
                                             <span class="text-base font-semibold">Home</span>
                                         </div>
                                     </button>
+                                    <button class="h-16 py-2 transition-colors duration-200 text-text-disabled fill-icon-primary opacity-50 cursor-not-allowed">
+                                        <div class="flex h-full items-center gap-2 rounded-[16px] px-2">
+                                            <span><svg width="24" height="25" viewBox="0 0 24 25" fill="none"><g id="back"><path d="M7 20.5L9 16.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M17 20.5L15 16.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 16.5V21.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3 6.5C3 5.39543 3.89543 4.5 5 4.5H19C20.1046 4.5 21 5.39543 21 6.5V14.5C21 15.6046 20.1046 16.5 19 16.5H5C3.89543 16.5 3 15.6046 3 14.5V6.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 3.5V4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7 8.5H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7 12.5H11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg></span>
+                                            <span class="text-base font-medium">Courses</span>
+                                        </div>
+                                    </button>
                                     <button onclick="switchView('tools')" id="header-nav-tools" class="h-16 py-2 transition-colors duration-200 text-text-disabled fill-icon-primary cursor-pointer">
-                                        <div class="flex h-full items-center gap-2 rounded-[16px] px-2 transition-all duration-100 hover:bg-slate-50">
-                                            <span><svg width="17" height="21" viewBox="0 0 17 21" fill="none"><path fill="currentColor" d="M9.74316 20.9409C9.61328 20.9409 9.50505 20.9007 9.41846 20.8203C9.33187 20.7399 9.2793 20.6348 9.26074 20.5049C9.12467 19.5524 8.97624 18.7484 8.81543 18.0928C8.66081 17.4434 8.45671 16.9115 8.20312 16.4971C7.94954 16.0827 7.61556 15.7518 7.20117 15.5044C6.78678 15.2508 6.25798 15.0467 5.61475 14.8921C4.97152 14.7375 4.17985 14.5983 3.23975 14.4746C3.10368 14.4622 2.99235 14.4128 2.90576 14.3262C2.82536 14.2334 2.78516 14.1221 2.78516 13.9922C2.78516 13.8623 2.82536 13.7541 2.90576 13.6675C2.99235 13.5747 3.10368 13.5221 3.23975 13.5098C4.18604 13.4046 4.98079 13.2809 5.62402 13.1387C6.26725 12.9964 6.79606 12.7985 7.21045 12.5449C7.63102 12.2852 7.9681 11.945 8.22168 11.5244C8.48145 11.0977 8.68864 10.5565 8.84326 9.90088C8.99788 9.24528 9.13704 8.43815 9.26074 7.47949C9.2793 7.35579 9.33187 7.25374 9.41846 7.17334C9.50505 7.08675 9.61328 7.04346 9.74316 7.04346C9.86068 7.04346 9.96273 7.08675 10.0493 7.17334C10.1359 7.25374 10.1885 7.35579 10.207 7.47949C10.3431 8.43815 10.4884 9.24528 10.6431 9.90088C10.7977 10.5565 11.0018 11.0977 11.2554 11.5244C11.509 11.945 11.8429 12.2821 12.2573 12.5356C12.6717 12.7892 13.2005 12.9902 13.8438 13.1387C14.4932 13.2809 15.2879 13.4046 16.228 13.5098C16.3641 13.5283 16.4723 13.5809 16.5527 13.6675C16.6393 13.7541 16.6826 13.8623 16.6826 13.9922C16.6826 14.1221 16.6393 14.2334 16.5527 14.3262C16.4723 14.4128 16.3641 14.4622 16.228 14.4746C15.2879 14.5798 14.4932 14.7065 13.8438 14.855C13.2005 14.9972 12.6686 15.1951 12.248 15.4487C11.8337 15.7023 11.4997 16.0425 11.2461 16.4692C10.9925 16.8898 10.7884 17.4279 10.6338 18.0835C10.4854 18.7453 10.3431 19.5524 10.207 20.5049C10.1885 20.6348 10.1359 20.7399 10.0493 20.8203C9.96273 20.9007 9.86068 20.9409 9.74316 20.9409ZM3.72217 11.2275C3.53662 11.2275 3.43148 11.1255 3.40674 10.9214C3.3387 10.3338 3.26449 9.87614 3.18408 9.54834C3.10368 9.22054 2.97689 8.97314 2.80371 8.80615C2.63672 8.63298 2.38314 8.50309 2.04297 8.4165C1.7028 8.32992 1.23584 8.23714 0.64209 8.13818C0.425618 8.10726 0.317383 8.00212 0.317383 7.82275C0.317383 7.64958 0.413249 7.54443 0.60498 7.50732C1.20492 7.396 1.67497 7.29704 2.01514 7.21045C2.36149 7.11768 2.62126 6.99089 2.79443 6.83008C2.9738 6.66309 3.10368 6.41878 3.18408 6.09717C3.26449 5.76937 3.3387 5.31478 3.40674 4.7334C3.43148 4.5293 3.53662 4.42725 3.72217 4.42725C3.90771 4.42725 4.01286 4.5262 4.0376 4.72412C4.118 5.31787 4.19531 5.78483 4.26953 6.125C4.34993 6.45898 4.47363 6.71257 4.64062 6.88574C4.8138 7.05273 5.07357 7.17952 5.41992 7.26611C5.76628 7.34652 6.24251 7.42692 6.84863 7.50732C6.92285 7.51969 6.98779 7.55371 7.04346 7.60938C7.09912 7.66504 7.12695 7.73617 7.12695 7.82275C7.12695 8.00212 7.03418 8.10726 6.84863 8.13818C6.24251 8.2557 5.76628 8.36084 5.41992 8.45361C5.07975 8.54639 4.82308 8.67627 4.6499 8.84326C4.47673 9.00407 4.34993 9.24837 4.26953 9.57617C4.19531 9.89779 4.118 10.3524 4.0376 10.9399C4.03141 11.0203 3.9974 11.0884 3.93555 11.144C3.8737 11.1997 3.80257 11.2275 3.72217 11.2275ZM7.97119 5.13232C7.85368 5.13232 7.78564 5.07048 7.76709 4.94678C7.6805 4.47673 7.6001 4.13656 7.52588 3.92627C7.45785 3.7098 7.31559 3.55827 7.09912 3.47168C6.88265 3.37891 6.57461 5.44141 5.10547 8.9668H6.51172C7.26367 8.9668 7.45898 9.54297 7.04883 10.0996L4.68555 13.3906C4.36328 13.8398 3.85547 13.8496 3.52344 13.3906L1.16016 10.1094C0.740234 9.5332 0.935547 8.9668 1.69727 8.9668ZM12.5859 5.11914C13.0938 5.11914 13.5137 5.5293 13.5137 6.03711V11.2129L15.8184 14.3379C16.1602 14.8164 16.1309 15.373 15.6914 15.6758C15.2129 15.998 14.6855 15.9102 14.2949 15.4023L11.9316 12.2773C11.7363 12.0332 11.668 11.8086 11.668 11.5742V6.03711C11.668 5.5293 12.0781 5.11914 12.5859 5.11914Z"></path></svg></div></span>
+                                        <div class="flex h-full items-center gap-2 rounded-[16px] px-2 hover:bg-slate-50">
+                                            <span><div class="relative"><svg width="17" height="21" viewBox="0 0 17 21" fill="none"><path fill="currentColor" d="M9.74316 20.9409C9.61328 20.9409 9.50505 20.9007 9.41846 20.8203C9.33187 20.7399 9.2793 20.6348 9.26074 20.5049C9.12467 19.5524 8.97624 18.7484 8.81543 18.0928C8.66081 17.4434 8.45671 16.9115 8.20312 16.4971C7.94954 16.0827 7.61556 15.7518 7.20117 15.5044C6.78678 15.2508 6.25798 15.0467 5.61475 14.8921C4.97152 14.7375 4.17985 14.5983 3.23975 14.4746C3.10368 14.4622 2.99235 14.4128 2.90576 14.3262C2.82536 14.2334 2.78516 14.1221 2.78516 13.9922C2.78516 13.8623 2.82536 13.7541 2.90576 13.6675C2.99235 13.5747 3.10368 13.5221 3.23975 13.5098C4.18604 13.4046 4.98079 13.2809 5.62402 13.1387C6.26725 12.9964 6.79606 12.7985 7.21045 12.5449C7.63102 12.2852 7.9681 11.945 8.22168 11.5244C8.48145 11.0977 8.68864 10.5565 8.84326 9.90088C8.99788 9.24528 9.13704 8.43815 9.26074 7.47949C9.2793 7.35579 9.33187 7.25374 9.41846 7.17334C9.50505 7.08675 9.61328 7.04346 9.74316 7.04346C9.86068 7.04346 9.96273 7.08675 10.0493 7.17334C10.1359 7.25374 10.1885 7.35579 10.207 7.47949C10.3431 8.43815 10.4884 9.24528 10.6431 9.90088C10.7977 10.5565 11.0018 11.0977 11.2554 11.5244C11.509 11.945 11.8429 12.2821 12.2573 12.5356C12.6717 12.7892 13.2005 12.9902 13.8438 13.1387C14.4932 13.2809 15.2879 13.4046 16.228 13.5098C16.3641 13.5283 16.4723 13.5809 16.5527 13.6675C16.6393 13.7541 16.6826 13.8623 16.6826 13.9922C16.6826 14.1221 16.6393 14.2334 16.5527 14.3262C16.4723 14.4128 16.3641 14.4622 16.228 14.4746C15.2879 14.5798 14.4932 14.7065 13.8438 14.855C13.2005 14.9972 12.6686 15.1951 12.248 15.4487C11.8337 15.7023 11.4997 16.0425 11.2461 16.4692C10.9925 16.8898 10.7884 17.4279 10.6338 18.0835C10.4854 18.7453 10.3431 19.5524 10.207 20.5049C10.1885 20.6348 10.1359 20.7399 10.0493 20.8203C9.96273 20.9007 9.86068 20.9409 9.74316 20.9409ZM3.72217 11.2275C3.53662 11.2275 3.43148 11.1255 3.40674 10.9214C3.3387 10.3338 3.26449 9.87614 3.18408 9.54834C3.10368 9.22054 2.97689 8.97314 2.80371 8.80615C2.63672 8.63298 2.38314 8.50309 2.04297 8.4165C1.7028 8.32992 1.23584 8.23714 0.64209 8.13818C0.425618 8.10726 0.317383 8.00212 0.317383 7.82275C0.317383 7.64958 0.413249 7.54443 0.60498 7.50732C1.20492 7.396 1.67497 7.29704 2.01514 7.21045C2.36149 7.11768 2.62126 6.99089 2.79443 6.83008C2.9738 6.66309 3.10368 6.41878 3.18408 6.09717C3.26449 5.76937 3.3387 5.31478 3.40674 4.7334C3.43148 4.5293 3.53662 4.42725 3.72217 4.42725C3.90771 4.42725 4.01286 4.5262 4.0376 4.72412C4.118 5.31787 4.19531 5.78483 4.26953 6.125C4.34993 6.45898 4.47363 6.71257 4.64062 6.88574C4.8138 7.05273 5.07357 7.17952 5.41992 7.26611C5.76628 7.34652 6.24251 7.42692 6.84863 7.50732C6.92285 7.51969 6.98779 7.55371 7.04346 7.60938C7.09912 7.66504 7.12695 7.73617 7.12695 7.82275C7.12695 8.00212 7.03418 8.10726 6.84863 8.13818C6.24251 8.2557 5.76628 8.36084 5.41992 8.45361C5.07975 8.54639 4.82308 8.67627 4.6499 8.84326C4.47673 9.00407 4.34993 9.24837 4.26953 9.57617C4.19531 9.89779 4.118 10.3524 4.0376 10.9399C4.03141 11.0203 3.9974 11.0884 3.93555 11.144C3.8737 11.1997 3.80257 11.2275 3.72217 11.2275ZM7.97119 5.13232C7.85368 5.13232 7.78564 5.07048 7.76709 4.94678C7.6805 4.47673 7.6001 4.13656 7.52588 3.92627C7.45785 3.7098 7.31559 3.55827 7.09912 3.47168C6.88265 3.37891 6.52083 3.28613 6.01367 3.19336C5.88997 3.16862 5.82812 3.10059 5.82812 2.98926C5.82812 2.87174 5.88997 2.80371 6.01367 2.78516C6.52083 2.69238 6.88265 2.6027 7.09912 2.51611C7.31559 2.42334 7.45785 2.27181 7.52588 2.06152C7.6001 1.84505 7.6805 1.50179 7.76709 1.03174C7.78564 0.90804 7.85368 0.846191 7.97119 0.846191C8.08252 0.846191 8.15055 0.90804 8.17529 1.03174C8.26188 1.50179 8.34229 1.84505 8.4165 2.06152C8.49072 2.27799 8.63607 2.42952 8.85254 2.51611C9.06901 2.6027 9.42773 2.69238 9.92871 2.78516C10.0586 2.80371 10.1235 2.87174 10.1235 2.98926C10.1235 3.10059 10.0617 3.16862 9.93799 3.19336C9.43083 3.28613 9.06901 3.37891 8.85254 3.47168C8.63607 3.55827 8.49072 3.7098 8.4165 3.92627C8.34229 4.14274 8.26188 4.48291 8.17529 4.94678C8.15055 5.07048 8.08252 5.13232 7.97119 5.13232Z"></path></svg></div></span>
                                             <span class="text-base font-semibold">AI Tools</span>
                                         </div>
                                     </button>
                                     <button onclick="switchView('practice')" id="header-nav-practice" class="h-16 py-2 transition-colors duration-200 text-text-disabled fill-icon-primary cursor-pointer">
-                                        <div class="flex h-full items-center gap-2 rounded-[16px] px-2 transition-all duration-100 hover:bg-slate-50">
+                                        <div class="flex h-full items-center gap-2 rounded-[16px] px-2 hover:bg-slate-50">
                                             <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><path fill="currentColor" d="M2.398 16.793q-.492 0-.881-.223a1.8 1.8 0 0 1-.622-.612 1.7 1.7 0 0 1-.223-.872V9.223q0-.483.223-.872.232-.39.622-.613a1.7 1.7 0 0 1 .88-.232h1.188V8.87h-1.14a.39.39 0 0 0-.298.12.44.44 0 0 0-.102.298v5.733q0 .186.102.297a.42.42 0 0 0 .297.102h1.141v1.373zm2.95 1.995q-1.104 0-1.716-.65T3.02 16.32V7.998q0-1.16.593-1.818.594-.66 1.652-.659h.714q1.123 0 1.753.659.64.658.64 1.818v8.322q0 1.17-.64 1.818-.64.65-1.772.65zm.028-1.457h.566q.446 0 .705-.269.27-.28.269-.76V8.025q0-.492-.26-.77t-.696-.278h-.677a.7.7 0 0 0-.594.278q-.213.278-.213.77V16.3q0 .483.232.761.24.27.668.27m2.653-5.863V10.01h7.942v1.457zm0 2.82v-1.457h7.942v1.457zm10.01 4.5q-1.132 0-1.771-.65-.631-.65-.631-1.818V7.998q0-1.16.63-1.818.632-.66 1.754-.659h.724q1.047 0 1.642.659.593.658.593 1.818v8.322q0 1.17-.612 1.818-.612.65-1.716.65zm.028-1.457h.566q.418 0 .65-.269.24-.28.24-.76V8.025q0-.492-.212-.77a.7.7 0 0 0-.594-.278h-.677q-.436 0-.696.278-.25.278-.25.77V16.3q0 .483.259.761.26.27.714.27m2.357-.538V15.42h1.14a.4.4 0 0 0 .288-.102.39.39 0 0 0 .121-.297V9.288a.4.4 0 0 0-.12-.297.37.37 0 0 0-.288-.12h-1.141V7.505h1.197q.482 0 .862.232.39.223.613.613.232.39.232.872v5.863q0 .482-.232.872a1.675 1.675 0 0 1-1.475.835z"></path></svg></span>
-                                            <span class="text-base font-semibold">AI Practice</span>
+                                            <span class="text-base font-medium">AI Practice</span>
                                         </div>
                                     </button>
                                 </div>
@@ -79,20 +82,12 @@
                                     <span class="text-xs">🔥</span>
                                     <p class="shrink-0 font-semibold text-base"><span id="header-global-streak-counter-node">1</span></p>
                                 </div>
-                                <button class="relative inline-flex justify-center max-tablet:me-4" disabled="">
-                                    <div class="my-auto flex shrink-0 select-none items-center gap-x-[5px]" style="opacity: 1;">
-                                        <span class="text-xs font-semibold leading-normal tablet:text-base"><svg width="16" height="16" viewBox="0 0 16 16" fill="black" class="fill-text-primary"><path d="M12.4 4.41357C14.3867 4.41357 16 6.00024 16 8.00024C16 9.97357 14.3867 11.5802 12.4 11.5802C11.4333 11.5802 10.5333 11.2069 9.85333 10.5336L8 8.89357L6.11333 10.5669C5.46667 11.2136 4.56 11.5869 3.6 11.5869C1.61333 11.5869 0 9.97357 0 8.00024C0 6.02691 1.61333 4.41357 3.6 4.41357C4.56 4.41357 5.46667 4.78691 6.14667 5.46691L8 7.10691L9.88667 5.43357C10.5333 4.78691 11.44 4.41357 12.4 4.41357ZM5.2 9.59357L7 8.00024L5.22667 6.43357C4.77333 5.98024 4.20667 5.74691 3.6 5.74691C2.35333 5.74691 1.33333 6.75357 1.33333 8.00024C1.33333 9.24691 2.35333 10.2536 3.6 10.2536C4.20667 10.2536 4.77333 10.0202 5.2 9.59357ZM10.8 6.40691L9 8.00024L10.7733 9.56691C11.2267 10.0202 11.8 10.2536 12.4 10.2536C13.6467 10.2536 14.6667 9.24691 14.6667 8.00024C14.6667 6.75357 13.6467 5.74691 12.4 5.74691C11.7933 5.74691 11.2267 5.98024 10.8 6.40691Z"></path></svg></span>
-                                    </div>
-                                    <div class="absolute right-0 top-1/2 w-max -translate-y-1/2 transform overflow-hidden rounded-[32px] backdrop-blur-[110.01px]" style="pointer-events: none; opacity: 1;">
-                                        <svg width="85" height="30" viewBox="0 0 85 30" fill="none" role="img" aria-label="Get PRO"><defs><linearGradient id="paint0_idu5lw6ngr8" x1="0" y1="14" x2="69" y2="14" gradientUnits="userSpaceOnUse"><stop stop-color="#5350F6"></stop><stop offset="1" stop-color="#130F1A"></stop></linearGradient><linearGradient id="paint1_idu5lw6ngr8" x1="34.5" y1="-3.6" x2="29.1302" y2="21.3506" gradientUnits="userSpaceOnUse"><stop stop-color="white"></stop><stop offset="1" stop-color="white" stop-opacity="0"></stop></linearGradient></defs><rect width="85" height="30" rx="15" fill="url(#paint0_idu5lw6ngr8)"></rect><rect x="0.34" y="0.34" width="84.32" height="29.32" rx="14.66" stroke="url(#paint1_idu5lw6ngr8)" stroke-opacity="0.5" stroke-width="0.68"></rect><text x="42.5" y="15" text-anchor="middle" dominant-baseline="middle" fill="#FFFFFF" style="font-size: 11px; font-weight: 600; white-space: pre;">Get PRO</text></svg>
-                                    </div>
-                                </button>
-                                <button onclick="switchView('tools')" class="group flex items-center gap-2 rounded-md p-[10px] cursor-pointer" id="ai-tools-history"><svg width="24" height="22" viewBox="0 0 24 22" fill="currentColor" class="fill-text-disabled text-text-disabled group-hover:text-text-action-info"><path d="M1.69727 8.9668H3.07422C4.00195 4.36719 8.11328 0.861328 12.957 0.861328C18.4844 0.861328 23.0449 5.43164 23.0449 10.9492C23.0449 16.4766 18.4844 21.0371 12.957 21.0371C9.79297 21.0371 6.83398 19.4453 5.02734 17.082C4.59766 16.5645 4.68555 15.9395 5.13477 15.6172C5.61328 15.2754 6.17969 15.4219 6.57031 15.8809C8.04492 17.8145 10.3398 19.0449 12.957 19.0547C17.459 19.0645 21.0625 15.4414 21.0625 10.9492C21.0625 6.45703 17.459 2.85352 12.957 2.85352C9.14844 2.85352 5.97461 5.44141 5.10547 8.9668H6.51172C7.26367 8.9668 7.45898 9.54297 7.04883 10.0996L4.68555 13.3906C4.36328 13.8398 3.85547 13.8496 3.52344 13.3906L1.16016 10.1094C0.740234 9.5332 0.935547 8.9668 1.69727 8.9668ZM12.5859 5.11914C13.0938 5.11914 13.5137 5.5293 13.5137 6.03711V11.2129L15.8184 14.3379C16.1602 14.8164 16.1309 15.373 15.6914 15.6758C15.2129 15.998 14.6855 15.9102 14.2949 15.4023L11.9316 12.2773C11.7363 12.0332 11.668 11.8086 11.668 11.5742V6.03711C11.668 5.5293 12.0781 5.11914 12.5859 5.11914Z"></path></svg></button>
-                                <button onclick="switchView('home')" class="h-16 py-2 transition-colors duration-200 fill-icon-primary text-text-disabled cursor-pointer"><div class="flex h-full items-center gap-2 rounded-[16px] px-2 hover:bg-slate-50"><span><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4ZM6 8C6 4.68629 8.68629 2 12 2C15.3137 2 18 4.68629 18 8C18 11.3137 15.3137 14 12 14C8.68629 14 6 11.3137 6 8ZM8 18C6.34315 18 5 19.3431 5 21C5 21.5523 4.55228 22 4 22C3.44772 22 3 21.5523 3 21C3 18.2386 5.23858 16 8 16H16C18.7614 16 21 18.2386 21 21C21 21.5523 20.5523 22 20 22C19.4477 22 19 21.5523 19 21C19 19.3431 17.6569 18 16 18H8Z" fill="currentColor"></path></svg></span><span class="text-base">Profile</span></div></button>
+                                <button class="h-16 py-2 transition-colors duration-200 fill-icon-primary text-text-disabled cursor-pointer"><div class="flex h-full items-center gap-2 rounded-[16px] px-2 hover:bg-slate-50"><span><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4ZM6 8C6 4.68629 8.68629 2 12 2C15.3137 2 18 4.68629 18 8C18 11.3137 15.3137 14 12 14C8.68629 14 6 11.3137 6 8ZM8 18C6.34315 18 5 19.3431 5 21C5 21.5523 4.55228 22 4 22C3.44772 22 3 21.5523 3 21C3 18.2386 5.23858 16 8 16H16C18.7614 16 21 18.2386 21 21C21 21.5523 20.5523 22 20 22C19.4477 22 19 21.5523 19 21C19 19.3431 17.6569 18 16 18H8Z" fill="currentColor"></path></svg></span><span class="text-base">Profile</span></div></button>
                             </div>
                         </div>
                     </header>
 
+                    <!-- VIEW 1: MASTER HOME DASHBOARD PAGE SECTION -->
                     <main id="view-home" class="max-w-5xl w-full mx-auto px-6 py-8 flex flex-col gap-y-10 flex-1">
                         <div class="flex min-w-0 cursor-pointer justify-between rounded-2xl bg-surface-action-secondary p-4 border border-border-primary">
                             <div class="flex flex-col justify-center">
@@ -148,6 +143,7 @@
                         </div>
                     </main>
 
+                    <!-- VIEW 2: STREAK CHALLENGE DETAILS WORKSPACE CALENDAR VIEW LAYOUT -->
                     <div id="view-streak" class="hidden mx-auto flex w-full max-w-[540px] flex-grow flex-col rounded-lg px-4 pt-6 pb-12">
                         <div class="flex flex-col gap-y-6">
                             <div class="flex items-center justify-between border-b border-border-primary pb-3">
@@ -202,25 +198,27 @@
                         </div>
                     </div>
 
-                    <section id="view-tools" class="hidden mx-auto w-full flex-1 pt-[150px]">
+                    <!-- VIEW 3: 100% PRODUCTION ACCURATE AI TOOLS HUB PANEL WORKSPACE -->
+                    <section id="view-tools" class="hidden mx-auto w-full flex-1 pt-8 max-w-[700px]">
                         <div class="flex h-full flex-col items-center bg-surface-primary max-tablet:mb-16">
+                            
                             <h2 class="mx-auto mb-4 h-auto select-none text-center text-lg font-semibold tablet:mb-10 tablet:text-xl">
                                 <span>What can I help with?</span>
                             </h2>
                             
-                            <form class="relative mx-auto w-full max-w-[700px] max-tablet:px-6 cursor-text mb-4" id="ai-tools-chat-form" onsubmit="event.preventDefault();">
+                            <form class="relative mx-auto w-full max-tablet:px-6 cursor-text mb-4" id="ai-tools-chat-form" onsubmit="event.preventDefault();">
                                 <div class="relative w-full">
                                     <div class="w-full overflow-hidden border focus-within:border-border-action border-border-primary bg-surface-primary px-2.5 py-[14px] rounded-[16px] transition-colors">
                                         <textarea id="toolsMainInputTextareaContainerBlock" oninput="handleToolsInputValidation()" placeholder="Ask anything" class="w-full resize-none bg-surface-primary px-1.5 outline-none disabled:bg-surface-primary" style="height: 96px !important;"></textarea>
                                         <section class="flex items-center justify-between gap-1">
                                             <div class="flex min-w-0 flex-1 items-center gap-1">
                                                 <button type="button" class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all duration-200 active:scale-95 hover:text-icon-action text-icon-primary disabled:opacity-50" id="radix-2">
-                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                                                 </button>
                                             </div>
                                             <div class="flex shrink-0 items-center gap-x-1">
-                                                <button class="flex h-full shrink-0 gap-x-1 py-3 font-semibold text-sm text-slate-700" id="ai-model-select" type="button">
-                                                    <span id="toolsDropdownActiveLabelValue">Claude</span>
+                                                <button class="flex h-full shrink-0 gap-x-1 py-3 font-semibold text-sm text-slate-700" type="button">
+                                                    <span>Claude</span>
                                                     <svg width="16" height="24" viewBox="0 0 24 24" fill="#898E99" stroke="#898E99" class="shrink-0 fill-icon-primary transition-transform duration-200"><g id="CaretDown"><path d="M20.2606 9.7437L20.2589 9.74457L20.2517 9.75174L12.7517 17.2517L12.7517 17.2518C12.6529 17.3509 12.5357 17.4295 12.4065 17.4831C12.2774 17.4831 12.1389 17.5643 11.9991 17.5643C11.8592 17.5643 11.7207 17.5367 11.5916 17.4831C11.4625 17.4295 11.3452 17.3509 11.2464 17.2518L11.2464 17.2517L3.74637 9.75174C3.54675 9.55212 3.4346 9.28137 3.4346 8.99906C3.4346 8.71675 3.54675 8.44601 3.74637 8.24638C3.94599 8.04676 4.21674 7.93461 4.49905 7.93461C4.78136 7.93461 5.05211 8.04676 5.25173 8.24638L11.9558 14.9504L12 14.9946L12.0442 14.9504L18.7482 8.24544C18.9479 8.04582 19.2186 7.93367 19.5009 7.93367C19.7832 7.93367 20.054 8.04582 20.2536 8.24545C20.4532 8.44507 20.5654 8.71582 20.5654 8.99813C20.5654 9.2771 20.4559 9.54478 20.2606 9.7437Z" stroke-width="0.125"></path></g></svg>
                                                 </button>
                                                 <button type="button" class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all duration-200 text-icon-primary"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="9" y="2" width="6" height="11" rx="3" stroke="currentColor" stroke-width="1.5"></rect><path d="M5 10C5 13.866 8.13401 17 12 17C15.866 17 19 13.866 19 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path><path d="M12 17V21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path><path d="M9 21H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg></button>
@@ -233,38 +231,39 @@
                                 </div>
                             </form>
 
-                            <div class="w-full max-w-[700px] px-6 mb-3 flex justify-start">
+                            <div class="w-full px-6 mb-3 flex justify-start">
                                 <button onclick="toggleLibraryTray()" class="flex items-center gap-x-1.5 bg-indigo-50 border border-indigo-200 text-indigo-600 px-3.5 py-1.5 text-xs font-semibold rounded-full transition shadow-sm cursor-pointer hover:bg-indigo-100/50">
                                     <span>📁</span> <span>Saved prompts</span>
                                 </button>
-                                <button onclick="switchView('practice')" class="text-[11px] text-slate-400 font-medium hover:text-slate-600 transition ml-3 cursor-pointer">Need advanced prompt?</button>
+                                <button onclick="switchView('builder-page')" class="text-[11px] text-slate-400 font-medium hover:text-slate-600 transition ml-3 cursor-pointer">Need advanced prompt?</button>
                             </div>
 
-                            <div id="toolsSavedLibraryTrayContainerBoxPanel" class="w-full max-w-[700px] px-6 mb-4 hidden">
+                            <div id="toolsSavedLibraryTrayContainerBoxPanel" class="w-full px-6 mb-4 hidden">
                                 <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-3.5 space-y-2 max-h-40 overflow-y-auto w-full shadow-inner">
                                     <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Select saved prompt template parameter item:</p>
                                     <div id="toolsSavedLibraryGridContainerRowsNode" class="grid grid-cols-1 gap-1.5"></div>
                                 </div>
                             </div>
 
-                            <div id="toolsInferenceSuccessBoxAlert" class="w-full max-w-[700px] px-6 mb-4 hidden">
+                            <div id="toolsInferenceSuccessBoxAlert" class="w-full px-6 mb-4 hidden">
                                 <div class="w-full p-4 border border-emerald-100 rounded-xl bg-emerald-50/30 text-xs text-slate-600">
                                     <p class="font-bold text-emerald-600 mb-0.5">✓ Practical Verification Inference Stable</p>
                                     <p class="mb-0">Prompt metrics verified on model engine layers. Today's daily custom target is cleared and synced across your home streak counters!</p>
                                 </div>
                             </div>
 
+                            <!-- PRESET CHIP PILLS IN 100% PRODUCTION FORMAT -->
                             <div class="mx-auto mt-4 flex max-w-[600px] flex-wrap justify-center gap-2">
                                 <button onclick="injectSuggestionStringIntoInput('Create a visually premium cinematic vector illustration grid blueprint asset')" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M11.3333 2H4.66667C3.2 2 2 3.2 2 4.66667V11.3333C2 11.8 2.13333 12.2 2.33333 12.6C3.06667 11.2667 3.8 9.8 4.46667 8.6C4.86667 7.8 6.06667 7.93333 6.33333 8.8L7.2 12C7.86667 11.0667 8.93333 10.6 10 10.6C10.7333 10.6 11.4667 10.8 12.1333 11.2667L13.7333 12.4667C13.9333 12.1333 14 11.7333 14 11.2667V4.66667C14 3.2 12.8 2 11.3333 2ZM10 7.33333C9.26667 7.33333 8.66667 6.73333 8.66667 6C8.66667 5.26667 9.26667 4.66667 10 4.66667C10.7333 4.66667 11.3333 5.26667 11.3333 6C11.3333 6.73333 10.7333 7.33333 10 7.33333ZM13.7333 12.5333C13.3333 13.4 12.4 14 11.3333 14H4.66667C3.66667 14 2.8 13.4667 2.33333 12.6C3.06667 11.2667 3.8 9.8 4.46667 8.6C4.86667 7.8 6.06667 7.93333 6.33333 8.8L7.2 12C7.86667 11.0667 8.93333 10.6 10 10.6C10.7333 10.6 11.4667 10.8 12.1333 11.2667L13.7333 12.5333ZM11.3333 6C11.3333 6.73333 10.7333 7.33333 10 7.33333C9.26667 7.33333 8.66667 6.73333 8.66667 6C8.66667 5.26667 9.26667 4.66667 10 4.66667C10.7333 4.66667 11.3333 5.26667 11.3333 6Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Create an image</button>
                                 <button onclick="injectSuggestionStringIntoInput('Give strategic growth advisory modeling to optimize platform activation and retention loops metrics')" id="bubble-for-onboarding" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.26667 11.6667C2.46667 10.6667 2 9.4 2 8C2 4.66667 4.66667 2 8 2C11.3333 2 14 4.66667 14 8C14 11.3333 11.3333 14 8 14C7.4 14 6.8 13.9333 6.26667 13.7333C5.93333 13.6667 5.6 13.5333 5.33333 13.3333" stroke="#5653FE" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M2 13.9999C2.16327 13.9999 2.32653 13.9999 2.4898 13.9999C3.30612 13.9999 4.01361 13.7999 4.66667 13.3333" stroke="#5653FE" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3.33333 12C3.26316 12.8 2.70175 13.4857 2 14" stroke="#5653FE" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 7H6M8 9.66667H6" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Give advice</button>
                                 <button onclick="injectSuggestionStringIntoInput('Brainstorm five unique product retention features targeting high-income software skill adoption loops')" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M5.28299 5.37622L2.2845 6.46128C1.84968 6.61862 1.84968 7.23356 2.28449 7.39091L5.28299 8.47597C5.55899 8.57584 5.77634 8.7932 5.87622 9.0692L6.96128 12.0677C7.11862 12.5025 7.73356 12.5025 7.89091 12.0677L8.97597 9.0692C9.07584 8.7932 9.2932 5.27634L8.97597 4.78299L7.89091 1.7845C7.73356 1.34968 7.11862 1.34968 6.96128 1.78449L5.87622 4.78299C5.77634 5.05899 5.55899 5.27634 5.28299 5.37622Z" stroke="#5653FE" stroke-width="1.5"></path><path d="M12.6386 13.9965L12.7918 14.6788C12.834 14.8668 13.0009 15.0003 13.1935 15.0003C13.3862 15.0003 13.5531 14.8668 13.5952 14.6788L13.7484 13.9965C13.8322 13.6235 14.1235 13.3322 14.4965 13.2484L15.1788 13.0952C15.3667 13.0531 15.5003 12.8862 15.5003 12.6935C15.5003 12.5009 15.3667 12.334 15.1788 12.2918L14.4965 12.1386C14.1235 12.0549 13.8322 11.7636 13.7484 11.3906L13.5952 10.7083C13.5531 10.5203 13.3862 10.3867 13.1935 10.3867C13.0009 10.3867 12.834 10.5203 12.7918 10.7083L12.6386 11.3906L12.5549 11.7636 12.2636 12.0549 11.8906 12.1386L11.2083 12.2918C11.0203 12.334 10.8867 12.5009 10.8867 12.6935C10.8867 12.8862 11.0203 13.0531 11.2083 13.0953L11.8906 13.2484C12.2636 13.3322 12.5549 13.6235 12.6386 13.9965Z" fill="#5653FE"></path></svg>Generate ideas</button>
                                 <button onclick="injectSuggestionStringIntoInput('Deconstruct the primary structural context properties inside long analytical documentation payload configurations data summaries')" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 4.66667L14 11.3333C14 12.8 12.8 14 11.3333 14L4.66667 14C3.2 14 2 12.8 2 11.3333L2 4.66667C2 3.2 3.2 2 4.66667 2L11.3333 2C12.8 2 14 3.2 14 4.66667Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7.33317 5L4.6665 5" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8.6665 11L4.6665 11" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M11.3332 8L4.6665 8" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summarize text</button>
                                 <button onclick="injectSuggestionStringIntoInput('Analyze this raw multi-variant user cohort metric sheet logs to optimize active workspace churn barriers')" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 14L10 10M11.3333 6.66667C11.3333 9.26667 9.26667 11.3333 6.66667 11.3333C4.06667 11.3333 2 9.26667 2 6.66667C2 4.06667 4.06667 2 6.66667 2C9.26667 2 11.3333 4.06667 11.3333 6.66667Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Analyze this data</button>
-                                <button onclick="injectSuggestionStringIntoInput('Translate this analytical product requirement document parameter logs data sheets matrix architecture script')" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="evenodd" clip-rule="evenodd" d="M10.6385 5.96647C10.8728 5.88048 11.1309 5.88524 11.3618 5.9798C11.6765 6.10847 11.8238 6.38847 11.8892 6.5198C11.9638 6.67113 12.0378 6.86847 12.1138 7.0718L12.1238 7.09847L14.6238 13.7651C14.6822 13.9298 14.6736 14.1107 14.5999 14.269C14.5262 14.4274 14.3933 14.5505 14.2298 14.6119C14.0663 14.6733 13.8853 14.6681 13.7256 14.5974C13.5659 14.5267 13.4403 14.3961 13.3758 14.2338L10.9672 7.8118L8.28185 14.2565C8.21378 14.2565 8.08366 14.1272 7.92013 14.0598C7.7566 13.9925 7.57305 13.993 7.40985 14.0611C7.24665 14.1292 7.11718 14.2594 7.04992 14.4229C6.98266 14.5864 6.98311 14.77 7.05118 14.9332L9.83718 21.6185C9.92127 21.83 10.0029 22.0113 10.0925 22.1887C10.1618 22.318 10.3192 22.592 10.6392 22.7093L10.6385 22.7087ZM8.52252 19.4359C8.60648 19.4359 8.68473 19.5019 8.75279 19.557C8.82085 19.6121 8.87739 19.6801 8.91918 19.757C8.96097 19.834 8.98719 19.9184 8.99634 20.0055C9.00549 20.0926 8.99739 20.1806 8.97252 20.2646C8.31718 22.4752 7.62118 24.1019 6.57985 25.4219C5.53451 26.7472 4.18118 27.7112 2.30185 28.6699C2.22384 28.6699 2.13876 28.7337 2.05147 28.7406C1.96418 28.7475 1.87637 28.7372 1.79308 28.7102C1.70979 28.6832 1.63263 28.64 1.56602 28.5831C1.4994 28.5263 1.44464 28.4569 1.40485 28.3789C1.36506 28.3009 1.34102 28.2158 1.33411 28.1285C1.3272 28.0412 1.33755 27.9534 1.36457 27.8701C1.3916 27.8701 1.43476 27.7097 1.4916 27.6431C1.54844 27.5765 1.61784 27.2217 1.69585 27.1819C3.48452 26.5692 4.65185 25.7126 5.53318 24.5959C6.41918 23.4726 7.05652 22.0346 7.69318 19.8866C7.71803 19.8026 7.75918 19.7243 7.81428 19.6563C7.86938 19.5882 7.93734 19.5317 8.0143 19.4899C8.0143 19.4899 8.17568 19.4219 8.26277 19.4127C8.34985 19.4036 8.43789 19.4117 8.52185 19.4366L8.52252 19.4359ZM3.97367 21.6371C4.14377 21.5888 4.32607 21.6101 4.48047 21.6963C4.63487 21.7824 4.74874 21.9263 4.79701 22.0964C5.26501 23.7431 6.17434 24.9564 7.39967 25.8758C7.54112 25.9819 7.63464 26.1398 7.65964 26.3148C7.68465 26.4899 7.63909 26.6677 7.53301 26.8091C7.42692 26.9505 7.26899 27.0441 7.09396 27.0691C6.91892 27.0941 6.74112 27.0485 6.59967 26.9424C5.15834 25.8611 4.06767 24.4078 3.51501 22.4604C3.46672 22.2904 3.4879 22.1082 3.57391 21.9538C3.65992 21.7994 3.80371 21.6855 3.97367 21.6371ZM1.33301 20.0758C1.33301 19.899 1.40325 19.7294 1.52827 19.6044C1.65329 19.4794 1.82286 19.4091 1.99967 19.4091H10.333C10.5098 19.4091 10.6794 19.4794 10.8044 19.6044C10.9294 19.7294 10.9997 19.899 10.9997 20.0758C10.9997 20.2526 10.9294 20.4222 10.8044 20.5472C10.6794 20.6722 10.5098 20.7425 10.333 20.7425H1.99967C1.82286 20.7425 1.65329 20.6722 1.52827 20.5472C1.40325 20.4222 1.33301 20.2526 1.33301 20.0758ZM5.99967 18.0752C6.17649 18.0752 6.34605 18.1454 6.47108 18.2704C6.5961 18.3954 6.66634 18.565 6.66634 18.7418V20.0752C6.66634 20.252 6.5961 20.4216 6.47108 20.5466C6.34605 20.6716 6.17649 20.7418 5.99967 20.7418C5.82286 20.7418 5.65329 20.6716 5.52827 20.5466C5.40325 20.4216 5.33301 20.252 5.33301 20.0752V18.7418C5.33301 18.565 5.40325 18.3954 5.52827 18.2704C5.65329 18.1454 5.82286 18.0752 5.99967 18.0752ZM8.66634 28.0752C8.66634 27.8984 8.73658 27.7288 8.8616 27.6038C8.98663 27.4788 9.1562 27.4085 9.33301 27.4085H12.9997C13.1765 27.4085 13.3461 27.4788 13.4711 27.6038C13.5961 27.7288 13.6663 27.8984 13.6663 28.0752C13.6663 28.252 13.5961 28.4216 13.4711 28.5466C13.3461 28.6716 13.1765 28.7418 12.9997 28.7418H9.33301C9.1562 28.7418 8.98663 28.6716 8.8616 28.5466C8.73658 28.4216 8.66634 28.252 8.66634 28.0752Z" fill="#5653FE"></path></svg>Translate this</button>
                             </div>
                         </div>
                     </section>
 
+                    <!-- VIEW 4: 100% PRODUCTION COPIED AI PRACTICE VIEW WORKSPACE -->
                     <section id="view-practice" class="hidden mx-auto w-full flex-1 max-w-[510px] pt-4">
                         <div class="flex flex-col gap-6 px-4 pb-24 pt-4">
                             <button type="button" class="flex w-full flex-col gap-4 rounded-3xl border border-border-primary bg-surface-secondary px-4 pb-4 pt-6 text-left">
@@ -295,7 +294,6 @@
                             <div class="flex flex-col gap-4">
                                 <h3 class="pl-1 text-xs font-bold uppercase leading-4 tracking-[0.6px] text-text-secondary">Practices</h3>
                                 <div class="flex flex-col gap-3">
-                                    
                                     <button type="button" class="flex w-full rounded-2xl border border-border-primary bg-surface-primary p-4 text-left flex-row gap-3 opacity-60">
                                         <div class="flex size-12 shrink-0 items-center justify-center rounded-[14px] bg-surface-action-secondary">
                                             <svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" viewBox="0 0 24.01 24.01" fill="none" class="size-6" style="display: block;"><g id="Group"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.5773 17.8849C21.153 18.4606 21.153 19.3939 20.5773 19.9695L19.9695 20.5773C19.3939 21.153 18.4606 21.153 17.885 20.5773L7.43436 10.1267C6.85873 9.55109 6.85872 8.6178 7.43436 8.04217L8.04218 7.43435C8.61781 6.85872 9.55109 6.85872 10.1267 7.43435L20.5773 17.8849Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M16.0067 4.00167V6.0025" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M17.0071 5.00208H15.0063" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M5.00208 15.0063V17.0071" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M6.0025 16.0067H4.00167" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4.00167 3.00125V5.00208" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M5.00208 4.00167H3.00125" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8.84668 11.5388L11.5388 8.84668" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>
@@ -307,6 +305,7 @@
                                     </button>
 
                                     <div class="grid grid-cols-2 gap-3">
+                                        <!-- PROMPT BUILDER INTERACTIVE TRIGGER: MOUNT LAYER OPEN DETAILED INDEPENDENT VIEW PAGE SCREEN -->
                                         <button onclick="switchView('builder-page')" type="button" class="flex w-full rounded-2xl border border-border-primary bg-surface-primary p-4 text-left flex-col gap-3 transition shadow-sm hover:border-indigo-400">
                                             <div class="flex size-12 shrink-0 items-center justify-center rounded-[14px] bg-surface-action-secondary">
                                                 <svg width="100%" height="100%" overflow="visible" viewBox="0 0 24 24" fill="none" class="size-6" style="display: block;"><g id="Group"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.74 11.26L2.8 8.32C2.39998 7.91943 2.39998 7.27057 2.8 6.87L5.87 3.8C6.27057 3.39998 6.91943 3.39998 7.32 3.8L9.26 5.74" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M18.26 14.74L20.2 16.68C20.6 17.0806 20.6 17.7294 20.2 18.13L17.13 21.2C16.7294 21.6 16.0806 21.6 15.68 21.2L12.74 18.26" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M11.7664 9.10207L4.14858 16.7199C3.5881 17.2791 3.36881 18.0949 3.57343 18.8598C3.77805 19.6246 4.37544 20.222 5.14027 20.4266C5.9051 20.4266 6.72098 20.4119 7.28017 19.8515L14.898 12.2337" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M11.7664 9.10207C11.3334 7.8336 11.4302 6.44412 12.035 5.24797C12.6397 4.05182 13.7013 3.15009 14.9795 2.74678C15.6206 2.53365 16.2994 2.45771 16.9717 2.52388C17.3494 2.57431 17.6653 2.83542 17.7861 3.19682C17.9068 3.55821 17.8111 3.9568 17.5396 4.22408L15.7354 6.02822C15.6416 6.12197 15.5889 6.24915 15.5889 6.38177C15.5889 6.51438 15.6416 6.64156 15.7354 6.73531L17.2647 8.26467C17.46 8.45992 17.7765 8.45992 17.9718 8.26467L19.7759 6.46053C20.0432 6.18897 20.4417 6.09332 20.8031 6.21401C21.1645 6.33471 21.4256 6.65068 21.4761 7.02834C21.5423 7.70069 21.4664 8.37945 21.2532 9.02053C20.8499 10.2988 19.9482 11.3603 18.7521 11.9651C17.5559 12.5698 16.1665 12.6667 14.898 12.2337" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>
@@ -328,7 +327,7 @@
 
                                     <div class="grid grid-cols-2 gap-3">
                                         <button type="button" class="flex w-full rounded-2xl border border-border-primary bg-surface-primary p-4 text-left flex-col gap-3 opacity-50">
-                                            <div class="flex size-12 shrink-0 items-center justify-center rounded-[14px] bg-surface-action-secondary"><svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" viewBox="0 0 21.5018 20.5721" fill="none" class="size-6" style="display: block;"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.2768 1.04489C10.3206 0.956355 10.3883 0.881826 10.4723 0.829719C10.5562 0.777612 10.653 0.75 10.7518 0.75C10.8506 0.75 10.9474 0.777612 11.0313 0.829719C11.1153 0.881826 11.183 0.956355 11.2268 1.04489L13.5368 5.72389C13.689 6.03186 13.9136 6.2983 14.1914 6.50035C14.4692 6.70239 14.7919 6.83401 15.1318 6.88389L20.2978 7.63989C20.3957 7.65408 20.4876 7.69537 20.5633 7.75909C20.6389 7.82282 20.6952 7.90644 20.7258 8.0005C20.7564 8.09456 20.7601 8.1953 20.7364 8.29133C20.7127 8.38736 20.6626 8.47485 20.5918 8.54389L16.8558 12.1819C16.6094 12.422 16.4251 12.7184 16.3186 13.0455C16.21 13.3727 16.1869 13.7208 16.2448 14.0599L17.1268 19.1999C17.1441 19.2977 17.1335 19.3985 17.0963 19.4906C17.0591 19.5827 16.9967 19.6625 16.9163 19.7209C16.836 19.7793 16.7408 19.8139 16.6417 19.8208C16.5426 19.8277 16.4435 19.8066 16.3558 19.7599L11.7378 17.3319C11.4335 17.1721 11.095 17.0886 10.7513 17.0886C10.4076 17.0886 10.0691 17.1721 9.7648 17.3319L5.1478 19.7599C5.06013 19.8063 4.9612 19.8272 4.86225 19.8201C4.7633 19.8131 4.66832 19.7785 4.58809 19.7201C4.50787 19.6618 4.44563 19.5821 4.40846 19.4901C4.37128 19.3982 4.36066 19.2976 4.3778 19.1999L5.2588 14.0609C5.48452 10.7398 1.61784 10.7796 1.69585 10.7398Z" stroke="var(--stroke-0, #5653FE)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+                                            <div class="flex size-12 shrink-0 items-center justify-center rounded-[14px] bg-surface-action-secondary"><svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" viewBox="0 0 21.5018 20.5721" fill="none" class="size-6" style="display: block;"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.2768 1.04489C10.3206 0.956355 10.3883 0.881826 10.4723 0.829719C10.5562 0.777612 10.653 0.75 10.7518 0.75C10.8506 0.75 10.9474 0.777612 11.0313 0.829719C11.1153 0.881826 11.183 0.956355 11.2268 1.04489L13.5368 5.72389C13.689 6.03186 13.9136 6.2983 14.1914 6.50035C14.4692 6.70239 14.7919 6.83401 15.1318 6.88389L20.2978 7.63989C20.3957 7.65408 20.4876 7.69537 20.5633 7.75909C20.6389 7.82282 20.6952 7.90644 20.7258 8.0005C20.7564 8.09456 20.7601 8.1953 20.7364 8.29133C20.7127 8.38736 20.6626 8.47485 20.5918 8.54389L16.8558 12.1819C16.6094 12.422 16.4251 12.7184 16.3186 13.0455C16.21 13.3727 16.1869 13.7208 16.2448 14.0599L17.1268 19.1999C17.1441 19.2977 17.1335 19.3985 17.0963 19.4906C17.0591 19.5827 16.9967 19.6625 16.9163 19.7209C16.836 19.7793 16.7408 19.8139 16.6417 19.8208C16.5426 19.8277 16.4435 19.8066 16.3558 19.7599L11.7378 17.3319C11.4335 17.1721 11.095 17.0886 10.7513 17.0886C10.4076 17.0886 10.0691 17.1721 9.7648 17.3319L5.1478 19.7599C5.06013 19.8063 4.9612 19.8272 4.86225 19.8201C4.7633 19.8131 4.66832 19.7785 4.58809 19.7201C4.50787 19.6618 4.44563 19.5821 4.40846 19.4901C4.37128 19.3982 4.36066 19.2976 4.3778 19.1999L5.2588 14.0609C5.48452 10.7398 1.61784 10.7796 1.69585 10.7398Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
                                             <div class="flex flex-col gap-1">
                                                 <p class="font-bold text-text-primary text-sm leading-5 tracking-[-0.15px]">Prompt Master</p>
                                                 <p class="font-normal text-text-secondary text-xs leading-[19.5px]">Rate prompts and learn what works</p>
@@ -339,7 +338,7 @@
                                             <div class="flex size-12 shrink-0 items-center justify-center rounded-[14px] bg-surface-action-secondary"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21.0002 21.0002L16.7002 16.7002" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
                                             <div class="flex flex-col gap-1">
                                                 <p class="font-bold text-text-primary text-sm leading-5 tracking-[-0.15px]">Prompt Detective</p>
-                                                <p class="font-normal text-text-secondary text-xs leading-[19.5px]">Guess which prompt created the result</p>
+                                                <p class="font-normal text-text-secondary text-xs leading-[19.5px]">Guess prompt from outputs</p>
                                             </div>
                                         </button>
                                     </div>
@@ -348,10 +347,13 @@
                         </div>
                     </section>
 
-                    <div id="view-builder-page" class="hidden flex-1 flex flex-col bg-surface-primary" data-sentry-component="PracticeConversationPage">
+                    <!-- VIEW 5: 100% PRODUCTION COPIED PROMPT BUILDER CONVERSATION PAGE -->
+                    <div id="view-builder-page" class="hidden flex-1 flex flex-col bg-surface-primary h-screen" data-sentry-component="PracticeConversationPage">
+                        <!-- Custom Sub-Header Navigation bar configuration elements -->
                         <header class="sticky top-0 z-50 h-14 w-full shrink-0 border-b border-b-border-primary bg-surface-primary tablet:h-16">
                             <div class="desktop-width grid h-full w-full grid-cols-[1fr_3fr_1fr] items-center mx-auto max-w-5xl">
-                                <button onclick="switchView('practice')" class="p-4 transition-all hover:opacity-70 active:scale-95 text-left flex items-center">
+                                <!-- Native back arrow layout selector trigger -> switches cleanly back to practice pool array tab -->
+                                <button onclick="switchView('practice')" class="p-4 transition-all hover:opacity-70 active:scale-95 text-left flex items-center cursor-pointer">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="#48484A" class="rtl-invert-icon fill-icon-primary"><path d="M14.7071 5.29289C15.0976 5.68342 15.0976 6.31658 14.7071 6.70711L9.41421 12L14.7071 17.2929C15.0976 17.6834 15.0976 18.3166 14.7071 18.7071C14.3166 19.0976 13.6834 19.0976 13.2929 18.7071L7.29289 12.7071C6.90237 12.3166 6.90237 11.6834 7.29289 11.2929L13.2929 5.29289C13.6834 4.90237 14.3166 4.90237 14.7071 5.29289Z"></path></svg>
                                 </button>
                                 <h2 class="mx-auto truncate px-1 text-base font-semibold text-center text-text-primary">Prompt Builder</h2>
@@ -359,8 +361,10 @@
                             </div>
                         </header>
 
+                        <!-- Conversational feed viewport display workspace -->
                         <div class="w-full flex-1 overflow-y-auto py-10">
-                            <div class="desktop-width max-w-5xl mx-auto mb-4 space-y-4 px-6">
+                            <div class="desktop-width max-w-5xl mx-auto mb-4 space-y-4 px-6 tablet:pl-0">
+                                <!-- Automated assistant greeting thread message row block -->
                                 <div class="flex items-start gap-x-3">
                                     <img class="shrink-0 rounded-full bg-slate-100" width="24" height="24" src="https://app.coursiv.io/icon-512.png" alt="logo">
                                     <div class="min-w-0 flex-1">
@@ -370,47 +374,60 @@
                                     </div>
                                 </div>
 
-                                <div id="builderPageSandboxOutputRowGrid" class="hidden flex-col space-y-4 pt-4 border-t border-slate-50">
-                                    <div class="flex items-start gap-x-3 justify-end text-right">
-                                        <div class="bg-indigo-600 text-white rounded-2xl px-3.5 py-2 text-xs max-w-md shadow-sm font-medium">
-                                            <span id="builderUserQueryTextLabelNodeValue"></span>
+                                <!-- FORM INJECTED DIRECTLY INTO THE CHAT LOG (As requested) -->
+                                <div class="flex items-start gap-x-3 mt-6">
+                                    <div class="w-6 h-6 shrink-0 rounded-full bg-indigo-100 border border-indigo-200 text-[10px] font-bold flex items-center justify-center text-indigo-700 font-mono">U</div>
+                                    <div class="border border-slate-200 rounded-2xl p-5 space-y-4 bg-white shadow-sm w-full max-w-md">
+                                        <div class="space-y-1">
+                                            <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wide">1. Product Name</label>
+                                            <input type="text" id="builderInputParamProductNameValue" value="Coursiv Workspace App" class="w-full border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-indigo-500 font-medium text-slate-800">
                                         </div>
-                                        <div class="w-6 h-6 rounded-full bg-indigo-100 border border-indigo-200 text-[10px] font-bold flex items-center justify-center text-indigo-700 font-mono">U</div>
+                                        <div class="space-y-1">
+                                            <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wide">2. Target Audience</label>
+                                            <input type="text" id="builderInputParamTargetAudienceValue" value="Growth Product Managers" class="w-full border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-indigo-500 font-medium text-slate-800">
+                                        </div>
+                                        <div class="space-y-1">
+                                            <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wide">3. Key Benefit / Goal</label>
+                                            <input type="text" id="builderInputParamCoreObjectiveValue" value="Optimize features activation engagement conversion metrics logs from 5% to 20%" class="w-full border border-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-indigo-500 font-medium text-slate-800">
+                                        </div>
+                                        <button onclick="executeBuilderPromptMatrixCompilation()" class="w-full bg-[#5653FE] text-white font-semibold py-2.5 rounded-xl text-xs hover:bg-[#4340E6] transition cursor-pointer">Compile Prompt Matrix Preset</button>
                                     </div>
+                                </div>
 
-                                    <div class="flex items-start gap-x-3 pt-2">
-                                        <img class="shrink-0 rounded-full bg-slate-100" width="24" height="24" src="https://app.coursiv.io/icon-512.png" alt="logo">
-                                        <div class="min-w-0 flex-1 bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-3 shadow-inner">
-                                            <p class="text-[10px] font-bold text-indigo-600 uppercase tracking-wide">Compiled Instructions payload matrix output:</p>
-                                            <div id="builderCompiledPromptTextStringResultField" class="text-xs font-mono text-slate-600 bg-white p-3 rounded-lg border border-slate-100 leading-relaxed max-h-32 overflow-y-auto"></div>
-                                            <div class="flex items-center justify-between pt-1">
-                                                <span class="text-[10px] text-emerald-600 font-bold">✓ Synced into Saved prompts database</span>
-                                                <button onclick="switchView('tools')" class="bg-indigo-600 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg hover:bg-indigo-700 transition cursor-pointer">Open AI Tools Workspace ➔</button>
-                                            </div>
+                                <!-- INTERACTIVE SUBMISSION CONVERSATION RECORD ROW GRID PAYLOAD -->
+                                <div id="builderPageSandboxOutputRowGrid" class="hidden flex items-start gap-x-3 pt-6">
+                                    <img class="shrink-0 rounded-full bg-slate-100" width="24" height="24" src="https://app.coursiv.io/icon-512.png" alt="logo">
+                                    <div class="min-w-0 flex-1 bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-3 shadow-inner max-w-md">
+                                        <p class="text-[10px] font-bold text-indigo-600 uppercase tracking-wide">Compiled Instructions payload matrix output:</p>
+                                        <div id="builderCompiledPromptTextStringResultField" class="text-xs font-mono text-slate-600 bg-white p-3 rounded-lg border border-slate-100 leading-relaxed max-h-32 overflow-y-auto"></div>
+                                        <div class="flex items-center justify-between pt-1">
+                                            <span class="text-[10px] text-emerald-600 font-bold">✓ Synced to Library</span>
+                                            <button onclick="switchView('tools')" class="bg-indigo-600 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg hover:bg-indigo-700 transition cursor-pointer">Open AI Tools ➔</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Fixed Chat Form component panel footer layout references -->
                         <div class="desktop-width max-w-5xl w-full sticky bottom-0 mx-auto flex flex-col items-center pb-3 px-6 bg-white border-t border-slate-50 pt-2">
-                            <form class="relative mx-auto w-full max-w-[700px] cursor-text" id="builder-chat-form" onsubmit="event.preventDefault();">
+                            <form class="relative mx-auto w-full max-w-[700px] cursor-text opacity-50" onsubmit="event.preventDefault();">
                                 <div class="relative w-full">
                                     <div class="w-full overflow-hidden border focus-within:border-border-action border-border-primary bg-surface-primary px-2.5 py-[14px] rounded-[16px] transition-colors">
-                                        <textarea id="builderMainInputBoxTextareaField" oninput="handleBuilderInputValidation()" placeholder="e.g. Build an optimized user workflow engagement structure matrix parameters" class="w-full resize-none bg-surface-primary px-1.5 outline-none disabled:bg-surface-primary h-12" style="height:48px !important;"></textarea>
+                                        <textarea placeholder="Ask anything (Disabled in constructor mode)" disabled class="w-full resize-none bg-surface-primary px-1.5 outline-none disabled:bg-surface-primary h-[24px]" style="height:24px !important;"></textarea>
                                         <section class="flex items-center justify-between gap-1">
                                             <div class="flex min-w-0 flex-1 items-center gap-1"></div>
                                             <div class="flex shrink-0 items-center gap-x-1">
                                                 <button type="button" class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all duration-200 text-icon-primary"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="9" y="2" width="6" height="11" rx="3" stroke="currentColor" stroke-width="1.5"></rect><path d="M5 10C5 13.866 8.13401 17 12 17C15.866 17 19 13.866 19 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path><path d="M12 17V21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path><path d="M9 21H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg></button>
-                                                <button id="builderSubmitActionArrowButtonNode" onclick="executeBuilderPromptMatrixCompilation()" type="button" class="group scale-100 cursor-pointer rounded-full p-1 transition-all" disabled="">
-                                                    <svg id="builderSubmitButtonSvgFillNode" width="32" height="32" viewBox="0 0 32 32" fill="#AEAEB2" class="transition-colors"><path d="M16 28.6445C9.32031 28.6445 3.89453 23.2188 3.89453 16.5391C3.89453 9.85938 9.32031 4.43359 16 4.43359C22.6797 4.43359 28.1055 9.85938 28.1055 16.5391C28.1055 23.2188 22.6797 28.6445 16 28.6445ZM16.0117 10.3984C15.707 10.3984 15.4492 10.4922 15.1562 10.7734L11.1836 14.6055C10.9844 14.8047 10.8672 15.0273 10.8672 15.3203C10.8672 15.8828 11.3125 16.2812 11.8516 16.2812C12.1328 16.2812 12.4258 16.1641 12.6133 15.9531L14.3242 14.1367L14.9805 13.3398L14.8867 15.1445V21.5781C14.8867 22.1758 15.3906 22.6797 16.0117 22.6797C16.6328 22.6797 17.1367 22.1758 17.1367 21.5781V15.1445L17.043 13.3516L17.6875 14.1367L19.3984 15.9531C19.5859 16.1641 19.8672 16.2812 20.1484 16.2812C20.6875 16.2812 21.1445 15.8828 21.1445 15.3203C21.1445 15.0273 21.0273 14.8047 20.8281 14.6055L16.8555 10.7734C16.5625 10.4922 16.3047 10.3984 16.0117 10.3984Z"></path></svg>
+                                                <button type="button" class="group scale-100 cursor-pointer rounded-full p-1 transition-all" disabled="">
+                                                    <svg width="32" height="32" viewBox="0 0 32 32" fill="#AEAEB2" class="transition-colors"><path d="M16 28.6445C9.32031 28.6445 3.89453 23.2188 3.89453 16.5391C3.89453 9.85938 9.32031 4.43359 16 4.43359C22.6797 4.43359 28.1055 9.85938 28.1055 16.5391C28.1055 23.2188 22.6797 28.6445 16 28.6445ZM16.0117 10.3984C15.707 10.3984 15.4492 10.4922 15.1562 10.7734L11.1836 14.6055C10.9844 14.8047 10.8672 15.0273 10.8672 15.3203C10.8672 15.8828 11.3125 16.2812 11.8516 16.2812C12.1328 16.2812 12.4258 16.1641 12.6133 15.9531L14.3242 14.1367L14.9805 13.3398L14.8867 15.1445V21.5781C14.8867 22.1758 15.3906 22.6797 16.0117 22.6797C16.6328 22.6797 17.1367 22.1758 17.1367 21.5781V15.1445L17.043 13.3516L17.6875 14.1367L19.3984 15.9531C19.5859 16.1641 19.8672 16.2812 20.1484 16.2812C20.6875 16.2812 21.1445 15.8828 21.1445 15.3203C21.1445 15.0273 21.0273 14.8047 20.8281 14.6055L16.8555 10.7734C16.5625 10.4922 16.3047 10.3984 16.0117 10.3984Z"></path></svg>
                                                 </button>
                                             </div>
                                         </section>
                                     </div>
                                 </div>
                             </form>
-                            <p class="pt-2 text-center text-xs text-text-secondary">This tool is powered by advanced ИИ engineering clusters model loops parameters contexts</p>
+                            <p class="pt-2 text-center text-xs text-text-secondary">This tool is powered by advanced AI engineering clusters</p>
                         </div>
                     </div>
 
@@ -419,10 +436,10 @@
         </div>
     </div>
 
+    <!-- ECOSYSTEM APPLICATION ENGINE CORE JAVASCRIPT CONTROLLER NAVIGATION SCRIPT -->
     <script>
         let isEcosystemActiveStreakSecure = false;
 
-        // Shared cross-feature local data pool matching variable repositories metrics 
         let globalSavedPromptsLibraryMap = [
             {
                 title: "🎯 General Growth Funnel Framework",
@@ -431,14 +448,19 @@
         ];
 
         function switchView(id) {
-            // Absolute validation unmount reset loop structures references values
-            document.getElementById('view-home').classList.add('hidden');
-            document.getElementById('view-streak').classList.add('hidden');
-            document.getElementById('view-tools').classList.add('hidden');
-            document.getElementById('view-practice').classList.add('hidden');
-            document.getElementById('view-builder-page').classList.add('hidden');
+            // Absolute validation unmount reset sequence maps for exactly 5 isolated views
+            ['view-home', 'view-streak', 'view-tools', 'view-practice', 'view-builder-page'].forEach(view => {
+                document.getElementById(view).classList.add('hidden');
+            });
 
-            // Render layer block target panel
+            // Toggle Main Navbar Layout Rules (Hidden when inside the isolated Builder chat page context)
+            if (id === 'builder-page') {
+                document.getElementById('app-main-header').classList.add('hidden');
+            } else {
+                document.getElementById('app-main-header').classList.remove('hidden');
+            }
+
+            // Render view layer block target panel
             document.getElementById('view-' + id).classList.remove('hidden');
 
             // Synchronized header navbar link tab state selector emphasis mapping rules
@@ -446,16 +468,18 @@
             const tTools = document.getElementById('header-nav-tools');
             const tPractice = document.getElementById('header-nav-practice');
 
-            tHome.className = "h-16 py-2 transition-colors duration-200 text-text-disabled fill-icon-primary hover:text-text-action-info cursor-pointer";
-            tTools.className = "h-16 py-2 transition-colors duration-200 text-text-disabled fill-icon-primary hover:text-text-action-info cursor-pointer";
-            tPractice.className = "h-16 py-2 transition-colors duration-200 text-text-disabled fill-icon-primary hover:text-text-action-info cursor-pointer";
+            if(tHome && tTools && tPractice) {
+                tHome.className = "h-16 py-2 transition-colors duration-200 text-text-disabled fill-icon-primary hover:text-text-action-info cursor-pointer";
+                tTools.className = "h-16 py-2 transition-colors duration-200 text-text-disabled fill-icon-primary hover:text-text-action-info cursor-pointer";
+                tPractice.className = "h-16 py-2 transition-colors duration-200 text-text-disabled fill-icon-primary hover:text-text-action-info cursor-pointer";
 
-            if (id === 'home' || id === 'streak') {
-                tHome.className = "h-16 py-2 transition-colors duration-200 fill-text-action-info text-text-action-info cursor-pointer";
-            } else if (id === 'tools') {
-                tTools.className = "h-16 py-2 transition-colors duration-200 fill-text-action-info text-text-action-info cursor-pointer";
-            } else if (id === 'practice' || id === 'builder-page') {
-                tPractice.className = "h-16 py-2 transition-colors duration-200 fill-text-action-info text-text-action-info cursor-pointer";
+                if (id === 'home' || id === 'streak') {
+                    tHome.className = "h-16 py-2 transition-colors duration-200 fill-text-action-info text-text-action-info cursor-pointer";
+                } else if (id === 'tools') {
+                    tTools.className = "h-16 py-2 transition-colors duration-200 fill-text-action-info text-text-action-info cursor-pointer";
+                } else if (id === 'practice' || id === 'builder-page') {
+                    tPractice.className = "h-16 py-2 transition-colors duration-200 fill-text-action-info text-text-action-info cursor-pointer";
+                }
             }
         }
 
@@ -473,23 +497,8 @@
             }
         }
 
-        function handleBuilderInputValidation() {
-            const val = document.getElementById('builderMainInputBoxTextareaField').value.trim();
-            const btn = document.getElementById('builderSubmitActionArrowButtonNode');
-            const svg = document.getElementById('builderSubmitButtonSvgFillNode');
-            
-            if (val !== "") {
-                btn.removeAttribute('disabled');
-                svg.setAttribute('fill', '#5653FE');
-            } else {
-                btn.setAttribute('disabled', 'true');
-                svg.setAttribute('fill', '#AEAEB2');
-            }
-        }
-
         function injectSuggestionStringIntoInput(text) {
             document.getElementById('toolsMainInputTextareaContainerBlock').value = text;
-            switchView('tools');
             handleToolsInputValidation();
         }
 
@@ -501,7 +510,7 @@
 
         function renderLibraryPresetsDOMNode() {
             const grid = document.getElementById('toolsSavedLibraryGridContainerRowsNode');
-            grid.innerHTML = ""; // flush row parameters references variables nodes elements lists
+            grid.innerHTML = ""; 
 
             globalSavedPromptsLibraryMap.forEach((item) => {
                 const buttonElement = document.createElement('button');
@@ -520,30 +529,26 @@
         }
 
         function executeBuilderPromptMatrixCompilation() {
-            const inputField = document.getElementById('builderMainInputBoxTextareaField');
-            const query = inputField.value.trim();
-            if (!query) return;
+            const product = document.getElementById('builderInputParamProductNameValue').value.trim();
+            const audience = document.getElementById('builderInputParamTargetAudienceValue').value.trim();
+            const goal = document.getElementById('builderInputParamCoreObjectiveValue').value.trim();
 
-            // Generate an expert system instruction macro layout payload args output
-            const structuralOutputPayload = `System operational prompt directive: act as senior logic engineer prompt matrix context writer profile. Interpret input arguments target metrics criteria: "${query}". Wrap response in clear parameter scopes rules. Ensure balanced high-fidelity formats payload syntax optimization vectors logs references indices.`;
+            if (!product || !audience || !goal) return alert("Please map all three context parameter categories inputs entries.");
 
-            // Display directly inside conversation container elements on screen view without enforcing jarring redirect
-            document.getElementById('builderUserQueryTextLabelNodeValue').textContent = query;
-            document.getElementById('builderCompiledPromptTextStringResultField').textContent = structuralOutputPayload;
+            const outputPayload = `System operational macro matrix instruction: act as seasoned copy engineer product optimization strategist. Context framework targets identification: "${product}". Targeted demographic consumer parameter profiles segment parameters: "${audience}". Deliverable benefit scaling metric milestone target arguments payload: "${goal}". Formulate clean premium logical outputs formatting hierarchies.`;
+
+            // Display code execution output text string parameter block cleanly inside sandbox display area box container
+            document.getElementById('builderCompiledPromptTextStringResultField').textContent = outputPayload;
             document.getElementById('builderPageSandboxOutputRowGrid').classList.remove('hidden');
 
-            // Reset input values fields settings 
-            inputField.value = "";
-            handleBuilderInputValidation();
-
-            // Push object properties natively into the shared cross-feature storage repository array loop map
-            const constructedTitleRowKey = `⚙️ Built: ${query.substring(0, 24)}...`;
-            const duplicateValidationCheckLoop = globalSavedPromptsLibraryMap.find(p => p.body === structuralOutputPayload);
-            if (!duplicateValidationCheckLoop) {
-                globalSavedPromptsLibraryMap.unshift({ title: constructedTitleRowKey, body: structuralOutputPayload });
+            // Inject properties into shared synchronization data matrix loop array
+            const structuralPresetRecordKey = `⚙️ Preset: ${product}`;
+            const applicationCheckDuplicateLoop = globalSavedPromptsLibraryMap.find(p => p.title === structuralPresetRecordKey);
+            if (!applicationCheckDuplicateLoop) {
+                globalSavedPromptsLibraryMap.unshift({ title: structuralPresetRecordKey, body: outputPayload });
             }
 
-            // Adjust practice metrics ranks parameters logs level variables locally on page context
+            // Target adjustments for dynamic Level Badge
             document.getElementById('practice-fraction-id-node').textContent = "2/3";
             document.getElementById('practice-status-fill-bar-element').style.width = "66.6666%";
             document.getElementById('practice-disclaimer-id-node').textContent = "Complete 1 more practice to reach Curious Builder";
@@ -561,11 +566,11 @@
         function propagateEcosystemStreakState() {
             if (!isEcosystemActiveStreakSecure) return;
 
-            // 1. Sync counts markers across headers trackers widgets indexes parameters values nodes loops (1 day -> 2 days)
+            // 1. Increment indicator counters variables parameters strings values logs (1 day -> 2 days active secure targets)
             document.getElementById('header-global-streak-counter-node').textContent = "2";
             document.getElementById('homePageClaudePctValueCounter').textContent = "12%";
 
-            // 2. Adjust calendar layout metrics blocks status properties elements entries
+            // Adjust calendar details challenge row items cards parameters references
             document.getElementById('streakCalendarPageChallengeTimelineStatusText').textContent = "Day 1 of 3 (Ecosystem Tasks Complete! 🎉)";
             document.getElementById('streakCalendarPageProgressBarFillWidthField').style.width = "100%";
             
@@ -588,14 +593,14 @@
                 targetPageStreakCounters[i].textContent = "2";
             }
 
-            // Transform June 4 box cell within grid matrix layout into branding linear gradient design graphics asset item
+            // Transmute June 4 cell box node matrix container within calendar into linear gradient design graphics elements layout
             const dayBoxNodeCell = document.getElementById('calendarEcosystemDaySlotBox4');
             dayBoxNodeCell.className = "flex aspect-square items-center justify-center relative text-white rounded-full font-bold shadow-md shadow-orange-500/15";
             dayBoxNodeCell.style.background = "linear-gradient(0deg, #FF7008 0%, #FFAC5E 100%)";
             dayBoxNodeCell.innerHTML = "✓";
             document.getElementById('starburstActiveNodeSvgIconElement').classList.add('hidden');
 
-            // 3. Re-sync values counters across home preview summary cards elements fields variables
+            // 3. Propagate numbers metrics counters backward cross home screen view cards panels indicators
             document.getElementById('homeDashboardDisclaimerStatusTextLabel').textContent = "✓ Workout complete. Streak secured!";
             document.getElementById('homeDashboardDisclaimerStatusTextLabel').className = "text-emerald-600 font-semibold animate-none";
 
