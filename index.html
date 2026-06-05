@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coursiv - Optimized Workspace</title>
+    <title>Coursiv - Ecosystem Workspace</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -54,10 +54,10 @@
                                     <button onclick="switchView('home')" id="nav-home" class="h-16 py-2 transition-colors duration-200 fill-text-action-info text-text-action-info cursor-pointer">
                                         <div class="flex h-full items-center gap-2 rounded-[16px] px-2 hover:bg-slate-50">
                                             <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" fill="currentColor"><path d="M11.336 2.753a1 1 0 0 1 1.328 0l9 8a1 1 0 0 1-1.328 1.494L20 11.95V19.5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7.55l-.336.297a1 1 0 0 1-1.328-1.494l9-8ZM6 10.17V19.5h3v-5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v5h3v-9.329l-6-5.333-6 5.333Zm7 9.329v-4h-2v4h2Z"></path></svg></span>
-                                            <span class="text-base">Home</span>
+                                            <span class="text-base font-medium">Home</span>
                                         </div>
                                     </button>
-                                    <button onclick="switchView('tools')" id="nav-tools" class="h-16 py-2 transition-colors duration-200 text-text-disabled fill-icon-primary cursor-pointer">
+                                    <button onclick="switchView('tools')" id="nav-tools" class="h-16 py-2 transition-colors duration-200 text-text-disabled cursor-pointer">
                                         <div class="flex h-full items-center gap-2 rounded-[16px] px-2 hover:bg-slate-50">
                                             <span>✨</span><span class="text-base font-medium">AI Tools</span>
                                         </div>
@@ -71,22 +71,22 @@
                             </div>
                             <div class="flex items-center gap-x-2">
                                 <div onclick="switchView('streak')" class="flex select-none items-center justify-center border border-border-primary bg-surface-secondary rounded-[30px] gap-x-1 py-1 pl-[10px] pr-[15px] cursor-pointer">
-                                    <span class="text-xs">🔥</span>
-                                    <p class="shrink-0 font-semibold text-base"><span id="headerStreakCounterNode">1</span></p>
+                                    <span class="text-sm">🔥</span>
+                                    <p class="shrink-0 font-semibold text-base"><span id="globalHeaderStreakVal">1</span></p>
                                 </div>
                             </div>
                         </div>
                     </header>
 
                     <main id="view-home" class="max-w-5xl w-full mx-auto px-6 py-8 flex flex-col gap-y-10 flex-1">
-                        <div class="flex min-w-0 cursor-pointer justify-between rounded-2xl bg-surface-action-secondary p-4 flex-row border border-border-primary">
-                            <div class="mb-0 flex flex-col justify-center">
-                                <h3 class="text-base font-bold tablet:text-xl">AI Mastery Certificate Program</h3>
+                        <div class="flex min-w-0 cursor-pointer justify-between rounded-2xl bg-surface-action-secondary p-4 border border-border-primary">
+                            <div class="flex flex-col justify-center">
+                                <h3 class="text-base font-bold">AI Mastery Certificate Program</h3>
                                 <p class="text-xs text-text-secondary mb-0">Complete 5 courses to earn your professional certificate</p>
                             </div>
                             <div class="flex w-full min-w-0 gap-x-1 rounded-md bg-surface-primary p-1 max-w-[455px] border border-slate-100">
                                 <button class="flex flex-1 flex-col items-center py-2"><img src="https://d2h7i1o4snhir4.cloudfront.net/images/guides-icons/chatgpt_logo.webp" class="h-6 w-6 rounded" /><span class="text-xs text-emerald-600 mt-1">✓</span></button>
-                                <button class="flex flex-1 flex-col items-center border border-border-action bg-surface-action-secondary py-2 rounded"><img src="https://d2h7i1o4snhir4.cloudfront.net/images/guides-icons/claude_logo.webp" class="h-6 w-6 rounded" /><span id="homeClaudeProgressLabel" class="text-xs text-text-action-info mt-1">4%</span></button>
+                                <button class="flex flex-1 flex-col items-center bg-surface-action-secondary py-2 rounded"><img src="https://d2h7i1o4snhir4.cloudfront.net/images/guides-icons/claude_logo.webp" class="h-6 w-6 rounded" /><span id="homeClaudeProgressLabel" class="text-xs text-text-action-info mt-1">4%</span></button>
                                 <button class="flex flex-1 flex-col items-center py-2"><img src="https://d2h7i1o4snhir4.cloudfront.net/images/guides-icons/midjourney_logo.webp" class="h-6 w-6 rounded" /><span class="text-xs text-text-secondary mt-1">5%</span></button>
                             </div>
                         </div>
@@ -101,9 +101,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="relative mb-2 flex h-2 w-full overflow-hidden rounded-md bg-surface-tertiary">
-                                        <div class="absolute bottom-0 start-0 top-0 rounded-md bg-indigo-500" style="width: 60%;"></div>
-                                    </div>
+                                    <div class="relative mb-2 flex h-2 w-full overflow-hidden rounded-md bg-surface-tertiary"><div class="absolute bottom-0 start-0 top-0 rounded-md bg-indigo-500" style="width: 60%;"></div></div>
                                     <div class="flex justify-between text-sm"><span class="text-text-secondary">9/15 lessons completed</span><span class="font-bold text-text-action-info">60%</span></div>
                                 </div>
                                 <div class="flex gap-2 w-full">
@@ -114,33 +112,36 @@
 
                             <div onclick="switchView('streak')" class="card-effect flex cursor-pointer rounded-2xl border p-6 border-border-primary bg-surface-primary min-w-[380px] flex-col" role="button">
                                 <p class="mb-1 text-sm font-semibold uppercase text-text-action-info">Weekly streaks</p>
-                                <p class="text-base font-bold text-text-primary mb-3">Help you build learning habit</p>
+                                <p class="text-xl font-bold text-text-primary mb-3">Help you build learning habit</p>
                                 <div class="flex w-full justify-between my-auto">
                                     <div class="text-center">
                                         <div class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs font-bold">✓</div>
                                         <p class="mt-1 text-xs text-text-secondary">Thu</p>
                                     </div>
                                     <div class="text-center">
-                                        <div id="homeMiniCircleDay4" class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary flex items-center justify-center text-xs font-semibold text-slate-400">4</div>
+                                        <div id="homeMiniDayCircleNode4" class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary flex items-center justify-center text-xs font-semibold text-slate-400">4</div>
                                         <p class="mt-1 text-xs text-text-primary">Fri</p>
                                     </div>
                                     <div class="text-center"><div class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary"></div><p class="mt-1 text-xs text-text-secondary">Sat</p></div>
                                     <div class="text-center"><div class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary"></div><p class="mt-1 text-xs text-text-secondary">Sun</p></div>
                                 </div>
                                 <div class="mt-4 border-t border-slate-100 pt-3 flex items-center justify-between text-xs font-medium text-amber-600">
-                                    <span id="homeStreakCardDisclaimerLabel" class="animate-pulse">⚠️ Теория пройдена. Требуется практика в Tools!</span>
+                                    <span id="homeStreakCardDisclaimerText animate-pulse">⚠️ Теория пройдена. Требуется практика в Tools!</span>
                                     <span class="text-text-action-info font-bold">Open Calendar ➔</span>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="w-full rounded-2xl border border-border-primary p-4 relative overflow-hidden bg-surface-primary">
+                            <p class="text-base font-bold text-text-primary">Prompts Library</p>
+                            <p class="text-xs text-text-secondary mt-1">The Complete AI Bundle is now live in your workspace environment.</p>
                         </div>
                     </main>
 
                     <div id="view-streak" class="hidden mx-auto flex w-full max-w-[540px] flex-grow flex-col rounded-lg px-4 pt-6 pb-12">
                         <div class="flex flex-col gap-y-6">
                             <div class="flex items-center justify-between border-b border-border-primary pb-3">
-                                <button onclick="switchView('home')" class="text-xs text-text-secondary hover:text-text-primary font-medium flex items-center space-x-1 cursor-pointer">
-                                    <span>←</span> <span>Back to Home</span>
-                                </button>
+                                <button onclick="switchView('home')" class="text-xs text-text-secondary hover:text-text-primary font-medium flex items-center space-x-1 cursor-pointer">← Back to Home</button>
                                 <p class="text-base font-semibold">Streak details</p>
                                 <div class="w-4"></div>
                             </div>
@@ -148,42 +149,34 @@
                             <div class="relative flex justify-between overflow-hidden rounded-lg border border-border-primary px-6 py-4" style="background-color: rgba(255, 116, 13, 0.07);">
                                 <div class="mt-1 w-1/2">
                                     <svg class="select-none" height="72" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="streakPageGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#FFAC5E"></stop><stop offset="100%" stop-color="#FF7008"></stop></linearGradient></defs><text x="2%" y="50%" text-anchor="start" dominant-baseline="middle" fill="url(#streakPageGrad)" stroke="url(#streakPageGrad)" stroke-width="14" stroke-linejoin="round" class="text-6xl font-bold" letter-spacing="9">1</text><text x="2%" y="50%" text-anchor="start" dominant-baseline="middle" fill="white" stroke="none" class="text-6xl font-bold" letter-spacing="9">1</text></svg>
-                                    <p id="streakPageMainDaysText" class="text-lg font-semibold text-text-primary">day streak!</p>
+                                    <p id="streakPageMainDaysCountField" class="text-lg font-semibold text-text-primary">day streak!</p>
                                 </div>
-                                <div class="z-10 flex items-center justify-end">
-                                    <span id="streakPageFireAnimationIcon" class="text-4xl opacity-40 filter drop-shadow-sm select-none">🔥</span>
-                                </div>
+                                <div class="z-10 flex items-center justify-end"><span id="streakPageFireAnimationNode" class="text-4xl opacity-40 filter drop-shadow-sm select-none">🔥</span></div>
                             </div>
 
-                            <div class="flex flex-col gap-y-[22px] rounded-lg border border-border-primary bg-surface-primary p-4">
+                            <div class="flex flex-col gap-y-[22px] rounded-lg border border-border-primary p-4">
                                 <div class="flex w-full justify-between">
                                     <h2 class="text-lg font-semibold">Streak Challenge</h2>
-                                    <p id="streakPageChallengeDayLabel" class="text-sm text-text-secondary">Day 1 of 3 (Theory Complete)</p>
+                                    <p id="streakPageChallengeProgressText" class="text-sm text-text-secondary">Day 1 of 3 (Theory Complete)</p>
                                 </div>
-                                <div class="relative h-[10px] w-full rounded-full bg-border-primary">
-                                    <div id="streakPageChallengeProgressBar" class="absolute left-0 top-0 h-full rounded-full bg-surface-action transition-all duration-500" style="width: 11%;"></div>
-                                </div>
+                                <div class="relative h-[10px] w-full rounded-full bg-border-primary"><div id="streakPageProgressBarNode" class="absolute left-0 top-0 h-full rounded-full bg-surface-action transition-all duration-500" style="width: 11%;"></div></div>
                             </div>
 
-                            <div id="streakPageEcosystemTaskBox" class="w-full rounded-xl border border-amber-200 bg-amber-50/20 p-4">
+                            <div id="streakPageEcosystemTaskContainer" class="w-full rounded-xl border border-amber-200 bg-amber-50/20 p-4">
                                 <div class="flex flex-col gap-y-3">
-                                    <div class="flex items-center justify-between">
-                                        <p class="text-sm font-bold text-slate-800">📋 План сохранения стрика на сегодня:</p>
-                                    </div>
+                                    <p class="text-sm font-bold text-slate-800">📋 План закрепления урока на сегодня:</p>
                                     <div class="text-xs text-slate-600 space-y-1.5 font-medium">
-                                        <p class="flex items-center space-x-2 text-emerald-600"><span>✓</span> <span>Теоретический урок на вкладке Home — Выполнен</span></p>
-                                        <p id="streakPageToolsTaskStatusRow" class="flex items-center space-x-2 text-amber-600"><span>●</span> <span>Закрепление в AI Tools — Ожидание генерации</span></p>
+                                        <p class="text-emerald-600">✓ Теоретический урок на вкладке Home — Выполнен</p>
+                                        <p id="streakPageToolsTaskLabelText" class="text-amber-600">● Закрепление в AI Tools — Ожидание генерации</p>
                                     </div>
-                                    <button id="streakPageActionRedirectBtn" onclick="switchView('tools')" class="w-full bg-[#5653FE] hover:bg-[#4340E6] text-white text-xs font-semibold py-2.5 rounded-xl transition cursor-pointer text-center">Закрепить теорию в AI Tools ➔</button>
+                                    <button id="streakPageRedirectToToolsBtn" onclick="switchView('tools')" class="w-full bg-[#5653FE] text-white text-xs font-semibold py-2.5 rounded-xl transition cursor-pointer text-center">Закрепить теорию в AI Tools ➔</button>
                                 </div>
                             </div>
 
                             <div class="mt-4 flex w-full flex-col gap-4">
                                 <span class="text-sm font-semibold text-text-secondary">Jun 2026</span>
-                                <div class="grid grid-cols-7 gap-1 text-center text-text-secondary text-xs">
-                                    <div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div><div>Sun</div>
-                                </div>
-                                <div class="grid grid-cols-7 gap-x-2.5 gap-y-2 text-xs font-medium md:text-sm">
+                                <div class="grid grid-cols-7 gap-1 text-center text-text-secondary text-xs"><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div><div>Sun</div></div>
+                                <div class="grid grid-cols-7 gap-x-2.5 gap-y-2 text-xs font-medium">
                                     <div class="flex aspect-square items-center justify-center rounded-full bg-surface-secondary text-text-secondary">1</div>
                                     <div class="flex aspect-square items-center justify-center rounded-full bg-surface-secondary text-text-secondary">2</div>
                                     <div class="flex aspect-square items-center justify-center rounded-full bg-surface-secondary text-text-secondary">3</div>
@@ -199,46 +192,42 @@
                         </div>
                     </div>
 
-                    <div id="view-tools" class="hidden flex-1 max-w-[640px] w-full mx-auto px-4 pt-16 flex flex-col items-center">
+                    <div id="view-tools" class="hidden flex-1 max-w-[640px] w-full mx-auto px-4 pt-20 flex flex-col items-center">
                         <h1 class="text-2xl font-semibold text-slate-900 tracking-tight text-center mb-6">What can I help with?</h1>
                         
                         <div class="w-full bg-white border border-slate-200 rounded-[24px] p-4 main-input-box">
-                            <textarea id="toolsMainInputTextArea" oninput="handleToolsInputValidation()" placeholder="Ask anything or inject from saved prompts below..." rows="5" class="w-full resize-none bg-transparent text-[15px] text-slate-800 placeholder-slate-300 focus:outline-none leading-relaxed h-36"></textarea>
+                            <textarea id="toolsMainInputTextArea" oninput="handleToolsInputValidation()" placeholder="Ask anything" rows="4" class="w-full resize-none bg-transparent text-[15px] text-slate-800 placeholder-slate-300 focus:outline-none leading-relaxed h-28"></textarea>
                             
-                            <div class="flex items-center justify-between border-t border-slate-50 pt-3 mt-2">
-                                <div class="flex items-center space-x-2">
-                                    <button onclick="toggleSavedPromptsPanel()" class="text-xs bg-indigo-50 text-indigo-600 font-bold px-3 py-1.5 rounded-xl hover:bg-indigo-100/70 transition flex items-center space-x-1 cursor-pointer">
-                                        <span>📁</span> <span>Saved prompts</span>
-                                    </button>
-                                    <button onclick="switchView('builder')" class="text-xs text-slate-400 hover:text-slate-600 transition cursor-pointer font-medium">
-                                        Need Builder?
-                                    </button>
-                                </div>
-                                
-                                <div class="flex items-center space-x-3">
-                                    <select id="toolsActiveModelSelector" class="appearance-none bg-transparent rounded-xl pl-2 pr-5 py-0.5 text-[14px] text-slate-600 font-medium focus:outline-none cursor-pointer">
-                                        <option value="claude">Claude</option>
-                                        <option value="gpt5">ChatGPT 5.4</option>
-                                    </select>
+                            <div class="flex items-center justify-between border-t border-slate-50 pt-2.5 mt-1">
+                                <button class="text-slate-400 font-light text-2xl pl-1 cursor-pointer hover:text-slate-600 transition">+</button>
+                                <div class="flex items-center space-x-3.5">
+                                    <div class="relative flex items-center">
+                                        <select id="toolsActiveModelSelector" class="appearance-none bg-transparent rounded-xl pl-2 pr-5 py-0.5 text-[14px] text-slate-700 font-medium focus:outline-none cursor-pointer">
+                                            <option value="claude">Claude</option>
+                                            <option value="gpt5">ChatGPT 5.4</option>
+                                        </select>
+                                        <span class="absolute right-1 text-[9px] text-slate-400 pointer-events-none">▼</span>
+                                    </div>
+                                    <button class="text-slate-400">🎤</button>
                                     <button id="toolsActionArrowBtnNode" onclick="fireToolsSimulationRequest()" class="w-7 h-7 rounded-full bg-slate-100 text-slate-300 flex items-center justify-center font-bold text-xs transition cursor-pointer">↑</button>
-                                </div>
-                            </div>
-
-                            <div id="toolsSavedPromptsDropdownPanel" class="hidden border-t border-slate-100 pt-3 mt-3 space-y-2 max-h-48 overflow-y-auto">
-                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wide">Ваша библиотека пресетов:</p>
-                                <div id="savedPromptsDynamicGrid" class="grid grid-cols-1 gap-1.5">
-                                    <button onclick="injectPromptTextFromLibrary(0)" class="text-left p-2 rounded-xl border border-slate-100 hover:bg-slate-50 text-xs transition cursor-pointer">
-                                        <span class="font-semibold text-slate-700">🎯 General Copywriter template</span>
-                                        <span class="text-slate-400 block truncate">Act as expert marketing writer...</span>
-                                    </button>
                                 </div>
                             </div>
                         </div>
 
                         <div class="w-full mt-6 flex flex-wrap justify-center gap-2">
-                            <button onclick="injectPresetText('Create a highly detailed visualization canvas')" class="px-3.5 py-1.5 bg-white border border-slate-200 rounded-full text-[13px] text-slate-600 flex items-center space-x-2 shadow-sm"><span>🖼️</span><span>Create an image</span></button>
-                            <button onclick="injectPresetText('Give advice on product activation metrics scaling')" class="px-3.5 py-1.5 bg-white border border-slate-200 rounded-full text-[13px] text-slate-600 flex items-center space-x-2 shadow-sm"><span>💬</span><span>Give advice</span></button>
-                            <button onclick="injectPresetText('Summarize complex business analytics data')" class="px-3.5 py-1.5 bg-white border border-slate-200 rounded-full text-[13px] text-slate-600 flex items-center space-x-2 shadow-sm"><span>📄</span><span>Summarize text</span></button>
+                            <button onclick="toggleSavedPromptsLibraryPanel()" class="px-3.5 py-1.5 bg-indigo-50 border border-indigo-200 rounded-full text-[13px] text-indigo-600 font-semibold flex items-center space-x-1.5 shadow-sm cursor-pointer hover:bg-indigo-100/50 transition">
+                                <span>📁</span> <span>Saved prompts library</span>
+                            </button>
+
+                            <button onclick="injectPresetText('Create an image of clean minimalistic layout design')" class="px-3.5 py-1.5 bg-white border border-slate-200 rounded-full text-[13px] text-slate-600 flex items-center space-x-2 shadow-sm"><span>🖼️</span><span>Create an image</span></button>
+                            <button onclick="injectPresetText('Give advice on product funnel growth adoption optimization')" class="px-3.5 py-1.5 bg-white border border-slate-200 rounded-full text-[13px] text-slate-600 flex items-center space-x-2 shadow-sm"><span>💬</span><span>Give advice</span></button>
+                            <button onclick="injectPresetText('Generate five unique viral growth mechanic loops')" class="px-3.5 py-1.5 bg-white border border-slate-200 rounded-full text-[13px] text-slate-600 flex items-center space-x-2 shadow-sm"><span>✨</span><span>Generate ideas</span></button>
+                        </div>
+
+                        <div id="toolsSavedPromptsListDropdownPanel" class="w-full bg-slate-50/50 border border-slate-200/60 rounded-2xl p-3.5 mt-3 hidden space-y-2 max-h-44 overflow-y-auto">
+                            <div class="flex items-center justify-between mb-1"><span class="text-[10px] font-bold text-slate-400 uppercase tracking-wide">Выберите сохраненный пресет:</span><button onclick="switchView('builder')" class="text-[10px] font-bold text-indigo-600 hover:underline">Открыть Prompt Builder ➔</button></div>
+                            <div id="savedPromptsRenderContainerNode" class="grid grid-cols-1 gap-1.5">
+                                </div>
                         </div>
 
                         <div id="toolsSuccessNotificationBox" class="w-full mt-4 p-4 border border-emerald-100 rounded-xl bg-emerald-50/20 hidden text-xs text-slate-600">
@@ -248,16 +237,14 @@
                     </div>
 
                     <div id="view-builder" class="hidden flex-1 max-w-[540px] w-full mx-auto px-4 pt-12 flex flex-col">
-                        <div class="flex items-center space-x-1 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
-                            <span>AI Practice</span> <span>➔</span> <span class="text-indigo-600">Prompt Builder sandbox</span>
-                        </div>
+                        <div class="flex items-center space-x-1 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2"><span>AI Practice</span> <span>➔</span> <span class="text-indigo-600">Prompt Builder</span></div>
                         <h2 class="text-lg font-bold text-slate-900 mb-1">Advanced Prompt Constructor</h2>
                         <p class="text-xs text-slate-400 mb-5">Заполните три вводные переменные, чтобы система собрала глубокий инженерный промпт.</p>
                         
                         <div class="border border-slate-200 rounded-2xl p-5 space-y-4 bg-white shadow-sm">
                             <div class="space-y-1">
                                 <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wide">1. Product Name</label>
-                                <input type="text" id="builderInputProduct" value="Coursiv Workspace App" class="w-full border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-indigo-500 font-medium">
+                                <input type="text" id="builderInputProduct" value="Coursiv Workspace System" class="w-full border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-indigo-500 font-medium">
                             </div>
                             <div class="space-y-1">
                                 <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wide">2. Target Audience</label>
@@ -265,23 +252,19 @@
                             </div>
                             <div class="space-y-1">
                                 <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wide">3. Key Benefit / Goal</label>
-                                <input type="text" id="builderInputGoal" value="Increase features adoption from 5% to 20%" class="w-full border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-indigo-500 font-medium">
+                                <input type="text" id="builderInputGoal" value="Boost tool active usage conversion from 5% to 20%" class="w-full border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-indigo-500 font-medium">
                             </div>
                             
-                            <button onclick="compilePromptInsideSandbox()" class="w-full bg-[#5653FE] hover:bg-[#4340E6] text-white font-semibold py-2.5 rounded-xl text-xs transition cursor-pointer">
-                                Собрать промпт шаблона
-                            </button>
+                            <button onclick="compilePromptInsideSandbox()" class="w-full bg-[#5653FE] hover:bg-[#4340E6] text-white font-semibold py-2.5 rounded-xl text-xs transition cursor-pointer">Скомпилировать промпт шаблона</button>
 
                             <div id="builderSandboxResultBox" class="hidden border border-indigo-100 rounded-xl bg-indigo-50/20 p-4 space-y-3 transition-all duration-300">
                                 <div>
-                                    <p class="text-[10px] font-bold text-indigo-600 uppercase tracking-wide mb-1">Скомпилированный инженерный запрос:</p>
-                                    <div id="builderCompiledPromptTextField" class="text-xs font-mono text-slate-600 bg-white p-3 rounded-lg border border-slate-100 max-h-28 overflow-y-auto leading-relaxed"></div>
+                                    <p class="text-[10px] font-bold text-indigo-600 uppercase tracking-wide mb-1">Готовый инженерный промпт:</p>
+                                    <div id="builderCompiledPromptTextField" class="text-xs font-mono text-slate-600 bg-white p-3 rounded-lg border border-slate-100 max-h-24 overflow-y-auto leading-relaxed"></div>
                                 </div>
                                 <div class="flex items-center justify-between pt-1">
-                                    <span class="text-[10px] text-emerald-600 font-medium">✓ Успешно синхронизировано с библиотекой</span>
-                                    <button onclick="switchView('tools')" class="bg-indigo-600 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg hover:bg-indigo-700 transition cursor-pointer">
-                                        Открыть вкладку AI Tools ➔
-                                    </button>
+                                    <span class="text-[10px] text-emerald-600 font-medium">✓ Добавлено в библиотеку сохраненных промптов</span>
+                                    <button onclick="switchView('tools')" class="bg-indigo-600 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg hover:bg-indigo-700 transition cursor-pointer">Открыть вкладку AI Tools ➔</button>
                                 </div>
                             </div>
                         </div>
@@ -295,11 +278,11 @@
     <script>
         let isEcosystemLoopComplete = false;
 
-        // База данных промптов (По умолчанию зашит 1 шаблон)
+        // Базовая библиотека промптов
         let savedPromptsLibraryArray = [
             {
-                title: "🎯 General Marketing Пресет",
-                body: "Act as an expert growth hacker. Build a high-converting content funnel architecture to maximize user conversion flows directly inside the landing loop."
+                title: "🎯 General Copywriting Template",
+                body: "Act as an expert growth marketer. Build high-converting content funnel architecture inside the platform dashboard workspace."
             }
         ];
 
@@ -337,32 +320,27 @@
             }
         }
 
-        function injectPresetText(text) {
-            document.getElementById('toolsMainInputTextArea').value = text;
-            handleToolsInputValidation();
-        }
-
-        function toggleSavedPromptsPanel() {
-            const panel = document.getElementById('toolsSavedPromptsDropdownPanel');
+        function toggleSavedPromptsLibraryPanel() {
+            const panel = document.getElementById('toolsSavedPromptsListDropdownPanel');
             panel.classList.toggle('hidden');
             renderSavedPromptsInDOM();
         }
 
         function renderSavedPromptsInDOM() {
-            const grid = document.getElementById('savedPromptsDynamicGrid');
-            grid.innerHTML = ""; // очищаем
+            const grid = document.getElementById('savedPromptsRenderContainerNode');
+            grid.innerHTML = ""; 
 
-            savedPromptsLibraryArray.forEach((item, index) => {
+            savedPromptsLibraryArray.forEach((item) => {
                 const btn = document.createElement('button');
-                btn.className = "w-full text-left p-2.5 rounded-xl border border-slate-100 hover:bg-slate-50 text-xs transition cursor-pointer";
+                btn.className = "w-full text-left p-2 rounded-xl border border-slate-100 hover:bg-slate-50 text-xs transition cursor-pointer";
                 btn.onclick = () => {
                     document.getElementById('toolsMainInputTextArea').value = item.body;
-                    document.getElementById('toolsSavedPromptsDropdownPanel').classList.add('hidden');
+                    document.getElementById('toolsSavedPromptsListDropdownPanel').classList.add('hidden');
                     handleToolsInputValidation();
                 };
                 btn.innerHTML = `
                     <span class="font-semibold text-slate-700 block">${item.title}</span>
-                    <span class="text-slate-400 block truncate mt-0.5">${item.body}</span>
+                    <span class="text-slate-400 block truncate text-[11px] mt-0.5">${item.body}</span>
                 `;
                 grid.appendChild(btn);
             });
@@ -373,21 +351,19 @@
             const audience = document.getElementById('builderInputAudience').value.trim();
             const goal = document.getElementById('builderInputGoal').value.trim();
 
-            if (!product || !audience || !goal) return alert("Заполните все три вводные для промпта.");
+            if (!product || !audience || !goal) return alert("Заполните поля.");
 
-            const compiledText = `Act as an expert growth hacker. Construct a professional operational template structure for "${product}". Target Demographic Cohort: "${audience}". Strategic Objective Optimization Vector: "${goal}". Apply direct-response formatting constraints rules.`;
+            const text = `Act as an expert growth hacker. Construct a professional operational template layout for "${product}". Target Demographic Segment Cohort: "${audience}". Objective Optimization Vector Goal: "${goal}". Apply direct-response formatting syntax rules.`;
 
-            // Выводим промпт прямо на этой же странице (юзер не перекидывается насильно!)
-            document.getElementById('builderCompiledPromptTextField').textContent = compiledText;
+            // Выводим промпт на этой же странице, пользователь никуда не перенаправляется!
+            document.getElementById('builderCompiledPromptTextField').textContent = text;
             document.getElementById('builderSandboxResultBox').classList.remove('hidden');
 
-            // Сохраняем собранный промпт в массив нашей экосистемы (библиотеку)
-            const dynamicTitle = `⚙️ Built Preset: ${product}`;
-            
-            // Проверяем, нет ли уже такого промпта в списке, чтобы не дублировать при повторном клике
+            // Пушим результат в общую синхронизированную библиотеку
+            const dynamicTitle = `⚙️ Built Template: ${product}`;
             const exist = savedPromptsLibraryArray.find(p => p.title === dynamicTitle);
             if (!exist) {
-                savedPromptsLibraryArray.unshift({ title: dynamicTitle, body: compiledText });
+                savedPromptsLibraryArray.unshift({ title: dynamicTitle, body: text });
             }
         }
 
@@ -403,7 +379,11 @@
         function commitStreakStateToDOM() {
             if (!isEcosystemLoopComplete) return;
 
+            // Счётчики стрика
             document.getElementById('headerStreakCounterNode').textContent = "2";
+            document.getElementById('streakStatsCounterValue').textContent = "2";
+
+            // Стейт страницы календаря
             document.getElementById('streakPageChallengeDayLabel').textContent = "Day 1 of 3 (Ecosystem Goals Complete! 🎉)";
             document.getElementById('streakPageChallengeProgressBar').style.width = "100%";
             document.getElementById('streakPageTaskStatusBadgeText').textContent = "СТРИК ЗАЩИЩЕН ✓";
@@ -425,6 +405,7 @@
             bigCircle.innerHTML = "✓";
             document.getElementById('starburstSvgNodeElement').classList.add('hidden');
 
+            // Стейт главной страницы Home Page
             document.getElementById('homeStreakCardDisclaimerLabel').textContent = "✓ Задачи выполнены. Стрик сохранен!";
             document.getElementById('homeStreakCardDisclaimerLabel').className = "text-emerald-600 font-semibold animate-none";
             document.getElementById('homeClaudeProgressLabel').textContent = "12%";
