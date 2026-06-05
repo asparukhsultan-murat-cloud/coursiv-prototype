@@ -3,17 +3,16 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coursiv - Full Ecosystem Loop</title>
+    <title>Coursiv - Integrated Workspace</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Google Fonts из вашей сборки -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@350;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #ffffff; }
-        /* Интеграция ваших продакшен дизайн-токенов */
         :root {
             --surface-primary: #ffffff;
             --surface-secondary: #F4F4F7;
@@ -38,10 +37,9 @@
         .text-text-disabled { color: var(--text-disabled); }
         .text-text-action-info { color: var(--text-action-info); }
         .bg-surface-action { background-color: var(--surface-action); }
-        .fill-text-action-info { fill: var(--text-action-info); }
+        .fill-surface-action { fill: var(--surface-action); }
         .fill-icon-primary { fill: #48484A; }
         
-        /* Стили кнопок из вашего десктопа */
         .ui-primary-button {
             background-color: #5653FE;
             color: #ffffff;
@@ -62,73 +60,81 @@
         }
         .ui-secondary-btn:hover { background-color: #E5E5EA; }
         .card-effect { transition: all 0.2s ease-in-out; }
-        .card-effect:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
-        
-        .desktop-layout { max-w: 1024px; margin: 0 auto; padding: 24px 16px; }
+        .card-effect:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.01); }
+        .desktop-width { max-w: 1024px; margin: 0 auto; }
     </style>
 </head>
 <body class="stjr-review-checkout-widget__body--active">
     <div id="root">
         <div class="app">
             <div class="app_view" id="app_view">
-                <div class="min-vh-full bg-surface-primary flex flex-col min-h-screen">
+                <div class="flex min-h-screen flex-col bg-surface-primary">
                     
-                    <!-- ВАШ НАТИВНЫЙ ХЕДЕР ИЗ ПРОДАКШЕНА -->
+                    <!-- ВАШ НАЦИОНАЛЬНЫЙ ХЕДЕР С ТРЕМЯ ГЛАВНЫМИ ВКЛАДКАМИ -->
                     <header class="sticky top-0 z-50 w-full border-b border-border-primary bg-surface-primary">
                         <div class="max-w-5xl mx-auto flex h-16 items-center justify-between px-6">
                             <div class="flex items-center gap-6">
-                                <button onclick="switchView('home')" class="shrink-0 font-black text-xl tracking-tight text-slate-900 cursor-pointer">Coursiv</button>
+                                <button onclick="switchView('home')" class="shrink-0 cursor-pointer"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='20'><text x='0' y='15' font-family='sans-serif' font-weight='bold' font-size='16'>Coursiv</text></svg>" width="60" alt="logo"></button>
                                 <div class="flex items-center gap-x-3 desktop:gap-x-4">
+                                    <!-- Вкладка 1: Home -->
                                     <button onclick="switchView('home')" id="nav-home" class="h-16 py-2 transition-colors duration-200 fill-text-action-info text-text-action-info cursor-pointer">
                                         <div class="flex h-full items-center gap-2 rounded-[16px] px-2 hover:bg-slate-50">
                                             <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" fill="currentColor"><path d="M11.336 2.753a1 1 0 0 1 1.328 0l9 8a1 1 0 0 1-1.328 1.494L20 11.95V19.5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7.55l-.336.297a1 1 0 0 1-1.328-1.494l9-8ZM6 10.17V19.5h3v-5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v5h3v-9.329l-6-5.333-6 5.333Zm7 9.329v-4h-2v4h2Z"></path></svg></span>
-                                            <span class="text-base font-medium">Home</span>
+                                            <span class="text-base">Home</span>
                                         </div>
                                     </button>
-                                    <button onclick="switchView('tools')" id="nav-tools" class="h-16 py-2 transition-colors duration-200 text-text-disabled fill-icon-primary cursor-pointer">
+                                    <!-- Вкладка 2: AI Tools -->
+                                    <button onclick="switchView('tools')" id="nav-tools" class="h-16 py-2 transition-colors duration-200 fill-icon-primary text-text-disabled cursor-pointer">
                                         <div class="flex h-full items-center gap-2 rounded-[16px] px-2 hover:bg-slate-50">
-                                            <span>✨</span><span class="text-base font-medium">AI Tools</span>
+                                            <span>✨</span><span class="text-base">AI Tools</span>
+                                        </div>
+                                    </button>
+                                    <!-- Вкладка 3: Prompt Builder (Бывшая AI Practice) -->
+                                    <button onclick="switchView('builder')" id="nav-builder" class="h-16 py-2 transition-colors duration-200 fill-icon-primary text-text-disabled cursor-pointer">
+                                        <div class="flex h-full items-center gap-2 rounded-[16px] px-2 hover:bg-slate-50">
+                                            <span>🏋️‍♂️</span><span class="text-base">Prompt Builder</span>
                                         </div>
                                     </button>
                                 </div>
                             </div>
+                            <!-- Виджет Стрика справа в шапке (Кликом ведет на экран Streaks) -->
                             <div class="flex items-center gap-x-2">
                                 <div onclick="switchView('streak')" class="flex select-none items-center justify-center border border-border-primary bg-surface-secondary rounded-[30px] gap-x-1 py-1 pl-[10px] pr-[15px] cursor-pointer">
-                                    <div class="h-5 w-7 flex items-center justify-center text-sm">🔥</div>
-                                    <p class="shrink-0 font-semibold text-base"><span id="headerGlobalStreakCounter">1</span></p>
+                                    <span class="text-xs">🔥</span>
+                                    <p class="shrink-0 font-semibold text-base"><span id="headerStreakVal">1</span></p>
                                 </div>
                             </div>
                         </div>
                     </header>
 
-                    <!-- ЭКРАН 1: ГЛАВНАЯ СТРАНИЦА (ПОЛНЫЙ ОРИГИНАЛЬНЫЙ desktop.tsx) -->
-                    <main id="view-home" class="desktop-layout flex flex-col gap-y-8 flex-1 w-full">
+                    <!-- ЭКРАН 1: ОРИГИНАЛЬНАЯ ГЛАВНАЯ СТРАНИЦА (HOME PAGE ПО БЛОКАМ) -->
+                    <main id="view-home" class="max-w-5xl w-full mx-auto px-6 py-10 flex flex-col gap-y-10 flex-1">
                         
-                        <!-- AI Mastery Certificate Block -->
+                        <!-- Блок сертификатов -->
                         <div class="flex min-w-0 cursor-pointer justify-between rounded-2xl bg-surface-action-secondary p-4 flex-row border border-border-primary">
                             <div class="mb-0 flex flex-col justify-center">
                                 <h3 class="text-base font-bold tablet:text-xl">AI Mastery Certificate Program</h3>
                                 <p class="text-xs text-text-secondary mb-0">Complete 5 courses to earn your professional certificate</p>
                             </div>
                             <div class="flex w-full min-w-0 gap-x-1 rounded-md bg-surface-primary p-1 max-w-[455px] border border-slate-100">
-                                <button type="button" class="flex min-w-0 flex-1 flex-col items-center rounded-md py-2"><img src="https://d2h7i1o4snhir4.cloudfront.net/images/guides-icons/chatgpt_logo.webp" class="h-6 w-6 rounded" /><span class="text-xs text-emerald-600 mt-1">✓</span></button>
-                                <button type="button" class="flex min-w-0 flex-1 flex-col items-center rounded-md border py-2 border-border-action bg-surface-action-secondary"><img src="https://d2h7i1o4snhir4.cloudfront.net/images/guides-icons/claude_logo.webp" class="h-6 w-6 rounded" /><span id="homeClaudeProgressText" class="text-xs text-text-action-info mt-1">4%</span></button>
-                                <button type="button" class="flex min-w-0 flex-1 flex-col items-center rounded-md py-2"><img src="https://d2h7i1o4snhir4.cloudfront.net/images/guides-icons/midjourney_logo.webp" class="h-6 w-6 rounded" /><span class="text-xs text-text-secondary mt-1">5%</span></button>
+                                <button class="flex flex-1 flex-col items-center py-2"><img src="https://d2h7i1o4snhir4.cloudfront.net/images/guides-icons/chatgpt_logo.webp" class="h-6 w-6 rounded" /><span class="text-xs text-emerald-600 mt-1">✓</span></button>
+                                <button class="flex flex-1 flex-col items-center border border-border-action bg-surface-action-secondary py-2 rounded"><img src="https://d2h7i1o4snhir4.cloudfront.net/images/guides-icons/claude_logo.webp" class="h-6 w-6 rounded" /><span id="homeClaudeProgressLabel" class="text-xs text-text-action-info mt-1">4%</span></button>
+                                <button class="flex flex-1 flex-col items-center py-2"><img src="https://d2h7i1o4snhir4.cloudfront.net/images/guides-icons/midjourney_logo.webp" class="h-6 w-6 rounded" /><span class="text-xs text-text-secondary mt-1">5%</span></button>
                             </div>
                         </div>
 
-                        <!-- Сплит: Курс + Стрики -->
+                        <!-- Сплит: Курсы и Стрики -->
                         <div class="flex flex-row gap-4 max-tablet:flex-col-reverse">
-                            <!-- DeepSeek Guide -->
-                            <div class="flex flex-1 flex-col gap-y-6 rounded-2xl border border-border-primary p-6 bg-white">
+                            <!-- Блок DeepSeek -->
+                            <div class="flex flex-1 flex-col gap-y-6 rounded-2xl border border-border-primary p-6 bg-white shadow-sm">
                                 <div class="flex items-center gap-x-4">
                                     <img class="w-32 h-20 rounded bg-surface-primary object-cover" src="https://d2h7i1o4snhir4.cloudfront.net/images/guides/b58cf86e-236d-4a96-baca-35194d698ab5.webp">
-                                    <div class="flex flex-1 flex-col">
-                                        <div class="text-xl font-semibold text-text-primary">DeepSeek</div>
+                                    <div>
+                                        <div class="text-lg font-semibold text-text-primary">DeepSeek</div>
                                         <div class="text-sm text-text-secondary">Idea Brainstorming &amp; Problem-Solving</div>
                                     </div>
                                 </div>
-                                <div class="mt-0">
+                                <div>
                                     <div class="relative mb-2 flex h-2 w-full overflow-hidden rounded-md bg-surface-tertiary">
                                         <div class="absolute bottom-0 start-0 top-0 rounded-md bg-indigo-500" style="width: 60%;"></div>
                                     </div>
@@ -140,61 +146,71 @@
                                 </div>
                             </div>
 
-                            <!-- КЛИКАБЕЛЬНАЯ ПАНЕЛЬ СТРЕЙКОВ (ВЕДЕТ НА ЭКРАН ДЕТАЛЕЙ СТРИКА STREAK DETAILS) -->
+                            <!-- КЛИКАБЕЛЬНЫЙ БЛОК WEEKLY STREAKS ДЛЯ ПЕРЕХОДА НА СТРАНИЦУ КАЛЕНДАРЯ -->
                             <div onclick="switchView('streak')" class="card-effect flex cursor-pointer rounded-2xl border p-6 border-border-primary bg-surface-primary min-w-[380px] flex-col" role="button">
-                                <p class="mb-1 text-xs font-semibold uppercase text-text-action-info">Weekly streaks</p>
-                                <p class="text-base font-bold text-text-primary mb-4">Help you build learning habit</p>
+                                <p class="mb-1 text-sm font-semibold uppercase text-text-action-info">Weekly streaks</p>
+                                <p class="text-base font-bold text-text-primary mb-3">Help you build learning habit</p>
                                 
                                 <div class="flex w-full justify-between my-auto">
                                     <div class="text-center">
                                         <div class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs font-bold">✓</div>
-                                        <p class="mt-1 text-xs text-text-primary">Thu</p>
+                                        <p class="mt-1 text-xs text-text-secondary">Thu</p>
                                     </div>
                                     <div class="text-center">
-                                        <div id="homeMiniCircleFri" class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary flex items-center justify-center text-xs font-medium text-slate-400">4</div>
+                                        <div id="homeMiniDayCircle4" class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary flex items-center justify-center text-xs font-semibold text-slate-400">4</div>
                                         <p class="mt-1 text-xs text-text-primary">Fri</p>
                                     </div>
-                                    <div class="text-center"><div class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary"></div><p class="mt-1 text-xs text-text-primary">Sat</p></div>
-                                    <div class="text-center"><div class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary"></div><p class="mt-1 text-xs text-text-primary">Sun</p></div>
+                                    <div class="text-center"><div class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary"></div><p class="mt-1 text-xs text-text-secondary">Sat</p></div>
+                                    <div class="text-center"><div class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary"></div><p class="mt-1 text-xs text-text-secondary">Sun</p></div>
                                 </div>
-                                <div class="mt-4 border-t border-slate-50 pt-3 flex items-center justify-between text-xs font-medium">
-                                    <p id="homeStreakCardDisclaimer" class="text-amber-600 animate-pulse">⚠️ Теория пройдена. Требуется практика в Tools!</p>
-                                    <span class="text-text-action-info font-bold">Open Details ➔</span>
+                                <div class="mt-4 border-t border-slate-100 pt-3 flex items-center justify-between text-xs font-medium text-amber-600">
+                                    <span id="homeStreakCardLabel" class="animate-pulse">⚠️ Теория пройдена. Требуется практика в Tools!</span>
+                                    <span class="text-text-action-info font-bold">Open Calendar ➔</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Explore AI tools Grid -->
-                        <div class="space-y-4">
-                            <h1 class="text-lg font-bold">Explore AI tools</h1>
-                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                                <div onclick="switchView('tools')" class="card-effect border border-border-primary rounded-xl p-3 bg-white cursor-pointer">
-                                    <img src="https://d2h7i1o4snhir4.cloudfront.net/images/guide-images/e38e1f3be6b64867afd9ca16e0c8a4dc.webp" class="w-full rounded object-cover aspect-video">
-                                    <strong class="block mt-2 text-sm text-text-primary">Gemini</strong>
+                        <!-- Промо-библиотека -->
+                        <div class="w-full rounded-2xl border border-border-primary bg-surface-primary p-4 relative overflow-hidden">
+                            <div class="relative flex w-full items-center justify-between">
+                                <div>
+                                    <p class="text-base font-bold text-text-primary tablet:text-xl">Prompts Library</p>
+                                    <p class="text-xs text-text-secondary">The Complete AI Bundle is now in the app!</p>
                                 </div>
-                                <div onclick="switchView('tools')" class="card-effect border border-border-primary rounded-xl p-3 bg-white cursor-pointer">
-                                    <img src="https://d2h7i1o4snhir4.cloudfront.net/images/guides/959c8c76-1c6e-4797-9849-1ccba78fe1f8.webp" class="w-full rounded object-cover aspect-video">
-                                    <strong class="block mt-2 text-sm text-text-primary">Claude</strong>
+                            </div>
+                        </div>
+
+                        <!-- Explore AI Tools -->
+                        <div class="space-y-4">
+                            <h1 class="text-xl font-bold leading-6">Explore AI tools</h1>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                                <div onclick="switchView('tools')" class="card-effect border border-border-primary rounded-lg p-3 bg-white cursor-pointer">
+                                    <img src="https://d2h7i1o4snhir4.cloudfront.net/images/guide-images/e38e1f3be6b64867afd9ca16e0c8a4dc.webp" class="rounded w-full aspect-video object-cover">
+                                    <strong class="block mt-2 text-base font-bold text-text-primary">Gemini</strong>
+                                </div>
+                                <div onclick="switchView('tools')" class="card-effect border border-border-primary rounded-lg p-3 bg-white cursor-pointer">
+                                    <img src="https://d2h7i1o4snhir4.cloudfront.net/images/guides/959c8c76-1c6e-4797-9849-1ccba78fe1f8.webp" class="rounded w-full aspect-video object-cover">
+                                    <strong class="block mt-2 text-base font-bold text-text-primary">Claude</strong>
                                 </div>
                             </div>
                         </div>
                     </main>
 
-                    <!-- ЭКРАН 2: STREAK DETAILS (ТВОЙ ПОЛНЫЙ КОД КАЛЕНДАРЯ streak-challenge-page.tsx С НАШИМ УЛУЧШЕНИЕМ) -->
-                    <main id="view-streak" class="hidden mx-auto flex w-full max-w-[540px] flex-grow flex-col rounded-lg px-4 pt-6 pb-12">
+                    <!-- ЭКРАН 2: СТРАНИЦА СТРИКОВ С КАЛЕНДАРЕМ (ТВОЙ ПОЛНЫЙ streak-challenge-page.tsx С НАШИМ ПЛАНОМ ДНЯ) -->
+                    <div id="view-streak" class="hidden mx-auto flex w-full max-w-[540px] flex-grow flex-col rounded-lg px-4 pt-6 pb-12">
                         <div class="flex flex-col gap-y-6">
                             
-                            <!-- Навигационная строка возврата обратно на главную -->
+                            <!-- Навигация обратно -->
                             <div class="flex items-center justify-between border-b border-border-primary pb-3">
-                                <button onclick="switchView('home')" class="text-xs text-text-secondary hover:text-text-primary flex items-center space-x-1 cursor-pointer font-medium">
+                                <button onclick="switchView('home')" class="text-xs text-text-secondary hover:text-text-primary font-medium flex items-center space-x-1 cursor-pointer">
                                     <span>←</span> <span>Back to Home</span>
                                 </button>
                                 <p class="text-base font-semibold">Streak details</p>
                                 <div class="w-4"></div>
                             </div>
 
-                            <!-- Блок огня и градиента из оригинального кода -->
-                            <div class="relative flex justify-between overflow-hidden rounded-lg border border-border-primary px-6 py-4" dir="ltr" style="background-color: rgba(255, 116, 13, 0.07);">
+                            <!-- Отрезок огня -->
+                            <div class="relative flex justify-between overflow-hidden rounded-lg border border-border-primary px-6 py-4" style="background-color: rgba(255, 116, 13, 0.07);">
                                 <div class="mt-1 w-1/2">
                                     <svg class="select-none" height="72" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <defs>
@@ -206,45 +222,44 @@
                                         <text x="2%" y="50%" text-anchor="start" dominant-baseline="middle" fill="url(#streakGradientPage)" stroke="url(#streakGradientPage)" stroke-width="14" stroke-linejoin="round" class="text-6xl font-bold" letter-spacing="9">1</text>
                                         <text x="2%" y="50%" text-anchor="start" dominant-baseline="middle" fill="white" stroke="none" class="text-6xl font-bold" letter-spacing="9">1</text>
                                     </svg>
-                                    <p id="streakPageMainDaysLabel" class="text-lg font-semibold text-text-primary">day streak!</p>
+                                    <p id="streakPageMainDaysText" class="text-lg font-semibold text-text-primary">day streak!</p>
                                 </div>
                                 <div class="z-10 flex items-center justify-end">
-                                    <span id="streakPageFireAnimationNode" class="text-4xl opacity-40 filter drop-shadow-sm select-none">🔥</span>
+                                    <span id="streakPageFireAnimationIcon" class="text-4xl opacity-40 filter drop-shadow-sm select-none">🔥</span>
                                 </div>
                             </div>
 
-                            <!-- Прогресс баг Челленджа -->
+                            <!-- Челлендж прогресс-бар -->
                             <div class="flex flex-col gap-y-[22px] rounded-lg border border-border-primary bg-surface-primary p-4">
                                 <div class="flex w-full justify-between">
                                     <h2 class="text-lg font-semibold">Streak Challenge</h2>
-                                    <p id="streakPageChallengeStepText" class="text-sm text-text-secondary">Day 1 of 3 (Theory Complete)</p>
+                                    <p id="streakPageChallengeDayLabel" class="text-sm text-text-secondary">Day 1 of 3 (Theory Complete)</p>
                                 </div>
                                 <div class="relative h-[10px] w-full rounded-full bg-border-primary">
-                                    <div id="streakPageProgressBarWidth" class="absolute left-0 top-0 h-full rounded-full bg-indigo-600 transition-all duration-500" style="width: 11%;"></div>
+                                    <div id="streakPageChallengeProgressBar" class="absolute left-0 top-0 h-full rounded-full bg-surface-action transition-all duration-500" style="width: 11%;"></div>
                                 </div>
                             </div>
 
-                            <!-- УЛУЧШЕНИЕ: НАШ СВЯЗУЮЩИЙ ИНТЕРАКТИВНЫЙ ТРЕК НА СТРАНИЦЕ КАЛЕНДАРЯ -->
-                            <div id="streakPageActionHubBox" class="w-full rounded-xl border border-amber-200 bg-amber-50/20 p-4 transition-all duration-300">
+                            <!-- НАШ ОПТИМИЗИРОВАННЫЙ БЛОК ПЛАНА НА СТРАНИЦЕ СТРИКОВ -->
+                            <div id="streakPageEcosystemTaskBox" class="w-full rounded-xl border border-amber-200 bg-amber-50/20 p-4 transition-all duration-300">
                                 <div class="flex flex-col gap-y-3">
                                     <div class="flex items-center justify-between">
-                                        <p class="text-sm font-bold text-slate-800">📋 План закрепления урока на сегодня:</p>
-                                        <span id="streakPageBadgeState" class="text-[10px] font-bold bg-amber-100 text-amber-700 px-2 py-0.5 rounded animate-pulse">ТРЕБУЕТСЯ ДЕЙСТВИЕ</span>
+                                        <p class="text-sm font-bold text-slate-800">📋 План сохранения стрика на сегодня:</p>
+                                        <span id="streakPageTaskStatusBadge" class="text-[10px] font-bold bg-amber-100 text-amber-700 px-2 py-0.5 rounded animate-pulse">1 ДЕЙСТВИЕ ОСТАЛОСЬ</span>
                                     </div>
                                     <div class="text-xs text-slate-600 space-y-1.5 font-medium">
-                                        <p class="flex items-center space-x-2 text-emerald-600"><span>✓</span> <span>Теория: Видео-лекция по DeepSeek — Пройдена</span></p>
-                                        <p id="streakPageToolsTaskRowText" class="flex items-center space-x-2 text-amber-600"><span>●</span> <span>Практика: 1 генерация в AI Tools — Ожидание</span></p>
+                                        <p class="flex items-center space-x-2 text-emerald-600"><span>✓</span> <span>Теоретический урок на вкладке Home — Выполнен</span></p>
+                                        <p id="streakPageToolsTaskStatusRow" class="flex items-center space-x-2 text-amber-600"><span>●</span> <span>Закрепление в AI Tools — Ожидание генерации</span></p>
                                     </div>
-                                    <!-- Ваша простая кнопка переброса в AI Tools (Simple Style) -->
                                     <button id="streakPageGoToToolsBtn" onclick="switchView('tools')" class="w-full bg-[#5653FE] hover:bg-[#4340E6] text-white text-xs font-semibold py-2.5 rounded-xl transition shadow-sm cursor-pointer">
                                         Закрепить теорию в AI Tools ➔
                                     </button>
-                               </div>
+                                </div>
                             </div>
 
-                            <!-- Сетка календаря Июнь 2026 из вашего оригинального кода -->
+                            <!-- Календарь Июнь 2026 -->
                             <div class="mt-4 flex w-full flex-col gap-4">
-                                <span class="text-sm font-semibold">Jun 2026</span>
+                                <span class="text-sm font-semibold text-text-secondary">Jun 2026</span>
                                 <div class="grid grid-cols-7 gap-1 text-center text-text-secondary text-xs">
                                     <div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div><div>Sun</div>
                                 </div>
@@ -252,10 +267,10 @@
                                     <div class="flex aspect-square items-center justify-center rounded-full bg-surface-secondary text-text-secondary">1</div>
                                     <div class="flex aspect-square items-center justify-center rounded-full bg-surface-secondary text-text-secondary">2</div>
                                     <div class="flex aspect-square items-center justify-center rounded-full bg-surface-secondary text-text-secondary">3</div>
-                                    <!-- 4 Июня: Наша оригинальная SVG-ячейка -->
+                                    <!-- Ваша ячейка 4 июня -->
                                     <div id="calendarEcosystemDay4" class="flex aspect-square items-center justify-center relative bg-surface-information text-text-secondary rounded-full p-[1px]">
-                                        <svg id="calendarDay4SvgNode" width="40" height="40" viewBox="0 0 40 40" fill="#5653FE" class="absolute left-0 top-0 h-full w-full fill-indigo-600 opacity-20"><path d="M18.5597 1.49496C19.3463 0.678479 20.6537 0.678479 21.4403 1.49496L23.3569 3.48429C23.8712 4.01807 24.6385 4.22367 25.3507 4.01853L28.0052 3.25402C29.0947 2.94024 30.2269 3.59391 30.4999 4.69432L31.165 7.37542C31.3435 8.09482 31.9052 8.65652 32.6246 8.835L35.3057 9.50014C36.4061 9.77314 37.0598 10.9053 36.746 11.9948L35.9815 14.6493C35.7763 15.3615 35.9819 16.1288 36.5157 16.6431L38.505 18.5597C39.3215 19.3463 39.3215 20.6537 38.505 21.4403L36.5157 23.3569C35.9819 23.8712 35.7763 24.6385 35.9815 25.3507L36.746 28.0052C37.0598 29.0947 36.4061 30.2269 35.3057 30.4999L32.6246 31.165C31.9052 31.3435 31.3435 31.9052 31.165 32.6246L30.4999 35.3057C30.2269 36.4061 29.0947 37.0598 28.0052 36.746L25.3507 35.9815C24.6385 35.7763 23.8712 35.9819 23.3569 36.5157L21.4403 38.505C20.6537 39.3215 19.3463 39.3215 18.5597 38.505L16.6431 36.5157C16.1288 35.9819 15.3616 35.7763 14.6493 35.9815L11.9948 36.746C10.9053 37.0598 9.77314 36.4061 9.50014 35.3057L8.835 32.6246C8.65652 31.9052 8.09482 31.3435 7.37542 31.165L4.69432 30.4999C3.59391 30.2269 2.94024 29.0947 3.25402 28.0052L4.01853 25.3507C4.22367 24.6385 4.01807 23.8712 3.48429 23.3569L1.49496 21.4403C0.678479 20.6537 0.678479 19.3463 1.49496 18.5597L3.48429 16.6431C4.01807 16.1288 4.22367 15.3616 4.01853 14.6493L3.25402 11.9948C2.94024 10.9053 3.59391 9.77314 4.69432 9.50014L7.37542 8.835C8.09482 8.65652 8.65652 8.09482 8.835 7.37542L9.50014 4.69432C9.77314 3.59391 10.9053 2.94024 11.9948 3.25402L14.6493 4.01853C15.3616 4.22367 16.1288 4.01807 16.6431 3.48429L18.5597 1.49496Z"></path></svg>
-                                        <span class="z-10 text-slate-800 font-bold">4</span>
+                                        <svg id="starburstSvgIconNode" width="40" height="40" viewBox="0 0 40 40" fill="#5653FE" class="absolute left-0 top-0 h-full w-full fill-surface-action opacity-20"><path d="M18.5597 1.49496C19.3463 0.678479 20.6537 0.678479 21.4403 1.49496L23.3569 3.48429C23.8712 4.01807 24.6385 4.22367 25.3507 4.01853L28.0052 3.25402C29.0947 2.94024 30.2269 3.59391 30.4999 4.69432L31.165 7.37542C31.3435 8.09482 31.9052 8.65652 32.6246 8.835L35.3057 9.50014C36.4061 9.77314 37.0598 10.9053 36.746 11.9948L35.9815 14.6493C35.7763 15.3615 35.9819 16.1288 36.5157 16.6431L38.505 18.5597C39.3215 19.3463 39.3215 20.6537 38.505 21.4403L36.5157 23.3569C35.9819 23.8712 35.7763 24.6385 35.9815 25.3507L36.746 28.0052C37.0598 29.0947 36.4061 30.2269 35.3057 30.4999L32.6246 31.165C31.9052 31.3435 31.3435 31.9052 31.165 32.6246L30.4999 35.3057C30.2269 36.4061 29.0947 37.0598 28.0052 36.746L25.3507 35.9815C24.6385 35.7763 23.8712 35.9819 23.3569 36.5157L21.4403 38.505C20.6537 39.3215 19.3463 39.3215 18.5597 38.505L16.6431 36.5157C16.1288 35.9819 15.3616 35.7763 14.6493 35.9815L11.9948 36.746C10.9053 37.0598 9.77314 36.4061 9.50014 35.3057L8.835 32.6246C8.65652 31.9052 8.09482 31.3435 7.37542 31.165L4.69432 30.4999C3.59391 30.2269 2.94024 29.0947 3.25402 28.0052L4.01853 25.3507C4.22367 24.6385 4.01807 23.8712 3.48429 23.3569L1.49496 21.4403C0.678479 20.6537 0.678479 19.3463 1.49496 18.5597L3.48429 16.6431C4.01807 16.1288 4.22367 15.3616 4.01853 14.6493L3.25402 11.9948C2.94024 10.9053 3.59391 9.77314 4.69432 9.50014L7.37542 8.835C8.09482 8.65652 8.65652 8.09482 8.835 7.37542L9.50014 4.69443C9.77314 3.59391 10.9053 2.94024 11.9948 3.25402L14.6493 4.01853C15.3616 4.22367 16.1288 4.01807 16.6431 3.48429L18.5597 1.49496Z"></path></svg>
+                                        <p id="calendarDayNumberLabel" class="z-10 text-slate-800 font-bold">4</p>
                                     </div>
                                     <div class="flex aspect-square items-center justify-center rounded-full bg-surface-secondary text-text-secondary">5</div>
                                     <div class="flex aspect-square items-center justify-center rounded-full bg-surface-secondary text-text-secondary">6</div>
@@ -263,57 +278,56 @@
                                 </div>
                             </div>
                         </div>
-                    </main>
+                    </div>
 
-                    <!-- ЭКРАН 3: AI TOOLS (МИНИМАЛИЗМ ИЗ СКРИНШОТА С ТОНКОЙ ССЫЛКОЙ-ВОПРОСОМ) -->
-                    <main id="view-tools" class="hidden flex-1 max-w-[540px] w-full mx-auto px-4 pt-20 flex flex-col items-center">
+                    <!-- ЭКРАН 3: AI TOOLS (МИНЕМАЛИЗМ ИЗ СКРИНШОТА С НАШИМ КОНТЕКСТНЫМ МОСТОМ) -->
+                    <div id="view-tools" class="hidden flex-1 max-w-[540px] w-full mx-auto px-4 pt-20 flex flex-col items-center">
                         <h1 class="text-2xl font-medium text-slate-900 tracking-tight text-center mb-6">What can I help with?</h1>
                         <div class="w-full bg-white border border-slate-200 rounded-[24px] p-4 main-input-box border-slate-200">
-                            <textarea id="toolsTextAreaBox" oninput="validateToolsInputText()" placeholder="Ask anything..." rows="3" class="w-full resize-none bg-transparent text-[15px] text-slate-800 placeholder-slate-300 focus:outline-none leading-relaxed h-16"></textarea>
+                            <textarea id="toolsMainInputTextArea" oninput="validateToolsButtonState()" placeholder="Ask anything..." rows="3" class="w-full resize-none bg-transparent text-[15px] text-slate-800 placeholder-slate-300 focus:outline-none leading-relaxed h-16"></textarea>
                             
+                            <!-- Твой нативный текстовый вопрос-ссылка под полем ввода -->
                             <div class="flex items-center justify-between border-t border-slate-50 pt-2.5 mt-2">
-                                <!-- Твой нативный вопрос-ссылка для перехода в Prompt Builder -->
-                                <button onclick="switchView('builder')" class="text-xs text-indigo-600 font-semibold hover:text-indigo-700 transition cursor-pointer bg-indigo-50 px-2 py-1 rounded-md">
-                                    Need to create a structured prompt? Open Prompt Builder ➔
+                                <button onclick="switchView('builder')" class="text-xs text-indigo-600 font-semibold hover:text-indigo-700 transition cursor-pointer bg-indigo-50 px-2 py-0.5 rounded">
+                                    Need to create a prompt? Open Prompt Builder ➔
                                 </button>
-                                
                                 <div class="flex items-center space-x-3">
-                                    <select id="toolsModelSelectorDropdown" class="appearance-none bg-transparent text-[14px] text-slate-600 font-medium focus:outline-none cursor-pointer">
+                                    <select id="toolsDropdownSelector" class="appearance-none bg-transparent text-[14px] text-slate-600 font-medium focus:outline-none cursor-pointer">
                                         <option value="claude">Claude</option>
                                         <option value="gpt5">ChatGPT 5.4</option>
                                     </select>
-                                    <button id="toolsActionSubmitArrow" onclick="runToolsPipelineSimulation()" class="w-7 h-7 rounded-full bg-slate-100 text-slate-300 flex items-center justify-center font-bold text-xs transition cursor-pointer">↑</button>
+                                    <button id="toolsArrowSubmitBtn" onclick="executeToolsPipelineSimulation()" class="w-7 h-7 rounded-full bg-slate-100 text-slate-300 flex items-center justify-center font-bold text-xs transition cursor-pointer">↑</button>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Логи вывода -->
-                        <div id="toolsSuccessLoggerBox" class="w-full mt-4 p-4 border border-emerald-100 rounded-xl bg-emerald-50/20 hidden text-xs text-slate-600">
-                            <p class="font-bold text-emerald-600 mb-1">✓ Генерация завершена успешно!</p>
-                            <p>Практика по уроку DeepSeek зафиксирована. Ваш ежедневный стрик защищен от сгорания.</p>
+                        
+                        <!-- Блок результатов -->
+                        <div id="toolsConsoleResponseSuccess" class="w-full mt-4 p-4 border border-emerald-100 rounded-xl bg-emerald-50/20 hidden text-xs text-slate-600">
+                            <p class="font-bold text-emerald-600 mb-1">✓ Инференс успешно выполнен!</p>
+                            <p>Ваша практика засчитана. Стрик обновлен и защищен от сгорания во всей системе.</p>
                         </div>
-                    </main>
+                    </div>
 
-                    <!-- ЭКРАН 4: PROMPT BUILDER (SIMPLE STYLE КОНСТРУКТОР) -->
-                    <main id="view-builder" class="hidden flex-1 max-w-[540px] w-full mx-auto px-4 pt-12 flex flex-col">
-                        <h2 class="text-lg font-bold text-slate-900 mb-1">Prompt Builder Template</h2>
-                        <p class="text-xs text-slate-400 mb-4">Соберите глубокий промпт для закрепления темы текущего урока.</p>
+                    <!-- ЭКРАН 4: PROMPT BUILDER Framework (SIMPLE STYLE ВКЛАДКА В ХЕДЕРЕ) -->
+                    <div id="view-builder" class="hidden flex-1 max-w-[540px] w-full mx-auto px-4 pt-12 flex flex-col">
+                        <h2 class="text-lg font-bold text-slate-900 mb-1">Prompt Builder Framework</h2>
+                        <p class="text-xs text-slate-400 mb-4">Соберите структурированный инженерный промпт для повторного использования.</p>
                         <div class="border border-slate-200 rounded-xl p-4 bg-white space-y-3 shadow-sm">
-                            <textarea id="builderPromptTaskValue" rows="3" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-indigo-500 resize-none">Act as growth hacking engineer. Generate 5 unique viral product features to increase tools activation conversion metrics from 5% to 20% on the platform loop.</textarea>
-                            <button onclick="syncPromptBackToTools()" class="w-full bg-[#5653FE] hover:bg-[#4340E6] text-white font-semibold py-2.5 rounded-lg text-xs transition cursor-pointer">
-                                Sync & Apply to AI Tools Workspace
+                            <textarea id="builderPromptDraftValue" rows="3" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-indigo-500 resize-none">Act as an expert product growth hacker. Build 5 viral features to increase tool adoption loops directly on the main workspace dashboard flow.</textarea>
+                            <button onclick="applyBuilderPromptToToolsInput()" class="w-full bg-[#5653FE] hover:bg-[#4340E6] text-white font-semibold py-2.5 rounded-lg text-xs transition cursor-pointer">
+                                Sync & Apply to AI Tools
                             </button>
                         </div>
-                    </main>
+                    </div>
 
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- СВЯЗУЮЩИЕ ИНТЕГРАЦИОННЫЕ СКРИПТЫ СЦЕНАРИЯ -->
+    <!-- КОНТРОЛЛЕР ВЗАИМОДЕЙСТВИЯ ЭКОСИСТЕМЫ -->
     <script>
-        let isLoopEcosystemComplete = false;
+        let isStreakSecured = false;
 
         function switchView(viewId) {
             // Закрываем все слои
@@ -322,24 +336,30 @@
             document.getElementById('view-tools').classList.add('hidden');
             document.getElementById('view-builder').classList.add('hidden');
 
-            // Включаем нужный слой
+            // Включаем нужный
             document.getElementById('view-' + viewId).classList.remove('hidden');
 
-            // Меняем состояния подсветки кнопок в меню шапки под вашу дизайн-систему
-            const navHome = document.getElementById('nav-home');
-            const navTools = document.getElementById('nav-tools');
+            // Обновляем навигацию хедера
+            const homeBtn = document.getElementById('nav-home');
+            const toolsBtn = document.getElementById('nav-tools');
+            const builderBtn = document.getElementById('nav-builder');
+
+            // Сброс классов
+            homeBtn.className = "h-16 py-2 transition-colors duration-200 text-text-disabled fill-icon-primary hover:text-text-action-info cursor-pointer";
+            toolsBtn.className = "h-16 py-2 transition-colors duration-200 text-text-disabled fill-icon-primary hover:text-text-action-info cursor-pointer";
+            builderBtn.className = "h-16 py-2 transition-colors duration-200 text-text-disabled fill-icon-primary hover:text-text-action-info cursor-pointer";
 
             if (viewId === 'home' || viewId === 'streak') {
-                navHome.className = "h-16 py-2 transition-colors duration-200 fill-text-action-info text-text-action-info cursor-pointer";
-                navTools.className = "h-16 py-2 transition-colors duration-200 text-text-disabled fill-icon-primary hover:text-text-action-info cursor-pointer";
-            } else if (viewId === 'tools' || viewId === 'builder') {
-                navHome.className = "h-16 py-2 transition-colors duration-200 text-text-disabled fill-icon-primary hover:text-text-action-info cursor-pointer";
-                navTools.className = "h-16 py-2 transition-colors duration-200 fill-text-action-info text-text-action-info cursor-pointer";
+                homeBtn.className = "h-16 py-2 transition-colors duration-200 fill-text-action-info text-text-action-info cursor-pointer";
+            } else if (viewId === 'tools') {
+                toolsBtn.className = "h-16 py-2 transition-colors duration-200 fill-text-action-info text-text-action-info cursor-pointer";
+            } else if (viewId === 'builder') {
+                builderBtn.className = "h-16 py-2 transition-colors duration-200 fill-text-action-info text-text-action-info cursor-pointer";
             }
         }
 
-        function validateToolsInputText() {
-            const val = document.getElementById('toolsTextAreaBox').value.trim();
+        function validateToolsButtonState() {
+            const val = document.getElementById('toolsMainInputTextArea').value.trim();
             const arrow = document.getElementById('toolsActionSubmitArrow');
             if (val !== "") {
                 arrow.className = "w-7 h-7 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs transition cursor-pointer shadow-sm shadow-indigo-600/20";
@@ -348,65 +368,65 @@
             }
         }
 
-        function syncPromptBackToTools() {
-            const text = document.getElementById('builderPromptTaskValue').value;
-            document.getElementById('toolsTextAreaBox').value = text;
+        function applyBuilderPromptToToolsInput() {
+            const text = document.getElementById('builderPromptDraftValue').value;
+            document.getElementById('toolsMainInputTextArea').value = text;
             switchView('tools');
-            validateToolsInputText();
+            validateToolsButtonState();
         }
 
         function runToolsPipelineSimulation() {
             const arrow = document.getElementById('toolsActionSubmitArrow');
             if (arrow.classList.contains('text-slate-300')) return;
 
-            document.getElementById('toolsSuccessLoggerBox').classList.remove('hidden');
+            document.getElementById('toolsConsoleResponseSuccess').classList.remove('hidden');
 
-            // Триггерим глобальное выполнение стрейка
-            isLoopEcosystemComplete = true;
-            applyEcosystemSuccessToDOM();
+            // Запускаем сквозное сохранение стрейка
+            isStreakSecured = true;
+            applyStreakSuccessToDOM();
         }
 
-        function applyEcosystemSuccessToDOM() {
-            if (!isLoopEcosystemComplete) return;
+        function applyStreakSuccessToDOM() {
+            if (!isStreakSecured) return;
 
-            // 1. Обновляем счетчик огня во всем приложении (с 1 до 2)
-            document.getElementById('headerGlobalStreakCounter').textContent = "2";
+            // 1. Обновляем счетчики огня (с 1 до 2)
+            document.getElementById('headerStreakVal').textContent = "2";
             document.getElementById('streakStatsCounterValue').textContent = "2";
 
-            // 2. Обновляем стейты на странице деталей Стрика (Screen 2)
-            document.getElementById('streakPageChallengeStepText').textContent = "Today's Goals Complete! 🎉";
-            document.getElementById('streakPageProgressBarWidth').style.width = "100%";
-            document.getElementById('streakPageBadgeState').textContent = "СТРИК ЗАЩИЩЕН ✓";
-            document.getElementById('streakPageBadgeState').className = "text-[10px] font-bold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded animate-none";
+            // 2. Стейт страницы деталей Стрика (Календарь)
+            document.getElementById('streakPageChallengeDayLabel').textContent = "Day 1 of 3 (Ecosystem Tasks Complete! 🎉)";
+            document.getElementById('streakPageChallengeProgressBar').style.width = "100%";
+            document.getElementById('streakPageTaskStatusBadge').textContent = "СТРИК ЗАЩИЩЕН ✓";
+            document.getElementById('streakPageTaskStatusBadge').className = "text-[10px] font-bold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded animate-none";
             
-            document.getElementById('streakPageToolsTaskRowText').className = "flex items-center space-x-2 text-emerald-600 line-through opacity-50";
-            document.getElementById('streakPageToolsTaskRowText').innerHTML = "<span>✓</span> <span>Практика: 1 генерация в AI Tools — Выполнено</span>";
+            document.getElementById('streakPageToolsTaskStatusRow').className = "flex items-center space-x-2 text-emerald-600 line-through opacity-50";
+            document.getElementById('streakPageToolsTaskStatusRow').innerHTML = "<span>✓</span> <span>Закрепление в AI Tools — Выполнено</span>";
 
             document.getElementById('streakPageGoToToolsBtn').className = "w-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold py-2.5 rounded-xl transition cursor-not-allowed text-center";
-            document.getElementById('streakPageGoToToolsBtn').textContent = "Все задачи на сегодня выполнены!";
+            document.getElementById('streakPageGoToToolsBtn').textContent = "Задание на сегодня полностью выполнено!";
             document.getElementById('streakPageGoToToolsBtn').disabled = true;
 
-            // Зажигаем пламя на странице деталей
-            document.getElementById('streakPageFireAnimationNode').className = "text-4xl opacity-100 scale-110 duration-500 filter drop-shadow-md select-none";
-            document.getElementById('streakPageMainDaysLabel').innerHTML = "day streak! <span class='text-orange-500 font-bold ml-1'>🔥 Secure</span>";
+            document.getElementById('streakPageFireAnimationIcon').className = "text-4xl opacity-100 scale-110 duration-500 filter drop-shadow-md select-none";
+            document.getElementById('streakPageMainDaysText').innerHTML = "day streak! <span class='text-orange-500 font-bold ml-1'>🔥 Secure</span>";
 
-            // 3. Обновляем мини-карточку стрика на главной странице Home (Screen 1)
-            document.getElementById('homeStreakCardDisclaimer').textContent = "✓ Задачи выполнены. Стрик сохранен!";
-            document.getElementById('homeStreakCardDisclaimer').className = "text-emerald-600 font-semibold animate-none";
-            document.getElementById('homeClaudeProgressText').textContent = "12%"; // Прогресс Claude вырос благодаря Tools!
-            document.getElementById('homeClaudeProgressText').className = "text-xs text-emerald-600 font-bold";
-
-            // Перекрашиваем мини-ячейку пятницы на главном экране в оранжевый градиент
-            const miniCircle = document.getElementById('homeMiniCircleFri');
-            miniCircle.className = "w-8 h-8 rounded-full text-white flex items-center justify-center text-xs font-bold";
-            miniCircle.style.background = "linear-gradient(0deg, #FF7008 0%, #FFAC5E 100%)";
-            miniCircle.textContent = "✓";
-
-            // 4. Перекрашиваем большую ячейку 4 июня на странице календаря в оранжевый градиент
+            // Перекрашиваем большую ячейку 4 июня в календаре
             const bigCircle = document.getElementById('calendarEcosystemDay4');
             bigCircle.className = "flex aspect-square items-center justify-center relative text-white rounded-full font-bold";
             bigCircle.style.background = "linear-gradient(0deg, #FF7008 0%, #FFAC5E 100%)";
             bigCircle.innerHTML = "✓";
+            document.getElementById('starburstSvgIconNode').classList.add('hidden');
+
+            // 3. Стейт главной страницы Home Page
+            document.getElementById('homeStreakCardLabel').textContent = "✓ Задачи выполнены. Стрик сохранен!";
+            document.getElementById('homeStreakCardLabel').className = "text-emerald-600 font-semibold animate-none";
+            document.getElementById('homeClaudeProgressLabel').textContent = "12%";
+            document.getElementById('homeClaudeProgressLabel').className = "text-xs text-emerald-600 font-bold";
+
+            // Перекрашиваем мини-ячейку на главной
+            const miniCircle = document.getElementById('homeMiniDayCircle4');
+            miniCircle.className = "w-8 h-8 rounded-full text-white flex items-center justify-center text-xs font-bold";
+            miniCircle.style.background = "linear-gradient(0deg, #FF7008 0%, #FFAC5E 100%)";
+            miniCircle.textContent = "✓";
         }
     </script>
 </body>
