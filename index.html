@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coursiv - Connected Workspace Matrix</title>
+    <title>Coursiv - Integrated Workspace Matrix</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -39,6 +39,20 @@
         .main-input-box { box-shadow: 0 8px 30px rgba(0, 0, 0, 0.02); }
         .card-effect { transition: all 0.2s ease-in-out; cursor: pointer; }
         .card-effect:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.01); }
+        
+        .ui-primary-button {
+            background-color: #5653FE;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 10px 16px;
+            border-radius: 12px;
+            transition: all 0.2s;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+        .ui-primary-button:hover { background-color: #4340E6; }
     </style>
 </head>
 <body class="stjr-review-checkout-widget__body--active select-none">
@@ -47,18 +61,23 @@
             <div class="app_view" id="app_view">
                 <div class="flex min-h-screen flex-col bg-surface-primary">
                     
-                    <header class="sticky top-0 z-50 w-full border-b border-border-primary bg-surface-primary">
-                        <div class="max-w-5xl mx-auto flex h-16 items-center justify-between px-6">
+                    <header class="sticky top-0 z-50 w-full border-b border-border-primary bg-surface-primary" data-sentry-component="DesktopHeader">
+                        <div class="desktop-width flex items-center justify-between rounded-2xl mx-auto max-w-5xl h-16 px-6">
                             <div class="flex items-center justify-between gap-6">
-                                <button onclick="switchView('home')" class="shrink-0 cursor-pointer font-black text-xl tracking-tight text-slate-900 laptop:text-2xl desktop:me-8">
-                                    Coursiv
-                                </button>
+                                <button onclick="switchView('home')" class="shrink-0 font-black text-xl tracking-tight text-text-primary cursor-pointer laptop:text-2xl desktop:me-8">Coursiv</button>
                                 
                                 <div class="flex items-center gap-x-3 desktop:gap-x-4">
                                     <button onclick="switchView('home')" id="header-nav-home" class="h-16 py-2 transition-colors duration-200 fill-text-action-info text-text-action-info cursor-pointer">
                                         <div class="flex h-full items-center gap-2 rounded-[16px] px-2 transition-all duration-100 hover:bg-slate-50">
                                             <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" fill="currentColor"><path d="M11.336 2.753a1 1 0 0 1 1.328 0l9 8a1 1 0 0 1-1.328 1.494L20 11.95V19.5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7.55l-.336.297a1 1 0 0 1-1.328-1.494l9-8ZM6 10.17V19.5h3v-5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v5h3v-9.329l-6-5.333-6 5.333Zm7 9.329v-4h-2v4h2Z"></path></svg></span>
                                             <span class="text-base font-semibold">Home</span>
+                                        </div>
+                                    </button>
+                                    
+                                    <button class="h-16 py-2 transition-colors duration-200 text-text-disabled fill-icon-primary opacity-50 cursor-not-allowed">
+                                        <div class="flex h-full items-center gap-2 rounded-[16px] px-2">
+                                            <span><svg width="24" height="25" viewBox="0 0 24 25" fill="none"><g id="back"><path d="M7 20.5L9 16.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M17 20.5L15 16.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 16.5V21.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3 6.5C3 5.39543 3.89543 4.5 5 4.5H19C20.1046 4.5 21 5.39543 21 6.5V14.5C21 15.6046 20.1046 16.5 19 16.5H5C3.89543 16.5 3 15.6046 3 14.5V6.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 3.5V4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7 8.5H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7 12.5H11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg></span>
+                                            <span class="text-base font-medium">Courses</span>
                                         </div>
                                     </button>
                                     
@@ -145,7 +164,7 @@
                                     <div class="text-center"><div class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary"></div><p class="mt-1 text-xs text-text-secondary">Sun</p></div>
                                 </div>
                                 <div class="mt-4 border-t border-slate-100 pt-3 flex items-center justify-between text-xs font-medium text-amber-600">
-                                    <span id="homeDashboardStreakDisclaimerBadgeTextNode" class="animate-pulse">⚠️ Theory complete. Tool generation pending today!</span>
+                                    <span id="homeDashboardDisclaimerStatusTextLabel" class="animate-pulse">⚠️ Theory complete. Tool generation pending today!</span>
                                     <span class="text-text-action-info font-bold">Open Calendar ➔</span>
                                 </div>
                             </div>
@@ -172,7 +191,7 @@
                                 <div class="flex w-full justify-between">
                                     <h2 class="text-lg font-semibold">Streak Challenge</h2>
                                     <p id="streakCalendarPageChallengeTimelineStatusText" class="text-sm text-text-secondary">Day 1 of 3 (Theory Complete)</p>
-                                </div>
+                                tap window.innerHeight</div>
                                 <div class="relative h-[10px] w-full rounded-full bg-border-primary"><div id="streakCalendarPageProgressBarFillWidthField" class="absolute left-0 top-0 h-full rounded-full bg-surface-action transition-all duration-500" style="width: 11%;"></div></div>
                             </div>
 
@@ -209,7 +228,7 @@
                     <section id="view-tools" class="hidden mx-auto w-full flex-1 pt-[150px]">
                         <div class="flex h-full flex-col items-center bg-surface-primary max-tablet:mb-16">
                             
-                            <h2 class="mx-auto mb-4 h-auto select-none text-center text-lg font-semibold tablet:mb-10 tablet:text-xl" data-sentry-component="NewConversationGreeting">
+                            <h2 class="mx-auto mb-4 h-auto select-none text-center text-lg font-semibold tablet:mb-10 tablet:text-xl">
                                 <span>What can I help with?</span>
                             </h2>
                             
@@ -266,47 +285,124 @@
                             </div>
 
                             <div class="mx-auto mt-4 flex max-w-[600px] flex-wrap justify-center gap-2">
-                                <button onclick="injectSuggestionStringIntoInput('Create a visually premium cinematic vector illustration grid blueprint asset')" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.3333 2H4.66667C3.2 2 2 3.2 2 4.66667V11.3333C2 11.8 2.13333 12.2 2.33333 12.6C3.06667 11.2667 3.8 9.8 4.46667 8.6C4.86667 7.8 6.06667 7.93333 6.33333 8.8L7.2 12C7.86667 11.0667 8.93333 10.6 10 10.6C10.7333 10.6 11.4667 10.8 12.1333 11.2667L13.7333 12.4667C13.9333 12.1333 14 11.7333 14 11.2667V4.66667C14 3.2 12.8 2 11.3333 2ZM10 7.33333C9.26667 7.33333 8.66667 6.73333 8.66667 6C8.66667 5.26667 9.26667 4.66667 10 4.66667C10.7333 4.66667 11.3333 5.26667 11.3333 6C11.3333 6.73333 10.7333 7.33333 10 7.33333ZM13.7333 12.5333C13.3333 13.4 12.4 14 11.3333 14H4.66667C3.66667 14 2.8 13.4667 2.33333 12.6C3.06667 11.2667 3.8 9.8 4.46667 8.6C4.86667 7.8 6.06667 7.93333 6.33333 8.8L7.2 12C7.86667 11.0667 8.93333 10.6 10 10.6C10.7333 10.6 11.4667 10.8 12.1333 11.2667L13.7333 12.4667C13.9333 12.1333 14 11.2667 14 11.2667V4.66667C14 3.2 12.8 2 11.3333 2ZM10 7.33333C9.26667 7.33333 8.66667 6.73333 8.66667 6C8.66667 5.26667 9.26667 4.66667 10 4.66667C10.7333 4.66667 11.3333 5.26667 11.3333 6Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Create an image</button>
+                                <button onclick="injectSuggestionStringIntoInput('Create a visually premium cinematic vector illustration grid blueprint asset')" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.3333 2H4.66667C3.2 2 2 3.2 2 4.66667V11.3333C2 11.8 2.13333 12.2 2.33333 12.6C3.06667 11.2667 3.8 9.8 4.46667 8.6C4.86667 7.8 6.06667 7.93333 6.33333 8.8L7.2 12C7.86667 11.0667 8.93333 10.6 10 10.6C10.7333 10.6 11.4667 10.8 12.1333 11.2667L13.7333 12.4667C13.9333 12.1333 14 11.7333 14 11.2667V4.66667C14 3.2 12.8 2 11.3333 2ZM10 7.33333C9.26667 7.33333 8.66667 6.73333 8.66667 6C8.66667 5.26667 9.26667 4.66667 10 4.66667C10.7333 4.66667 11.3333 5.26667 11.3333 6C11.3333 6.73333 10.7333 7.33333 10 7.33333ZM13.7333 12.5333C13.3333 13.4 12.4 14 11.3333 14H4.66667C3.66667 14 2.8 13.4667 2.33333 12.6C3.06667 11.2667 3.8 9.8 4.46667 8.6C4.86667 7.8 6.06667 7.93333 6.33333 8.8L7.2 12C7.86667 11.0667 8.93333 10.6 10 10.6C10.7333 10.6 11.4667 10.8 12.1333 11.2667L13.7333 12.5333ZM11.3333 6C11.3333 6.73333 10.7333 7.33333 10 7.33333C9.26667 7.33333 8.66667 6.73333 8.66667 6C8.66667 5.26667 9.26667 4.66667 10 4.66667C10.7333 4.66667 11.3333 5.26667 11.3333 6Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Create an image</button>
                                 <button onclick="injectSuggestionStringIntoInput('Give strategic growth advisory modeling to optimize platform activation and retention loops metrics')" id="bubble-for-onboarding" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.26667 11.6667C2.46667 10.6667 2 9.4 2 8C2 4.66667 4.66667 2 8 2C11.3333 2 14 4.66667 14 8C14 11.3333 11.3333 14 8 14C7.4 14 6.8 13.9333 6.26667 13.7333C5.93333 13.6667 5.6 13.5333 5.33333 13.3333" stroke="#5653FE" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M2 13.9999C2.16327 13.9999 2.32653 13.9999 2.4898 13.9999C3.30612 13.9999 4.01361 13.7999 4.66667 13.3333" stroke="#5653FE" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3.33333 12C3.26316 12.8 2.70175 13.4857 2 14" stroke="#5653FE" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 7H6M8 9.66667H6" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Give advice</button>
                                 <button onclick="injectSuggestionStringIntoInput('Brainstorm five unique product retention features targeting high-income software skill adoption loops')" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.28299 5.37622L2.2845 6.46128C1.84968 6.61862 1.84968 7.23356 2.28449 7.39091L5.28299 8.47597C5.55899 8.57584 5.77634 8.7932 5.87622 9.0692L6.96128 12.0677C7.11862 12.5025 7.73356 12.5025 7.89091 12.0677L8.97597 9.0692C9.07584 8.7932 9.2932 8.57584 9.2932 5.27634L8.97597 4.78299L7.89091 1.7845C7.73356 1.34968 7.11862 1.34968 6.96128 1.78449L5.87622 4.78299C5.77634 5.05899 5.55899 5.27634 5.28299 5.37622Z" stroke="#5653FE" stroke-width="1.5"></path><path d="M12.6386 13.9965L12.7918 14.6788C12.834 14.8668 13.0009 15.0003 13.1935 15.0003C13.3862 15.0003 13.5531 14.8668 13.5952 14.6788L13.7484 13.9965C13.8322 13.6235 14.1235 13.3322 14.4965 13.2484L15.1788 13.0952C15.3667 13.0531 15.5003 12.8862 15.5003 12.6935C15.5003 12.5009 15.3667 12.334 15.1788 12.2918L14.4965 12.1386C14.1235 12.0549 13.8322 11.7636 13.7484 11.3906L13.5952 10.7083C13.5531 10.5203 13.3862 10.3867 13.1935 10.3867C13.0009 10.3867 12.834 10.5203 12.7918 10.7083L12.6386 11.3906L12.5549 11.7636 12.2636 12.0549 11.8906 12.1386L11.2083 12.2918C11.0203 12.334 10.8867 12.5009 10.8867 12.6935C10.8867 12.8862 11.0203 13.0531 11.2083 13.0953L11.8906 13.2484C12.2636 13.3322 12.5549 13.6235 12.6386 13.9965Z" fill="#5653FE"></path></svg>Generate ideas</button>
                                 <button onclick="injectSuggestionStringIntoInput('Deconstruct the primary structural context properties inside long analytical documentation payload configurations data summaries')" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 4.66667L14 11.3333C14 12.8 12.8 14 11.3333 14L4.66667 14C3.2 14 2 12.8 2 11.3333L2 4.66667C2 3.2 3.2 2 4.66667 2L11.3333 2C12.8 2 14 3.2 14 4.66667Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7.33317 5L4.6665 5" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8.6665 11L4.6665 11" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M11.3332 8L4.6665 8" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summarize text</button>
                                 <button onclick="injectSuggestionStringIntoInput('Analyze this raw multi-variant user cohort metric sheet logs to optimize active workspace churn barriers')" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 14L10 10M11.3333 6.66667C11.3333 9.26667 9.26667 11.3333 6.66667 11.3333C4.06667 11.3333 2 9.26667 2 6.66667C2 4.06667 4.06667 2 6.66667 2C9.26667 2 11.3333 4.06667 11.3333 6.66667Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Analyze this data</button>
-                                <button onclick="injectSuggestionStringIntoInput('Translate this analytical product requirement document parameter logs data sheets matrix architecture script')" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="evenodd" clip-rule="evenodd" d="M10.6385 5.96647C10.8728 5.88048 11.1309 5.88524 11.3618 5.9798C11.6765 6.10847 11.8238 6.38847 11.8892 6.5198C11.9638 6.67113 12.0378 6.86847 12.1138 7.0718L12.1238 7.09847L14.6238 13.7651C14.6822 13.9298 14.6736 14.1107 14.5999 14.269C14.5262 14.4274 14.3933 14.5505 14.2298 14.6119C14.0663 14.6733 13.8853 14.6681 13.7256 14.5974C13.5659 14.5267 13.4403 14.3961 13.3758 14.2338L10.9672 7.8118L8.28185 14.2565C8.21378 14.2565 8.08366 14.1272 7.92013 14.0598C7.7566 13.9925 7.57305 13.993 7.40985 14.0611C7.24665 14.1292 7.11718 14.2594 7.04992 14.4229C6.98266 14.5864 6.98311 14.77 7.05118 14.9332L9.83718 21.6185C9.92127 21.83 10.0029 22.0113 10.0925 22.1887C10.1618 22.318 10.3192 22.592 10.6392 22.7093L10.6385 22.7087ZM8.52252 19.4359C8.60648 19.4359 8.68473 19.5019 8.75279 19.557C8.82085 19.6121 8.87739 19.6801 8.91918 19.757C8.96097 19.834 8.98719 19.9184 8.99634 20.0055C9.00549 20.0926 8.99739 20.1806 8.97252 20.2646C8.31718 22.4752 7.62118 24.1019 6.57985 25.4219C5.53451 26.7472 4.18118 27.7112 2.30185 28.6699C2.22384 28.6699 2.13876 28.7337 2.05147 28.7406C1.96418 28.7475 1.87637 28.7372 1.79308 28.7102C1.70979 28.6832 1.63263 28.64 1.56602 28.5831C1.4994 28.5263 1.44464 28.4569 1.40485 28.3789C1.36506 28.3009 1.34102 28.2158 1.33411 28.1285C1.3272 28.0412 1.33755 27.9534 1.36457 27.8701C1.3916 27.7868 1.43476 27.7097 1.4916 27.6431C1.54844 27.5765 1.61784 27.2217 1.69585 27.1819C3.48452 26.5692 4.65185 25.7126 5.53318 24.5959C6.41918 23.4726 7.05652 22.0346 7.69318 19.8866C7.71803 19.8026 7.75918 19.7243 7.81428 19.6563C7.86938 19.5882 7.93734 19.5317 8.0143 19.4899C8.0143 19.4899 8.17568 19.4219 8.26277 19.4127C8.34985 19.4036 8.43789 19.4117 8.52185 19.4366L8.52252 19.4359ZM3.97367 21.6371C4.14377 21.5888 4.32607 21.6101 4.48047 21.6963C4.63487 21.7824 4.74874 21.9263 4.79701 22.0964C5.26501 23.7431 6.17434 24.9564 7.39967 25.8758C7.54112 25.9819 7.63464 26.1398 7.65964 26.3148C7.68465 26.4899 7.63909 26.6677 7.53301 26.8091C7.42692 26.9505 7.26899 27.0441 7.09396 27.0691C6.91892 27.0941 6.74112 27.0485 6.59967 26.9424C5.15834 25.8611 4.06767 24.4078 3.51501 22.4604C3.46672 22.2904 3.4879 22.1082 3.57391 21.9538C3.65992 21.7994 3.80371 21.6855 3.97367 21.6371ZM1.33301 20.0758C1.33301 19.899 1.40325 19.7294 1.52827 19.6044C1.65329 19.4794 1.82286 19.4091 1.99967 19.4091H10.333C10.5098 19.4091 10.6794 19.4794 10.8044 19.6044C10.9294 19.7294 10.9997 19.899 10.9997 20.0758C10.9997 20.2526 10.9294 20.4222 10.8044 20.5472C10.6794 20.6722 10.5098 20.7425 10.333 20.7425H1.99967C1.82286 20.7425 1.65329 20.6722 1.52827 20.5472C1.40325 20.4222 1.33301 20.2526 1.33301 20.0758ZM5.99967 18.0752C6.17649 18.0752 6.34605 18.1454 6.47108 18.2704C6.5961 18.3954 6.66634 18.565 6.66634 18.7418V20.0752C6.66634 20.252 6.5961 20.4216 6.47108 20.5466C6.34605 20.6716 6.17649 20.7418 5.99967 20.7418C5.82286 20.7418 5.65329 20.6716 5.52827 20.5466C5.40325 20.4216 5.33301 20.252 5.33301 20.0752V18.7418C5.33301 18.565 5.40325 18.3954 5.52827 18.2704C5.65329 18.1454 5.82286 18.0752 5.99967 18.0752ZM8.66634 28.0752C8.66634 27.8984 8.73658 27.7288 8.8616 27.6038C8.98663 27.4788 9.1562 27.4085 9.33301 27.4085H12.9997C13.1765 27.4085 13.3461 27.4788 13.4711 27.6038C13.5961 27.7288 13.6663 27.8984 13.6663 28.0752C13.6663 28.252 13.5961 28.4216 13.4711 28.5466C13.3461 28.6716 13.1765 28.7418 12.9997 28.7418H9.33301C9.1562 28.7418 8.98663 28.6716 8.8616 28.5466C8.73658 28.4216 8.66634 28.252 8.66634 28.0752Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Translate this</button>
+                                <button onclick="injectSuggestionStringIntoInput('Translate this analytical product requirement document parameter logs data sheets matrix architecture script')" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="evenodd" clip-rule="evenodd" d="M10.6385 5.96647C10.8728 5.88048 11.1309 5.88524 11.3618 5.9798C11.6765 6.10847 11.8238 6.38847 11.8892 6.5198C11.9638 6.67113 12.0378 6.86847 12.1138 7.0718L12.1238 7.09847L14.6238 13.7651C14.6822 13.9298 14.6736 14.1107 14.5999 14.269C14.5262 14.4274 14.3933 14.5505 14.2298 14.6119C14.0663 14.6733 13.8853 14.6681 13.7256 14.5974C13.5659 14.5267 13.4403 14.3961 13.3758 14.2338L10.9672 7.8118L8.28185 14.2565C8.21378 14.2565 8.08366 14.1272 7.92013 14.0598C7.7566 13.9925 7.57305 13.993 7.40985 14.0611C7.24665 14.1292 7.11718 14.2594 7.04992 14.4229C6.98266 14.5864 6.98311 14.77 7.05118 14.9332L9.83718 21.6185C9.92127 21.83 10.0029 22.0113 10.0925 22.1887C10.1618 22.318 10.3192 22.592 10.6392 22.7093L10.6385 22.7087ZM8.52252 19.4359C8.60648 19.4359 8.68473 19.5019 8.75279 19.557C8.82085 19.6121 8.87739 19.6801 8.91918 19.757C8.96097 19.834 8.98719 19.9184 8.99634 20.0055C9.00549 20.0926 8.99739 20.1806 8.97252 20.2646C8.31718 22.4752 7.62118 24.1019 6.57985 25.4219C5.53451 26.7472 4.18118 27.7112 2.30185 28.6699C2.22384 28.6699 2.13876 28.7337 2.05147 28.7406C1.96418 28.7475 1.87637 28.7372 1.79308 28.7102C1.70979 28.6832 1.63263 28.64 1.56602 28.5831C1.4994 28.5263 1.44464 28.4569 1.40485 28.3789C1.36506 28.3009 1.34102 28.2158 1.33411 28.1285C1.3272 28.0412 1.33755 27.9534 1.36457 27.8701C1.3916 27.7868 1.43476 27.7097 1.4916 27.6431C1.54844 27.5765 1.61784 27.2217 1.69585 27.1819C3.48452 26.5692 4.65185 25.7126 5.53318 24.5959C6.41918 23.4726 7.05652 22.0346 7.69318 19.8866C7.71803 19.8026 7.75918 19.7243 7.81428 19.6563C7.86938 19.5882 7.93734 19.5317 8.0143 19.4899C8.0143 19.4899 8.17568 19.4219 8.26277 19.4127C8.34985 19.4036 8.43789 19.4117 8.52185 19.4366L8.52252 19.4359ZM3.97367 21.6371C4.14377 21.5888 4.32607 21.6101 4.48047 21.6963C4.63487 21.7824 4.74874 21.9263 4.79701 22.0964C5.26501 23.7431 6.17434 24.9564 7.39967 25.8758C7.54112 25.9819 7.63464 26.1398 7.65964 26.3148C7.68465 26.4899 7.63909 26.6677 7.53301 26.8091C7.42692 26.9505 7.26899 27.0441 7.09396 27.0691C6.91892 27.0941 6.74112 27.0485 6.59967 26.9424C5.15834 25.8611 4.06767 24.4078 3.51501 22.4604C3.46672 22.2904 3.4879 22.1082 3.57391 21.9538C3.65992 21.7994 3.80371 21.6855 3.97367 21.6371ZM1.33301 20.0758C1.33301 19.899 1.40325 19.7294 1.52827 19.6044C1.65329 19.4794 1.82286 19.4091 1.99967 19.4091H10.333C10.5098 19.4091 10.6794 19.4794 10.8044 19.6044C10.9294 19.7294 10.9997 19.899 10.9997 20.0758C10.9997 20.2526 10.9294 20.4222 10.8044 20.5472C10.6794 20.6722 10.5098 20.7425 10.333 20.7425H1.99967C1.82286 20.7425 1.65329 20.6722 1.52827 20.5472C1.40325 20.4222 1.33301 20.2526 1.33301 20.0758ZM5.99967 18.0752C6.17649 18.0752 6.34605 18.1454 6.47108 18.2704C6.5961 18.3954 6.66634 18.565 6.66634 18.7418V20.0752C6.66634 20.252 6.5961 20.4216 6.47108 20.5466C6.34605 20.6716 6.17649 20.7418 5.99967 20.7418C5.82286 20.7418 5.65329 20.6716 5.52827 20.5466C5.40325 20.4216 5.33301 20.252 5.33301 20.0752V18.7418C5.33301 18.565 5.40325 18.3954 5.52827 18.2704C5.65329 18.1454 5.82286 18.0752 5.99967 18.0752ZM8.66634 28.0752C8.66634 27.8984 8.73658 27.7288 8.8616 27.6038C8.98663 27.4788 9.1562 27.4085 9.33301 27.4085H12.9997C13.1765 27.4085 13.3461 27.4788 13.4711 27.6038C13.5961 27.7288 13.6663 27.8984 13.6663 28.0752C13.6663 28.252 13.5961 28.4216 13.4711 28.5466C13.3461 28.6716 13.1765 28.7418 12.9997 28.7418H9.33301C9.1562 28.7418 8.98663 28.6716 8.8616 28.5466C8.73658 28.4216 8.66634 28.252 8.66634 28.0752Z" fill="#5653FE"></path></svg>Translate this</button>
                             </div>
                         </div>
                     </section>
 
-                    <div id="view-practice" class="hidden flex-1 max-w-[540px] w-full mx-auto px-4 pt-12 flex flex-col">
-                        <div class="flex items-center space-x-1 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
-                            <span>AI Practice Tab Workspace</span> <span>➔</span> <span class="text-indigo-600">Prompt Builder sandbox</span>
-                        </div>
-                        <h2 class="text-lg font-bold text-slate-900 mb-1">Advanced Prompt Constructor Sandbox</h2>
-                        <p class="text-xs text-slate-400 mb-5">Map the three target input parameters variables to compile an engineered system operations instruction pre-set block.</p>
-                        
-                        <div class="border border-slate-200 rounded-2xl p-5 space-y-4 bg-white shadow-sm">
-                            <div class="space-y-1">
-                                <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wide">1. Product Name</label>
-                                <input type="text" id="builderInputParamProductNameValue" value="Coursiv Workspace App" class="w-full border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-indigo-500 font-medium">
-                            </div>
-                            <div class="space-y-1">
-                                <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wide">2. Target Audience</label>
-                                <input type="text" id="builderInputParamTargetAudienceValue" value="Growth Product Managers" class="w-full border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-indigo-500 font-medium">
-                            </div>
-                            <div class="space-y-1">
-                                <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wide">3. Key Benefit / Goal</label>
-                                <input type="text" id="builderInputParamCoreObjectiveValue" value="Optimize features activation engagement conversion metrics logs from 5% to 20%" class="w-full border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-indigo-500 font-medium">
-                            </div>
+                    <div id="view-practice" class="hidden flex-1 max-w-[540px] w-full mx-auto px-4 pt-4 pb-24">
+                        <div class="flex flex-col gap-6">
                             
-                            <button onclick="compilePromptVariablesInsideSandbox()" class="w-full bg-[#5653FE] hover:bg-[#4340E6] text-white font-semibold py-2.5 rounded-xl text-xs transition cursor-pointer shadow-sm">Compile Prompt Matrix Preset</button>
-
-                            <div id="builderLocalSandboxConsoleOutputBoxContainer" class="hidden border border-indigo-100 rounded-xl bg-indigo-50/20 p-4 space-y-3 transition-all duration-300">
-                                <div>
-                                    <p class="text-[10px] font-bold text-indigo-600 uppercase tracking-wide mb-1">Compiled Instructions Matrix Arguments Output:</p>
-                                    <div id="builderCompiledOutputTextAreaDisplayBlockField" class="text-xs font-mono text-slate-600 bg-white p-3 rounded-lg border border-slate-100 max-h-24 overflow-y-auto leading-relaxed"></div>
+                            <button type="button" class="flex w-full flex-col gap-4 rounded-3xl border border-border-primary bg-surface-secondary px-4 pb-4 pt-6 text-left">
+                                <div class="flex items-center gap-4">
+                                    <div class="size-20 shrink-0 overflow-hidden"><img src="/assets/ai-novice-BHD-onCL.webp" alt="AI Novice" class="size-full object-cover"></div>
+                                    <div class="flex flex-col gap-1">
+                                        <h2 class="text-2xl font-bold leading-8 tracking-[0.07px] text-text-primary">AI Novice</h2>
+                                        <p class="text-sm font-normal leading-5 tracking-[-0.15px] text-text-secondary">Level 1</p>
+                                    </div>
                                 </div>
-                                <div class="flex items-center justify-between pt-1">
-                                    <span class="text-[10px] text-emerald-600 font-medium">✓ Successfully synced into Tools Local Library pool</span>
-                                    <button onclick="switchView('tools')" class="bg-indigo-600 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg hover:bg-indigo-700 transition cursor-pointer">Test inside AI Tools tab ➔</button>
+                                <div class="flex flex-col gap-4">
+                                    <div class="flex flex-col gap-2">
+                                        <div class="flex items-center justify-between text-sm">
+                                            <span class="font-medium tracking-[-0.15px] text-text-secondary">Progress</span>
+                                            <span id="practicePageProgressFractionTextNode" class="font-normal text-text-action-info">1/3</span>
+                                        </div>
+                                        <div class="relative h-1.5 w-full rounded-full bg-surface-disabled">
+                                            <div id="practicePageProgressFillStatusBar" class="absolute inset-y-0 left-0 rounded-full bg-surface-action transition-[width] duration-700 ease-out" style="width: 33.3333%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-2 rounded-2xl border border-border-primary bg-surface-primary p-3">
+                                        <span class="shrink-0 text-2xl">🎯</span>
+                                        <p id="practicePageProgressAdvisoryDisclaimerLabel" class="text-xs font-normal leading-4 text-text-secondary">Complete 2 practices to reach Curious Builder</p>
+                                    </div>
+                                </div>
+                            </button>
+
+                            <div class="flex flex-col gap-4">
+                                <h3 class="pl-1 text-xs font-bold uppercase leading-4 tracking-[0.6px] text-text-secondary">Practices</h3>
+                                <div class="flex flex-col gap-3">
+                                    
+                                    <button type="button" class="flex w-full rounded-2xl border border-border-primary bg-surface-primary p-4 text-left flex-row gap-3 opacity-60">
+                                        <div class="flex size-12 shrink-0 items-center justify-center rounded-[14px] bg-surface-action-secondary">
+                                            <svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" viewBox="0 0 24.01 24.01" fill="none" class="size-6" style="display: block;"><g id="Group"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.5773 17.8849C21.153 18.4606 21.153 19.3939 20.5773 19.9695L19.9695 20.5773C19.3939 21.153 18.4606 21.153 17.885 20.5773L7.43436 10.1267C6.85873 9.55109 6.85872 8.6178 7.43436 8.04217L8.04218 7.43435C8.61781 6.85872 9.55109 6.85872 10.1267 7.43435L20.5773 17.8849Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M16.0067 4.00167V6.0025" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M17.0071 5.00208H15.0063" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M5.00208 15.0063V17.0071" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M6.0025 16.0067H4.00167" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4.00167 3.00125V5.00208" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M5.00208 4.00167H3.00125" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8.84668 11.5388L11.5388 8.84668" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>
+                                        </div>
+                                        <div class="flex flex-col gap-1">
+                                            <p class="font-bold text-text-primary text-base leading-6 tracking-[-0.31px]">Prompt Fixer</p>
+                                            <p class="font-normal text-text-secondary text-sm leading-5 tracking-[-0.15px]">Fix and improve any prompt instantly</p>
+                                        </div>
+                                    </button>
+
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <button onclick="toggleSandboxInputFieldsPanel()" type="button" class="flex w-full rounded-2xl border-2 border-indigo-400 bg-indigo-50/10 p-4 text-left flex-col gap-3 transition shadow-sm hover:bg-indigo-50/20">
+                                            <div class="flex size-12 shrink-0 items-center justify-center rounded-[14px] bg-surface-action-secondary">
+                                                <svg width="100%" height="100%" overflow="visible" viewBox="0 0 24 24" fill="none" class="size-6" style="display: block;"><g><path d="M5.74 11.26L2.8 8.32C2.39998 7.91943 2.39998 7.27057 2.8 6.87L5.87 3.8C6.27057 3.39998 6.91943 3.39998 7.32 3.8L9.26 5.74" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M18.26 14.74L20.2 16.68C20.6 17.0806 20.6 17.7294 20.2 18.13L17.13 21.2C16.7294 21.6 16.0806 21.6 15.68 21.2L12.74 18.26" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M11.7664 9.10207L4.14858 16.7199C3.5881 17.2791 3.36881 18.0949 3.57343 18.8598C3.77805 19.6246 4.37544 20.222 5.14027 20.4266C5.9051 20.4266 6.72098 20.4119 7.28017 19.8515L14.898 12.2337" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M11.7664 9.10207C11.3334 7.8336 11.4302 6.44412 12.035 5.24797C12.6397 4.05182 13.7013 3.15009 14.9795 2.74678C15.6206 2.53365 16.2994 2.45771 16.9717 2.52388C17.3494 2.57431 17.6653 2.83542 17.7861 3.19682C17.9068 3.55821 17.8111 3.9568 17.5396 4.22408L15.7354 6.02822C15.6416 6.12197 15.5889 6.24915 15.5889 6.38177C15.5889 6.51438 15.6416 6.64156 15.7354 6.73531L17.2647 8.26467C17.46 8.26467 17.7765 8.26467 17.9718 8.26467L19.7759 6.46053C20.0432 6.18897 20.4417 6.09332 20.8031 6.21401C21.1645 6.33471 21.4256 6.65068 21.4761 7.02834C21.5423 7.70069 21.4664 8.37945 21.2532 9.02053C20.8499 10.2988 19.9482 11.3603 18.7521 11.9651C17.5559 12.5698 16.1665 12.6667 14.898 12.2337" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="font-bold text-indigo-600 text-sm leading-5 tracking-[-0.15px]">Prompt Builder</p>
+                                                <p class="font-normal text-text-secondary text-xs leading-[19.5px]">Configure inputs & create custom prompts</p>
+                                            </div>
+                                        </button>
+
+                                        <button type="button" class="flex w-full rounded-2xl border border-border-primary bg-surface-primary p-4 text-left flex-col gap-3 opacity-50">
+                                            <div class="flex size-12 shrink-0 items-center justify-center rounded-[14px] bg-surface-action-secondary"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M2.06202 12.3484C1.97868 12.1238 1.97868 11.8769 2.06202 11.6524C2.87372 9.68421 4.25153 8.0014 6.02079 6.81726C7.79004 5.63312 9.87106 5.00098 12 5.00098C14.129 5.00098 16.21 5.63312 17.9792 6.81726C19.7485 8.0014 21.1263 9.68421 21.938 11.6524C22.0214 11.8769 22.0214 12.1238 21.938 12.3484C21.1263 14.3165 19.7485 15.9993 17.9792 17.1835C16.21 18.3676 14.129 18.9997 12 18.9997C9.87106 18.9997 7.79004 18.3676 6.02079 17.1835C4.25153 15.9993 2.87372 14.3165 2.06202 12.3484Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="font-bold text-text-primary text-sm leading-5 tracking-[-0.15px]">AI Spotter</p>
+                                                <p class="font-normal text-text-secondary text-xs leading-[19.5px]">Spot AI vs real images</p>
+                                            </div>
+                                        </button>
+                                    </div>
+
+                                    <div id="practicePageSandboxInputsPanelContainer" class="hidden border border-indigo-200 bg-indigo-50/5 rounded-2xl p-5 space-y-4 shadow-inner transition-all duration-300">
+                                        <div class="space-y-1.5">
+                                            <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wide">1. Product Name</label>
+                                            <input type="text" id="builderInputParamProductNameValue" value="Coursiv Workspace App" class="w-full border border-slate-200 bg-white rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-indigo-500 font-medium">
+                                        </div>
+                                        <div class="space-y-1.5">
+                                            <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wide">2. Target Audience</label>
+                                            <input type="text" id="builderInputParamTargetAudienceValue" value="Growth Product Managers" class="w-full border border-slate-200 bg-white rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-indigo-500 font-medium">
+                                        </div>
+                                        <div class="space-y-1.5">
+                                            <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wide">3. Key Benefit / Goal</label>
+                                            <input type="text" id="builderInputParamCoreObjectiveValue" value="Optimize features activation engagement conversion metrics logs from 5% to 20%" class="w-full border border-slate-200 bg-white rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-indigo-500 font-medium">
+                                        </div>
+                                        
+                                        <button onclick="compilePromptVariablesInsideSandbox()" class="w-full bg-[#5653FE] hover:bg-[#4340E6] text-white font-semibold py-2.5 rounded-xl text-xs transition cursor-pointer shadow-sm">Compile Prompt Matrix Preset</button>
+
+                                        <div id="builderLocalSandboxConsoleOutputBoxContainer" class="hidden border border-indigo-100 rounded-xl bg-indigo-50/20 p-4 space-y-3 transition-all duration-300">
+                                            <div>
+                                                <p class="text-[10px] font-bold text-indigo-600 uppercase tracking-wide mb-1">Compiled Instructions Matrix Payload:</p>
+                                                <div id="builderCompiledOutputTextAreaDisplayBlockField" class="text-xs font-mono text-slate-600 bg-white p-3 rounded-lg border border-slate-100 max-h-24 overflow-y-auto leading-relaxed"></div>
+                                            </div>
+                                            <div class="flex items-center justify-between pt-1">
+                                                <span class="text-[10px] text-emerald-600 font-medium">✓ Synced into local Saved prompts</span>
+                                                <button onclick="switchView('tools')" class="bg-indigo-600 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg hover:bg-indigo-700 transition cursor-pointer">Open AI Tools tab ➔</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <button type="button" class="flex w-full rounded-2xl border border-border-primary bg-surface-primary p-4 text-left flex-col gap-3 opacity-50">
+                                            <div class="flex size-12 shrink-0 items-center justify-center rounded-[14px] bg-surface-action-secondary"><svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" viewBox="0 0 21.5018 20.5721" fill="none"><path d="M10.2768 1.04489C10.3206 0.956355 10.3883 0.881826 10.4723 0.829719C10.5562 0.777612 10.653 0.75 10.7518 0.75C10.8506 0.75 10.9474 0.777612 11.0313 0.829719C11.1153 0.881826 11.183 0.956355 11.2268 1.04489L13.5368 5.72389C13.689 6.03186 13.9136 6.2983 14.1914 6.50035C14.4692 6.70239 14.7919 6.83401 15.1318 6.88389L20.2978 7.63989C20.3957 7.65408 20.4876 7.69537 20.5633 7.75909C20.6389 7.82282 20.6952 7.90644 20.7258 8.0005C20.7564 8.09456 20.7601 8.1953 20.7364 8.29133C20.7127 8.38736 20.6626 8.47485 20.5918 8.54389L16.8558 12.1819C16.6094 12.422 16.4251 12.7184 16.3186 13.0455C16.2122 13.3727 16.1869 13.7208 16.2448 14.0599L17.1268 19.1999C17.1441 19.2977 17.1335 19.3985 17.0963 19.4906C17.0591 19.5827 16.9967 19.6625 16.9163 19.7209C16.836 19.7793 16.7408 19.8139 16.6417 19.8208C16.5426 19.8277 16.4435 19.8066 16.3558 19.7599L11.7378 17.3319C11.4335 17.1721 11.095 17.0886 10.7513 17.0886C10.4076 17.0886 10.0691 17.1721 9.7648 17.3319L5.1478 19.7599C5.06013 19.8063 4.9612 19.8272 4.86225 19.8201C4.7633 19.8131 4.66832 19.7785 4.58809 19.7201C4.50787 19.6618 4.44563 19.5821 4.40846 19.4901C4.37128 19.3982 4.36066 19.2976 4.3778 19.1999L5.2588 14.0609C5.2588 14.0609 5.317 13.7216 5.2588 13.6331C5.20061 13.5446 5.07114 13.4144 4.89389 13.3463C4.71663 13.2782 4.58717 13.2787 4.524 13.3468L1.69585 16.1328C1.56602 16.2493 1.4916 10.7796 1.69585 10.7398Z" fill="#5653FE"></path></svg></div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="font-bold text-text-primary text-sm leading-5 tracking-[-0.15px]">Prompt Master</p>
+                                                <p class="font-normal text-text-secondary text-xs leading-[19.5px]">Rate prompts and learn what works</p>
+                                            </div>
+                                        </button>
+                                        
+                                        <button type="button" class="flex w-full rounded-2xl border border-border-primary bg-surface-primary p-4 text-left flex-col gap-3 opacity-50">
+                                            <div class="flex size-12 shrink-0 items-center justify-center rounded-[14px] bg-surface-action-secondary"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21.0002 21.0002L16.7002 16.7002" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="font-bold text-text-primary text-sm leading-5 tracking-[-0.15px]">Prompt Detective</p>
+                                                <p class="font-normal text-text-secondary text-xs leading-[19.5px]">Guess prompt from outputs</p>
+                                            </div>
+                                        </button>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -320,16 +416,16 @@
     <script>
         let isEcosystemActiveStreakSecure = false;
 
-        // Shared dynamic map pool tracking preset components variables mapping models
+        // Sync repository pool matrix for prompts data handshakes
         let globalSavedPromptsLibraryMap = [
             {
-                title: "🎯 General Copywriter template funnel model",
-                body: "Act as professional copywriter architect strategist. Construct premium structured operational logic sequences targeting optimization vectors rules."
+                title: "🎯 General Growth Funnel Framework",
+                body: "Act as an elite direct-response conversion copywriter. Deconstruct the context metrics layout parameters constraints to structure a premium payload loop."
             }
         ];
 
         function switchView(id) {
-            // Absolute validation loop parameters reset
+            // Absolute validation unmount reset sequence maps
             document.getElementById('view-home').classList.add('hidden');
             document.getElementById('view-streak').classList.add('hidden');
             document.getElementById('view-tools').classList.add('hidden');
@@ -337,7 +433,7 @@
 
             document.getElementById('view-' + id).classList.remove('hidden');
 
-            // Production matching link tab emphasis toggle classes strings logic configuration
+            // Header tabs state updates selection class mappings
             const tHome = document.getElementById('header-nav-home');
             const tTools = document.getElementById('header-nav-tools');
             const tPractice = document.getElementById('header-nav-practice');
@@ -361,10 +457,10 @@
             const svg = document.getElementById('toolsSubmitButtonSvgFillNode');
             
             if (val !== "") {
-                btn.disabled = false;
+                btn.removeAttribute('disabled');
                 svg.setAttribute('fill', '#5653FE');
             } else {
-                btn.disabled = true;
+                btn.setAttribute('disabled', 'true');
                 svg.setAttribute('fill', '#AEAEB2');
             }
         }
@@ -372,6 +468,11 @@
         function injectSuggestionStringIntoInput(text) {
             document.getElementById('toolsMainInputTextareaContainerBlock').value = text;
             handleToolsInputValidation();
+        }
+
+        function toggleSandboxInputFieldsPanel() {
+            const panel = document.getElementById('practicePageSandboxInputsPanelContainer');
+            panel.classList.toggle('hidden');
         }
 
         function toggleLibraryTray() {
@@ -382,7 +483,7 @@
 
         function renderLibraryPresetsDOMNode() {
             const grid = document.getElementById('toolsSavedLibraryGridContainerRowsNode');
-            grid.innerHTML = ""; // clean rows references fields data mappings
+            grid.innerHTML = ""; // purge node parameters rows listings
 
             globalSavedPromptsLibraryMap.forEach((item) => {
                 const buttonElement = document.createElement('button');
@@ -405,26 +506,23 @@
             const audience = document.getElementById('builderInputParamTargetAudienceValue').value.trim();
             const goal = document.getElementById('builderInputParamCoreObjectiveValue').value.trim();
 
-            if (!product || !audience || !goal) return alert("Please configure all three matrix context parameters field fields values.");
+            if (!product || !audience || !goal) return alert("Please map all three context parameter categories inputs entries.");
 
-            const outputPayload = `System directive macro instructions layout: act as elite structural prompt logic engineer copywriter writer context profile. Product targets constraints: "${product}". Targeted cohort base demographic: "${audience}". Strategic activation scaling objective variable vectors metrics logs: "${goal}". Generate premium balanced arguments sequence output format rules.`;
+            const outputPayload = `System operational macro matrix instruction: act as seasoned copy engineer product optimization strategist. Context framework targets identification: "${product}". Targeted demographic consumer parameter profiles segment parameters: "${audience}". Deliverable benefit scaling metric milestone target arguments payload: "${goal}". Formulate clean premium logical outputs formatting hierarchies.`;
 
-            // Render parameters cleanly inside local textbox code view output on active page context sandbox
+            // Render parameters values on screen layout inside active sandbox box panel container fields
             document.getElementById('builderCompiledOutputTextAreaDisplayBlockField').textContent = outputPayload;
             document.getElementById('builderLocalSandboxConsoleOutputBoxContainer').classList.remove('hidden');
 
-            // Map custom properties parameters directly into the syncing cross-feature data pool library array
-            const customPresetRowKeyTitle = `⚙️ Built Template: ${product}`;
-            const applicationDuplicateLoopTracerValidation = globalSavedPromptsLibraryMap.find(p => p.title === customPresetRowKeyTitle);
-            if (!applicationDuplicateLoopTracerValidation) {
-                globalSavedPromptsLibraryMap.unshift({ title: customPresetRowKeyTitle, body: outputPayload });
+            // Inject properties into shared synchronization data matrix loop array
+            const structuralPresetRecordKey = `⚙️ Preset: ${product}`;
+            const applicationCheckDuplicateLoop = globalSavedPromptsLibraryMap.find(p => p.title === structuralPresetRecordKey);
+            if (!applicationCheckDuplicateLoop) {
+                globalSavedPromptsLibraryMap.unshift({ title: structuralPresetRecordKey, body: outputPayload });
             }
         }
 
         function fireToolsInferenceRequestPipeline() {
-            const arrow = document.getElementById('toolsInferenceSubmitArrowActionButton');
-            if (arrow.hasAttribute('disabled')) return;
-
             document.getElementById('toolsInferenceSuccessBoxAlert').classList.remove('hidden');
             isEcosystemActiveStreakSecure = true;
             propagateEcosystemStreakState();
@@ -433,11 +531,16 @@
         function propagateEcosystemStreakState() {
             if (!isEcosystemActiveStreakSecure) return;
 
-            // 1. Sync header component trackers counters metrics elements strings fields values rows (1 day -> 2 days active secure)
+            // 1. Increment indicator counters variables parameters strings values logs (1 day -> 2 days active secure targets)
             document.getElementById('header-global-streak-counter-node').textContent = "2";
             document.getElementById('homePageClaudePctValueCounter').textContent = "12%";
 
-            // 2. Adjust calendar details expansion items pages configuration nodes state parameters logs elements references
+            // 2. Adjust level badge elements entries indicators updates maps layout (Practice View page fields components)
+            document.getElementById('practicePageProgressFractionTextNode').textContent = "2/3";
+            document.getElementById('practicePageProgressFillStatusBar').style.width = "66.6666%";
+            document.getElementById('practicePageProgressAdvisoryDisclaimerLabel').textContent = "Complete 1 more practice to reach Curious Builder";
+
+            // Adjust calendar details challenge row items cards parameters references
             document.getElementById('streakCalendarPageChallengeTimelineStatusText').textContent = "Day 1 of 3 (Ecosystem Tasks Complete! 🎉)";
             document.getElementById('streakCalendarPageProgressBarFillWidthField').style.width = "100%";
             
@@ -460,14 +563,14 @@
                 targetPageStreakCounters[i].textContent = "2";
             }
 
-            // Transmute June 4 slot calendar cell grid item block into rich orange linear gradient layout graphics asset
+            // Transmute June 4 cell box node matrix container within calendar into linear gradient design graphics elements layout
             const dayBoxNodeCell = document.getElementById('calendarEcosystemDaySlotBox4');
             dayBoxNodeCell.className = "flex aspect-square items-center justify-center relative text-white rounded-full font-bold shadow-md shadow-orange-500/15";
             dayBoxNodeCell.style.background = "linear-gradient(0deg, #FF7008 0%, #FFAC5E 100%)";
             dayBoxNodeCell.innerHTML = "✓";
             document.getElementById('starburstActiveNodeSvgIconElement').classList.add('hidden');
 
-            // 3. Propagate changes straight back across home metrics field panels dashboards
+            // 3. Propagate numbers metrics counters backward cross home screen view cards panels indicators
             document.getElementById('homeDashboardDisclaimerStatusTextLabel').textContent = "✓ Workout complete. Streak secured!";
             document.getElementById('homeDashboardDisclaimerStatusTextLabel').className = "text-emerald-600 font-semibold animate-none";
 
