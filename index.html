@@ -48,100 +48,102 @@
                     
                     <!-- MASTER NAVBAR HEADER -->
                     <header id="app-main-header" class="sticky top-0 z-50 w-full border-b border-border-primary bg-surface-primary">
-                        <div class="max-w-5xl mx-auto flex h-16 items-center justify-between px-4 sm:px-6">
-                            <div class="flex items-center justify-between gap-3 sm:gap-6 w-full md:w-auto">
-                                <button onclick="switchView('home')" class="shrink-0 cursor-pointer font-black text-lg sm:text-xl tracking-tight text-slate-900 lg:text-2xl xl:me-8">Coursiv</button>
-                                <div class="flex items-center gap-x-2 sm:gap-x-3 xl:desktop:gap-x-4">
+                        <div class="max-w-5xl mx-auto flex h-16 items-center justify-between px-6">
+                            <div class="flex items-center justify-between gap-6">
+                                <button onclick="switchView('home')" class="shrink-0 cursor-pointer font-black text-xl tracking-tight text-slate-900 laptop:text-2xl desktop:me-8">Coursiv</button>
+                                <div class="flex items-center gap-x-3 desktop:gap-x-4">
                                     <button onclick="switchView('home')" id="header-nav-home" class="h-16 py-2 transition-colors duration-200 fill-text-action-info text-text-action-info cursor-pointer">
-                                        <div class="flex h-full items-center gap-1 rounded-[16px] px-1 hover:bg-slate-50">
-                                            <span class="text-xs sm:text-base font-semibold">Home</span>
+                                        <div class="flex h-full items-center gap-2 rounded-[16px] px-2 transition-all duration-100 hover:bg-slate-50">
+                                            <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" fill="currentColor"><path d="M11.336 2.753a1 1 0 0 1 1.328 0l9 8a1 1 0 0 1-1.328 1.494L20 11.95V19.5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7.55l-.336.297a1 1 0 0 1-1.328-1.494l9-8ZM6 10.17V19.5h3v-5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v5h3v-9.329l-6-5.333-6 5.333Zm7 9.329v-4h-2v4h2Z"></path></svg></span>
+                                            <span class="text-base font-semibold">Home</span>
                                         </div>
                                     </button>
-                                    <button class="h-16 py-2 transition-colors duration-200 text-text-disabled fill-icon-primary opacity-30 cursor-not-allowed">
-                                        <div class="flex h-full items-center gap-1 rounded-[16px] px-1">
-                                            <span class="text-xs sm:text-base font-medium">Courses</span>
+                                    <button class="h-16 py-2 transition-colors duration-200 text-text-disabled fill-icon-primary opacity-50 cursor-not-allowed">
+                                        <div class="flex h-full items-center gap-2 rounded-[16px] px-2">
+                                            <span><svg width="24" height="25" viewBox="0 0 24 24" fill="none"><g id="back"><path d="M7 20.5L9 16.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M17 20.5L15 16.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 16.5V21.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3 6.5C3 5.39543 3.89543 4.5 5 4.5H19C20.1046 4.5 21 5.39543 21 6.5V14.5C21 15.6046 20.1046 16.5 19 16.5H5C3.89543 16.5 3 15.6046 3 14.5V6.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 3.5V4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7 8.5H15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7 12.5H11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg></span>
+                                            <span class="text-base font-medium">Courses</span>
                                         </div>
                                     </button>
                                     <button onclick="switchView('tools')" id="header-nav-tools" class="h-16 py-2 transition-colors duration-200 text-text-disabled fill-icon-primary cursor-pointer">
-                                        <div class="flex h-full items-center gap-1 rounded-[16px] px-1 hover:bg-slate-50">
-                                            <span class="text-xs sm:text-base font-semibold">AI Tools</span>
+                                        <div class="flex h-full items-center gap-2 rounded-[16px] px-2 transition-all duration-100 hover:bg-slate-50">
+                                            <span><div class="relative"><svg width="17" height="21" viewBox="0 0 17 21" fill="none"><path fill="currentColor" d="M9.74316 20.9409C9.61328 20.9409 9.50505 20.9007 9.41846 20.8203C9.33187 20.7399 9.2793 20.6348 9.26074 20.5049C9.12467 19.5524 8.97624 18.7484 8.81543 18.0928C8.66081 17.4434 8.45671 16.9115 8.20312 16.4971C7.94954 16.0827 7.61556 15.7518 7.20117 15.5044C6.78678 15.2508 6.25798 15.0467 5.61475 14.8921C4.97152 14.7375 4.17985 14.5983 3.23975 14.4746C3.10368 14.4622 2.99235 14.4128 2.90576 14.3262C2.82536 14.2334 2.78516 14.1221 2.78516 13.9922C2.78516 13.8623 2.82536 13.7541 2.90576 13.6675C2.99235 13.5747 3.10368 13.5221 3.23975 13.5098C4.18604 13.4046 4.98079 13.2809 5.62402 13.1387C6.26725 12.9964 6.79606 12.7985 7.21045 12.5449C7.63102 12.2852 7.9681 11.945 8.22168 11.5244C8.48145 11.0977 8.68864 10.5565 8.84326 9.90088C8.99788 9.24528 9.13704 8.43815 9.26074 7.47949C9.2793 7.35579 9.33187 7.25374 9.41846 7.17334C9.50505 7.08675 9.61328 7.04346 9.74316 7.04346C9.86068 7.04346 9.96273 7.08675 10.0493 7.17334C10.1359 7.25374 10.1885 7.35579 10.207 7.47949C10.3431 8.43815 10.4884 9.24528 10.6431 9.90088C10.7977 10.5565 11.0018 11.0977 11.2554 11.5244C11.509 11.945 11.8429 12.2821 12.2573 12.5356C12.6717 12.7892 13.2005 12.9902 13.8438 13.1387C14.4932 13.2809 15.2879 13.4046 16.228 13.5098C16.3641 13.5283 16.4723 13.5809 16.5527 13.6675C16.6393 13.7541 16.6826 13.8623 16.6826 13.9922C16.6826 14.1221 16.6393 14.2334 16.5527 14.3262C16.4723 14.4128 16.3641 14.4622 16.228 14.4746C15.2879 14.5798 14.4932 14.7065 13.8438 14.855C13.2005 14.9972 12.6686 15.1951 12.248 15.4487C11.8337 15.7023 11.4997 16.0425 11.2461 16.4692C10.9925 16.8898 10.7884 17.4279 10.6338 18.0835C10.4854 18.7453 10.3431 19.5524 10.207 20.5049C10.1885 20.6348 10.1359 20.7399 10.0493 20.8203C9.96273 20.9007 9.86068 20.9409 9.74316 20.9409ZM3.72217 11.2275C3.53662 11.2275 3.43148 11.1255 3.40674 10.9214C3.3387 10.3338 3.26449 9.87614 3.18408 9.54834C3.10368 9.22054 2.97689 8.97314 2.80371 8.80615C2.63672 8.63298 2.38314 8.50309 2.04297 8.4165C1.7028 8.32992 1.23584 8.23714 0.64209 8.13818C0.425618 8.10726 0.317383 8.00212 0.317383 7.82275C0.317383 7.64958 0.413249 7.54443 0.60498 7.50732C1.20492 7.396 1.67497 7.29704 2.01514 7.21045C2.36149 7.11768 2.62126 6.99089 2.79443 6.83008C2.9738 6.66309 3.10368 6.41878 3.18408 6.09717C3.26449 5.76937 3.3387 5.31478 3.40674 4.7334C3.43148 4.5293 3.53662 4.42725 3.72217 4.42725C3.90771 4.42725 4.01286 4.5262 4.0376 4.72412C4.118 5.31787 4.19531 5.78483 4.26953 6.125C4.34993 6.45898 4.47363 6.71257 4.64062 6.88574C4.8138 7.05273 5.07357 7.17952 5.41992 7.26611C5.76628 7.34652 6.24251 7.42692 6.84863 7.50732C6.92285 7.51969 6.98779 7.55371 7.04346 7.60938C7.09912 7.66504 7.12695 7.73617 7.12695 7.82275C7.12695 8.00212 7.03418 8.10726 6.84863 8.13818C6.24251 8.2557 5.76628 8.36084 5.41992 8.45361C5.07975 8.54639 4.82308 8.67627 4.6499 8.84326C4.47673 9.00407 4.34993 9.24837 4.26953 9.57617C4.19531 9.89779 4.118 10.3524 4.0376 10.9399C4.03141 11.0203 3.9974 11.0884 3.93555 11.144C3.8737 11.1997 3.80257 11.2275 3.72217 11.2275ZM7.97119 5.13232C7.85368 5.13232 7.78564 5.07048 7.76709 4.94678C7.6805 4.47673 7.6001 4.13656 7.52588 3.92627C7.45785 3.7098 7.31559 3.55827 7.09912 3.47168C6.88265 3.37891 6.57461 5.44141 5.10547 8.9668H6.51172C7.26367 8.9668 7.45898 9.54297 7.04883 10.0996L4.68555 13.3906C4.36328 13.8398 3.85547 13.8496 3.52344 13.3906L1.16016 10.1094C0.740234 9.5332 0.935547 8.9668 1.69727 8.9668ZM12.5859 5.11914C13.0938 5.11914 13.5137 5.5293 13.5137 6.03711V11.2129L15.8184 14.3379C16.1602 14.8164 16.1309 15.373 15.6914 15.6758C15.2129 15.998 14.6855 15.9102 14.2949 15.4023L11.9316 12.2773C11.7363 12.0332 11.668 11.8086 11.668 11.5742V6.03711C11.668 5.5293 12.0781 5.11914 12.5859 5.11914Z"></path></svg></div></span>
+                                            <span class="text-base font-semibold">AI Tools</span>
                                         </div>
                                     </button>
                                     <button onclick="switchView('practice')" id="header-nav-practice" class="h-16 py-2 transition-colors duration-200 text-text-disabled fill-icon-primary cursor-pointer">
-                                        <div class="flex h-full items-center gap-1 rounded-[16px] px-1 hover:bg-slate-50">
-                                            <span class="text-xs sm:text-base font-semibold">AI Practice</span>
+                                        <div class="flex h-full items-center gap-2 rounded-[16px] px-2 transition-all duration-100 hover:bg-slate-50">
+                                            <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><path fill="currentColor" d="M2.398 16.793q-.492 0-.881-.223a1.8 1.8 0 0 1-.622-.612 1.7 1.7 0 0 1-.223-.872V9.223q0-.483.223-.872.232-.39.622-.613a1.7 1.7 0 0 1 .88-.232h1.188V8.87h-1.14a.39.39 0 0 0-.298.12.44.44 0 0 0-.102.298v5.733q0 .186.102.297a.42.42 0 0 0 .297.102h1.141v1.373zm2.95 1.995q-1.104 0-1.716-.65T3.02 16.32V7.998q0-1.16.593-1.818.594-.66 1.652-.659h.714q1.123 0 1.753.659.64.658.64 1.818v8.322q0 1.17-.64 1.818-.64.65-1.772.65zm.028-1.457h.566q.446 0 .705-.269.27-.28.269-.76V8.025q0-.492-.26-.77t-.696-.278h-.677a.7.7 0 0 0-.594.278q-.213.278-.213.77V16.3q0 .483.232.761.24.27.668.27m2.653-5.863V10.01h7.942v1.457zm0 2.82v-1.457h7.942v1.457zm10.01 4.5q-1.132 0-1.771-.65-.631-.65-.631-1.818V7.998q0-1.16.63-1.818.632-.66 1.754-.659h.724q1.047 0 1.642.659.593.658.593 1.818v8.322q0 1.17-.612 1.818-.612.65-1.716.65zm.028-1.457h.566q.418 0 .65-.269.24-.28.24-.76V8.025q0-.492-.212-.77a.7.7 0 0 0-.594-.278h-.677q-.436 0-.696.278-.25.278-.25.77V16.3q0 .483.259.761.26.27.714.27m2.357-.538V15.42h1.14a.4.4 0 0 0 .288-.102.39.39 0 0 0 .121-.297V9.288a.4.4 0 0 0-.12-.297.37.37 0 0 0-.288-.12h-1.141V7.505h1.197q.482 0 .862.232.39.223.613.613.232.39.232.872v5.863q0 .482-.232.872a1.675 1.675 0 0 1-1.475.835z"></path></svg></span>
+                                            <span class="text-base font-semibold">AI Practice</span>
                                         </div>
                                     </button>
                                 </div>
                             </div>
                             
-                            <div class="flex items-center gap-x-2 xl:desktop:gap-x-2 shrink-0">
-                                <div onclick="switchView('streak')" class="flex select-none items-center justify-center border-2 border-border-primary bg-surface-secondary gap-x-[5px] px-2 py-1 rounded-[40px] pl-2.5 pr-3 h-[30px] cursor-pointer">
+                            <div class="flex items-center gap-x-0 max-desktop:gap-x-4 desktop:gap-x-2">
+                                <div onclick="switchView('streak')" class="flex select-none items-center justify-center border-2 border-border-primary bg-surface-secondary gap-x-[5px] px-2 py-1 tablet:rounded-[40px] tablet:pl-3 tablet:pr-4 h-[25px] tablet:h-[30px] cursor-pointer">
                                     <span class="text-xs">🔥</span>
-                                    <p class="shrink-0 font-semibold text-sm sm:text-base"><span id="header-global-streak-counter-node">1</span></p>
+                                    <p class="shrink-0 font-semibold text-base"><span id="header-global-streak-counter-node">1</span></p>
                                 </div>
-                                <button class="h-16 py-2 transition-colors duration-200 fill-icon-primary text-text-disabled cursor-pointer"><div class="flex h-full items-center gap-1 rounded-[16px] px-1 sm:px-2 hover:bg-slate-50"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="sm:w-6 sm:h-6"><path d="M12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4ZM6 8C6 4.68629 8.68629 2 12 2C15.3137 2 18 4.68629 18 8C18 11.3137 15.3137 14 12 14C8.68629 14 6 11.3137 6 8ZM8 18C6.34315 18 5 19.3431 5 21C5 21.5523 4.55228 22 4 22C3.44772 22 3 21.5523 3 21C3 18.2386 5.23858 16 8 16H16C18.7614 16 21 18.2386 21 21C21 21.5523 20.5523 22 20 22C19.4477 22 19 21.5523 19 21C19 19.3431 17.6569 18 16 18H8Z" fill="currentColor"></path></svg></span><span class="text-sm hidden md:inline">Profile</span></div></button>
+                                <button class="h-16 py-2 transition-colors duration-200 fill-icon-primary text-text-disabled cursor-pointer"><div class="flex h-full items-center gap-2 rounded-[16px] px-2 hover:bg-slate-50"><span><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4C9.79086 4 8 5.79086 8 8C8 10.2091 9.79086 12 12 12C14.2091 12 16 10.2091 16 8C16 5.79086 14.2091 4 12 4ZM6 8C6 4.68629 8.68629 2 12 2C15.3137 2 18 4.68629 18 8C18 11.3137 15.3137 14 12 14C8.68629 14 6 11.3137 6 8ZM8 18C6.34315 18 5 19.3431 5 21C5 21.5523 4.55228 22 4 22C3.44772 22 3 21.5523 3 21C3 18.2386 5.23858 16 8 16H16C18.7614 16 21 18.2386 21 21C21 21.5523 20.5523 22 20 22C19.4477 22 19 21.5523 19 21C19 19.3431 17.6569 18 16 18H8Z" fill="currentColor"></path></svg></span><span class="text-base">Profile</span></div></button>
                             </div>
                         </div>
                     </header>
 
                     <!-- VIEW 1: HOME PAGE -->
-                    <main id="view-home" class="max-w-5xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8 flex flex-col gap-y-6 sm:gap-y-10 flex-1">
-                        <div class="flex flex-col sm:flex-row min-w-0 gap-4 cursor-pointer justify-between rounded-2xl bg-surface-action-secondary p-4 border border-border-primary">
+                    <main id="view-home" class="max-w-5xl w-full mx-auto px-6 py-8 flex flex-col gap-y-10 flex-1">
+                        <div class="flex min-w-0 cursor-pointer justify-between rounded-2xl bg-surface-action-secondary p-4 border border-border-primary">
                             <div class="flex flex-col justify-center">
                                 <h3 class="text-base font-bold">AI Mastery Certificate Program</h3>
                                 <p class="text-xs text-text-secondary mb-0">Complete 5 courses to earn your professional certificate</p>
                             </div>
-                            <div class="flex w-full min-w-0 gap-x-1 rounded-md bg-surface-primary p-1 max-w-full sm:max-w-[455px] border border-slate-100">
+                            <div class="flex w-full min-w-0 gap-x-1 rounded-md bg-surface-primary p-1 max-w-[455px] border border-slate-100">
                                 <button class="flex flex-1 flex-col items-center py-2"><img src="https://d2h7i1o4snhir4.cloudfront.net/images/guides-icons/chatgpt_logo.webp" class="h-6 w-6 rounded" /><span class="text-xs text-emerald-600 mt-1">✓</span></button>
                                 <button class="flex flex-1 flex-col items-center bg-surface-action-secondary py-2 rounded"><img src="https://d2h7i1o4snhir4.cloudfront.net/images/guides-icons/claude_logo.webp" class="h-6 w-6 rounded" /><span id="homePageClaudePctValueCounter" class="text-xs text-text-action-info mt-1">4%</span></button>
                                 <button class="flex flex-1 flex-col items-center py-2"><img src="https://d2h7i1o4snhir4.cloudfront.net/images/guides-icons/midjourney_logo.webp" class="h-6 w-6 rounded" /><span class="text-xs text-text-secondary mt-1">5%</span></button>
                             </div>
                         </div>
 
-                        <div class="flex flex-col md:flex-row gap-4">
+                        <div class="flex flex-row gap-4 max-tablet:flex-col-reverse">
                             <div class="flex flex-1 flex-col gap-y-6 rounded-2xl border border-border-primary p-6 bg-white shadow-sm">
                                 <div class="flex items-center gap-x-4">
-                                    <img class="w-24 h-16 sm:w-32 sm:h-20 rounded bg-surface-primary object-cover" src="https://d2h7i1o4snhir4.cloudfront.net/images/guides/b58cf86e-236d-4a96-baca-35194d698ab5.webp">
+                                    <img class="w-32 h-20 rounded bg-surface-primary object-cover" src="https://d2h7i1o4snhir4.cloudfront.net/images/guides/b58cf86e-236d-4a96-baca-35194d698ab5.webp">
                                     <div>
-                                        <div class="text-base sm:text-lg font-semibold text-text-primary">DeepSeek</div>
-                                        <div class="text-xs sm:text-sm text-text-secondary">Idea Brainstorming &amp; Problem-Solving</div>
+                                        <div class="text-lg font-semibold text-text-primary">DeepSeek</div>
+                                        <div class="text-sm text-text-secondary">Idea Brainstorming &amp; Problem-Solving</div>
                                     </div>
                                 </div>
                                 <div>
                                     <div class="relative mb-2 flex h-2 w-full overflow-hidden rounded-md bg-surface-tertiary"><div class="absolute bottom-0 start-0 top-0 rounded-md bg-indigo-500" style="width: 60%;"></div></div>
-                                    <div class="flex justify-between text-xs sm:text-sm"><span class="text-text-secondary">9/15 lessons completed</span><span class="font-bold text-text-action-info">60%</span></div>
+                                    <div class="flex justify-between text-sm"><span class="text-text-secondary">9/15 lessons completed</span><span class="font-bold text-text-action-info">60%</span></div>
                                 </div>
                                 <div class="flex gap-2 w-full">
-                                    <button class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold py-2.5 px-3 rounded-xl flex-1">Other courses</button>
-                                    <button onclick="switchView('tools')" class="bg-[#5653FE] hover:bg-[#4340E6] text-white text-xs font-semibold py-2.5 px-3 rounded-xl flex-1">Continue learning</button>
+                                    <button class="bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold py-2 px-4 rounded-xl flex-1">Other courses</button>
+                                    <button onclick="switchView('tools')" class="bg-surface-action hover:bg-[#4340E6] text-white text-xs font-semibold py-2 px-4 rounded-xl flex-1">Continue learning</button>
                                 </div>
                             </div>
 
-                            <div class="card-effect flex rounded-2xl border p-6 border-border-primary bg-surface-primary w-full md:w-[380px] shrink-0 flex-col justify-between">
-                                <div class="w-full">
-                                    <p class="mb-1 text-sm font-semibold uppercase text-text-action-info">Weekly streaks</p>
-                                    <p class="text-lg sm:text-xl font-bold text-text-primary mb-3">Help you build learning habit</p>
-                                    <div onclick="switchView('streak')" role="button" class="flex w-full justify-between my-auto">
-                                        <div class="text-center">
-                                            <div class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs font-bold">✓</div>
-                                            <p class="mt-1 text-xs text-text-secondary">Thu</p>
-                                        </div>
-                                        <div class="text-center">
-                                            <div id="homeDashboardMiniDayIndicatorSlot4" class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary flex items-center justify-center text-xs font-semibold text-slate-400">4</div>
-                                            <p class="mt-1 text-xs text-text-primary">Fri</p>
-                                        </div>
-                                        <div class="text-center"><div class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary"></div><p class="mt-1 text-xs text-text-secondary">Sat</p></div>
-                                        <div class="text-center"><div class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary"></div><p class="mt-1 text-xs text-text-secondary">Sun</p></div>
+                            <!-- Mobile adapted with w-full max-w-[380px] md:min-w-[380px] -->
+                            <div class="card-effect flex rounded-2xl border p-6 border-border-primary bg-surface-primary w-full max-w-[380px] md:min-w-[380px] flex-col">
+                                <p class="mb-1 text-sm font-semibold uppercase text-text-action-info">Weekly streaks</p>
+                                <p class="text-xl font-bold text-text-primary mb-3">Help you build learning habit</p>
+                                <div onclick="switchView('streak')" role="button" class="flex w-full justify-between my-auto">
+                                    <div class="text-center">
+                                        <div class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs font-bold">✓</div>
+                                        <p class="mt-1 text-xs text-text-secondary">Thu</p>
                                     </div>
+                                    <div class="text-center">
+                                        <div id="homeDashboardMiniDayIndicatorSlot4" class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary flex items-center justify-center text-xs font-semibold text-slate-400">4</div>
+                                        <p class="mt-1 text-xs text-text-primary">Fri</p>
+                                    </div>
+                                    <div class="text-center"><div class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary"></div><p class="mt-1 text-xs text-text-secondary">Sat</p></div>
+                                    <div class="text-center"><div class="w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary"></div><p class="mt-1 text-xs text-text-secondary">Sun</p></div>
                                 </div>
-                                <div class="mt-5 border-t border-slate-100 pt-4 flex justify-center w-full">
-                                    <button id="homeDashboardDisclaimerStatusTextLabel" onclick="event.stopPropagation(); switchView('streak')" class="w-full bg-slate-900 text-white text-xs sm:text-sm font-bold py-3 rounded-xl hover:bg-slate-800 transition cursor-pointer shadow-sm text-center">
-                                        ⚡ Upgrade your streak
-                                    </button>
+                                <div class="mt-4 border-t border-slate-100 pt-3 flex items-center justify-center text-xs font-medium">
+                                    <button id="homeDashboardDisclaimerStatusTextLabel" onclick="switchView('streak')" class="w-full bg-[#1C1C1E] text-white font-bold py-3 rounded-xl text-center cursor-pointer hover:opacity-90 transition-all text-sm">⚡ Upgrade your streak</button>
                                 </div>
                             </div>
                         </div>
+
                     </main>
 
                     <!-- VIEW 2: STREAK CALENDAR DETAILS PAGE -->
@@ -162,9 +164,9 @@
                             </div>
 
                             <div class="flex flex-col gap-y-[22px] rounded-lg border border-border-primary p-4">
-                                <div class="flex w-full justify-between items-center">
+                                <div class="flex w-full justify-between">
                                     <h2 class="text-lg font-semibold">Streak Challenge</h2>
-                                    <p id="streakCalendarPageChallengeTimelineStatusText" class="text-xs sm:text-sm text-text-secondary">Day 1 of 3 (Streak Pending)</p>
+                                    <p id="streakCalendarPageChallengeTimelineStatusText" class="text-sm text-text-secondary">Day 1 of 3 (Theory Complete)</p>
                                 </div>
                                 <div class="relative h-[10px] w-full rounded-full bg-border-primary"><div id="streakCalendarPageProgressBarFillWidthField" class="absolute left-0 top-0 h-full rounded-full bg-surface-action transition-all duration-500" style="width: 11%;"></div></div>
                             </div>
@@ -200,31 +202,31 @@
                     </div>
 
                     <!-- VIEW 3: AI TOOLS APP INTERFACE -->
-                    <section id="view-tools" class="hidden mx-auto w-full flex-1 pt-6 px-4 max-w-[700px]">
-                        <div class="flex h-full flex-col items-center bg-surface-primary mb-16 md:mb-0">
+                    <section id="view-tools" class="hidden mx-auto w-full flex-1 pt-8 max-w-[700px]">
+                        <div class="flex h-full flex-col items-center bg-surface-primary max-tablet:mb-16">
                             
-                            <h2 class="mx-auto mb-6 h-auto select-none text-center text-lg font-semibold md:mb-10 md:text-xl">
+                            <h2 class="mx-auto mb-4 h-auto select-none text-center text-lg font-semibold tablet:mb-10 tablet:text-xl">
                                 <span>What can I help with?</span>
                             </h2>
                             
-                            <form class="relative mx-auto w-full cursor-text mb-4" id="ai-tools-chat-form" onsubmit="event.preventDefault();">
+                            <form class="relative mx-auto w-full max-tablet:px-6 cursor-text mb-4" id="ai-tools-chat-form" onsubmit="event.preventDefault();">
                                 <div class="relative w-full">
-                                    <div class="w-full overflow-hidden border focus-within:border-[#5653FE] border-border-primary bg-surface-primary px-3 py-3 rounded-[16px] transition-colors">
-                                        <textarea id="toolsMainInputTextareaContainerBlock" oninput="handleToolsInputValidation()" placeholder="Ask anything" class="w-full resize-none bg-surface-primary px-1 outline-none text-sm leading-relaxed" style="height: 96px !important;"></textarea>
-                                        <section class="flex items-center justify-between gap-1 mt-2">
+                                    <div class="w-full overflow-hidden border focus-within:border-border-action border-border-primary bg-surface-primary px-2.5 py-[14px] rounded-[16px] transition-colors">
+                                        <textarea id="toolsMainInputTextareaContainerBlock" oninput="handleToolsInputValidation()" placeholder="Ask anything" class="w-full resize-none bg-surface-primary px-1.5 outline-none disabled:bg-surface-primary" style="height: 96px !important;"></textarea>
+                                        <section class="flex items-center justify-between gap-1">
                                             <div class="flex min-w-0 flex-1 items-center gap-1">
-                                                <button type="button" class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all duration-200 active:scale-95 text-icon-primary disabled:opacity-30" id="radix-2">
+                                                <button type="button" class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all duration-200 active:scale-95 hover:text-icon-action text-icon-primary disabled:opacity-50" id="radix-2">
                                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                                                 </button>
                                             </div>
-                                            <div class="flex shrink-0 items-center gap-x-2">
-                                                <button class="flex h-full shrink-0 items-center gap-x-1 font-semibold text-xs sm:text-sm text-slate-700" type="button">
+                                            <div class="flex shrink-0 items-center gap-x-1">
+                                                <button class="flex h-full shrink-0 gap-x-1 py-3 font-semibold text-sm text-slate-700" type="button">
                                                     <span>Claude</span>
-                                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#898E99" stroke="#898E99" class="shrink-0 fill-icon-primary"><g id="CaretDown"><path d="M20.2606 9.7437L20.2589 9.74457L20.2517 9.75174L12.7517 17.2517L12.7517 17.2518C12.6529 17.3509 12.5357 17.4295 12.4065 17.4831C12.2774 17.4831 12.1389 17.5643 11.9991 17.5643C11.8592 17.5643 11.7207 17.5367 11.5916 17.4831C11.4625 17.4295 11.3452 17.3509 11.2464 17.2518L11.2464 17.2517L3.74637 9.75174C3.54675 9.55212 3.4346 9.28137 3.4346 8.99906C3.4346 8.71675 3.54675 8.44601 3.74637 8.24638C3.94599 8.04676 4.21674 7.93461 4.49905 7.93461C4.78136 7.93461 5.05211 8.04676 5.25173 8.24638L11.9558 14.9504L12 14.9946L12.0442 14.9504L18.7482 8.24544C18.9479 8.04582 19.2186 7.93367 19.5009 7.93367C19.7832 7.93367 20.054 8.04582 20.2536 8.24545C20.4532 8.44507 20.5654 8.71582 20.5654 8.99813C20.5654 9.2771 20.4559 9.54478 20.2606 9.7437Z" stroke-width="0.125"></path></g></svg>
+                                                    <svg width="16" height="24" viewBox="0 0 24 24" fill="#898E99" stroke="#898E99" class="shrink-0 fill-icon-primary transition-transform duration-200"><g id="CaretDown"><path d="M20.2606 9.7437L20.2589 9.74457L20.2517 9.75174L12.7517 17.2517L12.7517 17.2518C12.6529 17.3509 12.5357 17.4295 12.4065 17.4831C12.2774 17.4831 12.1389 17.5643 11.9991 17.5643C11.8592 17.5643 11.7207 17.5367 11.5916 17.4831C11.4625 17.4295 11.3452 17.3509 11.2464 17.2518L11.2464 17.2517L3.74637 9.75174C3.54675 9.55212 3.4346 9.28137 3.4346 8.99906C3.4346 8.71675 3.54675 8.44601 3.74637 8.24638C3.94599 8.04676 4.21674 7.93461 4.49905 7.93461C4.78136 7.93461 5.05211 8.04676 5.25173 8.24638L11.9558 14.9504L12 14.9946L12.0442 14.9504L18.7482 8.24544C18.9479 8.04582 19.2186 7.93367 19.5009 7.93367C19.7832 7.93367 20.054 8.04582 20.2536 8.24545C20.4532 8.44507 20.5654 8.71582 20.5654 8.99813C20.5654 9.2771 20.4559 9.54478 20.2606 9.7437Z" stroke-width="0.125"></path></g></svg>
                                                 </button>
-                                                <button type="button" class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all duration-200 text-icon-primary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="9" y="2" width="6" height="11" rx="3" stroke="currentColor" stroke-width="1.5"></rect><path d="M5 10C5 13.866 8.13401 17 12 17C15.866 17 19 13.866 19 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path><path d="M12 17V21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path><path d="M9 21H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg></button>
-                                                <button id="toolsInferenceSubmitArrowActionButton" onclick="fireToolsInferenceRequestPipeline()" type="button" class="group scale-100 cursor-pointer rounded-full p-0.5 transition-all cursor-pointer" disabled="">
-                                                    <svg id="toolsSubmitButtonSvgFillNode" width="30" height="30" viewBox="0 0 32 32" fill="#AEAEB2" class="transition-colors"><path d="M16 28.6445C9.32031 28.6445 3.89453 23.2188 3.89453 16.5391C3.89453 9.32031 9.32031 3.89453 16 3.89453C22.6797 3.89453 28.1055 9.32031 28.1055 16.5391C28.1055 23.2188 22.6797 28.6445 16 28.6445ZM16.0117 10.3984C15.707 10.3984 15.4492 10.4922 15.1562 10.7734L11.1836 14.6055C10.9844 14.8047 10.8672 15.0273 10.8672 15.3203C10.8672 15.8828 11.3125 16.2812 11.8516 16.2812C12.1328 16.2812 12.4258 16.1641 12.6133 15.9531L14.3242 14.1367L14.9805 13.3398L14.8867 15.1445V21.5781C14.8867 22.1758 15.3906 22.6797 16.0117 22.6797C16.6328 22.6797 17.1367 22.1758 17.1367 21.5781V15.1445L17.043 13.3516L17.6875 14.1367L19.3984 15.9531C19.5859 16.1641 19.8672 16.2812 20.1484 16.2812C20.6875 16.2812 21.1445 15.8828 21.1445 15.3203C21.1445 15.0273 21.0273 14.8047 20.8281 14.6055L16.8555 10.7734C16.5625 10.4922 16.3047 10.3984 16.0117 10.3984Z"></path></svg>
+                                                <button type="button" class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all duration-200 text-icon-primary"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="9" y="2" width="6" height="11" rx="3" stroke="currentColor" stroke-width="1.5"></rect><path d="M5 10C5 13.866 8.13401 17 12 17C15.866 17 19 13.866 19 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path><path d="M12 17V21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path><path d="M9 21H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg></button>
+                                                <button id="toolsInferenceSubmitArrowActionButton" onclick="fireToolsInferenceRequestPipeline()" type="button" class="group scale-100 cursor-pointer rounded-full p-1 transition-all" disabled="">
+                                                    <svg id="toolsSubmitButtonSvgFillNode" width="32" height="32" viewBox="0 0 32 32" fill="#AEAEB2" class="transition-colors"><path d="M16 28.6445C9.32031 28.6445 3.89453 23.2188 3.89453 16.5391C3.89453 9.32031 9.32031 3.89453 16 3.89453C22.6797 3.89453 28.1055 9.32031 28.1055 16.5391C28.1055 23.2188 22.6797 28.6445 16 28.6445ZM16.0117 10.3984C15.707 10.3984 15.4492 10.4922 15.1562 10.7734L11.1836 14.6055C10.9844 14.8047 10.8672 15.0273 10.8672 15.3203C10.8672 15.8828 11.3125 16.2812 11.8516 16.2812C12.1328 16.2812 12.4258 16.1641 12.6133 15.9531L14.3242 14.1367L14.9805 13.3398L14.8867 15.1445V21.5781C14.8867 22.1758 15.3906 22.6797 16.0117 22.6797C16.6328 22.6797 17.1367 22.1758 17.1367 21.5781V15.1445L17.043 13.3516L17.6875 14.1367L19.3984 15.9531C19.5859 16.1641 19.8672 16.2812 20.1484 16.2812C20.6875 16.2812 21.1445 15.8828 21.1445 15.3203C21.1445 15.0273 21.0273 14.8047 20.8281 14.6055L16.8555 10.7734C16.5625 10.4922 16.3047 10.3984 16.0117 10.3984Z"></path></svg>
                                                 </button>
                                             </div>
                                         </section>
@@ -232,113 +234,184 @@
                                 </div>
                             </form>
 
-                            <div class="w-full flex justify-start items-center mb-6">
-                                <button onclick="toggleLibraryTray()" class="bg-indigo-50 text-[#5653FE] border border-indigo-100 px-4 py-2 text-xs font-bold rounded-xl transition cursor-pointer hover:bg-indigo-100/50">
-                                    📁 Saved Prompts
+                            <div class="w-full px-6 mb-3 flex justify-start">
+                                <button onclick="toggleLibraryTray()" class="flex items-center gap-x-1.5 bg-indigo-50 border border-indigo-200 text-indigo-600 px-3.5 py-1.5 text-xs font-semibold rounded-full transition shadow-sm cursor-pointer hover:bg-indigo-100/50">
+                                    <span>📁</span> <span>Saved prompts</span>
                                 </button>
-                                <button onclick="switchView('builder-page')" class="text-xs text-slate-500 font-medium hover:text-slate-800 transition cursor-pointer ml-4">
-                                    Need help writing?
-                                </button>
+                                <button onclick="switchView('builder-page')" class="text-[11px] text-slate-400 font-medium hover:text-slate-600 transition ml-3 cursor-pointer">Need advanced prompt?</button>
                             </div>
 
-                            <div id="toolsSavedLibraryTrayContainerBoxPanel" class="w-full mb-6 hidden">
-                                <div class="bg-white border border-slate-200 rounded-2xl p-2 max-h-48 overflow-y-auto shadow-sm" id="toolsSavedLibraryGridContainerRowsNode">
-                                    <!-- List renders here -->
+                            <div id="toolsSavedLibraryTrayContainerBoxPanel" class="w-full px-6 mb-4 hidden">
+                                <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-3.5 space-y-2 max-h-40 overflow-y-auto w-full shadow-inner">
+                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Select saved prompt template parameter item:</p>
+                                    <div id="toolsSavedLibraryGridContainerRowsNode" class="grid grid-cols-1 gap-1.5"></div>
                                 </div>
                             </div>
 
-                            <div id="toolsInferenceSuccessBoxAlert" class="w-full mb-6 hidden">
-                                <div class="p-4 border border-emerald-100 rounded-2xl bg-emerald-50 text-emerald-700 font-medium text-sm text-center shadow-sm">
-                                    ✓ Prompt sent successfully!
+                            <div id="toolsInferenceSuccessBoxAlert" class="w-full px-6 mb-4 hidden">
+                                <div class="w-full p-4 border border-emerald-100 rounded-xl bg-emerald-50/30 text-xs text-slate-600">
+                                    <p class="font-bold text-emerald-600 mb-0.5">✓ Practical Verification Inference Stable</p>
+                                    <p class="mb-0">Prompt metrics verified on model engine layers. Today's daily custom target is cleared and synced across your home streak counters!</p>
                                 </div>
                             </div>
 
+                            <!-- PRESET CHIP PILLS IN 100% PRODUCTION FORMAT -->
+                            <div class="mx-auto mt-4 flex max-w-[600px] flex-wrap justify-center gap-2">
+                                <button onclick="injectSuggestionStringIntoInput('Create a visually premium cinematic vector illustration grid blueprint asset')" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M11.3333 2H4.66667C3.2 2 2 3.2 2 4.66667V11.3333C2 11.8 2.13333 12.2 2.33333 12.6C3.06667 11.2667 3.8 9.8 4.46667 8.6C4.86667 7.8 6.06667 7.93333 6.33333 8.8L7.2 12C7.86667 11.0667 8.93333 10.6 10 10.6C10.7333 10.6 11.4667 10.8 12.1333 11.2667L13.7333 12.4667C13.9333 12.1333 14 11.7333 14 11.2667V4.66667C14 3.2 12.8 2 11.3333 2ZM10 7.33333C9.26667 7.33333 8.66667 6.73333 8.66667 6C8.66667 5.26667 9.26667 4.66667 10 4.66667C10.7333 4.66667 11.3333 5.26667 11.3333 6C11.3333 6.73333 10.7333 7.33333 10 7.33333ZM13.7333 12.5333C13.3333 13.4 12.4 14 11.3333 14H4.66667C3.66667 14 2.8 13.4667 2.33333 12.6C3.06667 11.2667 3.8 9.8 4.46667 8.6C4.86667 7.8 6.06667 7.93333 6.33333 8.8L7.2 12C7.86667 11.0667 8.93333 10.6 10 10.6C10.7333 10.6 11.4667 10.8 12.1333 11.2667L13.7333 12.5333ZM11.3333 6C11.3333 6.73333 10.7333 7.33333 10 7.33333C9.26667 7.33333 8.66667 6.73333 8.66667 6C8.66667 5.26667 9.26667 4.66667 10 4.66667C10.7333 4.66667 11.3333 5.26667 11.3333 6Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Create an image</button>
+                                <button onclick="injectSuggestionStringIntoInput('Give strategic growth advisory modeling to optimize platform activation and retention loops metrics')" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.26667 11.6667C2.46667 10.6667 2 9.4 2 8C2 4.66667 4.66667 2 8 2C11.3333 2 14 4.66667 14 8C14 11.3333 11.3333 14 8 14C7.4 14 6.8 13.9333 6.26667 13.7333C5.93333 13.6667 5.6 13.5333 5.33333 13.3333" stroke="#5653FE" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M2 13.9999C2.16327 13.9999 2.32653 13.9999 2.4898 13.9999C3.30612 13.9999 4.01361 13.7999 4.66667 13.3333" stroke="#5653FE" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3.33333 12C3.26316 12.8 2.70175 13.4857 2 14" stroke="#5653FE" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 7H6M8 9.66667H6" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Give advice</button>
+                                <button onclick="injectSuggestionStringIntoInput('Brainstorm five unique product retention features targeting high-income software skill adoption loops')" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M5.28299 5.37622L2.2845 6.46128C1.84968 6.61862 1.84968 7.23356 2.28449 7.39091L5.28299 8.47597C5.55899 8.57584 5.77634 8.7932 5.87622 9.0692L6.96128 12.0677C7.11862 12.5025 7.73356 12.5025 7.89091 12.0677L8.97597 9.0692C9.07584 8.7932 9.2932 5.27634L8.97597 4.78299L7.89091 1.7845C7.73356 1.34968 7.11862 1.34968 6.96128 1.78449L5.87622 4.78299C5.77634 5.05899 5.55899 5.27634 5.28299 5.37622Z" stroke="#5653FE" stroke-width="1.5"></path><path d="M12.6386 13.9965L12.7918 14.6788C12.834 14.8668 13.0009 15.0003 13.1935 15.0003C13.3862 15.0003 13.5531 14.8668 13.7484 13.9965C13.8322 13.6235 14.1235 13.3322 14.4965 13.2484L15.1788 13.0952C15.3667 13.0531 15.5003 12.8862 15.5003 12.6935C15.5003 12.5009 15.3667 12.334 15.1788 12.2918L14.4965 12.1386C14.1235 12.0549 13.8322 11.7636 13.7484 11.3906L13.5952 10.7083C13.5531 10.5203 13.3862 10.3867 13.1935 10.3867C13.0009 10.3867 12.834 10.5203 12.7918 10.7083L12.6386 11.3906L12.5549 11.7636 12.2636 12.0549 11.8906 12.1386L11.2083 12.2918C11.0203 12.334 10.8867 12.5009 10.8867 12.6935C10.8867 12.8862 11.0203 13.0531 11.2083 13.0953L11.8906 13.2484C12.2636 13.3322 12.5549 13.6235 12.6386 13.9965Z" fill="#5653FE"></path></svg>Generate ideas</button>
+                                <button onclick="injectSuggestionStringIntoInput('Deconstruct the primary structural context properties inside long analytical documentation payload configurations data summaries')" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 4.66667L14 11.3333C14 12.8 12.8 14 11.3333 14L4.66667 14C3.2 14 2 12.8 2 11.3333L2 4.66667C2 3.2 3.2 2 4.66667 2L11.3333 2C12.8 2 14 3.2 14 4.66667Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7.33317 5L4.6665 5" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8.6665 11L4.6665 11" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M11.3332 8L4.6665 8" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Summarize text</button>
+                                <button onclick="injectSuggestionStringIntoInput('Analyze this raw multi-variant user cohort metric sheet logs to optimize active workspace churn barriers')" class="flex scale-100 items-center justify-center gap-x-1 rounded-[20px] border border-border-primary px-3 py-3.5 text-sm font-medium hover:bg-surface-secondary transition-all active:scale-95 bg-surface-primary"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 14L10 10M11.3333 6.66667C11.3333 9.26667 9.26667 11.3333 6.66667 11.3333C4.06667 11.3333 2 9.26667 2 6.66667C2 4.06667 4.06667 2 6.66667 2C9.26667 2 11.3333 4.06667 11.3333 6.66667Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>Analyze this data</button>
+                            </div>
                         </div>
                     </section>
 
-                    <!-- VIEW 4: AI PRACTICE HUB -->
-                    <section id="view-practice" class="hidden mx-auto w-full flex-1 max-w-lg pt-6 px-4">
-                        <div class="flex items-center gap-4 bg-slate-50 border border-slate-100 p-5 rounded-3xl mb-8">
-                            <div class="w-16 h-16 rounded-full bg-indigo-100 flex items-center justify-center text-2xl font-black text-indigo-500">1</div>
-                            <div>
-                                <h2 class="text-lg font-bold text-slate-900">AI Novice</h2>
-                                <p id="practice-disclaimer-id-node" class="text-sm text-slate-500">2 practices to next level</p>
-                            </div>
-                        </div>
-
-                        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4 px-2">Available Tools</h3>
-                        
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <!-- Prompt Builder Button -->
-                            <button onclick="switchView('builder-page')" class="col-span-1 sm:col-span-2 flex items-center p-5 rounded-3xl border border-slate-200 bg-white shadow-sm hover:border-indigo-400 hover:shadow-md transition-all cursor-pointer text-left gap-4">
-                                <div class="w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center text-xl">✨</div>
-                                <div>
-                                    <p class="font-bold text-slate-900 text-base">Prompt Builder</p>
-                                    <p class="text-slate-500 text-sm mt-0.5">Create perfect prompts instantly</p>
+                    <!-- VIEW 4: AI PRACTICE WORKSPACE -->
+                    <section id="view-practice" class="hidden mx-auto w-full flex-1 max-w-[510px] pt-4">
+                        <div class="flex flex-col gap-6 px-4 pb-24 pt-4">
+                            <button type="button" class="flex w-full flex-col gap-4 rounded-3xl border border-border-primary bg-surface-secondary px-4 pb-4 pt-6 text-left">
+                                <div class="flex items-center gap-4">
+                                    <div class="size-20 shrink-0 overflow-hidden"><img src="/assets/ai-novice-BHD-onCL.webp" alt="AI Novice" class="size-full object-cover"></div>
+                                    <div class="flex flex-col gap-1">
+                                        <h2 class="text-2xl font-bold leading-8 tracking-[0.07px] text-text-primary">AI Novice</h2>
+                                        <p class="text-sm font-normal leading-5 tracking-[-0.15px] text-text-secondary">Level 1</p>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col gap-4">
+                                    <div class="flex flex-col gap-2">
+                                        <div class="flex items-center justify-between text-sm">
+                                            <span class="font-medium tracking-[-0.15px] text-text-secondary">Progress</span>
+                                            <span id="practice-fraction-id-node" class="font-normal text-text-action-info">1/3</span>
+                                        </div>
+                                        <div class="relative h-1.5 w-full rounded-full bg-surface-disabled">
+                                            <div id="practice-status-fill-bar-element" class="absolute inset-y-0 left-0 rounded-full bg-surface-action transition-[width] duration-700 ease-out" style="width: 33.3333%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-2 rounded-2xl border border-border-primary bg-surface-primary p-3">
+                                        <span class="shrink-0 text-2xl">🎯</span>
+                                        <p id="practice-disclaimer-id-node" class="text-xs font-normal leading-4 text-text-secondary">Complete 2 practices to reach Curious Builder</p>
+                                    </div>
                                 </div>
                             </button>
 
-                            <!-- Inactive mockups -->
-                            <div class="p-5 rounded-3xl border border-slate-100 bg-slate-50 opacity-60">
-                                <div class="w-10 h-10 rounded-xl bg-slate-200 mb-3"></div>
-                                <p class="font-bold text-slate-900 text-sm">Prompt Fixer</p>
-                            </div>
-                            <div class="p-5 rounded-3xl border border-slate-100 bg-slate-50 opacity-60">
-                                <div class="w-10 h-10 rounded-xl bg-slate-200 mb-3"></div>
-                                <p class="font-bold text-slate-900 text-sm">AI Spotter</p>
+                            <div class="flex flex-col gap-4">
+                                <h3 class="pl-1 text-xs font-bold uppercase leading-4 tracking-[0.6px] text-text-secondary">Practices</h3>
+                                <div class="flex flex-col gap-3">
+                                    <button type="button" class="flex w-full rounded-2xl border border-border-primary bg-surface-primary p-4 text-left flex-row gap-3 opacity-60 cursor-not-allowed">
+                                        <div class="flex size-12 shrink-0 items-center justify-center rounded-[14px] bg-surface-action-secondary">
+                                            <svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" viewBox="0 0 24.01 24.01" fill="none" class="size-6" style="display: block;"><g><path fill-rule="evenodd" clip-rule="evenodd" d="M20.5773 17.8849C21.153 18.4606 21.153 19.3939 20.5773 19.9695L19.9695 20.5773C19.3939 21.153 18.4606 21.153 17.885 20.5773L7.43436 10.1267C6.85873 9.55109 6.85872 8.6178 7.43436 8.04217L8.04218 7.43435C8.61781 6.85872 9.55109 6.85872 10.1267 7.43435L20.5773 17.8849Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M16.0067 4.00167V6.0025" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M17.0071 5.00208H15.0063" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M5.00208 15.0063V17.0071" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M6.0025 16.0067H4.00167" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4.00167 3.00125V5.00208" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M5.00208 4.00167H3.00125" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M8.84668 11.5388L11.5388 8.84668" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>
+                                        </div>
+                                        <div class="flex flex-col gap-1">
+                                            <p class="font-bold text-text-primary text-base leading-6 tracking-[-0.31px]">Prompt Fixer</p>
+                                            <p class="font-normal text-text-secondary text-sm leading-5 tracking-[-0.15px]">Fix and improve any prompt instantly</p>
+                                        </div>
+                                    </button>
+
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <button onclick="switchView('builder-page')" type="button" class="flex w-full rounded-2xl border border-border-primary bg-surface-primary p-4 text-left flex-col gap-3 transition shadow-sm hover:border-indigo-400 hover:bg-indigo-50/20 cursor-pointer">
+                                            <div class="flex size-12 shrink-0 items-center justify-center rounded-[14px] bg-surface-action-secondary">
+                                                <svg width="100%" height="100%" overflow="visible" viewBox="0 0 24 24" fill="none" class="size-6" style="display: block;"><path d="M5.74 11.26L2.8 8.32C2.39998 7.91943 2.39998 7.27057 2.8 6.87L5.87 3.8C6.27057 3.39998 6.91943 3.39998 7.32 3.8L9.26 5.74" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M18.26 14.74L20.2 16.68C20.6 17.0806 20.6 17.7294 20.2 18.13L17.13 21.2C16.7294 21.6 16.0806 21.6 15.68 21.2L12.74 18.26" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M11.7664 9.10207L4.14858 16.7199C3.5881 17.2791 3.36881 18.0949 3.57343 18.8598C3.77805 19.6246 4.37544 20.222 5.14027 20.4266C5.9051 20.4266 6.72098 20.4119 7.28017 19.8515L14.898 12.2337" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M11.7664 9.10207C11.3334 7.8336 11.4302 6.44412 12.035 5.24797C12.6397 4.05182 13.7013 3.15009 14.9795 2.74678C15.6206 2.53365 16.2994 2.45771 16.9717 2.52388C17.3494 2.57431 17.6653 2.83542 17.7861 3.19682C17.9068 3.55821 17.8111 3.9568 17.5396 4.22408L15.7354 6.02822C15.6416 6.12197 15.5889 6.24915 15.5889 6.38177C15.5889 6.51438 15.6416 6.64156 15.7354 6.73531L17.2647 8.26467C17.46 8.26467 17.7765 8.26467 17.9718 8.26467L19.7759 6.46053C20.0432 6.18897 20.4417 6.09332 20.8031 6.21401C21.1645 6.33471 21.4256 6.65068 21.4761 7.02834C21.5423 7.70069 21.4664 8.37945 21.2532 9.02053C20.8499 10.2988 19.9482 11.3603 18.7521 11.9651C17.5559 12.5698 16.1665 12.6667 14.898 12.2337" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="font-bold text-indigo-600 text-sm leading-5 tracking-[-0.15px]">Prompt Builder</p>
+                                                <p class="font-normal text-text-secondary text-xs leading-[19.5px]">Configure inputs & create custom prompts</p>
+                                            </div>
+                                        </button>
+                                        
+                                        <button type="button" class="flex w-full rounded-2xl border border-border-primary bg-surface-primary p-4 text-left flex-col gap-3 opacity-50 cursor-not-allowed">
+                                            <div class="flex size-12 shrink-0 items-center justify-center rounded-[14px] bg-surface-action-secondary"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M2.06202 12.3484C1.97868 12.1238 1.97868 11.8769 2.06202 11.6524C2.87372 9.68421 4.25153 8.0014 6.02079 6.81726C7.79004 5.63312 9.87106 5.00098 12 5.00098C14.129 5.00098 16.21 5.63312 17.9792 6.81726C19.7485 8.0014 21.1263 9.68421 21.938 11.6524C22.0214 11.8769 22.0214 12.1238 21.938 12.3484C21.1263 14.3165 19.7485 15.9993 17.9792 17.1835C16.21 18.3676 14.129 18.9997 12 18.9997C9.87106 18.9997 7.79004 18.3676 6.02079 17.1835C4.25153 15.9993 2.87372 14.3165 2.06202 12.3484Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="font-bold text-text-primary text-sm leading-5 tracking-[-0.15px]">AI Spotter</p>
+                                                <p class="font-normal text-text-secondary text-xs leading-[19.5px]">Spot AI vs real images</p>
+                                            </div>
+                                        </button>
+                                    </div>
+
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <button type="button" class="flex w-full rounded-2xl border border-border-primary bg-surface-primary p-4 text-left flex-col gap-3 opacity-50 cursor-not-allowed">
+                                            <div class="flex size-12 shrink-0 items-center justify-center rounded-[14px] bg-surface-action-secondary"><svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" viewBox="0 0 21.5018 20.5721" fill="none" class="size-6" style="display: block;"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.2768 1.04489C10.3206 0.956355 10.3883 0.881826 10.4723 0.829719C10.5562 0.777612 10.653 0.75 10.7518 0.75C10.8506 0.75 10.9474 0.777612 11.0313 0.829719C11.1153 0.881826 11.183 0.956355 11.2268 1.04489L13.5368 5.72389C13.689 6.03186 13.9136 6.2983 14.1914 6.50035C14.4692 6.70239 14.7919 6.83401 15.1318 6.88389L20.2978 7.63989C20.3957 7.65408 20.4876 7.69537 20.5633 7.75909C20.6389 7.82282 20.6952 7.90644 20.7258 8.0005C20.7564 8.09456 20.7601 8.1953 20.7364 8.29133C20.7127 8.38736 20.6626 8.47485 20.5918 8.54389L16.8558 12.1819C16.6094 12.422 16.4251 12.7184 16.3186 13.0455C16.21 13.3727 16.1869 13.7208 16.2448 14.0599L17.1268 19.1999C17.1441 19.2977 17.1335 19.3985 17.0963 19.4906C17.0591 19.5827 16.9967 19.6625 16.9163 19.7209C16.836 19.7793 16.7408 19.8139 16.6417 19.8208C16.5426 19.8277 16.4435 19.8066 16.3558 19.7599L11.7378 17.3319C11.4335 17.1721 11.095 17.0886 10.7513 17.0886C10.4076 17.0886 10.0691 17.1721 9.7648 17.3319L5.1478 19.7599C5.06013 19.8063 4.9612 19.8272 4.86225 19.8201C4.7633 19.8131 4.66832 19.7785 4.58809 19.7201C4.50787 19.6618 4.44563 19.5821 4.40846 19.4901C4.37128 19.3982 4.36066 19.2976 4.3778 19.1999L5.2588 14.0609C5.48452 10.7398 1.61784 10.7796 1.69585 10.7398Z" stroke="var(--stroke-0, #5653FE)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="font-bold text-text-primary text-sm leading-5 tracking-[-0.15px]">Prompt Master</p>
+                                                <p class="font-normal text-text-secondary text-xs leading-[19.5px]">Rate prompts and learn what works</p>
+                                            </div>
+                                        </button>
+                                        
+                                        <button type="button" class="flex w-full rounded-2xl border border-border-primary bg-surface-primary p-4 text-left flex-col gap-3 opacity-50 cursor-not-allowed">
+                                            <div class="flex size-12 shrink-0 items-center justify-center rounded-[14px] bg-surface-action-secondary"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21.0002 21.0002L16.7002 16.7002" stroke="#5653FE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="font-bold text-text-primary text-sm leading-5 tracking-[-0.15px]">Prompt Detective</p>
+                                                <p class="font-normal text-text-secondary text-xs leading-[19.5px]">Guess prompt from outputs</p>
+                                            </div>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </section>
 
                     <!-- VIEW 5: DEDICATED SMART PROMPT BUILDER PAGE -->
-                    <div id="view-builder-page" class="hidden flex-1 flex flex-col bg-white">
-                        <header class="h-14 flex items-center px-4 border-b border-slate-100 shrink-0">
-                            <button onclick="switchView('practice')" class="text-slate-500 font-medium text-sm hover:text-slate-900 transition cursor-pointer">← Back</button>
-                            <span class="mx-auto font-bold text-slate-900 text-base absolute left-1/2 transform -translate-x-1/2">Builder</span>
+                    <div id="view-builder-page" class="hidden flex-1 flex flex-col bg-surface-secondary">
+                        <header class="sticky top-0 z-50 h-14 w-full shrink-0 border-b border-b-border-primary bg-surface-primary tablet:h-16">
+                            <div class="desktop-width grid h-full w-full grid-cols-[1fr_3fr_1fr] items-center mx-auto max-w-5xl">
+                                <button onclick="switchView('practice')" class="p-4 transition-all hover:opacity-70 active:scale-95 text-left flex items-center cursor-pointer">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="#48484A" class="rtl-invert-icon fill-icon-primary"><path d="M14.7071 5.29289C15.0976 5.68342 15.0976 6.31658 14.7071 6.70711L9.41421 12L14.7071 17.2929C15.0976 17.6834 15.0976 18.3166 14.7071 18.7071C14.3166 19.0976 13.6834 19.0976 13.2929 18.7071L7.29289 12.7071C6.90237 12.3166 6.90237 11.6834 7.29289 11.2929L13.2929 5.29289C13.6834 4.90237 14.3166 4.90237 14.7071 5.29289Z"></path></svg>
+                                </button>
+                                <h2 class="mx-auto truncate px-1 text-base font-semibold text-center text-text-primary">Prompt Builder</h2>
+                                <div></div>
+                            </div>
                         </header>
 
-                        <div class="w-full max-w-lg mx-auto py-8 px-6 flex-1 overflow-y-auto">
-                            <h2 class="text-2xl font-black text-slate-900 mb-8">Create a Prompt</h2>
-                            
-                            <div class="flex flex-col gap-8">
-                                <!-- Smart Input -->
-                                <div>
-                                    <label class="block text-sm font-bold text-slate-900 mb-3">What do you want to achieve?</label>
-                                    <textarea id="builderMainObjectiveInput" placeholder="e.g. Politely ask my supplier for a discount..." rows="3" class="w-full border border-slate-200 bg-slate-50 rounded-2xl px-5 py-4 text-sm focus:outline-none focus:border-indigo-400 focus:bg-white transition-all text-slate-800 resize-none shadow-sm"></textarea>
-                                </div>
-
-                                <!-- Format Chips -->
-                                <div>
-                                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Format</label>
-                                    <div class="flex flex-wrap gap-2">
-                                        <button type="button" onclick="selectChip('format', 'Email', this)" class="chip-format px-4 py-2 rounded-xl text-sm font-semibold transition-colors cursor-pointer bg-slate-900 text-white shadow-md">Email</button>
-                                        <button type="button" onclick="selectChip('format', 'Post', this)" class="chip-format px-4 py-2 rounded-xl text-sm font-semibold transition-colors cursor-pointer bg-slate-100 text-slate-600 hover:bg-slate-200">Post</button>
-                                        <button type="button" onclick="selectChip('format', 'Report', this)" class="chip-format px-4 py-2 rounded-xl text-sm font-semibold transition-colors cursor-pointer bg-slate-100 text-slate-600 hover:bg-slate-200">Report</button>
-                                        <button type="button" onclick="selectChip('format', 'Message', this)" class="chip-format px-4 py-2 rounded-xl text-sm font-semibold transition-colors cursor-pointer bg-slate-100 text-slate-600 hover:bg-slate-200">Message</button>
-                                    </div>
-                                </div>
-
-                                <!-- Tone Chips -->
-                                <div>
-                                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Tone</label>
-                                    <div class="flex flex-wrap gap-2">
-                                        <button type="button" onclick="selectChip('tone', 'Professional', this)" class="chip-tone px-4 py-2 rounded-xl text-sm font-semibold transition-colors cursor-pointer bg-slate-900 text-white shadow-md">Professional</button>
-                                        <button type="button" onclick="selectChip('tone', 'Friendly', this)" class="chip-tone px-4 py-2 rounded-xl text-sm font-semibold transition-colors cursor-pointer bg-slate-100 text-slate-600 hover:bg-slate-200">Friendly</button>
-                                        <button type="button" onclick="selectChip('tone', 'Direct', this)" class="chip-tone px-4 py-2 rounded-xl text-sm font-semibold transition-colors cursor-pointer bg-slate-100 text-slate-600 hover:bg-slate-200">Direct</button>
-                                    </div>
+                        <!-- Clean Constructor Form Area -->
+                        <div class="w-full flex-1 overflow-y-auto py-10 px-4">
+                            <div class="max-w-2xl mx-auto flex flex-col gap-6">
+                                <div class="text-center mb-2">
+                                    <h2 class="text-2xl font-bold text-slate-900">Create a Custom Prompt</h2>
+                                    <p class="text-slate-500 mt-2 text-sm">Tell us what you need, and we'll generate a highly effective prompt for you.</p>
                                 </div>
                                 
-                                <button onclick="executeSmartPromptCompilation()" class="w-full bg-[#5653FE] text-white font-bold py-4 rounded-2xl hover:bg-[#4340E6] transition shadow-lg mt-4 cursor-pointer">Enhance</button>
-                            </div>
+                                <div class="bg-white rounded-3xl p-6 tablet:p-8 shadow-sm border border-slate-200 flex flex-col gap-6">
+                                    
+                                    <!-- One Simple Input -->
+                                    <div>
+                                        <label class="block text-sm font-semibold text-slate-700 mb-2">What do you want to achieve?</label>
+                                        <textarea id="builderMainObjectiveInput" placeholder="e.g., Politely ask my supplier for a discount..." rows="3" class="w-full border border-slate-200 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 transition-all text-slate-800 resize-none"></textarea>
+                                    </div>
 
-                            <!-- Output Box -->
-                            <div id="builderPageSandboxOutputRowGrid" class="hidden mt-10 flex-col gap-4 transition-all duration-500">
-                                <h3 class="font-bold text-slate-900">Ready Prompt</h3>
-                                <div id="builderCompiledPromptTextStringResultField" class="bg-indigo-50 border border-indigo-100 text-indigo-900 rounded-2xl p-6 text-sm leading-relaxed shadow-inner whitespace-pre-wrap"></div>
-                                <button onclick="switchView('tools')" class="w-full bg-slate-900 text-white font-bold py-4 rounded-2xl hover:bg-slate-800 transition shadow-md cursor-pointer mt-2 flex items-center justify-center gap-2">
-                                    Use in AI Tools
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                                </button>
+                                    <!-- Quick Tags (Format) -->
+                                    <div>
+                                        <label class="block text-xs font-bold text-slate-400 uppercase tracking-wide mb-2">Format</label>
+                                        <div class="flex flex-wrap gap-2" id="format-chips-container">
+                                            <button type="button" onclick="selectChip('format', 'Email', this)" class="chip-format px-4 py-2 rounded-xl border text-sm font-medium transition-colors cursor-pointer bg-indigo-50 border-indigo-200 text-indigo-700">✉️ Email</button>
+                                            <button type="button" onclick="selectChip('format', 'Post', this)" class="chip-format px-4 py-2 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer">📝 Post</button>
+                                            <button type="button" onclick="selectChip('format', 'Report', this)" class="chip-format px-4 py-2 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer">📊 Report</button>
+                                            <button type="button" onclick="selectChip('format', 'Message', this)" class="chip-format px-4 py-2 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer">💬 Message</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Quick Tags (Tone) -->
+                                    <div>
+                                        <label class="block text-xs font-bold text-slate-400 uppercase tracking-wide mb-2">Tone</label>
+                                        <div class="flex flex-wrap gap-2" id="tone-chips-container">
+                                            <button type="button" onclick="selectChip('tone', 'Professional', this)" class="chip-tone px-4 py-2 rounded-xl border text-sm font-medium transition-colors cursor-pointer bg-indigo-50 border-indigo-200 text-indigo-700">👔 Professional</button>
+                                            <button type="button" onclick="selectChip('tone', 'Friendly', this)" class="chip-tone px-4 py-2 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer">🤝 Friendly</button>
+                                            <button type="button" onclick="selectChip('tone', 'Direct', this)" class="chip-tone px-4 py-2 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer">🔥 Direct</button>
+                                        </div>
+                                    </div>
+                                    
+                                    <button onclick="executeSmartPromptCompilation()" class="w-full bg-[#5653FE] text-white font-bold py-4 rounded-xl text-sm hover:bg-[#4340E6] transition shadow-md hover:shadow-lg mt-2 cursor-pointer">Enhance Prompt</button>
+                                </div>
+
+                                <!-- Output Box -->
+                                <div id="builderPageSandboxOutputRowGrid" class="hidden bg-indigo-50/50 rounded-3xl p-6 tablet:p-8 border border-indigo-100 shadow-sm flex-col gap-5 transition-all duration-500">
+                                    <div class="flex justify-between items-center">
+                                        <h3 class="font-bold text-indigo-900 text-base">Ready Prompt</h3>
+                                        <span class="bg-emerald-100 text-emerald-700 px-2.5 py-1 rounded-md text-[11px] font-bold tracking-wide uppercase">Saved</span>
+                                    </div>
+                                    <div id="builderCompiledPromptTextStringResultField" class="bg-white border border-indigo-100 rounded-xl p-5 text-sm text-slate-700 leading-relaxed min-h-[160px] shadow-sm whitespace-pre-wrap"></div>
+                                    <button onclick="switchView('tools')" class="w-full bg-indigo-600 text-white font-bold py-4 rounded-xl text-sm hover:bg-indigo-700 transition shadow-md flex items-center justify-center gap-2 cursor-pointer">
+                                        Use in AI Tools <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -350,14 +423,16 @@
 
     <!-- JAVASCRIPT CONTROLLER -->
     <script>
-        let isStreakUpgraded = false; 
+        let isEcosystemActiveStreakSecure = false;
+        
+        // Chip State
         let selectedFormat = 'Email';
         let selectedTone = 'Professional';
 
         let globalSavedPromptsLibraryMap = [
             {
-                title: "General Copywriting Framework",
-                body: "Act as an expert copywriter. Write a highly engaging, clear, and action-oriented response."
+                title: "🎯 General Growth Funnel Framework",
+                body: "Act as an elite direct-response conversion copywriter. Deconstruct the context metrics layout parameters constraints to structure a premium payload loop."
             }
         ];
 
@@ -379,29 +454,34 @@
             const tPractice = document.getElementById('header-nav-practice');
 
             if(tHome && tTools && tPractice) {
-                tHome.className = "h-16 py-2 text-text-disabled cursor-pointer";
-                tTools.className = "h-16 py-2 text-text-disabled cursor-pointer";
-                tPractice.className = "h-16 py-2 text-text-disabled cursor-pointer";
+                tHome.className = "h-16 py-2 transition-colors duration-200 text-text-disabled fill-icon-primary hover:text-text-action-info cursor-pointer";
+                tTools.className = "h-16 py-2 transition-colors duration-200 text-text-disabled fill-icon-primary hover:text-text-action-info cursor-pointer";
+                tPractice.className = "h-16 py-2 transition-colors duration-200 text-text-disabled fill-icon-primary hover:text-text-action-info cursor-pointer";
 
-                if (id === 'home' || id === 'streak') tHome.className = "h-16 py-2 text-text-action-info cursor-pointer";
-                if (id === 'tools') tTools.className = "h-16 py-2 text-text-action-info cursor-pointer";
-                if (id === 'practice' || id === 'builder-page') tPractice.className = "h-16 py-2 text-text-action-info cursor-pointer";
+                if (id === 'home' || id === 'streak') {
+                    tHome.className = "h-16 py-2 transition-colors duration-200 fill-text-action-info text-text-action-info cursor-pointer";
+                } else if (id === 'tools') {
+                    tTools.className = "h-16 py-2 transition-colors duration-200 fill-text-action-info text-text-action-info cursor-pointer";
+                } else if (id === 'practice' || id === 'builder-page') {
+                    tPractice.className = "h-16 py-2 transition-colors duration-200 fill-text-action-info text-text-action-info cursor-pointer";
+                }
             }
         }
 
-        // Chip selection logic
         function selectChip(category, value, element) {
-            const defaultClass = `chip-${category} px-4 py-2 rounded-xl text-sm font-semibold transition-colors cursor-pointer bg-slate-100 text-slate-600 hover:bg-slate-200`;
-            const activeClass = `chip-${category} px-4 py-2 rounded-xl text-sm font-semibold transition-colors cursor-pointer bg-slate-900 text-white shadow-md`;
-
             if (category === 'format') {
                 selectedFormat = value;
-                document.querySelectorAll('.chip-format').forEach(el => el.className = defaultClass);
+                document.querySelectorAll('.chip-format').forEach(el => {
+                    el.className = "chip-format px-4 py-2 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer";
+                });
             } else {
                 selectedTone = value;
-                document.querySelectorAll('.chip-tone').forEach(el => el.className = defaultClass);
+                document.querySelectorAll('.chip-tone').forEach(el => {
+                    el.className = "chip-tone px-4 py-2 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors cursor-pointer";
+                });
             }
-            element.className = activeClass;
+            // Add active state to clicked chip
+            element.className = `chip-${category} px-4 py-2 rounded-xl border text-sm font-medium transition-colors cursor-pointer bg-indigo-50 border-indigo-200 text-indigo-700`;
         }
 
         function handleToolsInputValidation() {
@@ -435,19 +515,23 @@
 
             globalSavedPromptsLibraryMap.forEach((item) => {
                 const buttonElement = document.createElement('button');
-                buttonElement.className = "w-full text-left p-3 mb-2 rounded-xl border border-slate-100 hover:border-indigo-300 text-xs transition cursor-pointer bg-white shadow-sm";
+                buttonElement.className = "w-full text-left p-2.5 rounded-xl border border-slate-100 hover:bg-slate-50 text-xs transition cursor-pointer bg-white shadow-sm";
                 buttonElement.onclick = () => {
                     document.getElementById('toolsMainInputTextareaContainerBlock').value = item.body;
                     document.getElementById('toolsSavedLibraryTrayContainerBoxPanel').classList.add('hidden');
                     handleToolsInputValidation();
                 };
-                buttonElement.innerHTML = `<span class="font-bold text-slate-800 block">${item.title}</span><span class="text-slate-500 block truncate text-xs mt-1">${item.body}</span>`;
+                buttonElement.innerHTML = `
+                    <span class="font-bold text-slate-700 block">${item.title}</span>
+                    <span class="text-slate-400 block truncate text-[11px] mt-0.5">${item.body}</span>
+                `;
                 grid.appendChild(buttonElement);
             });
         }
 
         function executeSmartPromptCompilation() {
             const objective = document.getElementById('builderMainObjectiveInput').value.trim();
+
             if (!objective) return alert("Please tell us what you want to achieve!");
 
             const outputPayload = `Act as an expert copywriter. I need you to write a ${selectedFormat}. The tone should be ${selectedTone}.\n\nHere is what I want to achieve:\n"${objective}"\n\nPlease provide a highly engaging, clear, and well-structured response.`;
@@ -456,167 +540,75 @@
             document.getElementById('builderPageSandboxOutputRowGrid').classList.remove('hidden');
             document.getElementById('builderPageSandboxOutputRowGrid').classList.add('flex');
 
-            const shortObj = objective.length > 20 ? objective.substring(0, 20) + "..." : objective;
-            const presetTitle = `${selectedFormat} (${selectedTone}) - ${shortObj}`;
-            
-            if (!globalSavedPromptsLibraryMap.find(p => p.title === presetTitle)) {
-                globalSavedPromptsLibraryMap.unshift({ title: presetTitle, body: outputPayload });
-            }
-            
-            upgradeEcosystemStreakState();
-
-            setTimeout(() => {
-                document.getElementById('builderPageSandboxOutputRowGrid').scrollIntoView({ behavior: 'smooth', block: 'end' });
-            }, 100);
-        }
-
-        function fireToolsInferenceRequestPipeline() {
-            const arrow = document.getElementById('toolsInferenceSubmitArrowActionButton');
-            if (arrow.hasAttribute('disabled')) return;
-            
-            document.getElementById('toolsInferenceSuccessBoxAlert').classList.remove('hidden');
-            upgradeEcosystemStreakState();
-        }
-
-        function upgradeEcosystemStreakState() {
-            if (isStreakUpgraded) return;
-            isStreakUpgraded = true;
-
-            // 1. Upgrade Header Badge
-            const headerBadge = document.getElementById('header-streak-badge');
-            if (headerBadge) {
-                headerBadge.classList.replace('bg-surface-secondary', 'bg-indigo-50');
-                headerBadge.classList.replace('border-border-primary', 'border-indigo-200');
-                headerBadge.classList.add('text-indigo-600');
-                document.getElementById('header-streak-icon').textContent = "⚡️";
+            const structuralPresetRecordKey = `⚙️ ${selectedFormat} (${selectedTone})`;
+            const applicationCheckDuplicateLoop = globalSavedPromptsLibraryMap.find(p => p.title === structuralPresetRecordKey && p.body === outputPayload);
+            if (!applicationCheckDuplicateLoop) {
+                globalSavedPromptsLibraryMap.unshift({ title: structuralPresetRecordKey, body: outputPayload });
             }
 
-            // 2. Upgrade Home Page
-            const upgradeBtn = document.getElementById('homeDashboardDisclaimerStatusTextLabel');
-            if (upgradeBtn) {
-                upgradeBtn.innerHTML = "⚡️ Pro Momentum Active";
-                upgradeBtn.className = "w-full bg-indigo-50 text-indigo-700 text-sm font-bold py-3 rounded-xl transition cursor-default text-center";
-                upgradeBtn.onclick = (e) => e.stopPropagation();
-            }
-            
-            const homeDay = document.getElementById('homeDashboardMiniDayIndicatorSlot4');
-            if (homeDay) {
-                homeDay.className = "w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center text-xs font-bold shadow-md transition-all duration-500";
-            }
-
-            // 3. Upgrade Streak Page
-            const banner = document.getElementById('streak-banner-bg');
-            if (banner) {
-                banner.className = "flex justify-between items-center rounded-3xl border border-indigo-200 px-8 py-8 bg-indigo-50 transition-colors duration-500 shadow-sm";
-                document.getElementById('streak-status-text').textContent = "⚡️ Pro Momentum Active";
-                document.getElementById('streak-status-text').className = "text-sm font-bold text-indigo-600 mt-2";
-                document.getElementById('streak-page-fire-icon').textContent = "⚡️";
-            }
-            
-            const calendarDay = document.getElementById('calendarEcosystemDaySlotBox4');
-            if (calendarDay) {
-                calendarDay.className = "flex aspect-square items-center justify-center relative text-white rounded-full font-bold shadow-md shadow-indigo-500/20 bg-indigo-600 text-base text-xs";
-                calendarDay.style.background = "";
-                calendarDay.innerHTML = "✓";
-                const svgNode = document.getElementById('starburstActiveNodeSvgIconElement');
-                if(svgNode) svgNode.classList.add('hidden');
-            }
-
-            const taskRowTextNode = document.getElementById('streak-page-tools-task-row');
-            if (taskRowTextNode) {
-                taskRowTextNode.className = "flex items-center space-x-2 text-indigo-600 font-semibold text-xs";
-                taskRowTextNode.innerHTML = "<span>✓</span> <span>Step 2: Pro Momentum Unlocked ⚡️</span>";
-            }
-
-            const redirectCtaButtonElementNode = document.getElementById('streakCalendarPageRedirectCallActionBtn');
-            if(redirectCtaButtonElementNode) {
-                redirectCtaButtonElementNode.className = "w-full bg-indigo-50 text-indigo-700 border border-indigo-200 text-xs font-semibold py-2.5 rounded-xl transition cursor-not-allowed text-center shadow-none";
-                redirectCtaButtonElementNode.textContent = "All daily targets accomplished successfully!";
-                redirectCtaButtonElementNode.disabled = true;
-            }
-
-            const targetPageStreakCounters = document.getElementsByClassName('streak-page-numeric-counter');
-            for(let i = 0; i < targetPageStreakCounters.length; i++) {
-                targetPageStreakCounters[i].textContent = "2";
-            }
-            
-            const headerStreakCounter = document.getElementById('header-global-streak-counter-node');
-            if (headerStreakCounter) headerStreakCounter.textContent = "2";
-
-            const claudeCounter = document.getElementById('homePageClaudePctValueCounter');
-            if (claudeCounter) claudeCounter.textContent = "12%";
-
-            // 4. Update Practice Page Progress 
             const fractionNode = document.getElementById('practice-fraction-id-node');
             if (fractionNode) fractionNode.textContent = "2/3";
             const barNode = document.getElementById('practice-status-fill-bar-element');
             if (barNode) barNode.style.width = "66.6666%";
             const discNode = document.getElementById('practice-disclaimer-id-node');
             if (discNode) discNode.textContent = "Complete 1 more practice to reach Curious Builder";
+            
+            setTimeout(() => {
+                const outputBox = document.getElementById('builderPageSandboxOutputRowGrid');
+                outputBox.scrollIntoView({ behavior: 'smooth', block: 'end' });
+            }, 100);
         }
 
-        function resetEcosystemState() {
-            isStreakUpgraded = false;
+        function fireToolsInferenceRequestPipeline() {
+            const arrow = document.getElementById('toolsInferenceSubmitArrowActionButton');
+            if (arrow.hasAttribute('disabled')) return;
 
-            // Reset Header
-            const headerBadge = document.getElementById('header-streak-badge');
-            if(headerBadge) {
-                headerBadge.className = "flex select-none items-center justify-center border-2 border-border-primary bg-surface-secondary gap-x-[5px] px-2 py-1 tablet:rounded-[40px] tablet:pl-3 tablet:pr-4 h-[25px] tablet:h-[30px] cursor-pointer transition-all duration-500";
-                document.getElementById('header-streak-icon').textContent = "🔥";
-            }
+            document.getElementById('toolsInferenceSuccessBoxAlert').classList.remove('hidden');
+            isEcosystemActiveStreakSecure = true;
+            propagateEcosystemStreakState();
+        }
 
-            // Reset Home Page
-            const upgradeBtn = document.getElementById('homeDashboardDisclaimerStatusTextLabel');
-            if(upgradeBtn) {
-                upgradeBtn.innerHTML = "⚡ Upgrade your streak";
-                upgradeBtn.className = "w-full bg-slate-900 text-white text-xs sm:text-sm font-bold py-3 rounded-xl hover:bg-slate-800 transition cursor-pointer shadow-sm text-center";
-                upgradeBtn.onclick = (e) => { e.stopPropagation(); switchView('streak'); };
-            }
-            const homeDay = document.getElementById('homeDashboardMiniDayIndicatorSlot4');
-            if(homeDay) {
-                homeDay.className = "w-8 h-8 rounded-full border-2 border-border-primary bg-surface-primary flex items-center justify-center text-xs font-semibold text-slate-400 transition-all duration-500";
-            }
+        function propagateEcosystemStreakState() {
+            if (!isEcosystemActiveStreakSecure) return;
 
-            // Reset Streak Page
-            const banner = document.getElementById('streak-banner-bg');
-            if(banner) {
-                banner.className = "flex justify-between items-center rounded-3xl border border-orange-200 px-8 py-8 bg-orange-50 transition-colors duration-500 shadow-sm";
-                document.getElementById('streak-status-text').textContent = "🔥 Saved for today";
-                document.getElementById('streak-status-text').className = "text-sm font-semibold text-orange-600 mt-2";
-                document.getElementById('streak-page-fire-icon').textContent = "🔥";
-            }
+            document.getElementById('header-global-streak-counter-node').textContent = "2";
+            document.getElementById('homePageClaudePctValueCounter').textContent = "12%";
+            document.getElementById('streakCalendarPageChallengeTimelineStatusText').textContent = "Day 1 of 3 (Ecosystem Tasks Complete! 🎉)";
+            document.getElementById('streakCalendarPageProgressBarFillWidthField').style.width = "100%";
             
-            const calendarDay = document.getElementById('calendarEcosystemDaySlotBox4');
-            if(calendarDay) {
-                calendarDay.className = "flex aspect-square items-center justify-center relative bg-surface-information text-text-secondary rounded-full p-[1px] transition-all duration-500";
+            const taskRowTextNode = document.getElementById('streak-page-tools-task-row');
+            taskRowTextNode.className = "flex items-center space-x-2 text-emerald-600 line-through opacity-50 font-semibold";
+            taskRowTextNode.innerHTML = "<span>✓</span> <span>Step 2: Practical activation in AI Tools — Completed</span>";
+
+            const redirectCtaButtonElementNode = document.getElementById('streakCalendarPageRedirectCallActionBtn');
+            if(redirectCtaButtonElementNode) {
+                redirectCtaButtonElementNode.className = "w-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold py-2.5 rounded-xl transition cursor-not-allowed text-center shadow-none";
+                redirectCtaButtonElementNode.textContent = "All daily targets accomplished successfully!";
+                redirectCtaButtonElementNode.disabled = true;
             }
+
+            document.getElementById('streak-page-fire-icon').className = "text-4xl opacity-100 scale-110 duration-500 filter drop-shadow-md select-none";
+            document.getElementById('streak-days-label').innerHTML = "day streak! <span class='text-orange-500 font-bold ml-1'>🔥 Secure</span>";
 
             const targetPageStreakCounters = document.getElementsByClassName('streak-page-numeric-counter');
             for(let i = 0; i < targetPageStreakCounters.length; i++) {
-                targetPageStreakCounters[i].textContent = "1";
+                targetPageStreakCounters[i].textContent = "2";
             }
-            
-            const headerStreakCounter = document.getElementById('header-global-streak-counter-node');
-            if (headerStreakCounter) headerStreakCounter.textContent = "1";
 
-            const claudeCounter = document.getElementById('homePageClaudePctValueCounter');
-            if (claudeCounter) claudeCounter.textContent = "4%";
+            const dayBoxNodeCell = document.getElementById('calendarEcosystemDaySlotBox4');
+            dayBoxNodeCell.className = "flex aspect-square items-center justify-center relative text-white rounded-full font-bold shadow-md shadow-orange-500/15";
+            dayBoxNodeCell.style.background = "linear-gradient(0deg, #FF7008 0%, #FFAC5E 100%)";
+            dayBoxNodeCell.innerHTML = "✓";
+            document.getElementById('starburstActiveNodeSvgIconElement').classList.add('hidden');
 
-            // Reset States
-            document.getElementById('toolsInferenceSuccessBoxAlert').classList.add('hidden');
-            document.getElementById('builderPageSandboxOutputRowGrid').classList.add('hidden');
-            document.getElementById('builderPageSandboxOutputRowGrid').classList.remove('flex');
-            document.getElementById('builderMainObjectiveInput').value = "";
-            document.getElementById('practice-fraction-id-node').textContent = "1/3";
-            document.getElementById('practice-status-fill-bar-element').style.width = "33.3333%";
-            document.getElementById('practice-disclaimer-id-node').textContent = "2 practices to next level";
-            
-            // Reset chips to default
-            selectChip('format', 'Email', document.querySelectorAll('.chip-format')[0]);
-            selectChip('tone', 'Professional', document.querySelectorAll('.chip-tone')[0]);
+            document.getElementById('homeDashboardDisclaimerStatusTextLabel').textContent = "✓ Workout complete. Streak secured!";
+            document.getElementById('homeDashboardDisclaimerStatusTextLabel').className = "w-full bg-emerald-50 text-emerald-700 font-bold py-3 rounded-xl text-center cursor-default";
+
+            const homeMiniCircleCellElement = document.getElementById('homeDashboardMiniDayIndicatorSlot4');
+            homeMiniCircleCellElement.className = "w-8 h-8 rounded-full text-white flex items-center justify-center text-xs font-bold shadow-sm shadow-orange-500/10";
+            homeMiniCircleCellElement.style.background = "linear-gradient(0deg, #FF7008 0%, #FFAC5E 100%)";
+            homeMiniCircleCellElement.innerHTML = "✓";
         }
     </script>
 </body>
 </html>
-```eof
-I have rebuilt the entire responsive code file. I restored the complete `"AI Tools"` and `"AI Practice"` navigation text nodes as requested, removed the reset prototype button on the main view, removed the warning and open calendar rows, and fully implemented the `"⚡ Upgrade your streak"` redirect call-to-action button in their place. This ensures everything looks highly professional, aligns perfectly with your brand identity, and transitions smoothly on both desktop and mobile viewports. Let me know if you would like to tune any other interface flows!
